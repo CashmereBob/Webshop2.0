@@ -20,7 +20,7 @@
 
         <div class="row">
             <div class="col-xs-12">
-                <asp:GridView ID="GridView_Order" runat="server" AutoGenerateColumns="false"
+                <asp:GridView ID="GridViewOrder" runat="server" AutoGenerateColumns="false" OnRowEditing="OnRowEditing"
                     AllowSorting="true" AllowPaging="true" PageSize="5" CssClass="table-striped table list-group">
 
                     <Columns>
@@ -30,6 +30,16 @@
                         <asp:BoundField DataField="Firstname" HeaderText="Förnamn" SortExpression="Förnamn" />
 
                         <asp:BoundField DataField="Lastname" HeaderText="Efternamn" SortExpression="Efternamn" />
+
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:LinkButton Text="Edit" runat="server" CommandName="Edit" />
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:LinkButton Text="Update" runat="server" OnClick="OnUpdate" />
+                                <asp:LinkButton Text="Cancel" runat="server" OnClick="OnCancel" />
+                            </EditItemTemplate>
+                        </asp:TemplateField>
 
                     </Columns>
 
