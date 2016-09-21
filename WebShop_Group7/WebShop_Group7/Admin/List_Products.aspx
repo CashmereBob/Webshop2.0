@@ -18,6 +18,19 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
+                     <asp:GridView ID="GridView_Products" runat="server" AutoGenerateColumns="false"
+                    AllowSorting="true" AllowPaging="true" PageSize="5" CssClass="table-striped table">
+                    <Columns>
+                        <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
+                           <asp:BoundField DataField="CategoryID" HeaderText="Kategori" SortExpression="Kategori" />
+                        <asp:BoundField DataField="Name" HeaderText="Namn" SortExpression="Namn" />
+                           <asp:BoundField DataField="BrandID" HeaderText="Märke" SortExpression="Märke" />
+                        <asp:BoundField DataField="Description" HeaderText="Förklaring" SortExpression="Förklaring" />
+                     
+                     
+                    </Columns>
+
+                </asp:GridView>
                 </div>
             </div>
         </div>
