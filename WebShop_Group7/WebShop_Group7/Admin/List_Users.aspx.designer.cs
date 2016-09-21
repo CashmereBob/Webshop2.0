@@ -13,6 +13,15 @@ namespace WebShop_Group7.Admin {
     public partial class List_Users {
         
         /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
         /// TextBox_Search control.
         /// </summary>
         /// <remarks>
@@ -22,30 +31,12 @@ namespace WebShop_Group7.Admin {
         protected global::System.Web.UI.WebControls.TextBox TextBox_Search;
         
         /// <summary>
-        /// Button_Search control.
+        /// GridView_User control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_Search;
-        
-        /// <summary>
-        /// DataList_Users control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList DataList_Users;
-        
-        /// <summary>
-        /// Button_Add control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_Add;
+        protected global::System.Web.UI.WebControls.GridView GridView_User;
     }
 }
