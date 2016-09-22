@@ -34,7 +34,7 @@
                             <asp:BoundField DataField="Description" HeaderText="Förklaring" SortExpression="Förklaring" />
                             <asp:BoundField DataField="b2bPrice" HeaderText="Pris B2B" SortExpression="Pris B2B" />
                             <asp:BoundField DataField="b2cPrice" HeaderText="Pris B2C" SortExpression="Pris B2C" />
-                             <asp:BoundField DataField="boolAttribute" HeaderText="Attribute" SortExpression="Attribute" />
+                            <asp:BoundField DataField="boolAttribute" HeaderText="Attribute" SortExpression="Attribute" />
 
                         </Columns>
 
