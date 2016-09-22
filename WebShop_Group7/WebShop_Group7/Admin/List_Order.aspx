@@ -33,12 +33,8 @@
 
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:LinkButton Text="Edit" runat="server" CommandName="Edit" />
+                                <asp:LinkButton Text="Detaljer" runat="server" OnClick="OnUpdate" />
                             </ItemTemplate>
-                            <EditItemTemplate>
-                                <asp:LinkButton Text="Update" runat="server" OnClick="OnUpdate" />
-                                <asp:LinkButton Text="Cancel" runat="server" OnClick="OnCancel" />
-                            </EditItemTemplate>
                         </asp:TemplateField>
 
                     </Columns>

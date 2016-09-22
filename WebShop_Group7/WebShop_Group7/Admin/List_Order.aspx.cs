@@ -43,20 +43,10 @@ namespace WebShop_Group7.Admin
         protected void OnUpdate(object sender, EventArgs e)
         {
             GridViewRow row = (sender as LinkButton).NamingContainer as GridViewRow;
-            string name = (row.Cells[0].Controls[0] as TextBox).Text;
-            string country = (row.Cells[1].Controls[0] as TextBox).Text;
-            DataTable dt = ViewState["dt"] as DataTable;
-            dt.Rows[row.RowIndex]["Name"] = name;
-            dt.Rows[row.RowIndex]["Country"] = country;
-            ViewState["dt"] = dt;
-            GridViewOrder.EditIndex = -1;
-            this.BindGrid();
+            var ID = row.Cells[0].Text;
+            Response.Redirect($"~/Admin/Edit_Order.aspx?id={ID}");
         }
 
-        protected void OnCancel(object sender, EventArgs e)
-        {
-            GridViewOrder.EditIndex = -1;
-            this.BindGrid();
-        }
+
     }
 }
