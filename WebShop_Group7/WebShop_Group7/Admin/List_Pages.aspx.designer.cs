@@ -13,21 +13,21 @@ namespace WebShop_Group7.Admin {
     public partial class List_Pages {
         
         /// <summary>
-        /// DataList_Users control.
+        /// TextBox_Search control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList DataList_Users;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Search;
         
         /// <summary>
-        /// Button_add control.
+        /// GridView_Pages control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_add;
+        protected global::System.Web.UI.WebControls.GridView GridView_Pages;
     }
 }
