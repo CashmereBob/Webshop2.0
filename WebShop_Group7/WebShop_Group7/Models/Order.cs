@@ -190,7 +190,7 @@ namespace WebShop_Group7.Models
                     foreach (KeyValuePair<string, string> atr in atribut)
                     {
                         
-                            attribut += atr.Value + ", ";
+                            attribut += atr.Value + " ";
                                 
                     }
 

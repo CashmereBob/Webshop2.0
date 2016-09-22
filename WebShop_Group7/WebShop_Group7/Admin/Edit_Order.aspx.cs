@@ -43,7 +43,7 @@ namespace WebShop_Group7.Admin
             Label_Payment.Text = order.payment;
             Label_paymentService.Text = order.paymentService;
 
-            Labe_CarrierPrice.Text = order.paymentPrice.ToString("#.##");
+            Labe_CarrierPrice.Text = order.carrierPrice.ToString("#.##");
             Label_PaymentPrice.Text = order.paymentPrice.ToString("#.##");
             Label_Sum.Text = order.CalculatePrice().ToString("#.##");
             decimal tax = order.CalculatePrice() * 0.25M;
