@@ -20,19 +20,19 @@ namespace WebShop_Group7.Models
                 connection.OpenConnection();
                 using (dataTable)
                 {
-                    dataTable.Columns.AddRange(new DataColumn[6]
+                    dataTable.Columns.AddRange(new DataColumn[5]
                     {   new DataColumn("ID"),
                         new DataColumn("Name"),
                         new DataColumn("Description"),
                         new DataColumn("BrandID"),
                         new DataColumn("CategoryID"),
-                        new DataColumn("B2C")
+                      
                     });
 
                     //                    string query = "SELECT * FROM tbl_Product";
-                    //                    string test = $@"select tbl_Product.ID,tbl_Product.Name,tbl_Category.Name AS category,tbl_Brand.Name as theBrand,tbl_Product.Description  from tbl_Product
-                    //INNER JOIN tbl_Brand ON tbl_Brand.ID = tbl_Product.BrandID
-                    //INNER JOIN tbl_Category ON tbl_Category.ID = tbl_Product.CategoryID";
+                    string test = $@"select tbl_Product.ID,tbl_Product.Name,tbl_Category.Name AS category,tbl_Brand.Name as theBrand,tbl_Product.Description  from tbl_Product
+                    INNER JOIN tbl_Brand ON tbl_Brand.ID = tbl_Product.BrandID
+                    INNER JOIN tbl_Category ON tbl_Category.ID = tbl_Product.CategoryID";
 
                     string test2 = $@"select 
 tbl_Product.ID,
@@ -47,20 +47,20 @@ INNER JOIN tbl_Brand ON tbl_Brand.ID = tbl_Product.BrandID
 INNER JOIN tbl_Category ON tbl_Category.ID = tbl_Product.CategoryID
 INNER JOIN tbl_Product_Attribute On tbl_Product_Attribute.ProductID = tbl_Product.ID";
 
-                    using (SqlCommand command = new SqlCommand(test2, connection._connection))
+                    using (SqlCommand command = new SqlCommand(test, connection._connection))
                     {
                         using (dataReader = command.ExecuteReader())
                         {
                             while (dataReader.Read())
                             {
                                 var id = int.Parse(dataReader["ID"].ToString());
-                                var categoryid = dataReader["Category"].ToString();
+                                var categoryid = dataReader["category"].ToString();
                                 var name = dataReader["Name"].ToString();
                                 var description = dataReader["Description"].ToString();
-                                var brandid = dataReader["Band"].ToString();
-                                var priceb2c = double.Parse(dataReader["B2C"].ToString());
+                                var brandid = dataReader["theBrand"].ToString();
+                              
 
-                                dataTable.Rows.Add(id, name, description, brandid, categoryid, priceb2c);
+                                dataTable.Rows.Add(id, name, description, brandid, categoryid);
                             }
 
                             return dataTable;
