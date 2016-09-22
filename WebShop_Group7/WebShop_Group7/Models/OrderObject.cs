@@ -19,7 +19,7 @@ namespace WebShop_Group7.Models
         public string telephone { get; set; }
         public string mobile { get; set; }
         public string email { get; set; }
-        public List<ProductObject> products { get; set; }
+        public List<ProductObject> products = new List<ProductObject>();
 
         public string carrier { get; set; }
         public string carrierService { get; set; }
@@ -35,24 +35,26 @@ namespace WebShop_Group7.Models
 
             foreach (ProductObject product in products)
             {
-                if (priceGroup == 1)
+                if (priceGroup == 2)
                 {
                     sum += product.priceB2B;
                 }
-                if (priceGroup == 2)
+                if (priceGroup == 1)
                 {
                     sum += product.priceB2C;
                 }
+
             }
+
+            sum += paymentPrice;
+            sum += carrierPrice;
 
             return sum;
         }
 
-
-   
-
-
-
-
+        public void AddProduct(ProductObject prod)
+        {
+            this.products.Add(prod);
+        }
     }
 }

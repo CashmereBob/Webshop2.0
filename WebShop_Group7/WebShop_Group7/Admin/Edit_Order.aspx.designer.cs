@@ -22,6 +22,15 @@ namespace WebShop_Group7.Admin {
         protected global::System.Web.UI.WebControls.Label Label_OrderID;
         
         /// <summary>
+        /// Label_company control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_company;
+        
+        /// <summary>
         /// Label_firstname control.
         /// </summary>
         /// <remarks>
@@ -94,6 +103,15 @@ namespace WebShop_Group7.Admin {
         protected global::System.Web.UI.WebControls.Label Label_mobile;
         
         /// <summary>
+        /// GridViewOrder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewOrder;
+        
+        /// <summary>
         /// DataList_PruductsInOrder control.
         /// </summary>
         /// <remarks>
@@ -112,6 +130,15 @@ namespace WebShop_Group7.Admin {
         protected global::System.Web.UI.WebControls.Label Label_Carrier;
         
         /// <summary>
+        /// Label_carrierService control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_carrierService;
+        
+        /// <summary>
         /// Label_Payment control.
         /// </summary>
         /// <remarks>
@@ -119,6 +146,15 @@ namespace WebShop_Group7.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label_Payment;
+        
+        /// <summary>
+        /// Label_paymentService control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_paymentService;
         
         /// <summary>
         /// Labe_CarrierPrice control.
