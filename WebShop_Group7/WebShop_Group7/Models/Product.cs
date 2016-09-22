@@ -66,8 +66,8 @@ INNER JOIN tbl_Category ON tbl_Category.ID = tbl_Product.CategoryID";
                                 var categoryid = dataReader["category"].ToString();                                                                                                         
                                 var brandid = dataReader["theBrand"].ToString();
                                 var description = dataReader["Description"].ToString();
-                                var buissniesPrice = double.Parse(dataReader["b2b"].ToString());
-                                var customPrice = double.Parse(dataReader["b2c"].ToString());
+                                var buissniesPrice = (dataReader["b2b"].ToString()+" kr");
+                                var customPrice =    (dataReader["b2c"].ToString()+" kr");
                               
                                 //1new DataColumn("ID"),
                                 //2new DataColumn("ArticleNr"),
