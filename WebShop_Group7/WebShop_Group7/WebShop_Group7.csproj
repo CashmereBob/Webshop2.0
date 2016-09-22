@@ -411,6 +411,7 @@
     </Compile>
     <Compile Include="Models\DBConnection.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderObject.cs" />
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Users.cs" />
