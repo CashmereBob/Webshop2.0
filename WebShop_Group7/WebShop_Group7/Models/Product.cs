@@ -101,9 +101,9 @@ INNER JOIN tbl_Category ON tbl_Category.ID = tbl_Product.CategoryID";
 
         }
 
-        public Dictionary<string, List<string>> GetAttribute(ProductObject product)
+        public Dictionary<string, string> GetAttribute(ProductObject product)
         {
-            var dict = new Dictionary<string, List<string>>();
+            var dict = new Dictionary<string, string>();
             var list = new List<int>();
 
             if (product.attribute1 > 0)
@@ -135,7 +135,7 @@ INNER JOIN tbl_Category ON tbl_Category.ID = tbl_Product.CategoryID";
                 foreach (int art in list)
                 {
                     string sql = @"SELECT Name, Value " +
-                                    @"FROM tbl_Attribute" +
+                                    @"FROM tbl_Attribute " +
                                     $"WHERE ID = '{art}'";
 
 
@@ -147,11 +147,7 @@ INNER JOIN tbl_Category ON tbl_Category.ID = tbl_Product.CategoryID";
 
                         while (myDataReader.Read())
                         {
-
-                            if (dict.ContainsKey(myDataReader["name"].ToString())) {
-                                dict[myDataReader["name"].ToString()].Add(myDataReader["Value"].ToString());
-                            }
-                            dict.Add(myDataReader["name"].ToString(), new List<string>() { myDataReader["Value"].ToString() });
+                            dict.Add(myDataReader["Name"].ToString(),  myDataReader["Value"].ToString() );
                         }
                     }
 

@@ -141,16 +141,16 @@ namespace WebShop_Group7.Models
                         int atr = -1;
 
                         int.TryParse(myDataReader["attribute1"].ToString(), out atr);
-                        prod.attribute1 = atr;
+                        prod.attribute1 = int.Parse(myDataReader["attribute1"].ToString());
 
                         int.TryParse(myDataReader["attribute2"].ToString(), out atr);
-                        prod.attribute1 = atr;
+                        prod.attribute2 = atr;
 
                         int.TryParse(myDataReader["attribute3"].ToString(), out atr);
-                        prod.attribute1 = atr;
+                        prod.attribute3 = atr;
 
                         int.TryParse(myDataReader["attribute4"].ToString(), out atr);
-                        prod.attribute1 = atr;
+                        prod.attribute4 = atr;
 
                         order.AddProduct(prod);
                     }
@@ -185,13 +185,13 @@ namespace WebShop_Group7.Models
 
                     var productDB = new Product();
 
-                    Dictionary<string, List<string>> atribut = productDB.GetAttribute(product);
+                    Dictionary<string, string> atribut = productDB.GetAttribute(product);
 
-                    foreach (KeyValuePair<string, List<string>> atr in atribut)
+                    foreach (KeyValuePair<string, string> atr in atribut)
                     {
-                        foreach (string val in atr.Value) {
-                            attribut += val + ", ";
-                                }
+                        
+                            attribut += atr.Value + ", ";
+                                
                     }
 
                     decimal sum = -1;
