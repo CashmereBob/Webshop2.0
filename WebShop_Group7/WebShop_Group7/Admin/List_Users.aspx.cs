@@ -37,6 +37,17 @@ namespace WebShop_Group7.Admin
 
         }
 
+        protected void OnRowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridView_User.EditIndex = e.NewEditIndex;
+            this.BindGrid();
+        }
 
+        protected void OnUpdate(object sender, EventArgs e)
+        {
+            GridViewRow row = (sender as LinkButton).NamingContainer as GridViewRow;
+            var ID = row.Cells[0].Text;
+            Response.Redirect($"~/Admin/Edit_User.aspx?id={ID}");
+        }
     }
 }

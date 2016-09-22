@@ -21,10 +21,6 @@
 <body>   
    <form id="MainForm" runat="server">     
          <%-- Gömda fält för att lagra informationen i local och session storrage, detta för att C# ska kunna få tillgång till värdena vilket det inte kan om det ligger direkt i Session eller local storrage --%>
-     <asp:HiddenField id="Usern" value="" runat="server"/> 
-    <script>$('#Usern').val(sessionStorage.getItem('User'));</script>
-     <asp:HiddenField id="Password" value="" runat="server"/>
-       <script>$('#Password').val(sessionStorage.getItem('Password'));</script>
      <asp:HiddenField id="Cart" value="" runat="server"/>
     
         <asp:ScriptManager runat="server">

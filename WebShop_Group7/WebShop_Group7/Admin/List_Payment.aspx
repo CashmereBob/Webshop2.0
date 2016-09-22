@@ -27,7 +27,12 @@
                         <asp:BoundField DataField="Provider" HeaderText="Leverantör" SortExpression="Leverantör" />
                         <asp:BoundField DataField="Service" HeaderText="Tjänst" SortExpression="Tjänst" />
                         <asp:BoundField DataField="Price" HeaderText="Pris" SortExpression="Pris" />
-                  
+                        
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:LinkButton Text="Redigera" runat="server" OnClick="OnUpdate" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
 
                     </Columns>
 

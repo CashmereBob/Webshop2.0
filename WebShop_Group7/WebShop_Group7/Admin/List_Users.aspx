@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col-xs-12">
 
-                <asp:GridView ID="GridView_User" runat="server" AutoGenerateColumns="false"
+                <asp:GridView ID="GridView_User" runat="server" AutoGenerateColumns="false" OnRowEditing="OnRowEditing"
                     AllowSorting="true" AllowPaging="true" PageSize="5" CssClass="table-striped table">
 
                     <Columns>
@@ -32,10 +32,11 @@
                         <asp:BoundField DataField="Pricegroup" HeaderText="Prisgrupp" SortExpression="Prisgrupp" />
 
 
-
-
-
-
+                          <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:LinkButton Text="Redigera" runat="server" OnClick="OnUpdate" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
 
                     </Columns>
 
