@@ -29,6 +29,11 @@
                             <asp:BoundField DataField="BrandID" HeaderText="Märke" SortExpression="Märke" />
                             <asp:BoundField DataField="Description" HeaderText="Förklaring" SortExpression="Förklaring" />
 
+                            <asp:BoundField DataField="B2C" HeaderText="Färg" SortExpression="Färg" />
+                            <asp:BoundField DataField="CategoryID" HeaderText="Kategori" SortExpression="Kategori" />
+                            <asp:BoundField DataField="Name" HeaderText="Namn" SortExpression="Namn" />
+                            <asp:BoundField DataField="BrandID" HeaderText="Märke" SortExpression="Märke" />
+                            <asp:BoundField DataField="Description" HeaderText="Förklaring" SortExpression="Förklaring" />
 
                         </Columns>
 
