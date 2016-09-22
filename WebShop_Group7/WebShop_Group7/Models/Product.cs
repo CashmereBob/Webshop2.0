@@ -46,7 +46,8 @@ tbl_Category.Name AS category,
 tbl_Brand.Name AS theBrand, 
 tbl_Product.Description,
 tbl_Product_Attribute.PriceB2B as b2b,
-tbl_Product_Attribute.PriceB2C AS b2c
+tbl_Product_Attribute.PriceB2C AS b2c,
+dbo.CheckIfItHaveAttributes(tbl_Product.ID) AS Attribute
 From tbl_Product
 
 INNER JOIN tbl_Product_Attribute ON tbl_Product_Attribute.ProductID = tbl_Product.ID
@@ -68,6 +69,7 @@ INNER JOIN tbl_Category ON tbl_Category.ID = tbl_Product.CategoryID";
                                 var description = dataReader["Description"].ToString();
                                 var buissniesPrice = (dataReader["b2b"].ToString()+" kr");
                                 var customPrice =    (dataReader["b2c"].ToString()+" kr");
+                                bool attribute = (bool)dataReader["Attribute"];
                               
                                 //1new DataColumn("ID"),
                                 //2new DataColumn("ArticleNr"),
@@ -81,7 +83,7 @@ INNER JOIN tbl_Category ON tbl_Category.ID = tbl_Product.CategoryID";
                              
 
                                 dataTable.Rows.Add(id, articlenr, name, categoryid, brandid,
-                                description, buissniesPrice, customPrice, false);
+                                description, buissniesPrice, customPrice, attribute);
                             }
 
                             return dataTable;
