@@ -20,7 +20,7 @@ namespace WebShop_Group7.Models
                 connection.OpenConnection();
                 using (dataTable)
                 {
-                    dataTable.Columns.AddRange(new DataColumn[9]
+                    dataTable.Columns.AddRange(new DataColumn[8]
                     {
                        new DataColumn("ID"),
                        new DataColumn("ArticleNr"),
@@ -30,7 +30,7 @@ namespace WebShop_Group7.Models
                        new DataColumn("Description"),
                        new DataColumn("b2bPrice"),
                        new DataColumn("b2cPrice"),
-                       new DataColumn("boolAttribute"),
+                 
                     });
 
                     string test2 = $@"Select 
@@ -41,8 +41,8 @@ tbl_Category.Name AS category,
 tbl_Brand.Name AS theBrand, 
 tbl_Product.Description,
 tbl_Product_Attribute.PriceB2B as b2b,
-tbl_Product_Attribute.PriceB2C AS b2c,
-dbo.CheckIfItHaveAttributes(tbl_Product.ID) AS Attribute
+tbl_Product_Attribute.PriceB2C AS b2c
+
 From tbl_Product
 
 INNER JOIN tbl_Product_Attribute ON tbl_Product_Attribute.ProductID = tbl_Product.ID
@@ -64,10 +64,10 @@ INNER JOIN tbl_Category ON tbl_Category.ID = tbl_Product.CategoryID";
                                 var description = dataReader["Description"].ToString();
                                 var buissniesPrice = (dataReader["b2b"].ToString()+" kr");
                                 var customPrice =    (dataReader["b2c"].ToString()+" kr");
-                                bool attribute = (bool)dataReader["Attribute"];
+                            
                               
                                 dataTable.Rows.Add(id, articlenr, name, categoryid, brandid,
-                                description, buissniesPrice, customPrice, attribute);
+                                description, buissniesPrice, customPrice);
                             }
 
                             return dataTable;
