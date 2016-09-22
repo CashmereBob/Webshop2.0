@@ -155,12 +155,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Admin\Edit_Brand.aspx" />
+    <Content Include="Admin\Edit_Carrier.aspx" />
+    <Content Include="Admin\Edit_Category.aspx" />
     <Content Include="Admin\Edit_Order.aspx" />
+    <Content Include="Admin\Edit_Page.aspx" />
+    <Content Include="Admin\Edit_Payment.aspx" />
     <Content Include="Admin\Edit_Product.aspx" />
     <Content Include="Admin\Edit_StartPage.aspx" />
     <Content Include="Admin\Edit_User.aspx" />
     <Content Include="Admin\index.aspx" />
+    <Content Include="Admin\List_Brand.aspx" />
     <Content Include="Admin\List_Carrier.aspx" />
+    <Content Include="Admin\List_Category.aspx" />
     <Content Include="Admin\List_Order.aspx" />
     <Content Include="Admin\List_Pages.aspx" />
     <Content Include="Admin\List_Payment.aspx" />
@@ -241,12 +248,47 @@
     <Compile Include="Admins.Master.designer.cs">
       <DependentUpon>Admins.Master</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Edit_Brand.aspx.cs">
+      <DependentUpon>Edit_Brand.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Edit_Brand.aspx.designer.cs">
+      <DependentUpon>Edit_Brand.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Edit_Carrier.aspx.cs">
+      <DependentUpon>Edit_Carrier.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Edit_Carrier.aspx.designer.cs">
+      <DependentUpon>Edit_Carrier.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Edit_Category.aspx.cs">
+      <DependentUpon>Edit_Category.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Edit_Category.aspx.designer.cs">
+      <DependentUpon>Edit_Category.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Edit_Order.aspx.cs">
       <DependentUpon>Edit_Order.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Edit_Order.aspx.designer.cs">
       <DependentUpon>Edit_Order.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Edit_Page.aspx.cs">
+      <DependentUpon>Edit_Page.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Edit_Page.aspx.designer.cs">
+      <DependentUpon>Edit_Page.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Edit_Payment.aspx.cs">
+      <DependentUpon>Edit_Payment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Edit_Payment.aspx.designer.cs">
+      <DependentUpon>Edit_Payment.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Edit_Product.aspx.cs">
       <DependentUpon>Edit_Product.aspx</DependentUpon>
@@ -276,12 +318,26 @@
     <Compile Include="Admin\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\List_Brand.aspx.cs">
+      <DependentUpon>List_Brand.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\List_Brand.aspx.designer.cs">
+      <DependentUpon>List_Brand.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\List_Carrier.aspx.cs">
       <DependentUpon>List_Carrier.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\List_Carrier.aspx.designer.cs">
       <DependentUpon>List_Carrier.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\List_Category.aspx.cs">
+      <DependentUpon>List_Category.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\List_Category.aspx.designer.cs">
+      <DependentUpon>List_Category.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\List_Order.aspx.cs">
       <DependentUpon>List_Order.aspx</DependentUpon>
