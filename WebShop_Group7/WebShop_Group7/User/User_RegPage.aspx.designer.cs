@@ -13,15 +13,6 @@ namespace WebShop_Group7.User {
     public partial class User_RegPage {
         
         /// <summary>
-        /// Label_UserFirstName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_UserFirstName;
-        
-        /// <summary>
         /// TextBox_UserFirstName control.
         /// </summary>
         /// <remarks>
@@ -29,15 +20,6 @@ namespace WebShop_Group7.User {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_UserFirstName;
-        
-        /// <summary>
-        /// Label_UserLastName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_UserLastName;
         
         /// <summary>
         /// TextBox_UserLastName control.
@@ -49,15 +31,6 @@ namespace WebShop_Group7.User {
         protected global::System.Web.UI.WebControls.TextBox TextBox_UserLastName;
         
         /// <summary>
-        /// Label_UserAdress control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_UserAdress;
-        
-        /// <summary>
         /// TextBox_UserAdress control.
         /// </summary>
         /// <remarks>
@@ -65,15 +38,6 @@ namespace WebShop_Group7.User {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_UserAdress;
-        
-        /// <summary>
-        /// Label_UserZipCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_UserZipCode;
         
         /// <summary>
         /// TextBox_UserZipCode control.
@@ -85,15 +49,6 @@ namespace WebShop_Group7.User {
         protected global::System.Web.UI.WebControls.TextBox TextBox_UserZipCode;
         
         /// <summary>
-        /// Label_UserCity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_UserCity;
-        
-        /// <summary>
         /// TextBox_UserCity control.
         /// </summary>
         /// <remarks>
@@ -101,15 +56,6 @@ namespace WebShop_Group7.User {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_UserCity;
-        
-        /// <summary>
-        /// Label_UserEmail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_UserEmail;
         
         /// <summary>
         /// TextBox_UserEmail control.
@@ -121,15 +67,6 @@ namespace WebShop_Group7.User {
         protected global::System.Web.UI.WebControls.TextBox TextBox_UserEmail;
         
         /// <summary>
-        /// Label_UserPhone control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_UserPhone;
-        
-        /// <summary>
         /// TextBox_UserPhone control.
         /// </summary>
         /// <remarks>
@@ -137,15 +74,6 @@ namespace WebShop_Group7.User {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_UserPhone;
-        
-        /// <summary>
-        /// Label_UserMobilePhone control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_UserMobilePhone;
         
         /// <summary>
         /// TextBox_UserMobilePhone control.
@@ -157,24 +85,6 @@ namespace WebShop_Group7.User {
         protected global::System.Web.UI.WebControls.TextBox TextBox_UserMobilePhone;
         
         /// <summary>
-        /// TextBox_UserNewPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_UserNewPassword;
-        
-        /// <summary>
-        /// TextBox_UserNewPasswordAgain control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_UserNewPasswordAgain;
-        
-        /// <summary>
         /// TextBox_UserPassword control.
         /// </summary>
         /// <remarks>
@@ -184,12 +94,21 @@ namespace WebShop_Group7.User {
         protected global::System.Web.UI.WebControls.TextBox TextBox_UserPassword;
         
         /// <summary>
-        /// Button_Save control.
+        /// TextBox_UserPasswordAgain control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_Save;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_UserPasswordAgain;
+        
+        /// <summary>
+        /// Button1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
     }
 }
