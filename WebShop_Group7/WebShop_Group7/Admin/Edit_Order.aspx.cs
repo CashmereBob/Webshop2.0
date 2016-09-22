@@ -32,6 +32,7 @@ namespace WebShop_Group7.Admin
             Label_adress.Text = order.adress;
             Label_postalcode.Text = order.postalCode;
             Label_city.Text = order.city;
+            Label_Date.Text = order.date;
 
             Label_email.Text = order.email;
             Label_telephone.Text = order.telephone;

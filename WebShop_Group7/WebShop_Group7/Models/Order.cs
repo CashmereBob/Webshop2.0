@@ -19,19 +19,20 @@ namespace WebShop_Group7.Models
 
                 using (DataTable dt = new DataTable("Order"))
                 {
-                    dt.Columns.AddRange(new DataColumn[3] { new DataColumn("ID"), new DataColumn("Firstname"), new DataColumn("Lastname") });
+                    dt.Columns.AddRange(new DataColumn[4] { new DataColumn("ID"), new DataColumn("Date"), new DataColumn("Firstname"), new DataColumn("Lastname") });
 
-                    string sql = @"Select tbl_Order.ID AS[orderID], tbl_User.Firstname AS[Firstname], tbl_User.Lastname AS[Lastname] " +
+                    string sql = @"Select tbl_Order.ID AS[orderID], tbl_User.Firstname AS[Firstname], tbl_User.Lastname AS[Lastname], tbl_Order.[Date] " +
                                     @"From tbl_Order " +
                                     @"INNER JOIN tbl_User " +
                                     @"ON tbl_Order.UserID = tbl_User.ID " +
                                     @"INNER JOIN tbl_Carrier " +
                                     @"ON tbl_Order.CarrierID = tbl_Carrier.ID " +
                                     @"INNER JOIN tbl_Payment " +
-                                    @"ON tbl_Order.PaymentID = tbl_Payment.ID ";
+                                    @"ON tbl_Order.PaymentID = tbl_Payment.ID " +
+                                    @"ORDER BY tbl_Order.[Date] DESC, [orderID], [Firstname], [Lastname]";
 
 
-                    SqlCommand myCommand = new SqlCommand(sql, db._connection);
+        SqlCommand myCommand = new SqlCommand(sql, db._connection);
 
 
                     using (SqlDataReader myDataReader = myCommand.ExecuteReader())
@@ -42,8 +43,9 @@ namespace WebShop_Group7.Models
                             int orderID = int.Parse(myDataReader["orderID"].ToString());
                             string firstname = myDataReader["Firstname"].ToString();
                             string lastname = myDataReader["Lastname"].ToString();
+                            string date = myDataReader["Date"].ToString();
 
-                            dt.Rows.Add(orderID, firstname, lastname);
+                            dt.Rows.Add(orderID, date, firstname, lastname);
                         }
                     }
                     myCommand.ExecuteNonQuery();
@@ -78,7 +80,7 @@ namespace WebShop_Group7.Models
                                 @"[tbl_Order_Product-Attribute].Quantity AS[quantity], tbl_Product.Name AS[productName], tbl_User.Pricegroup AS[priceGroup], tbl_Carrier.Carrier AS [carrier], " +
                                 @"tbl_Carrier.[Service] AS [carrierSevice], tbl_Carrier.Price AS[carrierPrice], tbl_User.Pricegroup AS[priceGroup], " +
                                 @"tbl_Payment.Provider AS [payment], tbl_Payment.[Service] AS [paymentService], tbl_payment.Price AS[paymentPrice], " +
-                                @"tbl_Product_Attribute.AttributeID1 AS[attribute1], tbl_Product_Attribute.AttributeID2 AS[attribute2], tbl_Product_Attribute.AttributeID3 AS[attribute3], tbl_Product_Attribute.AttributeID4 AS[attribute4] " +
+                                @"tbl_Product_Attribute.AttributeID1 AS[attribute1], tbl_Product_Attribute.AttributeID2 AS[attribute2], tbl_Product_Attribute.AttributeID3 AS[attribute3], tbl_Product_Attribute.AttributeID4 AS[attribute4], tbl_Order.Date " +
                                 @"From[tbl_Order_Product-Attribute] " +
                                 @"INNER JOIN tbl_Order " +
                                 @"ON[tbl_Order_Product-Attribute].OrderID = tbl_Order.ID " +
@@ -112,6 +114,7 @@ namespace WebShop_Group7.Models
                         order.adress = myDataReader["adress"].ToString();
                         order.postalCode = myDataReader["postalCode"].ToString();
                         order.city = myDataReader["city"].ToString();
+                        order.date = myDataReader["Date"].ToString();
 
                         order.telephone = myDataReader["telephone"].ToString();
                         order.mobile = myDataReader["mobile"].ToString();
