@@ -74,17 +74,32 @@ INNER JOIN tbl_Attribute ON tbl_Attribute.ID = tbl_Product_Attribute.AttributeID
                                 var articlenr = int.Parse(dataReader["ArticleNumber"].ToString());
                                 var name = dataReader["Name"].ToString();
                                 var categoryid = dataReader["category"].ToString();
-                                var attriType = dataReader["theType"].ToString();
-                                var attriValue = dataReader["value"].ToString();
+                                string attriType;
+                                try
+                                {
+                                     attriType = dataReader["theType"].ToString();
+                                }
+                                catch
+                                {
+                                     attriType = "";
+                                }
+                                string attriValue;
+                                try { 
+                                 attriValue = dataReader["value"].ToString();
+                                }
+                                catch
+                                {
+                                     attriValue = "";
+                                }
                                 var brandid = dataReader["theBrand"].ToString();
-                                var description = dataReader["Description"].ToString();                   
+                                var description = dataReader["Description"].ToString();
                                 var buissniesPrice = double.Parse(dataReader["b2b"].ToString());
                                 var customPrice = double.Parse(dataReader["b2c"].ToString());
                                 var quant = int.Parse(dataReader["Quantity"].ToString());
                                 var imgurl = dataReader["ImgUrl"].ToString();
 
                                 dataTable.Rows.Add(id, articlenr, name, categoryid, attriType, attriValue, brandid,
-                                description , buissniesPrice, customPrice, quant, imgurl);
+                                description, buissniesPrice, customPrice, quant, imgurl);
                             }
 
                             return dataTable;
