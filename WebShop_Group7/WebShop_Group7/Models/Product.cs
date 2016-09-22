@@ -100,5 +100,77 @@ INNER JOIN tbl_Category ON tbl_Category.ID = tbl_Product.CategoryID";
             }
 
         }
+
+        public Dictionary<string, List<string>> GetAttribute(ProductObject product)
+        {
+            var dict = new Dictionary<string, List<string>>();
+            var list = new List<int>();
+
+            if (product.attribute1 > 0)
+            {
+                list.Add(product.attribute1);
+            }
+
+            if (product.attribute2 > 0)
+            {
+                list.Add(product.attribute2);
+            }
+
+            if (product.attribute3 > 0)
+            {
+                list.Add(product.attribute3);
+            }
+
+            if (product.attribute4 > 0)
+            {
+                list.Add(product.attribute4);
+            }
+
+
+
+            try
+            {
+                connection.OpenConnection();
+
+                foreach (int art in list)
+                {
+                    string sql = @"SELECT Name, Value " +
+                                    @"FROM tbl_Attribute" +
+                                    $"WHERE ID = '{art}'";
+
+
+                    SqlCommand myCommand = new SqlCommand(sql, connection._connection);
+
+
+                    using (SqlDataReader myDataReader = myCommand.ExecuteReader())
+                    {
+
+                        while (myDataReader.Read())
+                        {
+
+                            if (dict.ContainsKey(myDataReader["name"].ToString())) {
+                                dict[myDataReader["name"].ToString()].Add(myDataReader["Value"].ToString());
+                            }
+                            dict.Add(myDataReader["name"].ToString(), new List<string>() { myDataReader["Value"].ToString() });
+                        }
+                    }
+
+
+                }
+                return dict;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                connection.CloseConnection();
+            }
+
+
+           
+
+        }
     }
 }

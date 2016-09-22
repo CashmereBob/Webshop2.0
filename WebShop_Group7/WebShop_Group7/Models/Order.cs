@@ -21,18 +21,15 @@ namespace WebShop_Group7.Models
                 {
                     dt.Columns.AddRange(new DataColumn[3] { new DataColumn("ID"), new DataColumn("Firstname"), new DataColumn("Lastname") });
 
-                    string sql = @"Select tbl_Order.ID AS [orderID], tbl_User.Firstname AS [Firstname], tbl_User.Lastname AS [Lastname] " +
-                                    @"From[tbl_Order_Product-Attribute] " +
-                                    @"INNER JOIN tbl_Order " +
-                                    @"ON[tbl_Order_Product-Attribute].OrderID = tbl_Order.ID " +
-                                    @"INNER JOIN tbl_Product_Attribute " +
-                                    @"ON[tbl_Order_Product-Attribute].ProductAttributeID = tbl_Product_Attribute.ID " +
+                    string sql = @"Select tbl_Order.ID AS[orderID], tbl_User.Firstname AS[Firstname], tbl_User.Lastname AS[Lastname] " +
+                                    @"From tbl_Order " +
                                     @"INNER JOIN tbl_User " +
                                     @"ON tbl_Order.UserID = tbl_User.ID " +
                                     @"INNER JOIN tbl_Carrier " +
                                     @"ON tbl_Order.CarrierID = tbl_Carrier.ID " +
                                     @"INNER JOIN tbl_Payment " +
-                                    @"ON tbl_Order.PaymentID = tbl_Payment.ID";
+                                    @"ON tbl_Order.PaymentID = tbl_Payment.ID ";
+
 
                     SqlCommand myCommand = new SqlCommand(sql, db._connection);
 
@@ -67,6 +64,8 @@ namespace WebShop_Group7.Models
         public OrderObject GetOrder(int id)
         {
             OrderObject order = new OrderObject();
+           
+            
 
             try
             {
@@ -78,7 +77,8 @@ namespace WebShop_Group7.Models
                                 @"tbl_Product_Attribute.PriceB2B AS[priceB2B], tbl_Product_Attribute.PriceB2C AS[priceB2C], tbl_Product_Attribute.ArticleNumber AS[ArtNr], " +
                                 @"[tbl_Order_Product-Attribute].Quantity AS[quantity], tbl_Product.Name AS[productName], tbl_User.Pricegroup AS[priceGroup], tbl_Carrier.Carrier AS [carrier], " +
                                 @"tbl_Carrier.[Service] AS [carrierSevice], tbl_Carrier.Price AS[carrierPrice], tbl_User.Pricegroup AS[priceGroup], " +
-                                @"tbl_Payment.Provider AS [payment], tbl_Payment.[Service] AS [paymentService], tbl_payment.Price AS[paymentPrice] " +
+                                @"tbl_Payment.Provider AS [payment], tbl_Payment.[Service] AS [paymentService], tbl_payment.Price AS[paymentPrice], " +
+                                @"tbl_Product_Attribute.AttributeID1 AS[attribute1], tbl_Product_Attribute.AttributeID2 AS[attribute2], tbl_Product_Attribute.AttributeID3 AS[attribute3], tbl_Product_Attribute.AttributeID4 AS[attribute4] " +
                                 @"From[tbl_Order_Product-Attribute] " +
                                 @"INNER JOIN tbl_Order " +
                                 @"ON[tbl_Order_Product-Attribute].OrderID = tbl_Order.ID " +
@@ -92,7 +92,7 @@ namespace WebShop_Group7.Models
                                 @"ON tbl_Order.PaymentID = tbl_Payment.ID " +
                                 @"INNER JOIN tbl_Product " +
                                 @"ON tbl_Product_Attribute.ProductID = tbl_Product.ID " +
-                                @"WHERE orderID = '1'";
+                                $"WHERE orderID = '{id}'";
 
                 SqlCommand myCommand = new SqlCommand(sql, db._connection);
 
@@ -120,13 +120,13 @@ namespace WebShop_Group7.Models
                         ProductObject prod = new ProductObject();
                         prod.artNr = myDataReader["ArtNr"].ToString();
                         prod.name = myDataReader["productName"].ToString();
+                        prod.quantity = int.Parse(myDataReader["quantity"].ToString());
 
                         decimal.TryParse(myDataReader["priceB2B"].ToString(), out num);
                         prod.priceB2B = num;
                         decimal.TryParse(myDataReader["priceB2C"].ToString(), out num);
                         prod.priceB2C = num;
 
-                        order.AddProduct(prod);
 
                         order.carrier = myDataReader["carrier"].ToString();
                         order.carrierService = myDataReader["carrierSevice"].ToString();
@@ -138,7 +138,21 @@ namespace WebShop_Group7.Models
                         decimal.TryParse(myDataReader["paymentPrice"].ToString(), out num);
                         order.paymentPrice = num;
 
-                        
+                        int atr = -1;
+
+                        int.TryParse(myDataReader["attribute1"].ToString(), out atr);
+                        prod.attribute1 = atr;
+
+                        int.TryParse(myDataReader["attribute2"].ToString(), out atr);
+                        prod.attribute1 = atr;
+
+                        int.TryParse(myDataReader["attribute3"].ToString(), out atr);
+                        prod.attribute1 = atr;
+
+                        int.TryParse(myDataReader["attribute4"].ToString(), out atr);
+                        prod.attribute1 = atr;
+
+                        order.AddProduct(prod);
                     }
                 }
 
@@ -162,22 +176,38 @@ namespace WebShop_Group7.Models
         {
             using (DataTable dt = new DataTable("Products"))
             {
-                dt.Columns.AddRange(new DataColumn[3] { new DataColumn("ArtNr"), new DataColumn("name"), new DataColumn("price") });
+                dt.Columns.AddRange(new DataColumn[6] { new DataColumn("ArtNr"), new DataColumn("name"), new DataColumn("attribut"), new DataColumn("price"), new DataColumn("quantity"), new DataColumn("sum") });
+
 
                 foreach (ProductObject product in ord.products)
                 {
+                    string attribut = string.Empty;
+
+                    var productDB = new Product();
+
+                    Dictionary<string, List<string>> atribut = productDB.GetAttribute(product);
+
+                    foreach (KeyValuePair<string, List<string>> atr in atribut)
+                    {
+                        foreach (string val in atr.Value) {
+                            attribut += val + ", ";
+                                }
+                    }
+
                     decimal sum = -1;
+             
+                        if (ord.priceGroup == 2)
+                        {
+                            sum += product.priceB2B;
+                        }
+                        if (ord.priceGroup == 1)
+                        {
+                            sum += product.priceB2C;
+                        }
 
-                    if (ord.priceGroup == 2)
-                    {
-                        sum += product.priceB2B;
-                    }
-                    if (ord.priceGroup == 1)
-                    {
-                        sum += product.priceB2C;
-                    }
+                    decimal prodSum = sum * product.quantity;
 
-                    dt.Rows.Add(product.artNr, product.name, sum.ToString("#.##"));
+                    dt.Rows.Add(product.artNr, product.name, attribut, sum.ToString("#.##"), product.quantity, prodSum.ToString("#.##"));
                 }
 
                 return dt;

@@ -15,7 +15,10 @@ namespace WebShop_Group7.Models
         public string brandName { get; set; }
         public string category { get; set; }
         public string imgURL { get; set; }
-        public Dictionary<string, List<string>> attribut { get; set; }
+        public int attribute1 = 0;
+        public int attribute2 = 0;
+        public int attribute3 = 0;
+        public int attribute4 = 0;
         public int quantity { get; set; }
         public string artNr { get; set; }
     }

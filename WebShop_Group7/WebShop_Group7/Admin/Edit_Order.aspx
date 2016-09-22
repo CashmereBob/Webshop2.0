@@ -23,8 +23,10 @@
                         <asp:BoundField DataField="ArtNr" HeaderText="Art. Nummer"  />
 
                         <asp:BoundField DataField="Name" HeaderText="Produkt Namn" />
-
+                        <asp:BoundField DataField="Attribut" HeaderText="Attribut" />
                         <asp:BoundField DataField="Price" HeaderText="Pris"  />
+                        <asp:BoundField DataField="Quantity" HeaderText="Antal"  />
+                        <asp:BoundField DataField="Sum" HeaderText="Summa"  />
 
                     </Columns>
 
