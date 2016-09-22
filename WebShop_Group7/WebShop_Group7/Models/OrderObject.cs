@@ -8,6 +8,8 @@ namespace WebShop_Group7.Models
     public class OrderObject
     {
         public int orderId { get; set; }
+        public int priceGroup { get; set; }
+        public string company { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string adress { get; set; }
@@ -27,7 +29,25 @@ namespace WebShop_Group7.Models
         public string paymentService { get; set; }
         public decimal paymentPrice { get; set; }
 
-        public decimal sum { get; set; }
+        public decimal CalculatePrice()
+        {
+            decimal sum = -1;
+
+            foreach (ProductObject product in products)
+            {
+                if (priceGroup == 1)
+                {
+                    sum += product.priceB2B;
+                }
+                if (priceGroup == 2)
+                {
+                    sum += product.priceB2C;
+                }
+            }
+
+            return sum;
+        }
+
 
 
 
