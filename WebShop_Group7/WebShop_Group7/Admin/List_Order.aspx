@@ -21,11 +21,13 @@
         <div class="row">
             <div class="col-xs-12">
                 <asp:GridView ID="GridViewOrder" runat="server" AutoGenerateColumns="false" OnRowEditing="OnRowEditing"
-                    AllowSorting="true" AllowPaging="true" PageSize="5" CssClass="table-striped table list-group">
+                       CssClass="table-striped table list-group">
 
                     <Columns>
 
                         <asp:BoundField DataField="ID" HeaderText="Order NR" SortExpression="ID" />
+
+                        <asp:BoundField DataField="Date" HeaderText="Datum" SortExpression="datum" />
 
                         <asp:BoundField DataField="Firstname" HeaderText="Förnamn" SortExpression="Förnamn" />
 

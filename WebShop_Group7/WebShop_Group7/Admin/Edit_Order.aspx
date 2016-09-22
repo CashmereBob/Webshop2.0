@@ -2,7 +2,7 @@
 
  <asp:Content ID="BodyContent" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
       <h2><%: Title %> #<asp:Label ID="Label_OrderID" runat="server" Text="OrderID"></asp:Label></h2>
-
+      <h4><asp:Label ID="Label_Date" runat="server" Text="lokal date"></asp:Label></h4>
      
      <h3>Kunduppgifter</h3>
      <h4><asp:Label ID="Label_company" runat="server" Text="company"></asp:Label></h4>

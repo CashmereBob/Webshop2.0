@@ -15,7 +15,7 @@ namespace WebShop_Group7.Models
         public string adress { get; set; }
         public string postalCode { get; set; }
         public string city { get; set; }
-
+        public string date { get; set; }
         public string telephone { get; set; }
         public string mobile { get; set; }
         public string email { get; set; }

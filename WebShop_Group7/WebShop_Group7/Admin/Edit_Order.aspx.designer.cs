@@ -22,6 +22,15 @@ namespace WebShop_Group7.Admin {
         protected global::System.Web.UI.WebControls.Label Label_OrderID;
         
         /// <summary>
+        /// Label_Date control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_Date;
+        
+        /// <summary>
         /// Label_company control.
         /// </summary>
         /// <remarks>
@@ -121,24 +130,6 @@ namespace WebShop_Group7.Admin {
         protected global::System.Web.UI.WebControls.DataList DataList_PruductsInOrder;
         
         /// <summary>
-        /// Label_Carrier control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_Carrier;
-        
-        /// <summary>
-        /// Label_carrierService control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_carrierService;
-        
-        /// <summary>
         /// Label_Payment control.
         /// </summary>
         /// <remarks>
@@ -157,15 +148,6 @@ namespace WebShop_Group7.Admin {
         protected global::System.Web.UI.WebControls.Label Label_paymentService;
         
         /// <summary>
-        /// Labe_CarrierPrice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Labe_CarrierPrice;
-        
-        /// <summary>
         /// Label_PaymentPrice control.
         /// </summary>
         /// <remarks>
@@ -173,6 +155,33 @@ namespace WebShop_Group7.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label_PaymentPrice;
+        
+        /// <summary>
+        /// Label_Carrier control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_Carrier;
+        
+        /// <summary>
+        /// Label_carrierService control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_carrierService;
+        
+        /// <summary>
+        /// Labe_CarrierPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Labe_CarrierPrice;
         
         /// <summary>
         /// Label_Sum control.
