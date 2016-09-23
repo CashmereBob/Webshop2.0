@@ -106,7 +106,7 @@
                     <h4>Kategori:  </h4>
                 </div>
                 <div class="col-md-2">
-                    <asp:Label ID="Label_Category" runat="server" Text="Kategori"></asp:Label>
+                    <h4> <asp:Label ID="Label_Category" runat="server" Text="Kategori"></asp:Label></h4>
                 </div>
                 <div class="col-md-3">
                     <asp:TextBox CssClass="form-control" ID="TextBox_Category" runat="server"></asp:TextBox>
@@ -120,8 +120,7 @@
             </div>
             <div class="row">
                 <div class="col-md-7">
-                    <textarea class="form-control">Produkten är en fin fin sak som alla borde ha. Produkten är 
-         en fin fin sak som alla borde ha. Produkten är en fin fin sak som alla borde ha. </textarea>
+                    <asp:TextBox ID="TextBox_Description" runat="server" ReadOnly="False" Height="100%" TextMode="MultiLine" Width="100%"></asp:TextBox>
                 </div>
             </div>
 

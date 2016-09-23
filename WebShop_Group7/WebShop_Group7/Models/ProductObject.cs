@@ -9,7 +9,7 @@ namespace WebShop_Group7.Models
     {
         public int productID { get; set; }
         public string name { get; set; }
-        public decimal description { get; set; }
+        public string description { get; set; }
         public decimal priceB2C { get; set; }
         public decimal priceB2B { get; set; }
         public string brandName { get; set; }

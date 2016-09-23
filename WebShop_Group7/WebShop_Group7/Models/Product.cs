@@ -35,7 +35,7 @@ namespace WebShop_Group7.Models
                     });
 
                     string test2 = $@"Select 
-                                      tbl_Product.ID,
+                                         tbl_Product_Attribute.ID,
                                       tbl_Product_Attribute.ArticleNumber,
                                       tbl_Product.Name,
                                       tbl_Category.Name AS category,
@@ -95,16 +95,16 @@ namespace WebShop_Group7.Models
             }
 
         }
-        public ProductObject GetProduct(ProductObject product,int ID)
+        public ProductObject GetProduct(int ID)
         {
             ProductObject Result = new ProductObject();
 
 
 
             string query = $@" Select 
-                                      tbl_Product.ID,
+                                       tbl_Product_Attribute.ID,
                                       tbl_Product_Attribute.ArticleNumber,
-                                      tbl_Product.Name,
+                                      tbl_Product.Name as productName,
                                       tbl_Category.Name AS category,
                                       tbl_Brand.Name AS theBrand, 
                                       tbl_Product.Description,
@@ -117,17 +117,31 @@ namespace WebShop_Group7.Models
                                       
                                       INNER JOIN tbl_Product_Attribute ON tbl_Product_Attribute.ProductID = tbl_Product.ID
                                       INNER JOIN tbl_Brand ON tbl_Brand.ID = tbl_Product.BrandID
-                                      INNER JOIN tbl_Category ON tbl_Category.ID = tbl_Product.CategoryID";
+                                      INNER JOIN tbl_Category ON tbl_Category.ID = tbl_Product.CategoryID
+                                      WHERE tbl_Product_Attribute.ID={ID}
+                                      ";
 
             connection.OpenConnection();
             using (SqlCommand command = new SqlCommand(query, connection._connection))
             {
                 using (dataReader = command.ExecuteReader())
                 {
-                    Result.name = dataReader["Name"].ToString();
-
+                    while (dataReader.Read())
+                    {
+                        Result.productID =int.Parse(dataReader["ID"].ToString());
+                        Result.name = dataReader["productName"].ToString();
+                        Result.description = dataReader["Description"].ToString();
+                        Result.priceB2B = decimal.Parse(dataReader["b2b"].ToString());
+                        Result.priceB2C = decimal.Parse(dataReader["b2c"].ToString());
+                        Result.brandName = dataReader["theBrand"].ToString();
+                        Result.category = dataReader["category"].ToString();
+                        try { Result.imgURL = dataReader["ImgUrl"].ToString(); } catch { Result.imgURL = ""; }
+                        Result.quantity = int.Parse(dataReader["Quantity"].ToString());
+                        Result.artNr = dataReader["ArticleNumber"].ToString();
+                    }
                 }
             }
+            connection.CloseConnection();
                     return Result;
         }
 

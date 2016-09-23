@@ -15,15 +15,29 @@ namespace WebShop_Group7.Admin
     public partial class Edit_Product : System.Web.UI.Page
     {
         Product product = new Product();
+        ProductObject proObc;
         Image img = new Image();
         protected void Page_Load(object sender, EventArgs e)
         {
             // fs = new FileStream();   
 
-            ProductObject productObj = new ProductObject();
-            productObj = product.GetProduct(productObj, int.Parse(Request.QueryString["id"]));
+            proObc = product.GetProduct(int.Parse(Request.QueryString["id"]));
 
+            LoadValues();
                 //QueryString["id"].ToString();
+        }
+
+        private void LoadValues()
+        {
+            Label_ProductNameHeader.Text = proObc.name;
+            Label_ArticleNumber.Text = proObc.artNr;
+            Label_ProductName.Text = proObc.name;
+            Label_ProduktID.Text = proObc.productID.ToString();
+            Label_Quantity.Text = proObc.quantity.ToString();
+            Label_Brand.Text = proObc.brandName;
+            Label_Category.Text = proObc.category;       
+            TextBox_Description.Text = proObc.description;
+
         }
 
         protected void Button_Save_Click(object sender, EventArgs e)
