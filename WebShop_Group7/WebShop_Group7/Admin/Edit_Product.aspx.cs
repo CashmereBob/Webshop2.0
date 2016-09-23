@@ -17,11 +17,14 @@ namespace WebShop_Group7.Admin
         Product product = new Product();
         ProductObject proObc;
         Image img = new Image();
+        string attributes = "";
+        int ProductID;
         protected void Page_Load(object sender, EventArgs e)
         {
             // fs = new FileStream();   
+            int ProductID = int.Parse(Request.QueryString["id"]);
 
-            proObc = product.GetProduct(int.Parse(Request.QueryString["id"]));
+            proObc = product.GetProduct(ProductID);
 
             LoadValues();
                 //QueryString["id"].ToString();
@@ -37,7 +40,14 @@ namespace WebShop_Group7.Admin
             Label_Brand.Text = proObc.brandName;
             Label_Category.Text = proObc.category;       
             TextBox_Description.Text = proObc.description;
-
+            attributes = product.GetAttributes(ProductID);
+            var attributeArray = attributes.Split('\t');
+            try { Label_Attribute1.Text = attributeArray[0]; } catch { }
+            try { Label_Attribute2.Text = attributeArray[1]; } catch { }
+            try { Label_Attribute3.Text = attributeArray[2]; } catch { }
+           
+           
+       
         }
 
         protected void Button_Save_Click(object sender, EventArgs e)

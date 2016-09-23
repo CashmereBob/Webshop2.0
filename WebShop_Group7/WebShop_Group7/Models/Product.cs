@@ -64,33 +64,33 @@ namespace WebShop_Group7.Models
                     {
                         using (dataReader = command.ExecuteReader())
                         {
-                       
+
                             while (dataReader.Read())
                             {
-                              
-                                    var id = int.Parse(dataReader["ID"].ToString());
-                                    var quant = int.Parse(dataReader["Quantity"].ToString());
-                                    string articlenr;
-                                    try { articlenr = dataReader["ArticleNumber"].ToString(); } catch { articlenr = ""; }
-                                    var name = dataReader["Name"].ToString();
-                                    var categoryid = dataReader["category"].ToString();
-                                    var brandid = dataReader["theBrand"].ToString();
-                                    var description = dataReader["Description"].ToString();
-                                    var buissniesPrice = (dataReader["b2b"].ToString() + " kr");
-                                    var customPrice = (dataReader["b2c"].ToString() + " kr");
-                                    string attributes = "";
-                                    try { attributes += (dataReader["a1"].ToString() + Environment.NewLine); } catch { }
-                                    try { attributes += (dataReader["a2"].ToString() + Environment.NewLine); } catch { }
-                                    try { attributes += (dataReader["a3"].ToString() + Environment.NewLine); } catch { }
-                                    try { attributes += (dataReader["a4"].ToString() + Environment.NewLine); } catch { }
-                              
-                                          
-                                          
+
+                                var id = int.Parse(dataReader["ID"].ToString());
+                                var quant = int.Parse(dataReader["Quantity"].ToString());
+                                string articlenr;
+                                try { articlenr = dataReader["ArticleNumber"].ToString(); } catch { articlenr = ""; }
+                                var name = dataReader["Name"].ToString();
+                                var categoryid = dataReader["category"].ToString();
+                                var brandid = dataReader["theBrand"].ToString();
+                                var description = dataReader["Description"].ToString();
+                                var buissniesPrice = (dataReader["b2b"].ToString() + " kr");
+                                var customPrice = (dataReader["b2c"].ToString() + " kr");
+                                string attributes = "";
+                                try { attributes += (dataReader["a1"].ToString() + Environment.NewLine); } catch { }
+                                try { attributes += (dataReader["a2"].ToString() + Environment.NewLine); } catch { }
+                                try { attributes += (dataReader["a3"].ToString() + Environment.NewLine); } catch { }
+                                try { attributes += (dataReader["a4"].ToString() + Environment.NewLine); } catch { }
+
+
+
 
 
                                 dataTable.Rows.Add(id, articlenr, name, categoryid, brandid,
                                     description, buissniesPrice, customPrice, quant, attributes);
-                                
+
                             }
 
                             return dataTable;
@@ -119,9 +119,9 @@ namespace WebShop_Group7.Models
                     dataTable.Columns.AddRange(new DataColumn[8]
                     {
                        new DataColumn("ID"),
-                      
+
                        new DataColumn("Name"),
-                       new DataColumn("CategoryID"),          
+                       new DataColumn("CategoryID"),
                        new DataColumn("BrandID"),
                        new DataColumn("Description"),
                        new DataColumn("b2bPrice"),
@@ -146,7 +146,7 @@ namespace WebShop_Group7.Models
                                       INNER JOIN tbl_Product_Attribute ON tbl_Product_Attribute.ProductID = tbl_Product.ID
                                       INNER JOIN tbl_Brand ON tbl_Brand.ID = tbl_Product.BrandID
                                       INNER JOIN tbl_Category ON tbl_Category.ID = tbl_Product.CategoryID";
-               
+
                     using (SqlCommand command = new SqlCommand(test2, connection._connection))
                     {
                         using (dataReader = command.ExecuteReader())
@@ -154,24 +154,24 @@ namespace WebShop_Group7.Models
                             int oldId = -1;
                             while (dataReader.Read())
                             {
-                                 if (oldId!= int.Parse(dataReader["ID"].ToString()))
+                                if (oldId != int.Parse(dataReader["ID"].ToString()))
                                 {
 
-                              
-                                var id = int.Parse(dataReader["ID"].ToString());
-                            
-                            
-                                var name = dataReader["Name"].ToString();
-                                var categoryid = dataReader["category"].ToString();                                                                                                         
-                                var brandid = dataReader["theBrand"].ToString();
-                                var description = dataReader["Description"].ToString();
-                                var buissniesPrice = (dataReader["b2b"].ToString()+" kr");
-                                var customPrice =    (dataReader["b2c"].ToString()+" kr");
-                                string attributes = (dataReader["nrAttribute"].ToString());
+
+                                    var id = int.Parse(dataReader["ID"].ToString());
+
+
+                                    var name = dataReader["Name"].ToString();
+                                    var categoryid = dataReader["category"].ToString();
+                                    var brandid = dataReader["theBrand"].ToString();
+                                    var description = dataReader["Description"].ToString();
+                                    var buissniesPrice = (dataReader["b2b"].ToString() + " kr");
+                                    var customPrice = (dataReader["b2c"].ToString() + " kr");
+                                    string attributes = (dataReader["nrAttribute"].ToString());
 
                                     oldId = id;
-                                dataTable.Rows.Add(id, name, categoryid, brandid,
-                                description, buissniesPrice, customPrice, attributes);
+                                    dataTable.Rows.Add(id, name, categoryid, brandid,
+                                    description, buissniesPrice, customPrice, attributes);
                                 }
                             }
 
@@ -224,7 +224,7 @@ namespace WebShop_Group7.Models
                 {
                     while (dataReader.Read())
                     {
-                        Result.productID =int.Parse(dataReader["ID"].ToString());
+                        Result.productID = int.Parse(dataReader["ID"].ToString());
                         Result.name = dataReader["productName"].ToString();
                         Result.description = dataReader["Description"].ToString();
                         Result.priceB2B = decimal.Parse(dataReader["b2b"].ToString());
@@ -238,9 +238,9 @@ namespace WebShop_Group7.Models
                 }
             }
             connection.CloseConnection();
-                    return Result;
+            return Result;
         }
-        public string GetAValue(string table,string value,int id)
+        public string GetAValue(string table, string value, int id)
         {
             string result = "";
             string query = $@"SELECT 
@@ -263,7 +263,7 @@ namespace WebShop_Group7.Models
                 }
             }
             connection.CloseConnection();
-                        return result;
+            return result;
         }
         public Dictionary<string, string> GetAttribute(ProductObject product)
         {
@@ -311,7 +311,7 @@ namespace WebShop_Group7.Models
 
                         while (myDataReader.Read())
                         {
-                            dict.Add(myDataReader["Name"].ToString(),  myDataReader["Value"].ToString() );
+                            dict.Add(myDataReader["Name"].ToString(), myDataReader["Value"].ToString());
                         }
                     }
 
@@ -329,8 +329,39 @@ namespace WebShop_Group7.Models
             }
 
 
-           
 
+
+        }
+        public string GetAttributes(int id)
+        {
+            string result = "";
+            string query = $@"select
+	                                 dbo.GetAttributes(tbl_Product_Attribute.AttributeID1)  as a1,
+									 dbo.GetAttributes( tbl_Product_Attribute.AttributeID2) as a2,
+									 dbo.GetAttributes( tbl_Product_Attribute.AttributeID3) as a3,
+									 dbo.GetAttributes(tbl_Product_Attribute.AttributeID4)  as a4
+									 from tbl_Product_Attribute
+									 WHERE tbl_Product_Attribute.ID = {id}";
+
+
+            connection.OpenConnection();
+            using (SqlCommand command = new SqlCommand(query, connection._connection))
+            {
+                using (dataReader = command.ExecuteReader())
+                {
+
+                    while (dataReader.Read())
+                    {
+                        try { result += (dataReader["a1"].ToString() + "\t"); } catch { }
+                        try { result += (dataReader["a2"].ToString() + "\t"); } catch { }
+                        try { result += (dataReader["a3"].ToString() + "\t"); } catch { }
+                        try { result += (dataReader["a4"].ToString() + "\t"); } catch { }
+
+                    }
+                }
+            }
+            connection.CloseConnection();
+            return result;
         }
     }
 }
