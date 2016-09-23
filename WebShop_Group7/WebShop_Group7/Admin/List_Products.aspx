@@ -38,7 +38,7 @@
 
                                 <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:LinkButton Text="Redigera/Visa" runat="server" OnClick="OnUpdate" />
+                                <asp:LinkButton Text="Redigera" runat="server" OnClick="OnUpdate" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         </Columns>

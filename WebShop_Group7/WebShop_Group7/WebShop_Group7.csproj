@@ -171,6 +171,7 @@
     <Content Include="Admin\List_Order.aspx" />
     <Content Include="Admin\List_Pages.aspx" />
     <Content Include="Admin\List_Payment.aspx" />
+    <Content Include="Admin\List_ProductAttributes.aspx" />
     <Content Include="Admin\List_Products.aspx" />
     <Content Include="Admin\List_Users.aspx" />
     <Content Include="Contact.aspx" />
@@ -359,6 +360,13 @@
     </Compile>
     <Compile Include="Admin\List_Payment.aspx.designer.cs">
       <DependentUpon>List_Payment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\List_ProductAttributes.aspx.cs">
+      <DependentUpon>List_ProductAttributes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\List_ProductAttributes.aspx.designer.cs">
+      <DependentUpon>List_ProductAttributes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\List_Products.aspx.cs">
       <DependentUpon>List_Products.aspx</DependentUpon>
