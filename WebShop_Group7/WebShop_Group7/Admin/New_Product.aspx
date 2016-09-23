@@ -4,14 +4,7 @@
     <div class="container-fluid">
         <h2><%: Title %>.</h2>
         <div class="jumbotron">
-            <div class="row">
-                <div class="col-md-12">
-                    <h4>Produktnamn:
-                        <asp:Label ID="Label_ProductNameHeader" runat="server" Text=""></asp:Label>
-                    </h4>
-                </div>
-
-            </div>
+       
             <div class="row">
                 <%-- IMG --%>
                 <div class="col-md-3">
@@ -25,7 +18,7 @@
             </div>
             <div class="row">
                 <div class="col-md-2">
-                    <asp:Button CssClass="btn btn-default" Csstype="button" ID="Button_NewProductIMG" runat="server" Text="Upload" OnClick="Button_NewProductIMG_Click" />
+                    <asp:Button CssClass="btn btn-default" Csstype="button" ID="Button_NewProductIMG" runat="server" Text="Upload" />
                 </div>
             </div>
             <div class="row">
@@ -33,14 +26,7 @@
                     <asp:Label ID="Label_ImgUpload" runat="server" ForeColor="#CC0000"></asp:Label>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-2">
-                    <h4>
-                        <%-- Order ID --%>
-                        <asp:Label ID="Label_ProduktID" runat="server" Text="OrderID"></asp:Label>
-                    </h4>
-                </div>
-            </div>
+      
             <%-- Produktuppgifter --%>
             <div class="row">
                 <div class="col-md-2">
@@ -52,12 +38,7 @@
                 <div class="col-md-2">
                     <h4>Produktnamn:</h4>
                 </div>
-                <div class="col-md-2">
-                    <h4>
-                        <asp:Label ID="Label_ProductName" runat="server" Text="Produktnamn"></asp:Label>
-
-                    </h4>
-                </div>
+         
                 <div class="col-md-3">
                     <asp:TextBox CssClass="form-control" ID="TextBox_ProductName" runat="server"></asp:TextBox>
                 </div>
@@ -67,10 +48,7 @@
                 <div class="col-md-2">
                     <h4>Artikelnummer: </h4>
                 </div>
-                <div class="col-md-2">
-                    <h4>
-                        <asp:Label ID="Label_ArticleNumber" runat="server" Text="000111222333"></asp:Label></h4>
-                </div>
+           
                 <div class="col-md-3">
                     <asp:TextBox CssClass="form-control" ID="TextBox1_ArticleNumber" runat="server"></asp:TextBox>
                 </div>
@@ -80,10 +58,7 @@
                 <div class="col-md-2">
                     <h4>Antal i lager:</h4>
                 </div>
-                <div class="col-md-2">
-                    <h4>
-                        <asp:Label ID="Label_Quantity" runat="server" Text="23"></asp:Label>st</h4>
-                </div>
+         
                 <div class="col-md-3">
                     <asp:TextBox CssClass="form-control" ID="TextBox_Quantity" runat="server"></asp:TextBox>
                 </div>
@@ -93,10 +68,7 @@
                 <div class="col-md-2">
                     <h4>Varumärke: </h4>
                 </div>
-                <div class="col-md-2">
-                    <h4>
-                        <asp:Label ID="Label_Brand" runat="server" Text="Varumärke"></asp:Label></h4>
-                </div>
+            
                 <div class="col-md-3">
                     <asp:TextBox CssClass="form-control" ID="TextBox_Brand" runat="server"></asp:TextBox>
                 </div>
@@ -106,10 +78,7 @@
                 <div class="col-md-2">
                     <h4>Kategori:  </h4>
                 </div>
-                <div class="col-md-2">
-                    <h4>
-                        <asp:Label ID="Label_Category" runat="server" Text="Kategori"></asp:Label></h4>
-                </div>
+            
                 <div class="col-md-3">
                     <asp:TextBox CssClass="form-control" ID="TextBox_Category" runat="server"></asp:TextBox>
                 </div>
@@ -200,7 +169,7 @@
             <%-- Save button --%>
             <div class="row">
                 <div class="col-md-4">
-                    <asp:Button CssClass="btn btn-default" Csstype="button" ID="Button_Save" runat="server" Text="Spara" OnClick="Button_Save_Click" />
+                    <asp:Button CssClass="btn btn-default" Csstype="button" ID="Button_Save" runat="server" Text="Lägg till produkt"  />
                 </div>
             </div>
         </div>
