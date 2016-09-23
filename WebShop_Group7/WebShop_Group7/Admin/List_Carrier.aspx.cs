@@ -32,10 +32,6 @@ namespace WebShop_Group7.Admin
             GridView_Carrier.DataBind();
         }
 
-        protected void Button_Search_Click(object sender, EventArgs e)
-        {
-
-        }
 
         protected void OnRowEditing(object sender, GridViewEditEventArgs e)
         {
@@ -48,6 +44,11 @@ namespace WebShop_Group7.Admin
             GridViewRow row = (sender as LinkButton).NamingContainer as GridViewRow;
             var ID = row.Cells[0].Text;
             Response.Redirect($"~/Admin/Edit_Carrier.aspx?id={ID}");
+        }
+
+        protected void Button_add_Click(object sender, EventArgs e)
+        {
+            Response.Redirect($"~/Admin/Edit_Carrier.aspx");
         }
     }
 }

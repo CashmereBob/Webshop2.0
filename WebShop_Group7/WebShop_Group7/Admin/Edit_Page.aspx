@@ -1,16 +1,19 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Edit_Page.aspx.cs" Inherits="WebShop_Group7.Admin.Edit_Page" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Admins.Master" AutoEventWireup="true"  CodeBehind="Edit_Page.aspx.cs" Inherits="WebShop_Group7.Admin.Edit_Page" %>
 
-<!DOCTYPE html>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+  <script>tinymce.init({ selector:'textarea' });</script>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
     <div>
+        <h4>Namn</h4>
+        <asp:TextBox ID="TextBox_payment" runat="server"></asp:TextBox>
+        <h4>Innehåll</h4>
+            </br>
+        <asp:TextBox id="TextArea_input" TextMode="multiline"  runat="server" />
+        </br>
+
+        <asp:Button ID="Button_Save" runat="server" Text="Button" />
     
     </div>
-    </form>
-</body>
-</html>
+
+</asp:Content>

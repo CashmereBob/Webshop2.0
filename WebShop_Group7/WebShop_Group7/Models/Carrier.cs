@@ -59,5 +59,109 @@ namespace WebShop_Group7.Models
             }
         }
 
+        public CarrierObject GetCarrierById(int id)
+        {
+            CarrierObject carrier = new CarrierObject();
+
+            try
+            {
+                db.OpenConnection();
+
+                string sql = $"Select * From tbl_Carrier WHERE ID = '{id}'";
+                SqlCommand myCommand = new SqlCommand(sql, db._connection);
+
+                using (SqlDataReader myDataReader = myCommand.ExecuteReader())
+                {
+
+                    while (myDataReader.Read())
+                    {
+                        carrier.carrierId = int.Parse(myDataReader["ID"].ToString());
+                        carrier.carrier = myDataReader["Carrier"].ToString();
+                        carrier.service = myDataReader["Service"].ToString();
+                        carrier.price = decimal.Parse(myDataReader["Price"].ToString());
+                    }
+                }
+
+
+
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+
+
+
+            return carrier;
+        }
+
+        public void DeleteCarrier(int id)
+        {
+            try
+            {
+                db.OpenConnection();
+
+                string sql = $"DELETE FROM tbl_Carrier WHERE id = '{id}'";
+                SqlCommand insertCmd = new SqlCommand(sql, db._connection);
+                insertCmd.ExecuteNonQuery();
+
+            }
+            catch
+            {
+                //TODO exeption
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+        }
+
+        public void AddCarrier(CarrierObject carrier)
+        {
+            try
+            {
+                db.OpenConnection();
+
+                string sql = $"Insert Into tbl_Carrier (Carrier, Service, Price ) Values('{carrier.carrier}', '{carrier.service}', '{carrier.price}' )";
+
+                SqlCommand insertCmd = new SqlCommand(sql, db._connection);
+                insertCmd.ExecuteNonQuery();
+
+            }
+            catch
+            {
+                //TODO exeption
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+        }
+
+        public void UppdateCarier(CarrierObject carrier, int id)
+        {
+            try
+            {
+                db.OpenConnection();
+
+                string sql = $"UPDATE tbl_Carrier SET Carrier = '{carrier.carrier}', Service = '{carrier.service}', Price = '{carrier.price}' WHERE ID = '{id}'";
+
+                SqlCommand insertCmd = new SqlCommand(sql, db._connection);
+                insertCmd.ExecuteNonQuery();
+
+            }
+            catch
+            {
+                //TODO Exeption
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+        }
     }
 }
