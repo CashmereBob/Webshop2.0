@@ -13,15 +13,6 @@ namespace WebShop_Group7.Admin {
     public partial class New_Product {
         
         /// <summary>
-        /// Label_ProductNameHeader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_ProductNameHeader;
-        
-        /// <summary>
         /// Image_Product control.
         /// </summary>
         /// <remarks>
@@ -58,24 +49,6 @@ namespace WebShop_Group7.Admin {
         protected global::System.Web.UI.WebControls.Label Label_ImgUpload;
         
         /// <summary>
-        /// Label_ProduktID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_ProduktID;
-        
-        /// <summary>
-        /// Label_ProductName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_ProductName;
-        
-        /// <summary>
         /// TextBox_ProductName control.
         /// </summary>
         /// <remarks>
@@ -83,15 +56,6 @@ namespace WebShop_Group7.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_ProductName;
-        
-        /// <summary>
-        /// Label_ArticleNumber control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_ArticleNumber;
         
         /// <summary>
         /// TextBox1_ArticleNumber control.
@@ -103,15 +67,6 @@ namespace WebShop_Group7.Admin {
         protected global::System.Web.UI.WebControls.TextBox TextBox1_ArticleNumber;
         
         /// <summary>
-        /// Label_Quantity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_Quantity;
-        
-        /// <summary>
         /// TextBox_Quantity control.
         /// </summary>
         /// <remarks>
@@ -121,15 +76,6 @@ namespace WebShop_Group7.Admin {
         protected global::System.Web.UI.WebControls.TextBox TextBox_Quantity;
         
         /// <summary>
-        /// Label_Brand control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_Brand;
-        
-        /// <summary>
         /// TextBox_Brand control.
         /// </summary>
         /// <remarks>
@@ -137,15 +83,6 @@ namespace WebShop_Group7.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_Brand;
-        
-        /// <summary>
-        /// Label_Category control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_Category;
         
         /// <summary>
         /// TextBox_Category control.

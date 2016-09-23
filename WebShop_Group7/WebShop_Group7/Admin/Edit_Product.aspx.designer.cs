@@ -274,22 +274,22 @@ namespace WebShop_Group7.Admin {
         protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// TextBox_AttributeCategory control.
+        /// DropDownList_AttributeName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_AttributeCategory;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_AttributeName;
         
         /// <summary>
-        /// DropDownList_Atribute control.
+        /// DropDownList_AtributeValue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Atribute;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_AtributeValue;
         
         /// <summary>
         /// Button_AddAttribute control.

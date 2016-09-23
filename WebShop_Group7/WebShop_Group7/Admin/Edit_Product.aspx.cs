@@ -27,7 +27,23 @@ namespace WebShop_Group7.Admin
             proObc = product.GetProduct(ProductID);
 
             LoadValues(ProductID);
-                //QueryString["id"].ToString();
+            //QueryString["id"].ToString();
+            FillDroppdownListAttributeName();
+        }
+
+        private void FillDroppdownListAttributeName()
+        {
+            string query = $@"use[WebShopGr7]
+                            select tbl_Attribute.Name From tbl_Attribute
+                            group by Name";
+
+        }
+        private void FillDroppdownListAttributeValue()
+        {
+            string query = $@"use[WebShopGr7]
+                           select tbl_Attribute.Value From tbl_Attribute
+                           Where Name = 'Färg'
+                           group by Value";
         }
 
         private void LoadValues(int ProductID)
@@ -75,6 +91,11 @@ namespace WebShop_Group7.Admin
         }
 
         protected void Button_Save_Click(object sender, EventArgs e)
+        {
+            
+          
+        }
+        protected void Button_AddAttribute_Click(object sender, EventArgs e)
         {
 
         }
@@ -170,5 +191,7 @@ namespace WebShop_Group7.Admin
                 Label_ImgUpload.Text = ex.ToString();
             }
         }
+
+       
     }
 }

@@ -364,5 +364,34 @@ namespace WebShop_Group7.Models
 
             return result;
         }
+        public void AddProduct(int nrAttributes,string name,string articleNr,int quant,string brandID,string categoryID,string description,
+                               string imgUrl,int atributeID1, int atributeID2, int atributeID3, int atributeID4,decimal priceb2b,
+                               decimal priceb2c)
+        {
+            int ProductID = 0;
+            connection.OpenConnection();
+            //New Brand
+
+            //New Category
+
+            //New Product
+            string sql = $@"Insert into  tbl_Product (Name,Description,BrandID,CategoryID,ImgUrl) 
+            Values('" + name + "','" + description + "','" + brandID + "','" + categoryID + "','" + imgUrl+"')";
+            using (SqlCommand command = new SqlCommand(sql, connection._connection))
+            {
+                command.ExecuteNonQuery();
+            }
+            //New Attributes
+
+          
+            //New Product_Attribute
+            string query = $@"Insert into  tbl_Product_Attribute (AttributeID1,AttributeID2,AttributeID3,AttributeID4,ProductID,Quantity,PriceB2B,PriceB2C,ArticleNumber) 
+            Values('" + atributeID1 + "','" + atributeID2 + "','" + atributeID3 + "','" + atributeID4 + "','" 
+            + ProductID + "','" + quant + "','" + priceb2b + "','" + priceb2c + "','" + articleNr + "')";
+            using (SqlCommand command = new SqlCommand(sql, connection._connection))
+            {
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }

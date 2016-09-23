@@ -43,7 +43,7 @@ namespace WebShop_Group7.Admin
 
         protected void Button_Add_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("~/Admin/New_Product.aspx");
         }
     }
 }
