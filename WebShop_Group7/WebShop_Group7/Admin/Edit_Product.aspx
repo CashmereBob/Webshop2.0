@@ -187,11 +187,11 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-2">
-                    <asp:TextBox CssClass="form-control" ID="TextBox_AttributeCategory" runat="server"></asp:TextBox>
+               <div class="col-md-2">
+                    <asp:DropDownList CssClass="form-control" ID="DropDownList_AttributeName" runat="server"></asp:DropDownList>
                 </div>
                 <div class="col-md-2">
-                    <asp:DropDownList CssClass="form-control" ID="DropDownList_Atribute" runat="server"></asp:DropDownList>
+                    <asp:DropDownList CssClass="form-control" ID="DropDownList_AtributeValue" runat="server"></asp:DropDownList>
                 </div>
                 <div class="col-md-2">
                     <asp:Button CssClass="btn btn-default" Csstype="button" ID="Button_AddAttribute" runat="server" Text="Läggtill" OnClick="Button_AddAttribute_Click" />
