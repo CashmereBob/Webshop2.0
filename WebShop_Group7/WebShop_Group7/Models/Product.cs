@@ -341,7 +341,7 @@ namespace WebShop_Group7.Models
 									 dbo.GetAttributes( tbl_Product_Attribute.AttributeID3) as a3,
 									 dbo.GetAttributes(tbl_Product_Attribute.AttributeID4)  as a4
 									 from tbl_Product_Attribute
-									 WHERE tbl_Product_Attribute.ID = {id}";
+									 WHERE tbl_Product_Attribute.ID = '{id}'";
 
 
             connection.OpenConnection();
@@ -349,18 +349,19 @@ namespace WebShop_Group7.Models
             {
                 using (dataReader = command.ExecuteReader())
                 {
-
                     while (dataReader.Read())
                     {
-                        try { result += (dataReader["a1"].ToString() + "\t"); } catch { }
-                        try { result += (dataReader["a2"].ToString() + "\t"); } catch { }
-                        try { result += (dataReader["a3"].ToString() + "\t"); } catch { }
-                        try { result += (dataReader["a4"].ToString() + "\t"); } catch { }
-
+                        string attributes = "";
+                        try { attributes += (dataReader["a1"].ToString() + '\t'); } catch { }
+                        try { attributes += (dataReader["a2"].ToString() + '\t'); } catch { }
+                        try { attributes += (dataReader["a3"].ToString() + '\t'); } catch { }
+                        try { attributes += (dataReader["a4"].ToString() + '\t'); } catch { }
+                        result = attributes;
                     }
                 }
             }
             connection.CloseConnection();
+
             return result;
         }
     }

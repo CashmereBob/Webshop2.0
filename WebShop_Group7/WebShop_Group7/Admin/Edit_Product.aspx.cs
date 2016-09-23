@@ -18,7 +18,7 @@ namespace WebShop_Group7.Admin
         ProductObject proObc;
         Image img = new Image();
         string attributes = "";
-        int ProductID;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             // fs = new FileStream();   
@@ -26,11 +26,11 @@ namespace WebShop_Group7.Admin
 
             proObc = product.GetProduct(ProductID);
 
-            LoadValues();
+            LoadValues(ProductID);
                 //QueryString["id"].ToString();
         }
 
-        private void LoadValues()
+        private void LoadValues(int ProductID)
         {
             Label_ProductNameHeader.Text = proObc.name;
             Label_ArticleNumber.Text = proObc.artNr;
@@ -45,9 +45,33 @@ namespace WebShop_Group7.Admin
             try { Label_Attribute1.Text = attributeArray[0]; } catch { }
             try { Label_Attribute2.Text = attributeArray[1]; } catch { }
             try { Label_Attribute3.Text = attributeArray[2]; } catch { }
-           
-           
-       
+            SetPanelsTrue();
+            if (Label_Attribute1.Text == "")
+            {
+                Panel_Attribute1.Visible = false;
+            }
+            if (Label_Attribute2.Text == "")
+            {
+                Panel_Attribute2.Visible = false;
+            }
+            if (Label_Attribute3.Text == "")
+            {
+                Panel_Attribute3.Visible = false;
+            }
+            if (Label_Attribute4.Text == "")
+            {
+                Panel_Attribute4.Visible = false;
+            }
+
+
+        }
+
+        private void SetPanelsTrue()
+        {
+            Panel_Attribute1.Visible = true;
+            Panel_Attribute2.Visible = true;
+            Panel_Attribute3.Visible = true;
+            Panel_Attribute4.Visible = true;
         }
 
         protected void Button_Save_Click(object sender, EventArgs e)
