@@ -32,11 +32,6 @@ namespace WebShop_Group7.Admin
             GridView_User.DataBind();
         }
 
-        protected void Button_Search_Click(object sender, EventArgs e)
-        {
-
-        }
-
         protected void OnRowEditing(object sender, GridViewEditEventArgs e)
         {
             GridView_User.EditIndex = e.NewEditIndex;
@@ -48,6 +43,11 @@ namespace WebShop_Group7.Admin
             GridViewRow row = (sender as LinkButton).NamingContainer as GridViewRow;
             var ID = row.Cells[0].Text;
             Response.Redirect($"~/Admin/Edit_User.aspx?id={ID}");
+        }
+
+        protected void Button_AddUser_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Admin/Edit_User.aspx");
         }
     }
 }

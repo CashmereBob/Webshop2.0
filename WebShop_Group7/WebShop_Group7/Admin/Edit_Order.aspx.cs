@@ -19,6 +19,10 @@ namespace WebShop_Group7.Admin
                 Response.Redirect("~/Admin/index.aspx"); //Om inte gå tillbaka till inloggning.
             }
 
+            if (Request.QueryString["id"] == null){
+                Response.Redirect("~/Admin/List_Order.aspx");
+            }
+
             OrderObject order = ordDal.GetOrder(int.Parse(Request.QueryString["id"]));
 
             DataTable dt = ordDal.GetProducts(order);

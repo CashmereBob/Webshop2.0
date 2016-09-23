@@ -7,6 +7,7 @@ namespace WebShop_Group7.Models
 {
     public class OrderObject
     {
+        UserObject usr = new UserObject();
         public int orderId { get; set; }
         public int priceGroup { get; set; }
         public string company { get; set; }
@@ -15,10 +16,12 @@ namespace WebShop_Group7.Models
         public string adress { get; set; }
         public string postalCode { get; set; }
         public string city { get; set; }
-        public string date { get; set; }
+        
         public string telephone { get; set; }
         public string mobile { get; set; }
         public string email { get; set; }
+
+        public string date { get; set; }
         public List<ProductObject> products = new List<ProductObject>();
 
         public string carrier { get; set; }
@@ -37,11 +40,11 @@ namespace WebShop_Group7.Models
             {
                 if (priceGroup == 2)
                 {
-                    sum += product.priceB2B;
+                    sum += product.priceB2B * product.quantity;
                 }
                 if (priceGroup == 1)
                 {
-                    sum += product.priceB2C;
+                    sum += product.priceB2C * product.quantity;
                 }
 
             }

@@ -433,6 +433,7 @@
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductObject.cs" />
+    <Compile Include="Models\UserObject.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Models\UserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

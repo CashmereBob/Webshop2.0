@@ -22,9 +22,9 @@
 
                         <asp:BoundField DataField="ArtNr" HeaderText="Art. Nummer"  />
 
-                        <asp:BoundField DataField="Name" HeaderText="Produkt Namn" />
+                        <asp:BoundField DataField="Name" HeaderText="Artikel" />
                         <asp:BoundField DataField="Attribut" HeaderText="Attribut" />
-                        <asp:BoundField DataField="Price" HeaderText="Pris (kr)"  />
+                        <asp:BoundField DataField="Price" HeaderText="Pris (kr)" />
                         <asp:BoundField DataField="Quantity" HeaderText="Antal"  />
                         <asp:BoundField DataField="Sum" HeaderText="Summa (kr)"  />
 
@@ -36,7 +36,7 @@
      <h4 class="text-right"><asp:Label ID="Label_Payment" runat="server" Text="Payment"></asp:Label> <asp:Label ID="Label_paymentService" runat="server" Text="Payment"></asp:Label>: <asp:Label ID="Label_PaymentPrice" runat="server" Text="Betalt"></asp:Label>kr</h4>
      <h4 class="text-right"><asp:Label ID="Label_Carrier" runat="server" Text="Fraktmetod"></asp:Label> <asp:Label ID="Label_carrierService" runat="server" Text="Fraktmetod"></asp:Label>: <asp:Label ID="Labe_CarrierPrice" runat="server" Text="Frakt"></asp:Label>kr</h4>    
      <h4 class="text-right">Summa: <asp:Label ID="Label_Sum" runat="server" Text="Summa"></asp:Label>kr</h4>
-     <h4 class="text-right">Var av moms: <asp:Label ID="Label_Tax" runat="server" Text="moms"></asp:Label>kr</h4>
+     <h5 class="text-right">Var av moms: <asp:Label ID="Label_Tax" runat="server" Text="moms"></asp:Label>kr</h5>
 
 
      
