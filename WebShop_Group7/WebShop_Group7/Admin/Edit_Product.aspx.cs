@@ -76,6 +76,11 @@ namespace WebShop_Group7.Admin
 
         protected void Button_Save_Click(object sender, EventArgs e)
         {
+            
+          
+        }
+        protected void Button_AddAttribute_Click(object sender, EventArgs e)
+        {
 
         }
 
@@ -170,5 +175,7 @@ namespace WebShop_Group7.Admin
                 Label_ImgUpload.Text = ex.ToString();
             }
         }
+
+       
     }
 }
