@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <asp:GridView ID="GridView_Products" runat="server" AutoGenerateColumns="false"
-                        AllowSorting="true" AllowPaging="true" PageSize="5" CssClass="table-striped table">
+                        AllowSorting="true" AllowPaging="true" PageSize="10" CssClass="table-striped table">
                         <Columns>
                             <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
                             <asp:BoundField DataField="ArticleNr" HeaderText="Artikel nr" SortExpression="Artikel nr" />
@@ -34,8 +34,13 @@
                             <asp:BoundField DataField="Description" HeaderText="Förklaring" SortExpression="Förklaring" />
                             <asp:BoundField DataField="b2bPrice" HeaderText="Pris B2B" SortExpression="Pris B2B" />
                             <asp:BoundField DataField="b2cPrice" HeaderText="Pris B2C" SortExpression="Pris B2C" />
-                         <%--   <asp:BoundField DataField="boolAttribute" HeaderText="Attribute" SortExpression="Attribute" />--%>
+                            <asp:BoundField DataField="Attribute" HeaderText="AttributeS" SortExpression="AttributeS" />
 
+                                <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:LinkButton Text="Redigera" runat="server" OnClick="OnUpdate" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         </Columns>
 
                     </asp:GridView>

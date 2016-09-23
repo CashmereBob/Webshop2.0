@@ -6,7 +6,8 @@
         <div class="jumbotron">
             <div class="row">
                 <div class="col-md-12">
-                    <h4>Produktnamn:</h4>
+                    <h4>Produktnamn: <asp:Label ID="Label_ProductNameHeader" runat="server" Text=""></asp:Label>
+                    </h4>
                 </div>
 
             </div>

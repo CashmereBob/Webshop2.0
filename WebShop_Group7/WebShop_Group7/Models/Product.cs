@@ -20,7 +20,7 @@ namespace WebShop_Group7.Models
                 connection.OpenConnection();
                 using (dataTable)
                 {
-                    dataTable.Columns.AddRange(new DataColumn[8]
+                    dataTable.Columns.AddRange(new DataColumn[9]
                     {
                        new DataColumn("ID"),
                        new DataColumn("ArticleNr"),
@@ -30,44 +30,53 @@ namespace WebShop_Group7.Models
                        new DataColumn("Description"),
                        new DataColumn("b2bPrice"),
                        new DataColumn("b2cPrice"),
-                 
+                       new DataColumn("Attribute")
+
                     });
 
                     string test2 = $@"Select 
-tbl_Product.ID,
-tbl_Product_Attribute.ArticleNumber,
-tbl_Product.Name,
-tbl_Category.Name AS category,
-tbl_Brand.Name AS theBrand, 
-tbl_Product.Description,
-tbl_Product_Attribute.PriceB2B as b2b,
-tbl_Product_Attribute.PriceB2C AS b2c
-
-From tbl_Product
-
-INNER JOIN tbl_Product_Attribute ON tbl_Product_Attribute.ProductID = tbl_Product.ID
-INNER JOIN tbl_Brand ON tbl_Brand.ID = tbl_Product.BrandID
-INNER JOIN tbl_Category ON tbl_Category.ID = tbl_Product.CategoryID";
+                                      tbl_Product.ID,
+                                      tbl_Product_Attribute.ArticleNumber,
+                                      tbl_Product.Name,
+                                      tbl_Category.Name AS category,
+                                      tbl_Brand.Name AS theBrand, 
+                                      tbl_Product.Description,
+                                      tbl_Product_Attribute.PriceB2B as b2b,
+                                      tbl_Product_Attribute.PriceB2C AS b2c,
+                                      dbo.CheckAttributeAmount(tbl_Product.ID) as nrAttribute
+                                      
+                                      From tbl_Product
+                                      
+                                      INNER JOIN tbl_Product_Attribute ON tbl_Product_Attribute.ProductID = tbl_Product.ID
+                                      INNER JOIN tbl_Brand ON tbl_Brand.ID = tbl_Product.BrandID
+                                      INNER JOIN tbl_Category ON tbl_Category.ID = tbl_Product.CategoryID";
                
                     using (SqlCommand command = new SqlCommand(test2, connection._connection))
                     {
                         using (dataReader = command.ExecuteReader())
                         {
+                        //    int oldId = -1;
                             while (dataReader.Read())
                             {
+                                // if (oldId!= int.Parse(dataReader["ID"].ToString()))
+                                {
+
+                              
                                 var id = int.Parse(dataReader["ID"].ToString());
-                                int articlenr;
-                                try {  articlenr = int.Parse(dataReader["ArticleNumber"].ToString()); } catch  {  articlenr = 0; }
+                                string articlenr;
+                                try {  articlenr = dataReader["ArticleNumber"].ToString(); } catch  {  articlenr = ""; }
                                 var name = dataReader["Name"].ToString();
                                 var categoryid = dataReader["category"].ToString();                                                                                                         
                                 var brandid = dataReader["theBrand"].ToString();
                                 var description = dataReader["Description"].ToString();
                                 var buissniesPrice = (dataReader["b2b"].ToString()+" kr");
                                 var customPrice =    (dataReader["b2c"].ToString()+" kr");
-                            
-                              
+                                string attributes = (dataReader["nrAttribute"].ToString());
+
+                               //     oldId = id;
                                 dataTable.Rows.Add(id, articlenr, name, categoryid, brandid,
-                                description, buissniesPrice, customPrice);
+                                description, buissniesPrice, customPrice, attributes);
+                                }
                             }
 
                             return dataTable;
@@ -85,6 +94,41 @@ INNER JOIN tbl_Category ON tbl_Category.ID = tbl_Product.CategoryID";
                 dataReader.Close();
             }
 
+        }
+        public ProductObject GetProduct(ProductObject product,int ID)
+        {
+            ProductObject Result = new ProductObject();
+
+
+
+            string query = $@" Select 
+                                      tbl_Product.ID,
+                                      tbl_Product_Attribute.ArticleNumber,
+                                      tbl_Product.Name,
+                                      tbl_Category.Name AS category,
+                                      tbl_Brand.Name AS theBrand, 
+                                      tbl_Product.Description,
+                                      tbl_Product_Attribute.PriceB2B as b2b,
+                                      tbl_Product_Attribute.PriceB2C AS b2c,
+									  tbl_Product.ImgUrl,
+									  tbl_Product_Attribute.Quantity
+                                      
+                                      From tbl_Product
+                                      
+                                      INNER JOIN tbl_Product_Attribute ON tbl_Product_Attribute.ProductID = tbl_Product.ID
+                                      INNER JOIN tbl_Brand ON tbl_Brand.ID = tbl_Product.BrandID
+                                      INNER JOIN tbl_Category ON tbl_Category.ID = tbl_Product.CategoryID";
+
+            connection.OpenConnection();
+            using (SqlCommand command = new SqlCommand(query, connection._connection))
+            {
+                using (dataReader = command.ExecuteReader())
+                {
+                    Result.name = dataReader["Name"].ToString();
+
+                }
+            }
+                    return Result;
         }
 
         public Dictionary<string, string> GetAttribute(ProductObject product)

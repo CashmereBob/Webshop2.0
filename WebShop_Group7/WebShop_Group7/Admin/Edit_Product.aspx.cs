@@ -8,16 +8,22 @@ using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebShop_Group7.Models;
 
 namespace WebShop_Group7.Admin
 {
     public partial class Edit_Product : System.Web.UI.Page
     {
-        FileStream fs;
+        Product product = new Product();
         Image img = new Image();
         protected void Page_Load(object sender, EventArgs e)
         {
-            // fs = new FileStream();    
+            // fs = new FileStream();   
+
+            ProductObject productObj = new ProductObject();
+            productObj = product.GetProduct(productObj, int.Parse(Request.QueryString["id"]));
+
+                //QueryString["id"].ToString();
         }
 
         protected void Button_Save_Click(object sender, EventArgs e)

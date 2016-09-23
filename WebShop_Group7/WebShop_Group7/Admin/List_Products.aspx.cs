@@ -18,6 +18,10 @@ namespace WebShop_Group7.Admin
        
         protected void Page_Load(object sender, EventArgs e)
         {
+            //if (Session["Admin"] == null) //Kontrollerar om det finns en Admin session.
+            //{
+            //    Response.Redirect("~/Admin/index.aspx"); //Om inte gå tillbaka till inloggning.
+            //}
             products = new Product();
           
             DataTable dt = products.GetAllToDataTable();
@@ -29,6 +33,12 @@ namespace WebShop_Group7.Admin
             GridView_Products.DataSource = ViewState["dt"] as DataTable;
             GridView_Products.DataBind();
 
+        }
+        protected void OnUpdate(object sender, EventArgs e)
+        {
+            GridViewRow row = (sender as LinkButton).NamingContainer as GridViewRow;
+            var ID = row.Cells[0].Text; // Lägger Värdet från första raden i ID
+            Response.Redirect($"~/Admin/Edit_Product.aspx?id={ID}");//SKickar med variablen ID till Edit
         }
     }
 }
