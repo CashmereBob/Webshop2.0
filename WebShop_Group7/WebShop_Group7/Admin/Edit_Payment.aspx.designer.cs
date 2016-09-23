@@ -40,6 +40,24 @@ namespace WebShop_Group7.Admin {
         protected global::System.Web.UI.WebControls.TextBox TextBox_price;
         
         /// <summary>
+        /// CheckBox_delete control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_delete;
+        
+        /// <summary>
+        /// Label_delete control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_delete;
+        
+        /// <summary>
         /// Button_Save control.
         /// </summary>
         /// <remarks>

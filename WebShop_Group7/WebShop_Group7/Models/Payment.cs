@@ -58,6 +58,112 @@ namespace WebShop_Group7.Models
                 db.CloseConnection();
             }
         }
+        public PaymentObject GetPaymentById(int id) 
+{
 
+            PaymentObject payment = new PaymentObject();
+
+            try
+            {
+                db.OpenConnection();
+
+                string sql = $"Select * From tbl_Payment WHERE ID = '{id}'";
+                SqlCommand myCommand = new SqlCommand(sql, db._connection);
+
+                using (SqlDataReader myDataReader = myCommand.ExecuteReader())
+                {
+
+                    while (myDataReader.Read())
+                    {
+                        payment.paymentId = int.Parse(myDataReader["ID"].ToString());
+                        payment.payment = myDataReader["Provider"].ToString();
+                        payment.service = myDataReader["Service"].ToString();
+                        payment.price = decimal.Parse(myDataReader["Price"].ToString());
+                    }
+                }
+
+
+
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+
+
+
+            return payment;
+
+
+        }
+        public void DeletePayment(int id)
+        {
+            try
+            {
+                db.OpenConnection();
+
+                string sql = $"DELETE FROM tbl_Payment WHERE id = '{id}'";
+                SqlCommand insertCmd = new SqlCommand(sql, db._connection);
+                insertCmd.ExecuteNonQuery();
+
+            }
+            catch
+            {
+                //TODO exeption
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+        }
+
+        public void AddPayment(PaymentObject payment)
+        {
+            try
+            {
+                db.OpenConnection();
+
+                string sql = $"Insert Into tbl_Payment (Provider, Service, Price ) Values('{payment.payment}', '{payment.service}', '{payment.price}' )";
+
+                SqlCommand insertCmd = new SqlCommand(sql, db._connection);
+                insertCmd.ExecuteNonQuery();
+
+            }
+            catch
+            {
+                //TODO exeption
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+        }
+
+        public void UppdatePayment(PaymentObject payment, int id)
+        {
+            try
+            {
+                db.OpenConnection();
+
+                string sql = $"UPDATE tbl_Payment SET Provider = '{payment.payment}', Service = '{payment.service}', Price = '{payment.price}' WHERE ID = '{id}'";
+
+                SqlCommand insertCmd = new SqlCommand(sql, db._connection);
+                insertCmd.ExecuteNonQuery();
+
+            }
+            catch
+            {
+                //TODO Exeption
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+        }
     }
+
 }

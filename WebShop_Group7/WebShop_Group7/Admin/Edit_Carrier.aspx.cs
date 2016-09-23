@@ -13,7 +13,7 @@ namespace WebShop_Group7.Admin
         Carrier carrDal = new Carrier();
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
 
             if (Session["Admin"] == null) //Kontrollerar om det finns en Admin session.
             {
@@ -69,9 +69,9 @@ namespace WebShop_Group7.Admin
             carrier.service = TextBox_Service.Text;
             carrier.price = decimal.Parse(TextBox_price.Text);
 
-                carrDal.AddCarrier(carrier);
-                Response.Redirect("~/Admin/List_Carrier.aspx");
-            }
+            carrDal.AddCarrier(carrier);
+            Response.Redirect("~/Admin/List_Carrier.aspx");
+        }
         protected void UpdateCarrier(int id)
         {
             CarrierObject carrier = new CarrierObject();
@@ -81,7 +81,8 @@ namespace WebShop_Group7.Admin
 
             carrDal.UppdateCarier(carrier, id);
             Response.Redirect("~/Admin/List_Carrier.aspx");
-            }
+
         }
-        
     }
+
+}
