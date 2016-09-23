@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <h2><%: Title %>.</h2>
         <div class="jumbotron">
-            
+
             <div class="row">
                 <div class="col-md-12">
                     <h4>Produktnamn:
@@ -115,6 +115,32 @@
                     <asp:TextBox CssClass="form-control" ID="TextBox_Category" runat="server"></asp:TextBox>
                 </div>
             </div>
+            <%-- Pris b2b--%>
+               <div class="row">
+                <div class="col-md-2">
+                    <h4>Pris B2B:  </h4>
+                </div>
+                <div class="col-md-2">
+                    <h4>
+                        <asp:Label ID="Label_PriceB2B" runat="server" Text="0kr"></asp:Label></h4>
+                </div>
+                <div class="col-md-3">
+                    <asp:TextBox CssClass="form-control" ID="TextBox_PriceB2B" runat="server"></asp:TextBox>
+                </div>
+            </div>
+              <%-- Pris b2c--%>
+               <div class="row">
+                <div class="col-md-2">
+                    <h4>Pris B2C:  </h4>
+                </div>
+                <div class="col-md-2">
+                    <h4>
+                        <asp:Label ID="Label_PriceB2C" runat="server" Text="0kr"></asp:Label></h4>
+                </div>
+                <div class="col-md-3">
+                    <asp:TextBox CssClass="form-control" ID="TextBox_PriceB2C" runat="server"></asp:TextBox>
+                </div>
+            </div>
             <%-- Beskrivning --%>
             <div class="row">
                 <div class="col-md-2">
@@ -185,13 +211,16 @@
                 <div class="col-md-2">
                     <h4>Lägg till egenskap</h4>
                 </div>
+            
             </div>
+         
             <div class="row">
-               <div class="col-md-2">
+
+                <div class="col-md-2">
                     <asp:DropDownList CssClass="form-control" ID="DropDownList_AttributeName" runat="server"></asp:DropDownList>
                 </div>
                 <div class="col-md-2">
-                    <asp:DropDownList CssClass="form-control" ID="DropDownList_AtributeValue" runat="server"></asp:DropDownList>
+                    <asp:TextBox ID="TextBox_AttributeValue" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="col-md-2">
                     <asp:Button CssClass="btn btn-default" Csstype="button" ID="Button_AddAttribute" runat="server" Text="Läggtill" OnClick="Button_AddAttribute_Click" />

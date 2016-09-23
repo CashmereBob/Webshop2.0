@@ -157,6 +157,42 @@ namespace WebShop_Group7.Admin {
         protected global::System.Web.UI.WebControls.TextBox TextBox_Category;
         
         /// <summary>
+        /// Label_PriceB2B control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_PriceB2B;
+        
+        /// <summary>
+        /// TextBox_PriceB2B control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_PriceB2B;
+        
+        /// <summary>
+        /// Label_PriceB2C control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_PriceB2C;
+        
+        /// <summary>
+        /// TextBox_PriceB2C control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_PriceB2C;
+        
+        /// <summary>
         /// TextBox_Description control.
         /// </summary>
         /// <remarks>
@@ -283,13 +319,13 @@ namespace WebShop_Group7.Admin {
         protected global::System.Web.UI.WebControls.DropDownList DropDownList_AttributeName;
         
         /// <summary>
-        /// DropDownList_AtributeValue control.
+        /// TextBox_AttributeValue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_AtributeValue;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_AttributeValue;
         
         /// <summary>
         /// Button_AddAttribute control.

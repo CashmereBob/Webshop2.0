@@ -18,33 +18,31 @@ namespace WebShop_Group7.Admin
         ProductObject proObc;
         Image img = new Image();
         string attributes = "";
-        
+        List<string> attributeNames;
+        int id;
+   
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            // fs = new FileStream();   
             int ProductID = int.Parse(Request.QueryString["id"]);
-
+            id = ProductID;
             proObc = product.GetProduct(ProductID);
-
             LoadValues(ProductID);
-            //QueryString["id"].ToString();
             FillDroppdownListAttributeName();
         }
 
         private void FillDroppdownListAttributeName()
         {
-            string query = $@"use[WebShopGr7]
-                            select tbl_Attribute.Name From tbl_Attribute
-                            group by Name";
+            attributeNames = product.GetAttributeNames();
+            DropDownList_AttributeName.DataSource = from i in attributeNames
+                                                    select new ListItem()
+                                                    {
+                                                        Text = i,
+                                                        Value = i
+                                                    };
+            DropDownList_AttributeName.DataBind();
+        }
 
-        }
-        private void FillDroppdownListAttributeValue()
-        {
-            string query = $@"use[WebShopGr7]
-                           select tbl_Attribute.Value From tbl_Attribute
-                           Where Name = 'Färg'
-                           group by Value";
-        }
 
         private void LoadValues(int ProductID)
         {
@@ -54,7 +52,9 @@ namespace WebShop_Group7.Admin
             Label_ProduktID.Text = proObc.productID.ToString();
             Label_Quantity.Text = proObc.quantity.ToString();
             Label_Brand.Text = proObc.brandName;
-            Label_Category.Text = proObc.category;       
+            Label_Category.Text = proObc.category;
+            Label_PriceB2B.Text = proObc.priceB2B.ToString() + "kr";
+            Label_PriceB2C.Text = proObc.priceB2C.ToString() + "kr";
             TextBox_Description.Text = proObc.description;
             attributes = product.GetAttributes(ProductID);
             var attributeArray = attributes.Split('\t');
@@ -91,10 +91,35 @@ namespace WebShop_Group7.Admin
         }
 
         protected void Button_Save_Click(object sender, EventArgs e)
-        {
-            
-          
+        {        
+            if (!string.IsNullOrWhiteSpace(TextBox_ProductName.Text)){ proObc.name = TextBox_ProductName.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBox1_ArticleNumber.Text)) { proObc.artNr = TextBox1_ArticleNumber.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBox_Quantity.Text)) { proObc.quantity= int.Parse(TextBox_Quantity.Text); }
+            if (!string.IsNullOrWhiteSpace(TextBox_Brand.Text)) { proObc.brandName= TextBox_Brand.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBox_Category.Text)) { proObc.category= TextBox_Category.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBox_Description.Text)) { proObc.description= TextBox_Description.Text; }
+
+            if (!string.IsNullOrWhiteSpace(TextBox_PriceB2C.Text)) { proObc.priceB2C = decimal.Parse (TextBox_PriceB2C.Text); }
+            if (!string.IsNullOrWhiteSpace(TextBox_PriceB2B.Text)) { proObc.priceB2B = decimal.Parse(TextBox_PriceB2B.Text); }
+
+            product.saveProductChanges(proObc);
+            LoadValues(id);
+            FillDroppdownListAttributeName();
+            ClearAllTextBoxes();
         }
+
+        private void ClearAllTextBoxes()
+        {
+            TextBox_ProductName.Text = "";
+            TextBox1_ArticleNumber.Text = "";
+            TextBox_Quantity.Text = "";
+            TextBox_Brand.Text = "";
+            TextBox_Category.Text = "";
+            TextBox_AttributeValue.Text = "";
+            TextBox_PriceB2C.Text = "";
+            TextBox_PriceB2B.Text = "";
+        }
+
         protected void Button_AddAttribute_Click(object sender, EventArgs e)
         {
 
@@ -192,6 +217,6 @@ namespace WebShop_Group7.Admin
             }
         }
 
-       
+
     }
 }

@@ -145,7 +145,7 @@ namespace WebShop_Group7.Models
                 string sql = $"UPDATE tbl_User SET Firstname = '{usr.firstName}', Lastname = '{usr.lastName}', Adress = '{usr.adress}', Postalcode = '{usr.postalCode}', City = '{usr.city}', Email = '{usr.email}', Telephone = '{usr.telephone}', Mobilephone = '{usr.mobile}', Password = '{usr.password}', Salt = '{usr.salt}', Pricegroup = '{usr.priceGroup}', Company = '{usr.company}', Admin = '{usr.admin}' WHERE ID = '{id}'";  
 
                 SqlCommand insertCmd = new SqlCommand(sql, db._connection);
-                insertCmd.ExecuteNonQuery();
+                insertCmd.ExecuteNonQuery(); 
 
             }
             catch

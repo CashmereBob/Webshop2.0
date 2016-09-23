@@ -108,6 +108,61 @@ namespace WebShop_Group7.Models
                 dataReader.Close();
             }
         }
+
+        internal void saveProductChanges(ProductObject proObc)
+        {
+            int productID = -1;    
+
+            connection.OpenConnection();
+            //Fill tbl_Product_Attribute  Price,Attributes Missing
+            // PriceB2B = '{proObc.priceB2B}',
+            // PriceB2C = '{proObc.priceB2C}',
+            string query = $@"UPDATE tbl_Product_Attribute SET 
+                Quantity ='{proObc.quantity}',
+               
+                ArticleNumber = '{proObc.artNr}'       
+                WHERE tbl_Product_Attribute.ID = {proObc.productID}
+                ";
+            SqlCommand command = new SqlCommand(query, connection._connection);
+            command.ExecuteNonQuery();
+
+            //Get Product ID
+            query = $@"SELECT tbl_Product_Attribute.ProductID as prodID FROM tbl_Product_Attribute WHERE tbl_Product_Attribute.ID = {proObc.productID} ";
+
+            using (SqlCommand command2 = new SqlCommand(query, connection._connection))
+            {
+                using (dataReader = command2.ExecuteReader())
+                {
+
+                    while (dataReader.Read())
+                    {
+                        productID = int.Parse(dataReader["prodID"].ToString());
+                    }
+                }
+            }
+
+            //Fill tbl_Product  Brand,Category Missing
+            query = $@"
+                                DECLARE @int AS INT
+                                SET @int =( GetBrandID({proObc.brandName}))
+
+                                UPDATE tbl_Product SET 
+                                BrandID = '@int',
+                                Name = '{proObc.name}', 
+                                Description = '{proObc.description}',          
+                                ImgUrl = '{proObc.imgURL}'       
+                                WHERE tbl_Product.ID = '{productID}'
+                ";
+
+            SqlCommand command3 = new SqlCommand(query, connection._connection);
+            command3.ExecuteNonQuery();
+
+
+
+            connection.CloseConnection();
+
+        }
+
         public DataTable GetListProducts()
         {
             DataTable dataTable = new DataTable("Product");
@@ -234,6 +289,7 @@ namespace WebShop_Group7.Models
                         try { Result.imgURL = dataReader["ImgUrl"].ToString(); } catch { Result.imgURL = ""; }
                         Result.quantity = int.Parse(dataReader["Quantity"].ToString());
                         Result.artNr = dataReader["ArticleNumber"].ToString();
+                    
                     }
                 }
             }
@@ -364,8 +420,8 @@ namespace WebShop_Group7.Models
 
             return result;
         }
-        public void AddProduct(int nrAttributes,string name,string articleNr,int quant,string brandID,string categoryID,string description,
-                               string imgUrl,int atributeID1, int atributeID2, int atributeID3, int atributeID4,decimal priceb2b,
+        public void AddProduct(int nrAttributes, string name, string articleNr, int quant, string brandID, string categoryID, string description,
+                               string imgUrl, int atributeID1, int atributeID2, int atributeID3, int atributeID4, decimal priceb2b,
                                decimal priceb2c)
         {
             int ProductID = 0;
@@ -376,22 +432,47 @@ namespace WebShop_Group7.Models
 
             //New Product
             string sql = $@"Insert into  tbl_Product (Name,Description,BrandID,CategoryID,ImgUrl) 
-            Values('" + name + "','" + description + "','" + brandID + "','" + categoryID + "','" + imgUrl+"')";
+            Values('" + name + "','" + description + "','" + brandID + "','" + categoryID + "','" + imgUrl + "')";
             using (SqlCommand command = new SqlCommand(sql, connection._connection))
             {
                 command.ExecuteNonQuery();
             }
             //New Attributes
 
-          
+
             //New Product_Attribute
             string query = $@"Insert into  tbl_Product_Attribute (AttributeID1,AttributeID2,AttributeID3,AttributeID4,ProductID,Quantity,PriceB2B,PriceB2C,ArticleNumber) 
-            Values('" + atributeID1 + "','" + atributeID2 + "','" + atributeID3 + "','" + atributeID4 + "','" 
+            Values('" + atributeID1 + "','" + atributeID2 + "','" + atributeID3 + "','" + atributeID4 + "','"
             + ProductID + "','" + quant + "','" + priceb2b + "','" + priceb2c + "','" + articleNr + "')";
             using (SqlCommand command = new SqlCommand(sql, connection._connection))
             {
                 command.ExecuteNonQuery();
             }
         }
+        public List<string> GetAttributeNames()
+        {
+            List<string> result = new List<string>();
+            string query = $@"use[WebShopGr7]
+                            select tbl_Attribute.Name From tbl_Attribute
+                            group by Name";
+            connection.OpenConnection();
+
+            using (SqlCommand command = new SqlCommand(query, connection._connection))
+            {
+                using (dataReader = command.ExecuteReader())
+                {
+
+                    while (dataReader.Read())
+                    {
+                        result.Add(dataReader["Name"].ToString());
+                    }
+                }
+            }
+            connection.CloseConnection();
+
+            return result;
+        }
+    
+
     }
 }
