@@ -40,5 +40,10 @@ namespace WebShop_Group7.Admin
             var ID = row.Cells[0].Text; // Lägger Värdet från första raden i ID
             Response.Redirect($"~/Admin/List_ProductAttributes.aspx?id={ID}");//SKickar med variablen ID till Edit
         }
+
+        protected void Button_Add_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

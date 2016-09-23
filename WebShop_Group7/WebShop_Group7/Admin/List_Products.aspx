@@ -16,7 +16,7 @@
                     <asp:Button ID="Button_Search" runat="server" Text="Search" />
                 </div>
                 <div class="col-md-3">
-                    <asp:Button ID="Button_Add" runat="server" Text="Add new product" />
+                    <asp:Button ID="Button_Add" runat="server" Text="Add new product" OnClick="Button_Add_Click" />
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <asp:GridView ID="GridView_Products" runat="server" AutoGenerateColumns="false"
-                        AllowSorting="true" AllowPaging="true" PageSize="10" CssClass="table-striped table">
+                        AllowSorting="true" AllowPaging="true" PageSize="10" CssClass="table-striped table list-group">
                         <Columns>
                             <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
                         

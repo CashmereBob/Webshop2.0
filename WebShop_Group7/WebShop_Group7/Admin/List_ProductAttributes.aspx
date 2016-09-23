@@ -3,6 +3,11 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
         <div class="jumbotron">
+               <div class="row">
+                <div class="col-md-12">
+                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Admin/List_Products.aspx">&lt;Tillbaka till Produkter</asp:HyperLink>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-12">
                     <h2><%: Title %>.</h2>
@@ -70,12 +75,7 @@
             </div>
         </div>
         <div class="jumbotron">
-            <div class="row">
-                <div class="col-md-12">
-                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Admin/List_Products.aspx">&lt;Tillbaka till Produkter</asp:HyperLink>
-                </div>
-
-            </div>
+         
           
             <div class="row">
                 <div class="col-md-12">
