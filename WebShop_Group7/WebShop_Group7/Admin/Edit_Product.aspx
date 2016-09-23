@@ -4,6 +4,7 @@
     <div class="container-fluid">
         <h2><%: Title %>.</h2>
         <div class="jumbotron">
+            
             <div class="row">
                 <div class="col-md-12">
                     <h4>Produktnamn:

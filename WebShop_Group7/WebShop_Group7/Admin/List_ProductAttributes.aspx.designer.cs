@@ -13,15 +13,6 @@ namespace WebShop_Group7.Admin {
     public partial class List_ProductAttributes {
         
         /// <summary>
-        /// HyperLink1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
-        
-        /// <summary>
         /// TextBox_Search control.
         /// </summary>
         /// <remarks>
