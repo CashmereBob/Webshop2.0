@@ -24,7 +24,7 @@ namespace WebShop_Group7.Admin
             //}
             products = new Product();
           
-            DataTable dt = products.GetAllToDataTable();
+            DataTable dt = products.GetListProducts();
             ViewState["dt"] = dt;
             BindGrid();
         }
@@ -38,7 +38,7 @@ namespace WebShop_Group7.Admin
         {
             GridViewRow row = (sender as LinkButton).NamingContainer as GridViewRow;
             var ID = row.Cells[0].Text; // Lägger Värdet från första raden i ID
-            Response.Redirect($"~/Admin/Edit_Product.aspx?id={ID}");//SKickar med variablen ID till Edit
+            Response.Redirect($"~/Admin/List_ProductAttributes.aspx?id={ID}");//SKickar med variablen ID till Edit
         }
     }
 }

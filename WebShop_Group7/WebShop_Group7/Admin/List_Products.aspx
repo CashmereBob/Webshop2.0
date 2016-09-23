@@ -27,18 +27,18 @@
                         AllowSorting="true" AllowPaging="true" PageSize="10" CssClass="table-striped table">
                         <Columns>
                             <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
-                            <asp:BoundField DataField="ArticleNr" HeaderText="Artikel nr" SortExpression="Artikel nr" />
+                        
                             <asp:BoundField DataField="Name" HeaderText="Namn" SortExpression="Namn" />
                             <asp:BoundField DataField="CategoryID" HeaderText="Kategori" SortExpression="Kategori" />              
                             <asp:BoundField DataField="BrandID" HeaderText="Märke" SortExpression="Märke" />
                             <asp:BoundField DataField="Description" HeaderText="Förklaring" SortExpression="Förklaring" />
                             <asp:BoundField DataField="b2bPrice" HeaderText="Pris B2B" SortExpression="Pris B2B" />
                             <asp:BoundField DataField="b2cPrice" HeaderText="Pris B2C" SortExpression="Pris B2C" />
-                            <asp:BoundField DataField="Attribute" HeaderText="AttributeS" SortExpression="AttributeS" />
+                            <asp:BoundField DataField="Attribute" HeaderText="Sorter" SortExpression="Sorter" />
 
                                 <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:LinkButton Text="Redigera" runat="server" OnClick="OnUpdate" />
+                                <asp:LinkButton Text="Visa" runat="server" OnClick="OnUpdate" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         </Columns>

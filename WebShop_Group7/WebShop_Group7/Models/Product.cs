@@ -12,7 +12,7 @@ namespace WebShop_Group7.Models
         DBConnection connection = new DBConnection();
         SqlDataReader dataReader;
 
-        public DataTable GetAllToDataTable()
+        public DataTable GetListProductAttributes(int pID)
         {
             DataTable dataTable = new DataTable("Product");
             try
@@ -20,10 +20,106 @@ namespace WebShop_Group7.Models
                 connection.OpenConnection();
                 using (dataTable)
                 {
-                    dataTable.Columns.AddRange(new DataColumn[9]
+                    dataTable.Columns.AddRange(new DataColumn[10]
                     {
                        new DataColumn("ID"),
                        new DataColumn("ArticleNr"),
+                       new DataColumn("Name"),
+                       new DataColumn("CategoryID"),
+                       new DataColumn("BrandID"),
+                       new DataColumn("Description"),
+                       new DataColumn("b2bPrice"),
+                       new DataColumn("b2cPrice"),
+                       new DataColumn("quant"),
+                       new DataColumn("Attribute")
+
+                    });
+
+                    string test2 = $@"Select 
+                                         tbl_Product_Attribute.ID,
+                                      tbl_Product_Attribute.ArticleNumber,
+                                      tbl_Product.Name,
+                                      tbl_Category.Name AS category,
+                                      tbl_Brand.Name AS theBrand, 
+                                      tbl_Product.Description,
+                                      tbl_Product_Attribute.PriceB2B as b2b,
+                                      tbl_Product_Attribute.PriceB2C AS b2c,
+                                      tbl_Product_Attribute.Quantity,
+                                      dbo.CheckAttributeAmount(tbl_Product.ID) as nrAttribute,
+	                                 dbo.CheckAttributeAmount(tbl_Product.ID) as nrAttribute,
+									 dbo.GetAttributes(tbl_Product_Attribute.AttributeID1)  as a1,
+									 dbo.GetAttributes( tbl_Product_Attribute.AttributeID2) as a2,
+									 dbo.GetAttributes( tbl_Product_Attribute.AttributeID3) as a3,
+									 dbo.GetAttributes(tbl_Product_Attribute.AttributeID4)  as a4
+                                      
+                                      From tbl_Product
+                                      
+                                      INNER JOIN tbl_Product_Attribute ON tbl_Product_Attribute.ProductID = tbl_Product.ID
+                                      INNER JOIN tbl_Brand ON tbl_Brand.ID = tbl_Product.BrandID
+                                      INNER JOIN tbl_Category ON tbl_Category.ID = tbl_Product.CategoryID
+                                       WHERE tbl_Product_Attribute.ProductID = {pID}
+                                      ";
+
+                    using (SqlCommand command = new SqlCommand(test2, connection._connection))
+                    {
+                        using (dataReader = command.ExecuteReader())
+                        {
+                       
+                            while (dataReader.Read())
+                            {
+                              
+                                    var id = int.Parse(dataReader["ID"].ToString());
+                                    var quant = int.Parse(dataReader["Quantity"].ToString());
+                                    string articlenr;
+                                    try { articlenr = dataReader["ArticleNumber"].ToString(); } catch { articlenr = ""; }
+                                    var name = dataReader["Name"].ToString();
+                                    var categoryid = dataReader["category"].ToString();
+                                    var brandid = dataReader["theBrand"].ToString();
+                                    var description = dataReader["Description"].ToString();
+                                    var buissniesPrice = (dataReader["b2b"].ToString() + " kr");
+                                    var customPrice = (dataReader["b2c"].ToString() + " kr");
+                                    string attributes = "";
+                                    try { attributes += (dataReader["a1"].ToString() + Environment.NewLine); } catch { }
+                                    try { attributes += (dataReader["a2"].ToString() + Environment.NewLine); } catch { }
+                                    try { attributes += (dataReader["a3"].ToString() + Environment.NewLine); } catch { }
+                                    try { attributes += (dataReader["a4"].ToString() + Environment.NewLine); } catch { }
+                              
+                                          
+                                          
+
+
+                                dataTable.Rows.Add(id, articlenr, name, categoryid, brandid,
+                                    description, buissniesPrice, customPrice, quant, attributes);
+                                
+                            }
+
+                            return dataTable;
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                return dataTable;
+            }
+            finally
+            {
+                connection.CloseConnection();
+                dataReader.Close();
+            }
+        }
+        public DataTable GetListProducts()
+        {
+            DataTable dataTable = new DataTable("Product");
+            try
+            {
+                connection.OpenConnection();
+                using (dataTable)
+                {
+                    dataTable.Columns.AddRange(new DataColumn[8]
+                    {
+                       new DataColumn("ID"),
+                      
                        new DataColumn("Name"),
                        new DataColumn("CategoryID"),          
                        new DataColumn("BrandID"),
@@ -35,8 +131,8 @@ namespace WebShop_Group7.Models
                     });
 
                     string test2 = $@"Select 
-                                         tbl_Product_Attribute.ID,
-                                      tbl_Product_Attribute.ArticleNumber,
+                                      tbl_Product.ID,
+                               
                                       tbl_Product.Name,
                                       tbl_Category.Name AS category,
                                       tbl_Brand.Name AS theBrand, 
@@ -55,16 +151,16 @@ namespace WebShop_Group7.Models
                     {
                         using (dataReader = command.ExecuteReader())
                         {
-                        //    int oldId = -1;
+                            int oldId = -1;
                             while (dataReader.Read())
                             {
-                                // if (oldId!= int.Parse(dataReader["ID"].ToString()))
+                                 if (oldId!= int.Parse(dataReader["ID"].ToString()))
                                 {
 
                               
                                 var id = int.Parse(dataReader["ID"].ToString());
-                                string articlenr;
-                                try {  articlenr = dataReader["ArticleNumber"].ToString(); } catch  {  articlenr = ""; }
+                            
+                            
                                 var name = dataReader["Name"].ToString();
                                 var categoryid = dataReader["category"].ToString();                                                                                                         
                                 var brandid = dataReader["theBrand"].ToString();
@@ -73,8 +169,8 @@ namespace WebShop_Group7.Models
                                 var customPrice =    (dataReader["b2c"].ToString()+" kr");
                                 string attributes = (dataReader["nrAttribute"].ToString());
 
-                               //     oldId = id;
-                                dataTable.Rows.Add(id, articlenr, name, categoryid, brandid,
+                                    oldId = id;
+                                dataTable.Rows.Add(id, name, categoryid, brandid,
                                 description, buissniesPrice, customPrice, attributes);
                                 }
                             }
@@ -144,7 +240,31 @@ namespace WebShop_Group7.Models
             connection.CloseConnection();
                     return Result;
         }
+        public string GetAValue(string table,string value,int id)
+        {
+            string result = "";
+            string query = $@"SELECT 
+                              {table}.{value} as here
+                           
+                              FROM tbl_Product
+                              INNER JOIN tbl_Brand ON tbl_Brand.ID = tbl_Product.BrandID
+                              INNER JOIN tbl_Category ON tbl_Category.ID = tbl_Product.CategoryID
+                              WHERE tbl_Product.ID = '{id}'";
+            connection.OpenConnection();
+            using (SqlCommand command = new SqlCommand(query, connection._connection))
+            {
+                using (dataReader = command.ExecuteReader())
+                {
 
+                    while (dataReader.Read())
+                    {
+                        result = dataReader["here"].ToString();
+                    }
+                }
+            }
+            connection.CloseConnection();
+                        return result;
+        }
         public Dictionary<string, string> GetAttribute(ProductObject product)
         {
             var dict = new Dictionary<string, string>();
