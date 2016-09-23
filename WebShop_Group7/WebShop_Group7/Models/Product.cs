@@ -142,12 +142,13 @@ namespace WebShop_Group7.Models
             }
 
             //Fill tbl_Product  Brand,Category Missing
-            query = $@"
-                                DECLARE @int AS INT
-                                SET @int =( GetBrandID({proObc.brandName}))
+            query = $@" USE [WebShopGr7]
+                                DECLARE @intBrand  INT = (dbo.GetBrandID('{proObc.brandName}'))
+                                DECLARE @intCat    INT = (dbo.GetCategoryID('{proObc.category}'))
 
                                 UPDATE tbl_Product SET 
-                                BrandID = '@int',
+                                BrandID = @intBrand,
+                                CategoryID = @intCat,
                                 Name = '{proObc.name}', 
                                 Description = '{proObc.description}',          
                                 ImgUrl = '{proObc.imgURL}'       
