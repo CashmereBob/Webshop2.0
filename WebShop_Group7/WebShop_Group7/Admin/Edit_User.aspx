@@ -37,7 +37,7 @@
 
 
 
-    <h4>Prisgrupp
+    <h4>Prisgrupp</h4>
         <asp:RadioButtonList ID="RADIO_pricegroup" runat="server">
 
             <asp:ListItem Text="B2C" Value="1"></asp:ListItem>
@@ -45,7 +45,7 @@
         </asp:RadioButtonList>
 
 
-    </h4>
+    
 
     <h4>Lösenord</h4>
     <asp:TextBox ID="TextBox_password01" runat="server"></asp:TextBox>
