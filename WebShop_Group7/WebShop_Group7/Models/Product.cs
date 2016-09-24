@@ -486,10 +486,10 @@ namespace WebShop_Group7.Models
             string query = "";
             foreach (var item in Attributes)
             {
-                var atri = item.Split(' ');
-                bool flag = false;
+                var attri = item.Split(' ');
+                bool exists = false;
                 query = $@"Select tbl_Attributes.ID From tbl_Attributes
-                        WHERE tbl_Attributes.Name = '{atri[0]}' AND tbl_Attributes.Value= '{atri[1]}'
+                        WHERE tbl_Attributes.Name = '{attri[0]}' AND tbl_Attributes.Value= '{attri[1]}'
                         ";
 
                 using (SqlCommand commandCheckAttri = new SqlCommand(query, connection._connection))
@@ -498,10 +498,12 @@ namespace WebShop_Group7.Models
                     {
                         while (dataReader.Read())
                         {
-                            if(dataReader["ID"] != null) { }
+                            if(dataReader["ID"] != null) { exists = true; }                       
                         }
                     }
                 }
+                if (exists) { }//Add ID to a list or maby to the Objekt direktly?
+                else { }//Create the Attribute and get the ID from it to the list OR to the Objekt?
             }
 
             //Fill tbl_Product_Attribute  Price,Attributes Missing
