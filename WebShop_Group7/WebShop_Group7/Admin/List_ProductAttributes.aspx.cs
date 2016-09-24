@@ -47,17 +47,17 @@ namespace WebShop_Group7.Admin
         }
         private void SetValues()
         {
-            Label_ProductName.Text = product.GetAValue("tbl_Product", "Name", ProductID);
-            Label_ProductCategory.Text = product.GetAValue("tbl_Category", "Name", ProductID);
-            Label_ProductBrand.Text = product.GetAValue("tbl_Brand", "Name", ProductID);
-            TextBox_ProductDescription.Text = product.GetAValue("tbl_Product", "Description", ProductID);
+            Label_ProductName.Text = proObc.name;
+            Label_ProductCategory.Text = proObc.category;
+            Label_ProductBrand.Text = proObc.brandName;
+            TextBox_ProductDescription.Text = proObc.description;
             FillDroppdownListBrandName();
             FillDropDownList_CategoryName();
 
         }
         private void GetProduct()
         {
-            proObc = product.GetProduct(ProductID);
+            proObc = product.GetMainProduct(ProductID);
         }
         private void FillDroppdownListBrandName()
         {
