@@ -33,23 +33,35 @@ namespace WebShop_Group7.Admin
         }
         protected void Button_Save_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(TextBox_ProductName.Text)) { proObc.artNr = TextBox_ProductName.Text; }
-            proObc.category = DropDownList_Category.SelectedValue;
+       
+            if (!string.IsNullOrWhiteSpace(TextBox_ProductName.Text)) { proObc.name = TextBox_ProductName.Text; }
+            proObc.category = DropDownList_Category.SelectedItem.ToString();
             proObc.brandName = DropDownList_Brand.SelectedValue;
             if (!string.IsNullOrWhiteSpace(TextBox_ImgUrl.Text)) { proObc.imgURL = TextBox_ImgUrl.Text; }
-            if (!string.IsNullOrWhiteSpace(TextBox_ProductNewDescription.Text)) { proObc.imgURL = TextBox_ProductNewDescription.Text; }
-            product.SaveProduct_AttributeChanges(proObc);
+            if (!string.IsNullOrWhiteSpace(TextBox_ProductNewDescription.Text)) { proObc.description = TextBox_ProductNewDescription.Text; }
 
+            product.SaveProduct_AttributeChanges(proObc);
+            GetProduct();
+            CLearTextBoxes();
             DataTable dt = product.GetListProductAttributes(ProductID);
             ViewState["dt"] = dt;
             BindGrid();
             SetValues();
         }
+
+        private void CLearTextBoxes()
+        {
+            TextBox_ImgUrl.Text = "";
+            TextBox_ProductName.Text = "";        
+            TextBox_ProductNewDescription.Text = "";
+        }
+
         private void SetValues()
         {
             Label_ProductName.Text = proObc.name;
             Label_ProductCategory.Text = proObc.category;
             Label_ProductBrand.Text = proObc.brandName;
+            Label_imgURL.Text = proObc.imgURL;
             TextBox_ProductDescription.Text = proObc.description;
             FillDroppdownListBrandName();
             FillDropDownList_CategoryName();
@@ -58,10 +70,12 @@ namespace WebShop_Group7.Admin
         private void GetProduct()
         {
             proObc = product.GetMainProduct(ProductID);
+            proObc.productID = ProductID;
         }
         private void FillDroppdownListBrandName()
         {
             brandNames = product.GetDroppdownNames("tbl_Brand");
+            
             DropDownList_Brand.DataSource = from i in brandNames
                                             select new ListItem()
                                             {
@@ -69,7 +83,7 @@ namespace WebShop_Group7.Admin
                                                 Value = i
                                             };
             DropDownList_Brand.DataBind();
-            DropDownList_Brand.SelectedValue = product.GetAValue("tbl_Brand", "Name", ProductID);
+            
 
         }
         private void FillDropDownList_CategoryName()
@@ -82,7 +96,7 @@ namespace WebShop_Group7.Admin
                                                    Value = i
                                                };
             DropDownList_Category.DataBind();
-            DropDownList_Category.SelectedValue = product.GetAValue("tbl_Category", "Name", ProductID);
+            DropDownList_Category.SelectedValue =proObc.category;
 
         }
         protected void BindGrid()

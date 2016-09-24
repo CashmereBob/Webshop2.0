@@ -439,6 +439,7 @@ namespace WebShop_Group7.Models
         internal List<string> GetDroppdownNames(string tbl)
         {
             List<string> result = new List<string>();
+            result.Add("Select");
             string query = $@"use[WebShopGr7]
                             select {tbl}.Name From {tbl}
                             group by Name";
@@ -485,8 +486,7 @@ namespace WebShop_Group7.Models
             // PriceB2B = '{proObc.priceB2B}',
             // PriceB2C = '{proObc.priceB2C}',
             string query = $@"UPDATE tbl_Product_Attribute SET 
-                Quantity ='{proObc.quantity}',
-               
+                Quantity ='{proObc.quantity}',               
                 ArticleNumber = '{proObc.artNr}'       
                 WHERE tbl_Product_Attribute.ID = {proObc.productID}
                 ";

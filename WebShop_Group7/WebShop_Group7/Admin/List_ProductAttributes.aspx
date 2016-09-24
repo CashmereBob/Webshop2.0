@@ -100,7 +100,7 @@
                 <%-- Img --%>
                 <asp:TableRow CssClass="row">
                     <asp:TableCell CssClass="col-md-2">
-                        <asp:Label ID="Label3" runat="server" Text="imgURL: "></asp:Label>
+                        <asp:Label ID="Label3" runat="server" Text="ImgUrl: "></asp:Label>
                     </asp:TableCell>
                     <%-- Current value  FIX!! --%>
                     <asp:TableCell CssClass="col-md-2">
