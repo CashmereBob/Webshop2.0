@@ -486,7 +486,11 @@ namespace WebShop_Group7.Models
             string query = "";
             foreach (var item in Attributes)
             {
-                query = $@"";
+                var atri = item.Split(' ');
+                bool flag = false;
+                query = $@"Select tbl_Attributes.ID From tbl_Attributes
+                        WHERE tbl_Attributes.Name = '{atri[0]}' AND tbl_Attributes.Value= '{atri[1]}'
+                        ";
 
                 using (SqlCommand commandCheckAttri = new SqlCommand(query, connection._connection))
                 {
@@ -494,7 +498,7 @@ namespace WebShop_Group7.Models
                     {
                         while (dataReader.Read())
                         {
-
+                            if(dataReader["ID"] != null) { }
                         }
                     }
                 }
