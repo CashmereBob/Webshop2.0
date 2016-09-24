@@ -439,7 +439,7 @@ namespace WebShop_Group7.Models
         internal List<string> GetDroppdownNames(string tbl)
         {
             List<string> result = new List<string>();
-            result.Add("Select");
+            //result.Add("Select");
             string query = $@"use[WebShopGr7]
                             select {tbl}.Name From {tbl}
                             group by Name";
@@ -477,15 +477,33 @@ namespace WebShop_Group7.Models
             command.ExecuteNonQuery();
             connection.CloseConnection();
         }
-        internal void saveProductChanges(ProductObject proObc)
+        internal void saveProductChanges(ProductObject proObc,List<string> Attributes)
         {
-            int productID = -1;
-
+            //FIX Attributes.. comming is as a string with Name+" "+Value. Check if there is one allready, otherwise clreate one, 
+            //then add it to the product!
+            //int productID = -1;
             connection.OpenConnection();
+            string query = "";
+            foreach (var item in Attributes)
+            {
+                query = $@"";
+
+                using (SqlCommand commandCheckAttri = new SqlCommand(query, connection._connection))
+                {
+                    using (dataReader = commandCheckAttri.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+
+                        }
+                    }
+                }
+            }
+
             //Fill tbl_Product_Attribute  Price,Attributes Missing
             // PriceB2B = '{proObc.priceB2B}',
             // PriceB2C = '{proObc.priceB2C}',
-            string query = $@"UPDATE tbl_Product_Attribute SET 
+            query = $@"UPDATE tbl_Product_Attribute SET 
                 Quantity ='{proObc.quantity}',               
                 ArticleNumber = '{proObc.artNr}'       
                 WHERE tbl_Product_Attribute.ID = {proObc.productID}
@@ -494,33 +512,33 @@ namespace WebShop_Group7.Models
             command.ExecuteNonQuery();
 
             //Get Product ID
-            query = $@"SELECT tbl_Product_Attribute.ProductID as prodID FROM tbl_Product_Attribute WHERE tbl_Product_Attribute.ID = {proObc.productID} ";
+            //query = $@"SELECT tbl_Product_Attribute.ProductID as prodID FROM tbl_Product_Attribute WHERE tbl_Product_Attribute.ID = {proObc.productID} ";
 
-            using (SqlCommand command2 = new SqlCommand(query, connection._connection))
-            {
-                using (dataReader = command2.ExecuteReader())
-                {
+            //using (SqlCommand command2 = new SqlCommand(query, connection._connection))
+            //{
+            //    using (dataReader = command2.ExecuteReader())
+            //    {
 
-                    while (dataReader.Read())
-                    {
-                        productID = int.Parse(dataReader["prodID"].ToString());
-                    }
-                }
-            }
+            //        while (dataReader.Read())
+            //        {
+            //            productID = int.Parse(dataReader["prodID"].ToString());
+            //        }
+            //    }
+            //}
 
-            //Fill tbl_Product 
-            query = $@" USE [WebShopGr7]
-                                UPDATE tbl_Product SET 
-                                BrandID = (select tbl_Brand.ID from tbl_Brand where tbl_Brand.Name = '{proObc.brandName}'),
-                                CategoryID = (select tbl_Category.ID from tbl_Category where tbl_Category.Name = '{proObc.category}'),
-                                Name = '{proObc.name}', 
-                                Description = '{proObc.description}',          
-                                ImgUrl = '{proObc.imgURL}'       
-                                WHERE tbl_Product.ID = '{productID}'
-                ";
+            ////Fill tbl_Product 
+            //query = $@" USE [WebShopGr7]
+            //                    UPDATE tbl_Product SET 
+            //                    BrandID = (select tbl_Brand.ID from tbl_Brand where tbl_Brand.Name = '{proObc.brandName}'),
+            //                    CategoryID = (select tbl_Category.ID from tbl_Category where tbl_Category.Name = '{proObc.category}'),
+            //                    Name = '{proObc.name}', 
+            //                    Description = '{proObc.description}',          
+            //                    ImgUrl = '{proObc.imgURL}'       
+            //                    WHERE tbl_Product.ID = '{productID}'
+            //    ";
 
-            SqlCommand command3 = new SqlCommand(query, connection._connection);
-            command3.ExecuteNonQuery();
+            //SqlCommand command3 = new SqlCommand(query, connection._connection);
+            //command3.ExecuteNonQuery();
 
 
 

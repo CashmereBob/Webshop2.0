@@ -79,7 +79,9 @@
                     </asp:TableCell>
                     <%-- New Vlaue --%>
                     <asp:TableCell CssClass="col-md-2">
-                        <asp:DropDownList CssClass="form-control" ID="DropDownList_Category" runat="server"></asp:DropDownList>
+                        <asp:DropDownList OnSelectedIndexChanged="itemSelected" CssClass="form-control" ID="DropDownList_Category" runat="server" >
+                             <asp:ListItem Value="Select"></asp:ListItem>
+                        </asp:DropDownList>Nor Working
                     </asp:TableCell>
                 </asp:TableRow>
                 <%-- Brand --%>
@@ -94,7 +96,9 @@
                         <asp:Label ID="Label6" runat="server" Text=" Ändra till:"></asp:Label>
                     </asp:TableCell>
                     <asp:TableCell CssClass="col-md-2">
-                        <asp:DropDownList CssClass="form-control" ID="DropDownList_Brand" runat="server"></asp:DropDownList>
+                        <asp:DropDownList OnSelectedIndexChanged="itemSelected" CssClass="form-control" ID="DropDownList_Brand"  runat="server">
+                            <asp:ListItem Value="Select"></asp:ListItem>
+                        </asp:DropDownList>Not Working
                     </asp:TableCell>
                 </asp:TableRow>
                 <%-- Img --%>
@@ -102,7 +106,7 @@
                     <asp:TableCell CssClass="col-md-2">
                         <asp:Label ID="Label3" runat="server" Text="ImgUrl: "></asp:Label>
                     </asp:TableCell>
-                    <%-- Current value  FIX!! --%>
+                    <%-- Current value --%>
                     <asp:TableCell CssClass="col-md-2">
                         <asp:Label ID="Label_imgURL" runat="server" Text="imgURL"></asp:Label>
                     </asp:TableCell>

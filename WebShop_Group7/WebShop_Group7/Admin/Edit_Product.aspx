@@ -101,7 +101,7 @@
                         <asp:Label ID="Label_PriceB2B" runat="server" Text="0kr"></asp:Label></h4>
                 </div>
                 <div class="col-md-3">
-                    <asp:TextBox CssClass="form-control" ID="TextBox_PriceB2B" runat="server"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control" ID="TextBox_PriceB2B" runat="server"></asp:TextBox>Not working
                 </div>
             </div>
               <%-- Pris b2c--%>
@@ -114,13 +114,18 @@
                         <asp:Label ID="Label_PriceB2C" runat="server" Text="0kr"></asp:Label></h4>
                 </div>
                 <div class="col-md-3">
-                    <asp:TextBox CssClass="form-control" ID="TextBox_PriceB2C" runat="server"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control" ID="TextBox_PriceB2C" runat="server"></asp:TextBox>Not working
                 </div>
             </div>
             <%-- Beskrivning --%>
             <div class="row">
                 <div class="col-md-2">
                     <h3>Beskrivning</h3>
+                </div>
+            </div>
+                <div class="row">
+                <div class="col-md-7">
+                    <asp:TextBox ID="TextBox_Description" runat="server" ReadOnly="True" Height="100%" TextMode="MultiLine" Width="100%"></asp:TextBox>
                 </div>
             </div>
             <div class="row">
@@ -145,7 +150,7 @@
                         <asp:Label ID="Label_Attribute1" runat="server" Text=""></asp:Label>
                     </div>
                     <div class="col-md-2">
-                        <asp:Button CssClass="btn btn-default" Csstype="button" ID="Button_RemoveAttribute1" runat="server" Text="Remove" />
+                        <asp:Button CssClass="btn btn-default" Csstype="button" ID="Button_RemoveAttribute1" runat="server" Text="Remove" OnClick="Button_RemoveAttribute1_Click" />
                     </div>
                 </asp:Panel>
             </div>
@@ -156,7 +161,7 @@
                         <asp:Label ID="Label_Attribute2" runat="server" Text=""></asp:Label>
                     </div>
                     <div class="col-md-2">
-                        <asp:Button CssClass="btn btn-default" Csstype="button" ID="Button_RemoveAttribute2" runat="server" Text="Remove" />
+                        <asp:Button CssClass="btn btn-default" Csstype="button" ID="Button_RemoveAttribute2" runat="server" Text="Remove" OnClick="Button_RemoveAttribute2_Click" />
                     </div>
                 </asp:Panel>
             </div>
@@ -167,7 +172,7 @@
                         <asp:Label ID="Label_Attribute3" runat="server" Text=""></asp:Label>
                     </div>
                     <div class="col-md-2">
-                        <asp:Button CssClass="btn btn-default" Csstype="button" ID="Button_RemoveAttribute3" runat="server" Text="Remove" /><br />
+                        <asp:Button CssClass="btn btn-default" Csstype="button" ID="Button_RemoveAttribute3" runat="server" Text="Remove" OnClick="Button_RemoveAttribute3_Click" /><br />
                     </div>
                 </asp:Panel>
             </div>
@@ -178,7 +183,7 @@
                         <asp:Label ID="Label_Attribute4" runat="server" Text=""></asp:Label>
                     </div>
                     <div class="col-md-2">
-                        <asp:Button CssClass="btn btn-default" Csstype="button" ID="Button1" runat="server" Text="Remove" /><br />
+                        <asp:Button CssClass="btn btn-default" Csstype="button" ID="Button1" runat="server" Text="Remove" OnClick="Button1_Click" /><br />
                     </div>
                 </asp:Panel>
             </div>
@@ -192,8 +197,11 @@
          
             <div class="row">
 
-                <div class="col-md-2">
+          <%--      <div class="col-md-2">
                     <asp:DropDownList CssClass="form-control" ID="DropDownList_AttributeName" runat="server"></asp:DropDownList>
+                </div>--%>
+                <div class="col-md-2">
+                    <asp:TextBox ID="TextBox_AttributeName" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="col-md-2">
                     <asp:TextBox ID="TextBox_AttributeValue" CssClass="form-control" runat="server"></asp:TextBox>

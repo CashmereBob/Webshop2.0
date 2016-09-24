@@ -30,13 +30,14 @@ namespace WebShop_Group7.Admin
             ViewState["dt"] = dt;
             BindGrid();
             SetValues();
+         
         }
         protected void Button_Save_Click(object sender, EventArgs e)
         {
-       
+          
             if (!string.IsNullOrWhiteSpace(TextBox_ProductName.Text)) { proObc.name = TextBox_ProductName.Text; }
-            proObc.category = DropDownList_Category.SelectedItem.ToString();
-            proObc.brandName = DropDownList_Brand.SelectedValue;
+            if (DropDownList_Category.SelectedItem.Text != "Select") { proObc.category = DropDownList_Category.SelectedItem.Text; }
+            if (DropDownList_Brand.SelectedValue != "Select") { proObc.brandName = DropDownList_Brand.SelectedValue; }
             if (!string.IsNullOrWhiteSpace(TextBox_ImgUrl.Text)) { proObc.imgURL = TextBox_ImgUrl.Text; }
             if (!string.IsNullOrWhiteSpace(TextBox_ProductNewDescription.Text)) { proObc.description = TextBox_ProductNewDescription.Text; }
 
@@ -47,6 +48,12 @@ namespace WebShop_Group7.Admin
             ViewState["dt"] = dt;
             BindGrid();
             SetValues();
+        }
+        protected void itemSelected(object sender, EventArgs e)
+        {
+            Response.Write("HELLO!!");
+                if (DropDownList_Category.SelectedItem.Text != "Select") { proObc.category = DropDownList_Category.SelectedItem.Text; }
+            if (DropDownList_Brand.SelectedValue != "Select") { proObc.brandName = DropDownList_Brand.SelectedValue; }
         }
 
         private void CLearTextBoxes()
@@ -95,9 +102,7 @@ namespace WebShop_Group7.Admin
                                                    Text = i,
                                                    Value = i
                                                };
-            DropDownList_Category.DataBind();
-            DropDownList_Category.SelectedValue =proObc.category;
-
+            DropDownList_Category.DataBind();      
         }
         protected void BindGrid()
         {

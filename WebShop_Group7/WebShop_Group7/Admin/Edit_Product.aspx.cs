@@ -19,9 +19,9 @@ namespace WebShop_Group7.Admin
         Image img = new Image();
         string attributes = "";
         List<string> attributeNames;
-      
+
         int id;
-   
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -35,33 +35,33 @@ namespace WebShop_Group7.Admin
         private void FillDroppDowns()
         {
             FillDroppdownListAttributeName();
-      
+
         }
         private void FillDroppdownListAttributeName()
         {
-            attributeNames = product.GetDroppdownNames("tbl_Attribute");
-            DropDownList_AttributeName.DataSource = from i in attributeNames
-                                                    select new ListItem()
-                                                    {
-                                                        Text = i,
-                                                        Value = i
-                                                    };
-            DropDownList_AttributeName.DataBind();
+            //attributeNames = product.GetDroppdownNames("tbl_Attribute");
+            //DropDownList_AttributeName.DataSource = from i in attributeNames
+            //                                        select new ListItem()
+            //                                        {
+            //                                            Text = i,
+            //                                            Value = i
+            //                                        };
+            //DropDownList_AttributeName.DataBind();
         }
-  
+
         private void LoadValues(int ProductID)
         {
             Image_Product.ImageUrl = proObc.imgURL;
             Label_ProductNameHeader.Text = proObc.name;
             Label_ArticleNumber.Text = proObc.artNr;
             Label_ProductName.Text = proObc.name;
-          
+            TextBox_Description.Text = proObc.description;
             Label_Quantity.Text = proObc.quantity.ToString();
             Label_Brand.Text = proObc.brandName;
             Label_Category.Text = proObc.category;
             Label_PriceB2B.Text = proObc.priceB2B.ToString() + "kr";
             Label_PriceB2C.Text = proObc.priceB2C.ToString() + "kr";
-            
+
             attributes = product.GetAttributes(ProductID);
             var attributeArray = attributes.Split('\t');
             try { Label_Attribute1.Text = attributeArray[0]; } catch { }
@@ -97,26 +97,37 @@ namespace WebShop_Group7.Admin
         }
 
         protected void Button_Save_Click(object sender, EventArgs e)
-        {        
-           
-            if (!string.IsNullOrWhiteSpace(TextBox1_ArticleNumber.Text)) { proObc.artNr = TextBox1_ArticleNumber.Text; }
-            if (!string.IsNullOrWhiteSpace(TextBox_Quantity.Text)) { proObc.quantity= int.Parse(TextBox_Quantity.Text); }
-            if (!string.IsNullOrWhiteSpace(TextBox_PriceB2C.Text)) { proObc.priceB2C = decimal.Parse (TextBox_PriceB2C.Text); }
-            if (!string.IsNullOrWhiteSpace(TextBox_PriceB2B.Text)) { proObc.priceB2B = decimal.Parse(TextBox_PriceB2B.Text); }
+        {
 
-            product.saveProductChanges(proObc);
+            if (!string.IsNullOrWhiteSpace(TextBox1_ArticleNumber.Text)) { proObc.artNr = TextBox1_ArticleNumber.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBox_Quantity.Text)) { proObc.quantity = int.Parse(TextBox_Quantity.Text); }
+            if (!string.IsNullOrWhiteSpace(TextBox_PriceB2C.Text)) { proObc.priceB2C = decimal.Parse(TextBox_PriceB2C.Text); }
+            if (!string.IsNullOrWhiteSpace(TextBox_PriceB2B.Text)) { proObc.priceB2B = decimal.Parse(TextBox_PriceB2B.Text); }
+            List<string> Attributes = FillAttributeList();
+       
+            product.saveProductChanges(proObc,Attributes);
             LoadValues(id);
             FillDroppDowns();
             ClearAllTextBoxes();
         }
 
+        private List<string> FillAttributeList()
+        {
+            List<string> result = new List<string>();
+            if(Panel_Attribute1.Visible == true) { result.Add(Label_Attribute1.Text); }
+            if (Panel_Attribute2.Visible == true) { result.Add(Label_Attribute2.Text); }
+            if (Panel_Attribute3.Visible == true) { result.Add(Label_Attribute3.Text); }
+            if (Panel_Attribute4.Visible == true) { result.Add(Label_Attribute4.Text); }
+            return result;
+        }
+
         private void ClearAllTextBoxes()
         {
-           
+
             TextBox1_ArticleNumber.Text = "";
             TextBox_Quantity.Text = "";
-            
-          
+
+
             TextBox_AttributeValue.Text = "";
             TextBox_PriceB2C.Text = "";
             TextBox_PriceB2B.Text = "";
@@ -124,13 +135,34 @@ namespace WebShop_Group7.Admin
 
         protected void Button_AddAttribute_Click(object sender, EventArgs e)
         {
-
+          
+            if (Panel_Attribute1.Visible == false) { Panel_Attribute1.Visible = true; Label_Attribute1.Text =      TextBox_AttributeName.Text + " " + TextBox_AttributeValue.Text; }
+            else if (Panel_Attribute2.Visible == false) { Panel_Attribute2.Visible = true; Label_Attribute2.Text = TextBox_AttributeName.Text + " " + TextBox_AttributeValue.Text; }
+            else if (Panel_Attribute3.Visible == false) { Panel_Attribute3.Visible = true; Label_Attribute3.Text = TextBox_AttributeName.Text + " " + TextBox_AttributeValue.Text; }
+            else if (Panel_Attribute4.Visible == false) { Panel_Attribute4.Visible = true; Label_Attribute4.Text = TextBox_AttributeName.Text + " " + TextBox_AttributeValue.Text; }
+            else { Response.Write("You cant have more then 4 attributes"); return; }
+            TextBox_AttributeName.Text = "";
+            TextBox_AttributeValue.Text = "";
         }
 
-     
-       
-      
+        protected void Button_RemoveAttribute1_Click(object sender, EventArgs e)
+        {
+            Panel_Attribute1.Visible = false; Label_Attribute1.Text ="";
+        }
 
+        protected void Button_RemoveAttribute2_Click(object sender, EventArgs e)
+        {
+            Panel_Attribute2.Visible = false; Label_Attribute2.Text = "";
+        }
 
+        protected void Button_RemoveAttribute3_Click(object sender, EventArgs e)
+        {
+            Panel_Attribute3.Visible = false; Label_Attribute3.Text = "";
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Panel_Attribute4.Visible = false; Label_Attribute4.Text = "";
+        }
     }
 }
