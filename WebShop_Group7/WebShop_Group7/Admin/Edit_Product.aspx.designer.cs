@@ -31,42 +31,6 @@ namespace WebShop_Group7.Admin {
         protected global::System.Web.UI.WebControls.Image Image_Product;
         
         /// <summary>
-        /// FileUpload1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
-        
-        /// <summary>
-        /// Button_NewProductIMG control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_NewProductIMG;
-        
-        /// <summary>
-        /// Label_ImgUpload control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_ImgUpload;
-        
-        /// <summary>
-        /// Label_ProduktID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_ProduktID;
-        
-        /// <summary>
         /// Label_ProductName control.
         /// </summary>
         /// <remarks>
@@ -74,15 +38,6 @@ namespace WebShop_Group7.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label_ProductName;
-        
-        /// <summary>
-        /// TextBox_ProductName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_ProductName;
         
         /// <summary>
         /// Label_ArticleNumber control.
@@ -130,15 +85,6 @@ namespace WebShop_Group7.Admin {
         protected global::System.Web.UI.WebControls.Label Label_Brand;
         
         /// <summary>
-        /// TextBox_Brand control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Brand;
-        
-        /// <summary>
         /// Label_Category control.
         /// </summary>
         /// <remarks>
@@ -146,15 +92,6 @@ namespace WebShop_Group7.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label_Category;
-        
-        /// <summary>
-        /// TextBox_Category control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Category;
         
         /// <summary>
         /// Label_PriceB2B control.
@@ -191,15 +128,6 @@ namespace WebShop_Group7.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_PriceB2C;
-        
-        /// <summary>
-        /// TextBox_Description control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Description;
         
         /// <summary>
         /// Panel_Attribute1 control.

@@ -19,6 +19,7 @@ namespace WebShop_Group7.Admin
         Image img = new Image();
         string attributes = "";
         List<string> attributeNames;
+      
         int id;
    
 
@@ -28,12 +29,17 @@ namespace WebShop_Group7.Admin
             id = ProductID;
             proObc = product.GetProduct(ProductID);
             LoadValues(ProductID);
-            FillDroppdownListAttributeName();
+            FillDroppDowns();
         }
 
+        private void FillDroppDowns()
+        {
+            FillDroppdownListAttributeName();
+      
+        }
         private void FillDroppdownListAttributeName()
         {
-            attributeNames = product.GetAttributeNames();
+            attributeNames = product.GetDroppdownNames("tbl_Attribute");
             DropDownList_AttributeName.DataSource = from i in attributeNames
                                                     select new ListItem()
                                                     {
@@ -42,20 +48,20 @@ namespace WebShop_Group7.Admin
                                                     };
             DropDownList_AttributeName.DataBind();
         }
-
-
+  
         private void LoadValues(int ProductID)
         {
+            Image_Product.ImageUrl = proObc.imgURL;
             Label_ProductNameHeader.Text = proObc.name;
             Label_ArticleNumber.Text = proObc.artNr;
             Label_ProductName.Text = proObc.name;
-            Label_ProduktID.Text = proObc.productID.ToString();
+          
             Label_Quantity.Text = proObc.quantity.ToString();
             Label_Brand.Text = proObc.brandName;
             Label_Category.Text = proObc.category;
             Label_PriceB2B.Text = proObc.priceB2B.ToString() + "kr";
             Label_PriceB2C.Text = proObc.priceB2C.ToString() + "kr";
-            TextBox_Description.Text = proObc.description;
+            
             attributes = product.GetAttributes(ProductID);
             var attributeArray = attributes.Split('\t');
             try { Label_Attribute1.Text = attributeArray[0]; } catch { }
@@ -92,29 +98,25 @@ namespace WebShop_Group7.Admin
 
         protected void Button_Save_Click(object sender, EventArgs e)
         {        
-            if (!string.IsNullOrWhiteSpace(TextBox_ProductName.Text)){ proObc.name = TextBox_ProductName.Text; }
+           
             if (!string.IsNullOrWhiteSpace(TextBox1_ArticleNumber.Text)) { proObc.artNr = TextBox1_ArticleNumber.Text; }
             if (!string.IsNullOrWhiteSpace(TextBox_Quantity.Text)) { proObc.quantity= int.Parse(TextBox_Quantity.Text); }
-            if (!string.IsNullOrWhiteSpace(TextBox_Brand.Text)) { proObc.brandName= TextBox_Brand.Text; }
-            if (!string.IsNullOrWhiteSpace(TextBox_Category.Text)) { proObc.category= TextBox_Category.Text; }
-            if (!string.IsNullOrWhiteSpace(TextBox_Description.Text)) { proObc.description= TextBox_Description.Text; }
-
             if (!string.IsNullOrWhiteSpace(TextBox_PriceB2C.Text)) { proObc.priceB2C = decimal.Parse (TextBox_PriceB2C.Text); }
             if (!string.IsNullOrWhiteSpace(TextBox_PriceB2B.Text)) { proObc.priceB2B = decimal.Parse(TextBox_PriceB2B.Text); }
 
             product.saveProductChanges(proObc);
             LoadValues(id);
-            FillDroppdownListAttributeName();
+            FillDroppDowns();
             ClearAllTextBoxes();
         }
 
         private void ClearAllTextBoxes()
         {
-            TextBox_ProductName.Text = "";
+           
             TextBox1_ArticleNumber.Text = "";
             TextBox_Quantity.Text = "";
-            TextBox_Brand.Text = "";
-            TextBox_Category.Text = "";
+            
+          
             TextBox_AttributeValue.Text = "";
             TextBox_PriceB2C.Text = "";
             TextBox_PriceB2B.Text = "";
@@ -125,97 +127,9 @@ namespace WebShop_Group7.Admin
 
         }
 
-        protected void Button_NewProductIMG_Click(object sender, EventArgs e)
-        {
-            if (!FileUpload1.HasFile)
-            {
-                Label_ImgUpload.ForeColor = System.Drawing.Color.Red;
-                Label_ImgUpload.Text = "Please Select Image File";
-            }
-
-            else
-            {
-                Label_ImgUpload.ForeColor = System.Drawing.Color.Green;
-                Label_ImgUpload.Text = "Image Uploaded Sucessfully";
-                UploadProfileImage("", @"/cerwus.se / public_html / Grupp7", "");
-            }
-        }
-        private void UploadProfileImage(string TargetFileName, string TargetDestinationPath, string FiletoUpload)
-        {
-            //Get the Image Destination path
-            string imageName = TargetFileName; //you can comment this
-            string imgPath = TargetDestinationPath;
-            //ftp.cerwus.se
-            string ftpurl = "ftp://downloads.abc.com/downloads.abc.com/MobileApps/SystemImages/ProfileImages/" + imgPath;
-            string ftpusername = ConfigurationManager.AppSettings["207706_master"];//krayknot_DAL.clsGlobal.FTPUsername;
-            string ftppassword = ConfigurationManager.AppSettings["Cerwus123456"];//krayknot_DAL.clsGlobal.FTPPassword;
-            string fileurl = FiletoUpload;
-
-            FtpWebRequest ftpClient = (FtpWebRequest)FtpWebRequest.Create(ftpurl);
-            ftpClient.Credentials = new System.Net.NetworkCredential(ftpusername, ftppassword);
-            ftpClient.Method = System.Net.WebRequestMethods.Ftp.UploadFile;
-            ftpClient.UseBinary = true;
-            ftpClient.KeepAlive = true;
-            System.IO.FileInfo fi = new System.IO.FileInfo(fileurl);
-            ftpClient.ContentLength = fi.Length;
-            byte[] buffer = new byte[4097];
-            int bytes = 0;
-            int total_bytes = (int)fi.Length;
-            System.IO.FileStream fs = fi.OpenRead();
-            System.IO.Stream rs = ftpClient.GetRequestStream();
-            while (total_bytes > 0)
-            {
-                bytes = fs.Read(buffer, 0, buffer.Length);
-                rs.Write(buffer, 0, bytes);
-                total_bytes = total_bytes - bytes;
-            }
-            //fs.Flush();
-            fs.Close();
-            rs.Close();
-            FtpWebResponse uploadResponse = (FtpWebResponse)ftpClient.GetResponse();
-            string value = uploadResponse.StatusDescription;
-            uploadResponse.Close();
-        }
-        private void up(string sourceFile, string targetFile)
-        {
-            // Adress: ftp.cerwus.se
-            // Katalog: / cerwus.se / public_html / Grupp7
-            // Användare: 207706_master
-            // Pass: Cerwus123456
-
-            try
-            {
-                string ftpServerIP = ConfigurationManager.AppSettings["ftp.cerwus.se"];
-                string ftpUserID = ConfigurationManager.AppSettings["207706_master"];
-                string ftpPassword = ConfigurationManager.AppSettings["Cerwus123456"];
-                ////string ftpURI = "";
-                string filename = "ftp://" + ftpServerIP + "//" + targetFile;
-                FtpWebRequest ftpReq = (FtpWebRequest)WebRequest.Create(filename);
-                ftpReq.UseBinary = true;
-                ftpReq.Method = WebRequestMethods.Ftp.UploadFile;
-                ftpReq.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
-                ftpReq.Proxy = null;
-
-                byte[] b = File.ReadAllBytes(sourceFile);
-
-                ftpReq.ContentLength = b.Length;
-                using (Stream s = ftpReq.GetRequestStream())
-                {
-                    s.Write(b, 0, b.Length);
-                }
-
-                FtpWebResponse ftpResp = (FtpWebResponse)ftpReq.GetResponse();
-
-                if (ftpResp != null)
-                {
-                    Label_ImgUpload.Text = ftpResp.StatusDescription.ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                Label_ImgUpload.Text = ex.ToString();
-            }
-        }
+     
+       
+      
 
 
     }

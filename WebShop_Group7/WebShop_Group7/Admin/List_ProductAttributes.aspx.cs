@@ -11,30 +11,80 @@ namespace WebShop_Group7.Admin
 {
     public partial class List_ProductAttributes : System.Web.UI.Page
     {
-        Product products;
+        Product product = new Product();
+        ProductObject proObc;
         int ProductID;
+        List<string> brandNames;
+        List<string> categoryNames;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             //if (Session["Admin"] == null) //Kontrollerar om det finns en Admin session.
             //{
             //    Response.Redirect("~/Admin/index.aspx"); //Om inte gå tillbaka till inloggning.
-            //}
-            products = new Product();
+            //}    
+
             ProductID = int.Parse(Request.QueryString["id"]);
-            DataTable dt = products.GetListProductAttributes(ProductID);
+            GetProduct();
+            DataTable dt = product.GetListProductAttributes(ProductID);
             ViewState["dt"] = dt;
             BindGrid();
             SetValues();
         }
+        protected void Button_Save_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(TextBox_ProductName.Text)) { proObc.artNr = TextBox_ProductName.Text; }
+            proObc.category = DropDownList_Category.SelectedValue;
+            proObc.brandName = DropDownList_Brand.SelectedValue;
+            if (!string.IsNullOrWhiteSpace(TextBox_ImgUrl.Text)) { proObc.imgURL = TextBox_ImgUrl.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBox_ProductNewDescription.Text)) { proObc.imgURL = TextBox_ProductNewDescription.Text; }
+            product.SaveProduct_AttributeChanges(proObc);
 
+            DataTable dt = product.GetListProductAttributes(ProductID);
+            ViewState["dt"] = dt;
+            BindGrid();
+            SetValues();
+        }
         private void SetValues()
         {
-            Label_ProductName.Text = products.GetAValue("tbl_Product", "Name", ProductID);
-            Label_ProductCategory.Text = products.GetAValue("tbl_Category", "Name", ProductID);
-            Label_ProductBrand.Text = products.GetAValue("tbl_Brand", "Name", ProductID);
-            Label_ProductDescription.Text = products.GetAValue("tbl_Product", "Description", ProductID);
-        }
+            Label_ProductName.Text = product.GetAValue("tbl_Product", "Name", ProductID);
+            Label_ProductCategory.Text = product.GetAValue("tbl_Category", "Name", ProductID);
+            Label_ProductBrand.Text = product.GetAValue("tbl_Brand", "Name", ProductID);
+            TextBox_ProductDescription.Text = product.GetAValue("tbl_Product", "Description", ProductID);
+            FillDroppdownListBrandName();
+            FillDropDownList_CategoryName();
 
+        }
+        private void GetProduct()
+        {
+            proObc = product.GetProduct(ProductID);
+        }
+        private void FillDroppdownListBrandName()
+        {
+            brandNames = product.GetDroppdownNames("tbl_Brand");
+            DropDownList_Brand.DataSource = from i in brandNames
+                                            select new ListItem()
+                                            {
+                                                Text = i,
+                                                Value = i
+                                            };
+            DropDownList_Brand.DataBind();
+            DropDownList_Brand.SelectedValue = product.GetAValue("tbl_Brand", "Name", ProductID);
+
+        }
+        private void FillDropDownList_CategoryName()
+        {
+            categoryNames = product.GetDroppdownNames("tbl_Category");
+            DropDownList_Category.DataSource = from i in categoryNames
+                                               select new ListItem()
+                                               {
+                                                   Text = i,
+                                                   Value = i
+                                               };
+            DropDownList_Category.DataBind();
+            DropDownList_Category.SelectedValue = product.GetAValue("tbl_Category", "Name", ProductID);
+
+        }
         protected void BindGrid()
         {
             GridView_Products.DataSource = ViewState["dt"] as DataTable;

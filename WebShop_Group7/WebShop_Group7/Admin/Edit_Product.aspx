@@ -16,32 +16,10 @@
             <div class="row">
                 <%-- IMG --%>
                 <div class="col-md-3">
-                    <asp:Image CssClass="img-responsive img-rounded" ID="Image_Product" ImageUrl="http://lundgren84.com/KlädPlagg.jpg" runat="server" />
+                    <asp:Image CssClass="img-responsive img-rounded" ID="Image_Product" ImageUrl="http://lundgren84.com/KlädPlagg.jpg" AlternateText="Product img" runat="server" />
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-2">
-                    <asp:FileUpload ID="FileUpload1" runat="server" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-2">
-                    <asp:Button CssClass="btn btn-default" Csstype="button" ID="Button_NewProductIMG" runat="server" Text="Upload" OnClick="Button_NewProductIMG_Click" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <asp:Label ID="Label_ImgUpload" runat="server" ForeColor="#CC0000"></asp:Label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-2">
-                    <h4>
-                        <%-- Order ID --%>
-                        <asp:Label ID="Label_ProduktID" runat="server" Text="OrderID"></asp:Label>
-                    </h4>
-                </div>
-            </div>
+       
             <%-- Produktuppgifter --%>
             <div class="row">
                 <div class="col-md-2">
@@ -59,9 +37,9 @@
 
                     </h4>
                 </div>
-                <div class="col-md-3">
+          <%--      <div class="col-md-3">
                     <asp:TextBox CssClass="form-control" ID="TextBox_ProductName" runat="server"></asp:TextBox>
-                </div>
+                </div>--%>
             </div>
             <%-- Artikelnummer --%>
             <div class="row">
@@ -96,11 +74,11 @@
                 </div>
                 <div class="col-md-2">
                     <h4>
+                        
                         <asp:Label ID="Label_Brand" runat="server" Text="Varumärke"></asp:Label></h4>
+
                 </div>
-                <div class="col-md-3">
-                    <asp:TextBox CssClass="form-control" ID="TextBox_Brand" runat="server"></asp:TextBox>
-                </div>
+           
             </div>
             <%-- Kategori --%>
             <div class="row">
@@ -111,9 +89,7 @@
                     <h4>
                         <asp:Label ID="Label_Category" runat="server" Text="Kategori"></asp:Label></h4>
                 </div>
-                <div class="col-md-3">
-                    <asp:TextBox CssClass="form-control" ID="TextBox_Category" runat="server"></asp:TextBox>
-                </div>
+        
             </div>
             <%-- Pris b2b--%>
                <div class="row">
@@ -148,9 +124,9 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-7">
+            <%--    <div class="col-md-7">
                     <asp:TextBox ID="TextBox_Description" runat="server" ReadOnly="False" Height="100%" TextMode="MultiLine" Width="100%"></asp:TextBox>
-                </div>
+                </div>--%>
             </div>
 
             <%-- Egenskaper --%>

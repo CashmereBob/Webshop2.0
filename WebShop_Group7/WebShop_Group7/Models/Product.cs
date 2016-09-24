@@ -109,61 +109,9 @@ namespace WebShop_Group7.Models
             }
         }
 
-        internal void saveProductChanges(ProductObject proObc)
-        {
-            int productID = -1;    
+      
 
-            connection.OpenConnection();
-            //Fill tbl_Product_Attribute  Price,Attributes Missing
-            // PriceB2B = '{proObc.priceB2B}',
-            // PriceB2C = '{proObc.priceB2C}',
-            string query = $@"UPDATE tbl_Product_Attribute SET 
-                Quantity ='{proObc.quantity}',
-               
-                ArticleNumber = '{proObc.artNr}'       
-                WHERE tbl_Product_Attribute.ID = {proObc.productID}
-                ";
-            SqlCommand command = new SqlCommand(query, connection._connection);
-            command.ExecuteNonQuery();
-
-            //Get Product ID
-            query = $@"SELECT tbl_Product_Attribute.ProductID as prodID FROM tbl_Product_Attribute WHERE tbl_Product_Attribute.ID = {proObc.productID} ";
-
-            using (SqlCommand command2 = new SqlCommand(query, connection._connection))
-            {
-                using (dataReader = command2.ExecuteReader())
-                {
-
-                    while (dataReader.Read())
-                    {
-                        productID = int.Parse(dataReader["prodID"].ToString());
-                    }
-                }
-            }
-
-            //Fill tbl_Product  Brand,Category Missing
-            query = $@" USE [WebShopGr7]
-                                DECLARE @intBrand  INT = (dbo.GetBrandID('{proObc.brandName}'))
-                                DECLARE @intCat    INT = (dbo.GetCategoryID('{proObc.category}'))
-
-                                UPDATE tbl_Product SET 
-                                BrandID = @intBrand,
-                                CategoryID = @intCat,
-                                Name = '{proObc.name}', 
-                                Description = '{proObc.description}',          
-                                ImgUrl = '{proObc.imgURL}'       
-                                WHERE tbl_Product.ID = '{productID}'
-                ";
-
-            SqlCommand command3 = new SqlCommand(query, connection._connection);
-            command3.ExecuteNonQuery();
-
-
-
-            connection.CloseConnection();
-
-        }
-
+        
         public DataTable GetListProducts()
         {
             DataTable dataTable = new DataTable("Product");
@@ -420,10 +368,90 @@ namespace WebShop_Group7.Models
             connection.CloseConnection();
 
             return result;
+        }  
+        internal List<string> GetDroppdownNames(string tbl)
+        {
+            List<string> result = new List<string>();
+            string query = $@"use[WebShopGr7]
+                            select {tbl}.Name From {tbl}
+                            group by Name";
+            connection.OpenConnection();
+
+            using (SqlCommand command = new SqlCommand(query, connection._connection))
+            {
+                using (dataReader = command.ExecuteReader())
+                {
+
+                    while (dataReader.Read())
+                    {
+                        result.Add(dataReader["Name"].ToString());
+                    }
+                }
+            }
+            connection.CloseConnection();
+
+            return result;
+        }
+
+        //Saves
+        internal void SaveProduct_AttributeChanges(ProductObject proObc)
+        {
+
+        }
+        internal void saveProductChanges(ProductObject proObc)
+        {
+            int productID = -1;
+
+            connection.OpenConnection();
+            //Fill tbl_Product_Attribute  Price,Attributes Missing
+            // PriceB2B = '{proObc.priceB2B}',
+            // PriceB2C = '{proObc.priceB2C}',
+            string query = $@"UPDATE tbl_Product_Attribute SET 
+                Quantity ='{proObc.quantity}',
+               
+                ArticleNumber = '{proObc.artNr}'       
+                WHERE tbl_Product_Attribute.ID = {proObc.productID}
+                ";
+            SqlCommand command = new SqlCommand(query, connection._connection);
+            command.ExecuteNonQuery();
+
+            //Get Product ID
+            query = $@"SELECT tbl_Product_Attribute.ProductID as prodID FROM tbl_Product_Attribute WHERE tbl_Product_Attribute.ID = {proObc.productID} ";
+
+            using (SqlCommand command2 = new SqlCommand(query, connection._connection))
+            {
+                using (dataReader = command2.ExecuteReader())
+                {
+
+                    while (dataReader.Read())
+                    {
+                        productID = int.Parse(dataReader["prodID"].ToString());
+                    }
+                }
+            }
+
+            //Fill tbl_Product 
+            query = $@" USE [WebShopGr7]
+                                UPDATE tbl_Product SET 
+                                BrandID = (select tbl_Brand.ID from tbl_Brand where tbl_Brand.Name = '{proObc.brandName}'),
+                                CategoryID = (select tbl_Category.ID from tbl_Category where tbl_Category.Name = '{proObc.category}'),
+                                Name = '{proObc.name}', 
+                                Description = '{proObc.description}',          
+                                ImgUrl = '{proObc.imgURL}'       
+                                WHERE tbl_Product.ID = '{productID}'
+                ";
+
+            SqlCommand command3 = new SqlCommand(query, connection._connection);
+            command3.ExecuteNonQuery();
+
+
+
+            connection.CloseConnection();
+
         }
         public void AddProduct(int nrAttributes, string name, string articleNr, int quant, string brandID, string categoryID, string description,
-                               string imgUrl, int atributeID1, int atributeID2, int atributeID3, int atributeID4, decimal priceb2b,
-                               decimal priceb2c)
+                             string imgUrl, int atributeID1, int atributeID2, int atributeID3, int atributeID4, decimal priceb2b,
+                             decimal priceb2c)
         {
             int ProductID = 0;
             connection.OpenConnection();
@@ -450,30 +478,5 @@ namespace WebShop_Group7.Models
                 command.ExecuteNonQuery();
             }
         }
-        public List<string> GetAttributeNames()
-        {
-            List<string> result = new List<string>();
-            string query = $@"use[WebShopGr7]
-                            select tbl_Attribute.Name From tbl_Attribute
-                            group by Name";
-            connection.OpenConnection();
-
-            using (SqlCommand command = new SqlCommand(query, connection._connection))
-            {
-                using (dataReader = command.ExecuteReader())
-                {
-
-                    while (dataReader.Read())
-                    {
-                        result.Add(dataReader["Name"].ToString());
-                    }
-                }
-            }
-            connection.CloseConnection();
-
-            return result;
-        }
-    
-
     }
 }
