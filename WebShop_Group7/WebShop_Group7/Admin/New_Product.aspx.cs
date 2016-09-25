@@ -25,7 +25,15 @@ namespace WebShop_Group7.Admin
 
         private void FillValues(ProductObject proObj)
         {
-            throw new NotImplementedException();
+            proObj.name = TextBox_ProductName.Text;
+            proObj.artNr = TextBox1_ArticleNumber.Text;
+            proObj.brandName = TextBox_Brand.Text;
+            proObj.category = TextBox_Category.Text;
+            proObj.description = TextBox_Description.Text;
+            proObj.imgURL = TextBox_ImgUlr.Text;
+            proObj.quantity = int.Parse(TextBox_Quantity.Text);
+            proObj.priceB2B = 1;
+            proObj.priceB2C = 1;
         }
 
         protected void Button_NewProductIMG_Click(object sender, EventArgs e)
