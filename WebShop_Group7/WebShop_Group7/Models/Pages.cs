@@ -199,5 +199,46 @@ namespace WebShop_Group7.Models
                 db.CloseConnection();
             }
         }
+        public List<PageObject> ListAllPagesList()
+        {
+            var list = new List<PageObject>();
+
+            try
+            {
+                db.OpenConnection();
+
+                    string sql = "Select * From tbl_Page";
+                    SqlCommand myCommand = new SqlCommand(sql, db._connection);
+
+                    using (SqlDataReader myDataReader = myCommand.ExecuteReader())
+                    {
+
+                        while (myDataReader.Read())
+                        {
+                        var page = new PageObject();
+
+                            page.pageId = int.Parse(myDataReader["ID"].ToString());
+                            page.name = myDataReader["Name"].ToString();
+                            page.content = myDataReader["HTMLContent"].ToString();
+
+                        list.Add(page);
+                        }
+                    }
+             
+                    return list;
+                
+
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+        }
+
+        
     }
 }

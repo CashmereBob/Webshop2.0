@@ -46,54 +46,69 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">Web Shop Group-7</a>
+                    <a class="navbar-brand" runat="server" href="~/">WebShop</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Startsida</a></li>
-                        <li><a runat="server" href="~/User/ProductPage">Produkter</a></li>
+                        <%-- Droppdown --%>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Om oss<span class="caret"></span></a>
+                            <ul class="dropdown-menu" id="pageMeny" runat="server">
+
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav">
                         <%-- Droppdown --%>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kategorier <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="#">Separated link</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <%-- Droppdown --%>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Varumärken <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#">One more separated link</a></li>
+                                <li><a href="#">Separated link</a></li>
+
                             </ul>
                         </li>
                     </ul>
 
-
-                    <%-- Search --%>
-
                     <div class="navbar-form navbar-left">
+                 
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
+                            <input type="text" class="form-control" placeholder="Sök...">
                         </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
+                        <span class="form-group-btn">
+                            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                        </span>
+
+
+
                     </div>
 
-                    <asp:LoginView runat="server" ViewStateMode="Disabled">
-                        <AnonymousTemplate>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/User/ShopingBasket">Varukorg</a></li>
-                                <li><a runat="server" href="~/User/User_RegPage">Register</a></li>
-                                <li><a runat="server" href="~/User/User_LoginPage">Log in</a></li>
-                            </ul>
-                        </AnonymousTemplate>
-                        <LoggedInTemplate>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
-                                <li>
-                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
-                                </li>
-                            </ul>
-                        </LoggedInTemplate>
-                    </asp:LoginView>
+
+
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li><a runat="server" href="~/User/ShopingBasket"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+
+                    </ul>
+
+
+
+
+
+
                 </div>
             </div>
         </div>
@@ -102,7 +117,38 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Web Shop Group-7</p>
+
+                <div id="login" runat="server">
+                    <div class="form-group">
+
+                            <asp:TextBox ID="TextBox_User" CssClass="form-control" runat="server" placeholder="Användarnamn"></asp:TextBox>
+    
+
+
+                            <asp:TextBox ID="TextBox_Password" CssClass="form-control" runat="server" placeholder="Lösenord" TextMode="Password"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Required" ControlToValidate="TextBox_Password"></asp:RequiredFieldValidator>
+                         
+                            
+                        
+
+
+                  </br>
+                        <asp:Button ID="Button_login" CssClass="btn btn-default" runat="server" Text="Logga in" OnClick="Button_login_Click" />
+                        <asp:LinkButton ID="LinkButton_register" runat="server" Text="Skaffa konto"></asp:LinkButton>
+                    </div>
+                </div>
+
+                <div id="UserPages" runat="server">
+                    <h4>
+                        <asp:Label ID="label_user" runat="server" Text=""></asp:Label></h4>
+                    <h5>
+                        <asp:LinkButton ID="LinkButton_info" runat="server" Text="Min information"></asp:LinkButton></h5>
+                    <h5>
+                        <asp:LinkButton ID="LinkButton_orders" runat="server" Text="Orderhistoria"></asp:LinkButton></h5>
+                    <h5>
+                        <asp:LinkButton ID="LinkButton_logout" runat="server" Text="Logga ut" OnClick="LinkButton_logout_Click"></asp:LinkButton></h5>
+                </div>
+
+                <p>&copy; <%: DateTime.Now.Year %> - Webshop, win15 grupp7</p>
             </footer>
         </div>
     </form>

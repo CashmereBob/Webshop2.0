@@ -12,6 +12,7 @@ namespace WebShop_Group7
         protected void Page_Load(object sender, EventArgs e)
         {
             Session["Admin"] = null;
+            Session["User"] = null;
             Response.Redirect($"~/");
         }
     }
