@@ -19,8 +19,13 @@ namespace WebShop_Group7.Admin
         protected void Button_Save_Click(object sender, EventArgs e)
         {
             ProductObject proObj = new ProductObject();
-
+            FillValues(proObj);
             product.AddProduct(proObj);
+        }
+
+        private void FillValues(ProductObject proObj)
+        {
+            throw new NotImplementedException();
         }
 
         protected void Button_NewProductIMG_Click(object sender, EventArgs e)
