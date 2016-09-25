@@ -102,32 +102,29 @@ namespace WebShop_Group7.Admin
             if (!string.IsNullOrWhiteSpace(TextBox1_ArticleNumber.Text)) { proObc.artNr = TextBox1_ArticleNumber.Text; }
             if (!string.IsNullOrWhiteSpace(TextBox_Quantity.Text)) { proObc.quantity = int.Parse(TextBox_Quantity.Text); }
             if (!string.IsNullOrWhiteSpace(TextBox_PriceB2C.Text)) { proObc.priceB2C = decimal.Parse(TextBox_PriceB2C.Text); }
+            else { proObc.priceB2C = decimal.Parse(removeKR(Label_PriceB2C.Text).Trim()); }
             if (!string.IsNullOrWhiteSpace(TextBox_PriceB2B.Text)) { proObc.priceB2B = decimal.Parse(TextBox_PriceB2B.Text); }
-            List<string> Attributes = FillAttributeList();
+            else { proObc.priceB2B = decimal.Parse(removeKR(Label_PriceB2B.Text).Trim()); }
+         
        
-            product.saveProductChanges(proObc,Attributes);
+            product.saveProductChanges(proObc);
             LoadValues(id);
             FillDroppDowns();
             ClearAllTextBoxes();
         }
 
-        private List<string> FillAttributeList()
+        private string removeKR(string text)
         {
-            List<string> result = new List<string>();
-            if(Panel_Attribute1.Visible == true) { result.Add(Label_Attribute1.Text); }
-            if (Panel_Attribute2.Visible == true) { result.Add(Label_Attribute2.Text); }
-            if (Panel_Attribute3.Visible == true) { result.Add(Label_Attribute3.Text); }
-            if (Panel_Attribute4.Visible == true) { result.Add(Label_Attribute4.Text); }
-            return result;
+            text.Replace('K',' ');
+            text.Replace('r', ' ');
+
+            return text;
         }
 
         private void ClearAllTextBoxes()
         {
-
             TextBox1_ArticleNumber.Text = "";
             TextBox_Quantity.Text = "";
-
-
             TextBox_AttributeValue.Text = "";
             TextBox_PriceB2C.Text = "";
             TextBox_PriceB2B.Text = "";
@@ -135,7 +132,7 @@ namespace WebShop_Group7.Admin
 
         protected void Button_AddAttribute_Click(object sender, EventArgs e)
         {
-          
+            List<string> Attributes = FillAttributeList();
             if (Panel_Attribute1.Visible == false) { Panel_Attribute1.Visible = true; Label_Attribute1.Text =      TextBox_AttributeName.Text + " " + TextBox_AttributeValue.Text; }
             else if (Panel_Attribute2.Visible == false) { Panel_Attribute2.Visible = true; Label_Attribute2.Text = TextBox_AttributeName.Text + " " + TextBox_AttributeValue.Text; }
             else if (Panel_Attribute3.Visible == false) { Panel_Attribute3.Visible = true; Label_Attribute3.Text = TextBox_AttributeName.Text + " " + TextBox_AttributeValue.Text; }
@@ -143,6 +140,16 @@ namespace WebShop_Group7.Admin
             else { Response.Write("You cant have more then 4 attributes"); return; }
             TextBox_AttributeName.Text = "";
             TextBox_AttributeValue.Text = "";
+            product.addAttribute(proObc,Attributes);
+        }
+        private List<string> FillAttributeList()
+        {
+            List<string> result = new List<string>();
+            if (Panel_Attribute1.Visible == true) { result.Add(Label_Attribute1.Text); }
+            if (Panel_Attribute2.Visible == true) { result.Add(Label_Attribute2.Text); }
+            if (Panel_Attribute3.Visible == true) { result.Add(Label_Attribute3.Text); }
+            if (Panel_Attribute4.Visible == true) { result.Add(Label_Attribute4.Text); }
+            return result;
         }
 
         protected void Button_RemoveAttribute1_Click(object sender, EventArgs e)

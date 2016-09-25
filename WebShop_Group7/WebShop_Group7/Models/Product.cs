@@ -195,6 +195,9 @@ namespace WebShop_Group7.Models
             }
 
         }
+
+      
+
         public ProductObject GetMainProduct(int ID)
         {
             ProductObject Result = new ProductObject();
@@ -461,7 +464,8 @@ namespace WebShop_Group7.Models
             return result;
         }
 
-        //Saves
+        //################  Saves  ###############################
+        // Saves the Base Product changes
         internal void SaveProduct_AttributeChanges(ProductObject proObc)
         {
             string query = $@"UPDATE tbl_Product SET
@@ -477,7 +481,8 @@ namespace WebShop_Group7.Models
             command.ExecuteNonQuery();
             connection.CloseConnection();
         }
-        internal void saveProductChanges(ProductObject proObc,List<string> Attributes)
+        //Save New Attribute
+        internal void addAttribute(ProductObject proObc, List<string> Attributes)
         {
             //FIX Attributes.. comming is as a string with Name+" "+Value. Check if there is one allready, otherwise clreate one, 
             //then add it to the product!
@@ -498,19 +503,26 @@ namespace WebShop_Group7.Models
                     {
                         while (dataReader.Read())
                         {
-                            if(dataReader["ID"] != null) { exists = true; }                       
+                            if (dataReader["ID"] != null) { exists = true; }
                         }
                     }
                 }
                 if (exists) { }//Add ID to a list or maby to the Objekt direktly?
                 else { }//Create the Attribute and get the ID from it to the list OR to the Objekt?
             }
+        }
+        // Save the Product Attribute changes
+        internal void saveProductChanges(ProductObject proObc)
+        {
+            connection.OpenConnection();
+            string query = "";
 
             //Fill tbl_Product_Attribute  Price,Attributes Missing
-            // PriceB2B = '{proObc.priceB2B}',
-            // PriceB2C = '{proObc.priceB2C}',
+          
             query = $@"UPDATE tbl_Product_Attribute SET 
-                Quantity ='{proObc.quantity}',               
+                Quantity ='{proObc.quantity}',    
+                PriceB2B = '{proObc.priceB2B}',
+                PriceB2C = '{proObc.priceB2C}',           
                 ArticleNumber = '{proObc.artNr}'       
                 WHERE tbl_Product_Attribute.ID = {proObc.productID}
                 ";
@@ -551,6 +563,7 @@ namespace WebShop_Group7.Models
             connection.CloseConnection();
 
         }
+        //Add a new Product to DB
         public void AddProduct(int nrAttributes, string name, string articleNr, int quant, string brandID, string categoryID, string description,
                              string imgUrl, int atributeID1, int atributeID2, int atributeID3, int atributeID4, decimal priceb2b,
                              decimal priceb2c)
