@@ -26,10 +26,11 @@
 
                         <asp:BoundField DataField="ID" HeaderText="Kund-ID" SortExpression="ID" />
 
-                        <asp:BoundField DataField="Firstname" HeaderText="Förnamn" SortExpression="Förnamn" />
-                        <asp:BoundField DataField="Lastname" HeaderText="Efternamn" SortExpression="Efternamn" />
+                        <asp:BoundField DataField="Name" HeaderText="Namn" SortExpression="Förnamn" />
                         <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
                         <asp:BoundField DataField="Pricegroup" HeaderText="Prisgrupp" SortExpression="Prisgrupp" />
+                        <asp:BoundField DataField="Registered" HeaderText="Registrerad" SortExpression="Efternamn" />
+                        <asp:BoundField DataField="Admin" HeaderText="Admin" SortExpression="Efternamn" />
 
 
                           <asp:TemplateField>

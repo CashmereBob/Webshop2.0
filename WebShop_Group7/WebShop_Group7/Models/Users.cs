@@ -19,8 +19,8 @@ namespace WebShop_Group7.Models
 
                 using (DataTable dt = new DataTable("User"))
                 {
-                    dt.Columns.AddRange(new DataColumn[5] { new DataColumn("ID"), new DataColumn("Firstname"), new DataColumn("Lastname"),
-                    new DataColumn("Email"),new DataColumn("Pricegroup")});
+                    dt.Columns.AddRange(new DataColumn[6] { new DataColumn("ID"), new DataColumn("Name"),
+                    new DataColumn("Email"),new DataColumn("Pricegroup"), new DataColumn("Registered"), new DataColumn("Admin")});
 
                     string sql = "Select * From tbl_User";
                     SqlCommand myCommand = new SqlCommand(sql, db._connection);
@@ -34,15 +34,17 @@ namespace WebShop_Group7.Models
                         while (myDataReader.Read())
                         {
                             var id = int.Parse(myDataReader["ID"].ToString());
-                            var fname = myDataReader["Firstname"].ToString();
-                            var lname = myDataReader["Lastname"].ToString();
+                            var name = myDataReader["Firstname"].ToString() +" " + myDataReader["Lastname"].ToString();
                             var mail = myDataReader["Email"].ToString();
                             var pricegroup = int.Parse(myDataReader["Pricegroup"].ToString());
+                            string registered = "Nej";
+                            string admin = "Nej";
+
+                            if(!string.IsNullOrWhiteSpace(myDataReader["Password"].ToString())) { registered = "Ja"; }
+                            if ((bool)myDataReader["Admin"]) { admin = "Ja"; }
 
 
-
-
-                            dt.Rows.Add(id, fname,lname,mail,pricegroup);
+                            dt.Rows.Add(id,name,mail,pricegroup, registered, admin);
                         }
                     }
                     myCommand.ExecuteNonQuery();
