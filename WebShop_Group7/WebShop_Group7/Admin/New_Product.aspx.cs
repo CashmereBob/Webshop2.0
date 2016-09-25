@@ -32,8 +32,8 @@ namespace WebShop_Group7.Admin
             proObj.description = TextBox_Description.Text;
             proObj.imgURL = TextBox_ImgUlr.Text;
             proObj.quantity = int.Parse(TextBox_Quantity.Text);
-            proObj.priceB2B = 1;
-            proObj.priceB2C = 1;
+            proObj.priceB2B = int.Parse(TextBox_B2B.Text);
+            proObj.priceB2C = int.Parse(TextBox_B2C.Text);
         }
 
         protected void Button_NewProductIMG_Click(object sender, EventArgs e)

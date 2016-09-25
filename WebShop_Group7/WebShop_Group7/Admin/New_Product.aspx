@@ -84,6 +84,26 @@
                     <asp:TextBox CssClass="form-control" ID="TextBox_Category" runat="server"></asp:TextBox>
                 </div>
             </div>
+             <%-- B2B --%>
+            <div class="row">
+                <div class="col-md-2">
+                    <h4>Pris B2B:  </h4>
+                </div>
+
+                <div class="col-md-3">
+                    <asp:TextBox CssClass="form-control" ID="TextBox_B2B" runat="server"></asp:TextBox>
+                </div>
+            </div>
+             <%-- B2C --%>
+            <div class="row">
+                <div class="col-md-2">
+                    <h4>Pris B2C:  </h4>
+                </div>
+
+                <div class="col-md-3">
+                    <asp:TextBox CssClass="form-control" ID="TextBox_B2C" runat="server"></asp:TextBox>
+                </div>
+            </div>
             <%-- Beskrivning --%>
             <div class="row">
                 <div class="col-md-2">
