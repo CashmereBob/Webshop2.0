@@ -238,13 +238,22 @@ namespace WebShop_Group7.Admin {
         protected global::System.Web.UI.WebControls.Label Label_Attribute4;
         
         /// <summary>
-        /// Button1 control.
+        /// Button_RemoveAttribute4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button Button_RemoveAttribute4;
+        
+        /// <summary>
+        /// Panel_Add_Attributes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel_Add_Attributes;
         
         /// <summary>
         /// TextBox_AttributeName control.

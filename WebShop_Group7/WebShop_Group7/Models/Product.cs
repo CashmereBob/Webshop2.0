@@ -109,9 +109,9 @@ namespace WebShop_Group7.Models
             }
         }
 
-      
 
-        
+
+
         public DataTable GetListProducts()
         {
             DataTable dataTable = new DataTable("Product");
@@ -196,7 +196,75 @@ namespace WebShop_Group7.Models
 
         }
 
-      
+        internal void removeAttribute(string text, ProductObject proObc)
+        {
+            int attributeID = -1;
+            var attri = text.Split(' ');
+            //Get the Attribute ID
+            string query = $@"Select tbl_Attribute.ID from tbl_Attribute
+                              Where tbl_Attribute.Name = '{attri[0]}' AND tbl_Attribute.Value = '{attri[1]}'";
+            connection.OpenConnection();           
+            using (SqlCommand command = new SqlCommand(query, connection._connection))
+            {
+                using (dataReader = command.ExecuteReader())
+                {
+                    while (dataReader.Read())
+                    {
+                        attributeID = (int.Parse(dataReader["ID"].ToString()));
+                    }
+                }
+                    dataReader.Close();
+            }
+            //Check all attribute spots and delete the spotted Attribute
+            int nr = 1;
+            while (nr < 5)
+            {
+                string AttributeID = "AttributeID" + nr;
+                query = $@"SELECT {AttributeID} as focus From tbl_Product_Attribute
+                           WHERE tbl_Product_Attribute.ID = {proObc.productID} AND {AttributeID} = {attributeID}";
+                try
+                {
+                    using (SqlCommand command = new SqlCommand(query, connection._connection))
+                    {
+                        using (dataReader = command.ExecuteReader())
+                        {
+                            while (dataReader.Read())
+                            {
+                                // IF not null= We found our guy!
+                                if (dataReader["focus"] != null)
+                                {
+                                    dataReader.Close();
+                                    query = $@"UPDATE tbl_Product_Attribute 
+                                           SET
+                                          {AttributeID} = null
+                 
+                                           WHERE tbl_Product_Attribute.ID = {proObc.productID}         
+                    ";
+
+                                    using (SqlCommand command2 = new SqlCommand(query, connection._connection))
+                                    {
+                                        command2.ExecuteNonQuery();
+                                    }
+                                }
+                            }
+                        }
+                       
+                    }
+                }
+                catch
+                {
+
+                }
+                finally
+                {
+                    dataReader.Close();
+                    nr++;
+                }
+              
+            }
+
+            connection.CloseConnection();
+        }
 
         public ProductObject GetMainProduct(int ID)
         {
@@ -282,35 +350,36 @@ namespace WebShop_Group7.Models
                                       INNER JOIN tbl_Category ON tbl_Category.ID = tbl_Product.CategoryID
                                       WHERE tbl_Product_Attribute.ID={ID}
                                       ";
-            try { 
-            connection.OpenConnection();
-            using (SqlCommand command = new SqlCommand(query, connection._connection))
+            try
             {
-                using (dataReader = command.ExecuteReader())
+                connection.OpenConnection();
+                using (SqlCommand command = new SqlCommand(query, connection._connection))
                 {
-                    while (dataReader.Read())
+                    using (dataReader = command.ExecuteReader())
                     {
-                        Result.productID = int.Parse(dataReader["ID"].ToString());
-                        Result.name = dataReader["productName"].ToString();
-                        Result.description = dataReader["Description"].ToString();
-                        Result.priceB2B = decimal.Parse(dataReader["b2b"].ToString());
-                        Result.priceB2C = decimal.Parse(dataReader["b2c"].ToString());
-                        Result.brandName = dataReader["theBrand"].ToString();
-                        Result.category = dataReader["category"].ToString();
-                        try { Result.imgURL = dataReader["ImgUrl"].ToString(); } catch { Result.imgURL = ""; }
-                        Result.quantity = int.Parse(dataReader["Quantity"].ToString());
-                        Result.artNr = dataReader["ArticleNumber"].ToString();
-                    
+                        while (dataReader.Read())
+                        {
+                            Result.productID = int.Parse(dataReader["ID"].ToString());
+                            Result.name = dataReader["productName"].ToString();
+                            Result.description = dataReader["Description"].ToString();
+                            Result.priceB2B = decimal.Parse(dataReader["b2b"].ToString());
+                            Result.priceB2C = decimal.Parse(dataReader["b2c"].ToString());
+                            Result.brandName = dataReader["theBrand"].ToString();
+                            Result.category = dataReader["category"].ToString();
+                            try { Result.imgURL = dataReader["ImgUrl"].ToString(); } catch { Result.imgURL = ""; }
+                            Result.quantity = int.Parse(dataReader["Quantity"].ToString());
+                            Result.artNr = dataReader["ArticleNumber"].ToString();
+
+                        }
                     }
                 }
-            }
 
-            
-        }
-            catch  {   }
+
+            }
+            catch { }
             finally
             {
-               
+
                 connection.CloseConnection();
             }
             return Result;
@@ -438,7 +507,7 @@ namespace WebShop_Group7.Models
             connection.CloseConnection();
 
             return result;
-        }  
+        }
         internal List<string> GetDroppdownNames(string tbl)
         {
             List<string> result = new List<string>();
@@ -484,18 +553,20 @@ namespace WebShop_Group7.Models
         //Save New Attribute
         internal void addAttribute(ProductObject proObc, List<string> Attributes)
         {
-            //FIX Attributes.. comming is as a string with Name+" "+Value. Check if there is one allready, otherwise clreate one, 
-            //then add it to the product!
-            //int productID = -1;
-            connection.OpenConnection();
+
             string query = "";
+            int AttributeID = -1;
+            int spotToFill = 0;
             foreach (var item in Attributes)
             {
+                connection.OpenConnection();
+                spotToFill++;
                 var attri = item.Split(' ');
                 bool exists = false;
-                query = $@"Select tbl_Attributes.ID From tbl_Attributes
-                        WHERE tbl_Attributes.Name = '{attri[0]}' AND tbl_Attributes.Value= '{attri[1]}'
-                        ";
+                //Check if the attribute allready exists or not
+                query = $@"use[WebShopGr7]
+                           Select dbo.tbl_Attribute.ID From dbo.tbl_Attribute
+                           WHERE dbo.tbl_Attribute.Name = '{attri[0]}' AND dbo.tbl_Attribute.Value= '{attri[1]}'";
 
                 using (SqlCommand commandCheckAttri = new SqlCommand(query, connection._connection))
                 {
@@ -503,12 +574,100 @@ namespace WebShop_Group7.Models
                     {
                         while (dataReader.Read())
                         {
-                            if (dataReader["ID"] != null) { exists = true; }
+                            if (dataReader["ID"] != null)
+                            {
+                                AttributeID = int.Parse(dataReader["ID"].ToString());
+                                exists = true;
+                            }
                         }
                     }
                 }
-                if (exists) { }//Add ID to a list or maby to the Objekt direktly?
-                else { }//Create the Attribute and get the ID from it to the list OR to the Objekt?
+
+                //{
+                //    //Check Wath spot to put the Attribute on
+                //    query = $@"use[WebShopGr7]
+                //               Select tbl_Product_Attribute.AttributeID1,
+                //               tbl_Product_Attribute.AttributeID2,
+                //               tbl_Product_Attribute.AttributeID3,
+                //               tbl_Product_Attribute.AttributeID4 FROM tbl_Product_Attribute
+                //               WHERE tbl_Product_Attribute.ID = 1";
+                //    using (SqlCommand commandCheckSpot = new SqlCommand(query, connection._connection))
+                //    {
+                //        using (dataReader = commandCheckSpot.ExecuteReader())
+                //        {
+                //            while (dataReader.Read())
+                //            {
+                //                if (dataReader["AttributeID1"] == null) { spotToFill = "AttributeID1"; }
+                //                else if (dataReader["AttributeID2"] == null) { spotToFill = "AttributeID2"; }
+                //                else if (dataReader["AttributeID3"] == null) { spotToFill = "AttributeID3"; }
+                //                else if (dataReader["AttributeID4"] == null) { spotToFill = "AttributeID4"; }
+                //            }
+                //        }
+                //    }
+                //}
+                if (exists)//Add Attribute to the Objekt
+                {
+                    string attriSpot = "";
+                    if (spotToFill == 1) { attriSpot = "AttributeID1"; }
+                    if (spotToFill == 2) { attriSpot = "AttributeID2"; }
+                    if (spotToFill == 3) { attriSpot = "AttributeID3"; }
+                    if (spotToFill == 4) { attriSpot = "AttributeID4"; }
+                    query = $@"use[WebShopGr7]
+                               UPDATE tbl_Product_Attribute SET 
+                               {attriSpot} = {AttributeID}
+                               WHERE tbl_Product_Attribute.ID ={proObc.productID} ";
+                    using (SqlCommand command = new SqlCommand(query, connection._connection))
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                }
+                else //Create the Attribute and Add it to the objekt
+                {
+                    query = $@"use[WebShopGr7]
+                               Insert into  tbl_Attribute(Name,Value) 
+                               Values('" + attri[0] + "','" + attri[1] + "')";
+                    using (SqlCommand command = new SqlCommand(query, connection._connection))
+                    {
+                        command.ExecuteNonQuery();
+                    }
+
+                    // Get the ID from wat hwe created
+                    query = $@"use[WebShopGr7]
+                           Select dbo.tbl_Attribute.ID From dbo.tbl_Attribute
+                           WHERE dbo.tbl_Attribute.Name = '{attri[0]}' AND dbo.tbl_Attribute.Value= '{attri[1]}'";
+
+                    using (SqlCommand commandCheckAttri = new SqlCommand(query, connection._connection))
+                    {
+                        using (dataReader = commandCheckAttri.ExecuteReader())
+                        {
+                            while (dataReader.Read())
+                            {
+                                if (dataReader["ID"] != null)
+                                {
+                                    AttributeID = int.Parse(dataReader["ID"].ToString());
+
+                                }
+                            }
+                        }
+                    }
+                    //Add it to the right spot on Tbl_Product_Attributes
+                    string attriSpot = "";
+                    if (spotToFill == 1) { attriSpot = "AttributeID1"; }
+                    if (spotToFill == 2) { attriSpot = "AttributeID2"; }
+                    if (spotToFill == 3) { attriSpot = "AttributeID3"; }
+                    if (spotToFill == 4) { attriSpot = "AttributeID4"; }
+                    query = $@"use[WebShopGr7]
+                               UPDATE tbl_Product_Attribute SET 
+                               {attriSpot} = {AttributeID}
+                               WHERE tbl_Product_Attribute.ID ={proObc.productID} ";
+                    using (SqlCommand command = new SqlCommand(query, connection._connection))
+                    {
+                        command.ExecuteNonQuery();
+                    }
+
+                }
+                connection.CloseConnection();
+
             }
         }
         // Save the Product Attribute changes
@@ -516,9 +675,6 @@ namespace WebShop_Group7.Models
         {
             connection.OpenConnection();
             string query = "";
-
-            //Fill tbl_Product_Attribute  Price,Attributes Missing
-          
             query = $@"UPDATE tbl_Product_Attribute SET 
                 Quantity ='{proObc.quantity}',    
                 PriceB2B = '{proObc.priceB2B}',
@@ -528,38 +684,6 @@ namespace WebShop_Group7.Models
                 ";
             SqlCommand command = new SqlCommand(query, connection._connection);
             command.ExecuteNonQuery();
-
-            //Get Product ID
-            //query = $@"SELECT tbl_Product_Attribute.ProductID as prodID FROM tbl_Product_Attribute WHERE tbl_Product_Attribute.ID = {proObc.productID} ";
-
-            //using (SqlCommand command2 = new SqlCommand(query, connection._connection))
-            //{
-            //    using (dataReader = command2.ExecuteReader())
-            //    {
-
-            //        while (dataReader.Read())
-            //        {
-            //            productID = int.Parse(dataReader["prodID"].ToString());
-            //        }
-            //    }
-            //}
-
-            ////Fill tbl_Product 
-            //query = $@" USE [WebShopGr7]
-            //                    UPDATE tbl_Product SET 
-            //                    BrandID = (select tbl_Brand.ID from tbl_Brand where tbl_Brand.Name = '{proObc.brandName}'),
-            //                    CategoryID = (select tbl_Category.ID from tbl_Category where tbl_Category.Name = '{proObc.category}'),
-            //                    Name = '{proObc.name}', 
-            //                    Description = '{proObc.description}',          
-            //                    ImgUrl = '{proObc.imgURL}'       
-            //                    WHERE tbl_Product.ID = '{productID}'
-            //    ";
-
-            //SqlCommand command3 = new SqlCommand(query, connection._connection);
-            //command3.ExecuteNonQuery();
-
-
-
             connection.CloseConnection();
 
         }
