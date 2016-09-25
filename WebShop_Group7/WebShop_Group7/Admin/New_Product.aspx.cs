@@ -10,6 +10,7 @@ namespace WebShop_Group7.Admin
 {
     public partial class New_Product : System.Web.UI.Page
     {
+        List<string> attributes = new List<string>();
         Product product = new Product();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,7 +21,7 @@ namespace WebShop_Group7.Admin
         {
             ProductObject proObj = new ProductObject();
             FillValues(proObj);
-            product.AddProduct(proObj);
+            product.AddProduct(proObj,attributes);
         }
 
         private void FillValues(ProductObject proObj)
@@ -34,6 +35,10 @@ namespace WebShop_Group7.Admin
             proObj.quantity = int.Parse(TextBox_Quantity.Text);
             proObj.priceB2B = int.Parse(TextBox_B2B.Text);
             proObj.priceB2C = int.Parse(TextBox_B2C.Text);
+            if (!string.IsNullOrWhiteSpace(TextBox_Attribute1_Name.Text) && !string.IsNullOrWhiteSpace(TextBox_Attribute1_Value.Text)) { attributes.Add(TextBox_Attribute1_Name.Text + " " + TextBox_Attribute1_Value.Text); }
+            if (!string.IsNullOrWhiteSpace(TextBox_Attribute2_Name.Text) && !string.IsNullOrWhiteSpace(TextBox_Attribute2_Value.Text)) { attributes.Add(TextBox_Attribute2_Name.Text + " " + TextBox_Attribute2_Value.Text); }
+            if (!string.IsNullOrWhiteSpace(TextBox_Attribute3_Name.Text) && !string.IsNullOrWhiteSpace(TextBox_Attribute3_Value.Text)) { attributes.Add(TextBox_Attribute3_Name.Text + " " + TextBox_Attribute3_Value.Text); }
+            if (!string.IsNullOrWhiteSpace(TextBox_Attribute4_Name.Text) && !string.IsNullOrWhiteSpace(TextBox_Attribute4_Value.Text)) { attributes.Add(TextBox_Attribute4_Name.Text + " " + TextBox_Attribute4_Value.Text); }
         }
 
         protected void Button_NewProductIMG_Click(object sender, EventArgs e)

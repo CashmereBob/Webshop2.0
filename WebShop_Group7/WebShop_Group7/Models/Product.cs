@@ -537,7 +537,51 @@ namespace WebShop_Group7.Models
         // Saves the Base Product changes
         internal void SaveProduct_AttributeChanges(ProductObject proObc)
         {
-            string query = $@"UPDATE tbl_Product SET
+            string query;
+            int brandID;
+            connection.OpenConnection();
+            //Check brand
+            query = $@"Select tbl_Brand.ID from tbl_Brand
+                       where tbl_Brand.Name = '{proObc.brandName}'";
+            using (SqlCommand command1 = new SqlCommand(query, connection._connection))
+            {
+                using (dataReader = command1.ExecuteReader())
+                {
+                    while (dataReader.Read())
+                    {
+                        //Check if brand exists
+                        if (dataReader["ID"] != null)
+                        {
+                            brandID = int.Parse(dataReader["ID"].ToString());
+                        }
+                        else
+                        {
+                            //Create the Brand
+                            query = $@"INSERT INTO tbl_Brand
+                                    (Name) VALUES ('{proObc.brandName}')";
+                            using (SqlCommand command3 = new SqlCommand(query, connection._connection))
+                            {
+                                command3.ExecuteNonQuery();
+                            }
+                            //Get the new brand+s ID
+                            query = $@"SELECT tbl_Brand.ID from tbl_Brand WHERE Brand.Name = '{proObc.brandName}'";
+                            using (SqlCommand command4 = new SqlCommand(query, connection._connection))
+                            {
+                                using (dataReader = command4.ExecuteReader())
+                                {
+                                    while (dataReader.Read())
+                                    {
+                                        //HERE I AM!!!
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                //Check Category
+                query = $@"";
+
+                query = $@"UPDATE tbl_Product SET
                            Name ='{proObc.name}',
                            Description ='{proObc.description}',
                            BrandID =(select tbl_Brand.ID from tbl_Brand where tbl_Brand.Name = '{proObc.brandName}'),
@@ -545,10 +589,11 @@ namespace WebShop_Group7.Models
                            ImgUrl ='{proObc.imgURL}'
                            WHERE tbl_Product.ID = {proObc.productID}           
                            ";
-            connection.OpenConnection();
-            SqlCommand command = new SqlCommand(query, connection._connection);
-            command.ExecuteNonQuery();
-            connection.CloseConnection();
+
+                SqlCommand command = new SqlCommand(query, connection._connection);
+                command.ExecuteNonQuery();
+                connection.CloseConnection();
+            }
         }
         //Save New Attribute
         internal void addAttribute(ProductObject proObc, List<string> Attributes)
@@ -688,32 +733,20 @@ namespace WebShop_Group7.Models
 
         }
         //Add a new Product to DB
-        public void AddProduct(ProductObject proObj)
+        public void AddProduct(ProductObject proObj,List<string> attributes)
         {
-            int ProductID = 0;
+          
             connection.OpenConnection();
-            //New Brand
+            //Brand
 
-            //New Category
+            //Category
+            
+            //Attributes
 
-            //New Product
-            //string sql = $@"Insert into  tbl_Product (Name,Description,BrandID,CategoryID,ImgUrl) 
-            //Values('" + name + "','" + description + "','" + brandID + "','" + categoryID + "','" + imgUrl + "')";
-            //using (SqlCommand command = new SqlCommand(sql, connection._connection))
-            //{
-            //    command.ExecuteNonQuery();
-            //}
-            ////New Attributes
+            //Product
 
-
-            ////New Product_Attribute
-            //string query = $@"Insert into  tbl_Product_Attribute (AttributeID1,AttributeID2,AttributeID3,AttributeID4,ProductID,Quantity,PriceB2B,PriceB2C,ArticleNumber) 
-            //Values('" + atributeID1 + "','" + atributeID2 + "','" + atributeID3 + "','" + atributeID4 + "','"
-            //+ ProductID + "','" + quant + "','" + priceb2b + "','" + priceb2c + "','" + articleNr + "')";
-            //using (SqlCommand command = new SqlCommand(sql, connection._connection))
-            //{
-            //    command.ExecuteNonQuery();
-            //}
+            //Product_Attributes
+            
         }
     }
 }

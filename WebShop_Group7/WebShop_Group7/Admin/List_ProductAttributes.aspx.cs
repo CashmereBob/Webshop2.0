@@ -36,8 +36,8 @@ namespace WebShop_Group7.Admin
         {
           
             if (!string.IsNullOrWhiteSpace(TextBox_ProductName.Text)) { proObc.name = TextBox_ProductName.Text; }
-            if (DropDownList_Category.SelectedItem.Text != "Select") { proObc.category = DropDownList_Category.SelectedItem.Text; }
-            if (DropDownList_Brand.SelectedValue != "Select") { proObc.brandName = DropDownList_Brand.SelectedValue; }
+            if (!string.IsNullOrWhiteSpace(TextBox_Brand.Text)) { proObc.brandName = TextBox_Brand.Text; }
+            if (!string.IsNullOrWhiteSpace(TextBox_Category.Text)) { proObc.category = TextBox_Category.Text; }
             if (!string.IsNullOrWhiteSpace(TextBox_ImgUrl.Text)) { proObc.imgURL = TextBox_ImgUrl.Text; }
             if (!string.IsNullOrWhiteSpace(TextBox_ProductNewDescription.Text)) { proObc.description = TextBox_ProductNewDescription.Text; }
 
@@ -49,18 +49,20 @@ namespace WebShop_Group7.Admin
             BindGrid();
             SetValues();
         }
-        protected void itemSelected(object sender, EventArgs e)
-        {
-            Response.Write("HELLO!!");
-                if (DropDownList_Category.SelectedItem.Text != "Select") { proObc.category = DropDownList_Category.SelectedItem.Text; }
-            if (DropDownList_Brand.SelectedValue != "Select") { proObc.brandName = DropDownList_Brand.SelectedValue; }
-        }
+        //protected void itemSelected(object sender, EventArgs e)
+        //{
+        //    Response.Write("HELLO!!");
+        //        if (DropDownList_Category.SelectedItem.Text != "Select") { proObc.category = DropDownList_Category.SelectedItem.Text; }
+        //    if (DropDownList_Brand.SelectedValue != "Select") { proObc.brandName = DropDownList_Brand.SelectedValue; }
+        //}
 
         private void CLearTextBoxes()
         {
             TextBox_ImgUrl.Text = "";
             TextBox_ProductName.Text = "";        
             TextBox_ProductNewDescription.Text = "";
+            TextBox_Brand.Text = "";
+            TextBox_Category.Text = "";
         }
 
         private void SetValues()
@@ -70,40 +72,38 @@ namespace WebShop_Group7.Admin
             Label_ProductBrand.Text = proObc.brandName;
             Label_imgURL.Text = proObc.imgURL;
             TextBox_ProductDescription.Text = proObc.description;
-            FillDroppdownListBrandName();
-            FillDropDownList_CategoryName();
-
+           
         }
         private void GetProduct()
         {
             proObc = product.GetMainProduct(ProductID);
             proObc.productID = ProductID;
         }
-        private void FillDroppdownListBrandName()
-        {
-            brandNames = product.GetDroppdownNames("tbl_Brand");
+        //private void FillDroppdownListBrandName()
+        //{
+        //    brandNames = product.GetDroppdownNames("tbl_Brand");
             
-            DropDownList_Brand.DataSource = from i in brandNames
-                                            select new ListItem()
-                                            {
-                                                Text = i,
-                                                Value = i
-                                            };
-            DropDownList_Brand.DataBind();
+        //    DropDownList_Brand.DataSource = from i in brandNames
+        //                                    select new ListItem()
+        //                                    {
+        //                                        Text = i,
+        //                                        Value = i
+        //                                    };
+        //    DropDownList_Brand.DataBind();
             
 
-        }
-        private void FillDropDownList_CategoryName()
-        {
-            categoryNames = product.GetDroppdownNames("tbl_Category");
-            DropDownList_Category.DataSource = from i in categoryNames
-                                               select new ListItem()
-                                               {
-                                                   Text = i,
-                                                   Value = i
-                                               };
-            DropDownList_Category.DataBind();      
-        }
+        //}
+        //private void FillDropDownList_CategoryName()
+        //{
+        //    categoryNames = product.GetDroppdownNames("tbl_Category");
+        //    DropDownList_Category.DataSource = from i in categoryNames
+        //                                       select new ListItem()
+        //                                       {
+        //                                           Text = i,
+        //                                           Value = i
+        //                                       };
+        //    DropDownList_Category.DataBind();      
+        //}
         protected void BindGrid()
         {
             GridView_Products.DataSource = ViewState["dt"] as DataTable;

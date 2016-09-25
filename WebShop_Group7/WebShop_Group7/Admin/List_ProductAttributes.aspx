@@ -79,9 +79,10 @@
                     </asp:TableCell>
                     <%-- New Vlaue --%>
                     <asp:TableCell CssClass="col-md-2">
-                        <asp:DropDownList OnSelectedIndexChanged="itemSelected" CssClass="form-control" ID="DropDownList_Category" runat="server" >
+                      <%--  <asp:DropDownList OnSelectedIndexChanged="itemSelected" CssClass="form-control" ID="DropDownList_Category" runat="server" >
                              <asp:ListItem Value="Select"></asp:ListItem>
-                        </asp:DropDownList>Nor Working
+                        </asp:DropDownList>--%>
+                        <asp:TextBox ID="TextBox_Category" runat="server"></asp:TextBox>
                     </asp:TableCell>
                 </asp:TableRow>
                 <%-- Brand --%>
@@ -96,9 +97,10 @@
                         <asp:Label ID="Label6" runat="server" Text=" Ändra till:"></asp:Label>
                     </asp:TableCell>
                     <asp:TableCell CssClass="col-md-2">
-                        <asp:DropDownList OnSelectedIndexChanged="itemSelected" CssClass="form-control" ID="DropDownList_Brand"  runat="server">
+                      <%--  <asp:DropDownList OnSelectedIndexChanged="itemSelected" CssClass="form-control" ID="DropDownList_Brand"  runat="server">
                             <asp:ListItem Value="Select"></asp:ListItem>
-                        </asp:DropDownList>Not Working
+                        </asp:DropDownList>--%>
+                        <asp:TextBox ID="TextBox_Brand" runat="server"></asp:TextBox>
                     </asp:TableCell>
                 </asp:TableRow>
                 <%-- Img --%>

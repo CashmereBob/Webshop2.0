@@ -121,13 +121,13 @@ namespace WebShop_Group7.Admin {
         protected global::System.Web.UI.WebControls.Label Label9;
         
         /// <summary>
-        /// DropDownList_Category control.
+        /// TextBox_Category control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Category;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Category;
         
         /// <summary>
         /// Label5 control.
@@ -157,13 +157,13 @@ namespace WebShop_Group7.Admin {
         protected global::System.Web.UI.WebControls.Label Label6;
         
         /// <summary>
-        /// DropDownList_Brand control.
+        /// TextBox_Brand control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Brand;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Brand;
         
         /// <summary>
         /// Label3 control.
