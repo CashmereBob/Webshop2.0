@@ -13,22 +13,40 @@ namespace WebShop_Group7.Admin {
     public partial class Edit_Page {
         
         /// <summary>
-        /// TextBox_payment control.
+        /// TextBox_Name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_payment;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Name;
         
         /// <summary>
-        /// TextArea_input control.
+        /// TextArea_Content control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextArea_input;
+        protected global::System.Web.UI.WebControls.TextBox TextArea_Content;
+        
+        /// <summary>
+        /// CheckBox_delete control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_delete;
+        
+        /// <summary>
+        /// Label_delete control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_delete;
         
         /// <summary>
         /// Button_Save control.

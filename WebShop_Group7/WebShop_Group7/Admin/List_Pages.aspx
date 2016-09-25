@@ -1,17 +1,18 @@
 ﻿<%@ Page Title="Pages" Language="C#" MasterPageFile="~/Admins.Master" AutoEventWireup="true" CodeBehind="List_Pages.aspx.cs" Inherits="WebShop_Group7.Admin.List_Pages" %>
 
   <asp:Content ID="BodyContent" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container-fluid">
+      <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
-                <h2><%: Title %>.</h2>
+                <h2>
+                    
+                    <%: Title %></h2>
             </div>
         </div>
 
         <div class="row">
             <div class="col-xs-12">
-
-                <asp:TextBox ID="TextBox_Search" runat="server"></asp:TextBox>
+                <asp:Button ID="Button_add" runat="server" Text="Lägg till" OnClick="Button_add_Click" />
             </div>
         </div>
         <div class="row">

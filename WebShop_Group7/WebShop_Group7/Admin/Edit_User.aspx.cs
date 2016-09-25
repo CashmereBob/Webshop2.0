@@ -108,6 +108,7 @@ namespace WebShop_Group7.Admin
             }
             else
             {
+
                 userDal.UpdateUser(user, id);
                 Response.Redirect("~/Admin/List_Users.aspx");
             }

@@ -49,5 +49,10 @@ namespace WebShop_Group7.Admin
             var ID = row.Cells[0].Text;
             Response.Redirect($"~/Admin/Edit_Page.aspx?id={ID}");
         }
+
+        protected void Button_add_Click(object sender, EventArgs e)
+        {
+            Response.Redirect($"~/Admin/Edit_Page.aspx");
+        }
     }
 }

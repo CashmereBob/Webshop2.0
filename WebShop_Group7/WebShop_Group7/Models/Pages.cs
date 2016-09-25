@@ -57,5 +57,147 @@ namespace WebShop_Group7.Models
             }
         }
 
+        internal PageObject GetStartPage()
+        {
+            PageObject page = new PageObject();
+            try
+            {
+                db.OpenConnection();
+
+                string sql = $"Select * From tbl_Page WHERE Name = 'Startpage'";
+                SqlCommand myCommand = new SqlCommand(sql, db._connection);
+
+                using (SqlDataReader myDataReader = myCommand.ExecuteReader())
+                {
+
+                    while (myDataReader.Read())
+                    {
+                        page.pageId = int.Parse(myDataReader["ID"].ToString());
+                        page.name = myDataReader["Name"].ToString();
+                        page.content = myDataReader["HTMLContent"].ToString();
+
+                    }
+                }
+
+
+
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+
+
+
+            return page;
+        }
+
+        internal void DeletePage(int id)
+        {
+            try
+            {
+                db.OpenConnection();
+
+                string sql = $"DELETE FROM tbl_Page WHERE id = '{id}'";
+                SqlCommand insertCmd = new SqlCommand(sql, db._connection);
+                insertCmd.ExecuteNonQuery();
+
+            }
+            catch
+            {
+                //TODO exeption
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+        }
+
+        internal void UppdatePage(PageObject page, int id)
+        {
+            try
+            {
+                db.OpenConnection();
+
+                string sql = $"UPDATE tbl_Page SET Name = '{page.name}', HTMLContent = '{page.content}' WHERE ID = '{id}'";
+
+                SqlCommand insertCmd = new SqlCommand(sql, db._connection);
+                insertCmd.ExecuteNonQuery();
+
+            }
+            catch
+            {
+                //TODO Exeption
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+        }
+
+        internal PageObject GetPageById(int id)
+        {
+            PageObject page = new PageObject();
+            try
+            {
+                db.OpenConnection();
+
+                string sql = $"Select * From tbl_Page WHERE ID = '{id}'";
+                SqlCommand myCommand = new SqlCommand(sql, db._connection);
+
+                using (SqlDataReader myDataReader = myCommand.ExecuteReader())
+                {
+
+                    while (myDataReader.Read())
+                    {
+                        page.pageId = int.Parse(myDataReader["ID"].ToString());
+                        page.name = myDataReader["Name"].ToString();
+                        page.content = myDataReader["HTMLContent"].ToString();
+                        
+                    }
+                }
+
+
+
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+
+
+
+            return page;
+        }
+
+        internal void AddPage(PageObject page)
+        {
+            try
+            {
+                db.OpenConnection();
+
+                string sql = $"Insert Into tbl_Page (Name, HTMLContent ) Values('{page.name}', '{page.content}')";
+
+                SqlCommand insertCmd = new SqlCommand(sql, db._connection);
+                insertCmd.ExecuteNonQuery();
+
+            }
+            catch
+            {
+                //TODO exeption
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+        }
     }
 }
