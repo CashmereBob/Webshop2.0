@@ -616,8 +616,12 @@
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Brand.cs" />
+    <Compile Include="Models\BrandObject.cs" />
     <Compile Include="Models\Carrier.cs" />
     <Compile Include="Models\CarrierObject.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\CategoryObject.cs" />
     <Compile Include="Models\DBConnection.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderObject.cs" />

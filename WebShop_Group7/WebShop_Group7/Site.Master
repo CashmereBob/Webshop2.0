@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title><%: Page.Title %></title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -62,10 +62,8 @@
                         <%-- Droppdown --%>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kategorier <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
+                            <ul class="dropdown-menu" id="categoryMenu" runat="server">
+                                
                             </ul>
                         </li>
                     </ul>
@@ -73,11 +71,8 @@
                         <%-- Droppdown --%>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Varumärken <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
+                            <ul class="dropdown-menu" id="brandMenu" runat="server">
+                           
 
                             </ul>
                         </li>
