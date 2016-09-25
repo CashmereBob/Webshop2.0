@@ -4,29 +4,30 @@
     <div class="container-fluid">
         <h2><%: Title %>.</h2>
         <div class="jumbotron">
-     
+
             <div class="row">
                 <%-- IMG --%>
                 <div class="col-md-3">
                     <asp:Image CssClass="img-responsive img-rounded" ID="Image_Product" ImageUrl="http://lundgren84.com/KlädPlagg.jpg" runat="server" />
                 </div>
             </div>
+              <div class="row">
+                  <asp:Label ID="Label_ImgUrl" runat="server" Text=""></asp:Label>
+                  </div>
             <div class="row">
                 <div class="col-md-2">
-                    <asp:FileUpload ID="FileUpload1" runat="server" />
+                    <h4>Img Url:</h4>
+                </div>
+                    <div class="col-md-3">
+                        <asp:TextBox ID="TextBox_ImgUlr" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-2">
-                    <asp:Button CssClass="btn btn-default" Csstype="button" ID="Button_NewProductIMG" runat="server" Text="Upload" />
+                    <asp:Button CssClass="btn btn-default" Csstype="button" ID="Button_NewProductIMG" runat="server" Text="Upload" OnClick="Button_NewProductIMG_Click" />
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <asp:Label ID="Label_ImgUpload" runat="server" ForeColor="#CC0000"></asp:Label>
-                </div>
-            </div>
-      
+
             <%-- Produktuppgifter --%>
             <div class="row">
                 <div class="col-md-2">
@@ -38,7 +39,7 @@
                 <div class="col-md-2">
                     <h4>Produktnamn:</h4>
                 </div>
-         
+
                 <div class="col-md-3">
                     <asp:TextBox CssClass="form-control" ID="TextBox_ProductName" runat="server"></asp:TextBox>
                 </div>
@@ -48,7 +49,7 @@
                 <div class="col-md-2">
                     <h4>Artikelnummer: </h4>
                 </div>
-           
+
                 <div class="col-md-3">
                     <asp:TextBox CssClass="form-control" ID="TextBox1_ArticleNumber" runat="server"></asp:TextBox>
                 </div>
@@ -58,7 +59,7 @@
                 <div class="col-md-2">
                     <h4>Antal i lager:</h4>
                 </div>
-         
+
                 <div class="col-md-3">
                     <asp:TextBox CssClass="form-control" ID="TextBox_Quantity" runat="server"></asp:TextBox>
                 </div>
@@ -68,7 +69,7 @@
                 <div class="col-md-2">
                     <h4>Varumärke: </h4>
                 </div>
-            
+
                 <div class="col-md-3">
                     <asp:TextBox CssClass="form-control" ID="TextBox_Brand" runat="server"></asp:TextBox>
                 </div>
@@ -78,7 +79,7 @@
                 <div class="col-md-2">
                     <h4>Kategori:  </h4>
                 </div>
-            
+
                 <div class="col-md-3">
                     <asp:TextBox CssClass="form-control" ID="TextBox_Category" runat="server"></asp:TextBox>
                 </div>
@@ -101,77 +102,74 @@
                     <h3>Egenskaper</h3>
                 </div>
             </div>
-
+            <div class="row">
+                <div class="col-md-1">
+                    <asp:Label ID="Label4" runat="server" Text=""></asp:Label>
+                </div>
+                <div class="col-md-2">
+                    <asp:Label ID="Label1" runat="server" Text="Namn"></asp:Label>
+                </div>
+                <div class="col-md-2">
+                    <asp:Label ID="Label2" runat="server" Text="Värde"></asp:Label>
+                </div>
+            </div>
             <%-- Egenskap1 --%>
 
-
             <div class="row">
-                <asp:Panel ID="Panel_Attribute1" runat="server">
-                    <div class="col-md-2">
-                        <asp:Label ID="Label_Attribute1" runat="server" Text=""></asp:Label>
-                    </div>
-                    <div class="col-md-2">
-                        <asp:Button CssClass="btn btn-default" Csstype="button" ID="Button_RemoveAttribute1" runat="server" Text="Remove" />
-                    </div>
-                </asp:Panel>
+                <div class="col-md-1">
+                    <asp:Label ID="Label3" runat="server" Text="1:"></asp:Label>
+                </div>
+                <div class="col-md-2">
+                    <asp:TextBox CssClass="form-control" ID="TextBox_Attribute1_Name" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-md-2">
+                    <asp:TextBox CssClass="form-control" ID="TextBox_Attribute1_Value" runat="server"></asp:TextBox>
+                </div>
             </div>
+
             <%-- Egenskap2 --%>
             <div class="row">
-                <asp:Panel ID="Panel_Attribute2" runat="server">
-                    <div class="col-md-2">
-                        <asp:Label ID="Label_Attribute2" runat="server" Text=""></asp:Label>
-                    </div>
-                    <div class="col-md-2">
-                        <asp:Button CssClass="btn btn-default" Csstype="button" ID="Button_RemoveAttribute2" runat="server" Text="Remove" />
-                    </div>
-                </asp:Panel>
+                <div class="col-md-1">
+                    <asp:Label ID="Label5" runat="server" Text="2:"></asp:Label>
+                </div>
+                <div class="col-md-2">
+                    <asp:TextBox CssClass="form-control" ID="TextBox_Attribute2_Name" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-md-2">
+                    <asp:TextBox CssClass="form-control" ID="TextBox_Attribute2_Value" runat="server"></asp:TextBox>
+                </div>
             </div>
             <%-- Egenskap3 --%>
             <div class="row">
-                <asp:Panel ID="Panel_Attribute3" runat="server">
-                    <div class="col-md-2">
-                        <asp:Label ID="Label_Attribute3" runat="server" Text=""></asp:Label>
-                    </div>
-                    <div class="col-md-2">
-                        <asp:Button CssClass="btn btn-default" Csstype="button" ID="Button_RemoveAttribute3" runat="server" Text="Remove" /><br />
-                    </div>
-                </asp:Panel>
+                <div class="col-md-1">
+                    <asp:Label ID="Label6" runat="server" Text="3:"></asp:Label>
+                </div>
+                <div class="col-md-2">
+                    <asp:TextBox CssClass="form-control" ID="TextBox_Attribute3_Name" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-md-2">
+                    <asp:TextBox CssClass="form-control" ID="TextBox_Attribute3_Value" runat="server"></asp:TextBox>
+                </div>
             </div>
             <%-- Egenskap4 --%>
             <div class="row">
-                <asp:Panel ID="Panel_Attribute4" runat="server">
-                    <div class="col-md-2">
-                        <asp:Label ID="Label_Attribute4" runat="server" Text=""></asp:Label>
-                    </div>
-                    <div class="col-md-2">
-                        <asp:Button CssClass="btn btn-default" Csstype="button" ID="Button1" runat="server" Text="Remove" /><br />
-                    </div>
-                </asp:Panel>
-            </div>
-            <%-- Spara ny egenskap --%>
-            <div class="row">
+                <div class="col-md-1">
+                    <asp:Label ID="Label7" runat="server" Text="4:"></asp:Label>
+                </div>
                 <div class="col-md-2">
-                    <h4>Lägg till egenskap</h4>
+                    <asp:TextBox CssClass="form-control" ID="TextBox_Attribute4_Name" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-md-2">
+                    <asp:TextBox CssClass="form-control" ID="TextBox_Attribute4_Value" runat="server"></asp:TextBox>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-2">
-                    <asp:TextBox CssClass="form-control" ID="TextBox_AttributeCategory" runat="server"></asp:TextBox>
-                </div>
-                <div class="col-md-2">
-                    <asp:DropDownList CssClass="form-control" ID="DropDownList_Atribute" runat="server"></asp:DropDownList>
-                </div>
-                <div class="col-md-2">
-                    <asp:Button CssClass="btn btn-default" Csstype="button" ID="Button_AddAttribute" runat="server" Text="Läggtill" />
 
-                </div>
-            </div>
             <%-- Save button --%>
             <div class="row">
                 <div class="col-md-4">
-                    <asp:Button CssClass="btn btn-default" Csstype="button" ID="Button_Save" runat="server" Text="Lägg till produkt"  />
+                    <asp:Button CssClass="btn btn-default" Csstype="button" ID="Button_Save" runat="server" Text="Lägg till produkt" OnClick="Button_Save_Click" />
                 </div>
             </div>
         </div>
     </div>
-    </asp:Content>
+</asp:Content>

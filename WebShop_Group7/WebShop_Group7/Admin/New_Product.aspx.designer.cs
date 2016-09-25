@@ -22,13 +22,22 @@ namespace WebShop_Group7.Admin {
         protected global::System.Web.UI.WebControls.Image Image_Product;
         
         /// <summary>
-        /// FileUpload1 control.
+        /// Label_ImgUrl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
+        protected global::System.Web.UI.WebControls.Label Label_ImgUrl;
+        
+        /// <summary>
+        /// TextBox_ImgUlr control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_ImgUlr;
         
         /// <summary>
         /// Button_NewProductIMG control.
@@ -38,15 +47,6 @@ namespace WebShop_Group7.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button_NewProductIMG;
-        
-        /// <summary>
-        /// Label_ImgUpload control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_ImgUpload;
         
         /// <summary>
         /// TextBox_ProductName control.
@@ -103,139 +103,139 @@ namespace WebShop_Group7.Admin {
         protected global::System.Web.UI.WebControls.TextBox TextBox_Description;
         
         /// <summary>
-        /// Panel_Attribute1 control.
+        /// Label4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel_Attribute1;
+        protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
-        /// Label_Attribute1 control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_Attribute1;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// Button_RemoveAttribute1 control.
+        /// Label2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_RemoveAttribute1;
+        protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// Panel_Attribute2 control.
+        /// Label3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel_Attribute2;
+        protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// Label_Attribute2 control.
+        /// TextBox_Attribute1_Name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_Attribute2;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Attribute1_Name;
         
         /// <summary>
-        /// Button_RemoveAttribute2 control.
+        /// TextBox_Attribute1_Value control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_RemoveAttribute2;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Attribute1_Value;
         
         /// <summary>
-        /// Panel_Attribute3 control.
+        /// Label5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel_Attribute3;
+        protected global::System.Web.UI.WebControls.Label Label5;
         
         /// <summary>
-        /// Label_Attribute3 control.
+        /// TextBox_Attribute2_Name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_Attribute3;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Attribute2_Name;
         
         /// <summary>
-        /// Button_RemoveAttribute3 control.
+        /// TextBox_Attribute2_Value control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_RemoveAttribute3;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Attribute2_Value;
         
         /// <summary>
-        /// Panel_Attribute4 control.
+        /// Label6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel_Attribute4;
+        protected global::System.Web.UI.WebControls.Label Label6;
         
         /// <summary>
-        /// Label_Attribute4 control.
+        /// TextBox_Attribute3_Name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_Attribute4;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Attribute3_Name;
         
         /// <summary>
-        /// Button1 control.
+        /// TextBox_Attribute3_Value control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Attribute3_Value;
         
         /// <summary>
-        /// TextBox_AttributeCategory control.
+        /// Label7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_AttributeCategory;
+        protected global::System.Web.UI.WebControls.Label Label7;
         
         /// <summary>
-        /// DropDownList_Atribute control.
+        /// TextBox_Attribute4_Name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Atribute;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Attribute4_Name;
         
         /// <summary>
-        /// Button_AddAttribute control.
+        /// TextBox_Attribute4_Value control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_AddAttribute;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Attribute4_Value;
         
         /// <summary>
         /// Button_Save control.

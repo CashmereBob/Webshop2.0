@@ -4,49 +4,30 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebShop_Group7.Models;
 
 namespace WebShop_Group7.Admin
 {
     public partial class New_Product : System.Web.UI.Page
     {
+        Product product = new Product();
         protected void Page_Load(object sender, EventArgs e)
         {
-            RefreshValues();
+          
         }
 
-        private void RefreshValues()
+        protected void Button_Save_Click(object sender, EventArgs e)
         {
-            SetPanelsTrue();
-            CheckApanels();
-         
+            ProductObject proObj = new ProductObject();
+
+            product.AddProduct(proObj);
         }
 
-        private void SetPanelsTrue()
+        protected void Button_NewProductIMG_Click(object sender, EventArgs e)
         {
-            Panel_Attribute1.Visible = true;
-            Panel_Attribute2.Visible = true;
-            Panel_Attribute3.Visible = true;
-            Panel_Attribute4.Visible = true;
-        }
-
-        private void CheckApanels()
-        {
-            if (Label_Attribute1.Text == "")
-            {
-                Panel_Attribute1.Visible = false;
-            }
-            if (Label_Attribute2.Text == "")
-            {
-                Panel_Attribute2.Visible = false;
-            }
-            if (Label_Attribute3.Text == "")
-            {
-                Panel_Attribute3.Visible = false;
-            }
-            if (Label_Attribute4.Text == "")
-            {
-                Panel_Attribute4.Visible = false;
-            }
+            Image_Product.ImageUrl = TextBox_ImgUlr.Text;
+            Label_ImgUrl.Text = TextBox_ImgUlr.Text;
+            TextBox_ImgUlr.Text = "";
         }
     }
 }
