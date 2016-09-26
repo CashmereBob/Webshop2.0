@@ -11,15 +11,15 @@
                     <asp:Image CssClass="img-responsive img-rounded" ID="Image_Product" ImageUrl="http://lundgren84.com/KlädPlagg.jpg" AlternateText="Product Img" runat="server" />
                 </div>
             </div>
-              <div class="row">
-                  <asp:Label ID="Label_ImgUrl" runat="server" Text=""></asp:Label>
-                  </div>
+            <div class="row">
+                <asp:Label ID="Label_ImgUrl" runat="server" Text=""></asp:Label>
+            </div>
             <div class="row">
                 <div class="col-md-2">
                     <h4>Img Url:</h4>
                 </div>
-                    <div class="col-md-3">
-                        <asp:TextBox ID="TextBox_ImgUlr" CssClass="form-control" runat="server" TextMode="Url"></asp:TextBox>
+                <div class="col-md-3">
+                    <asp:TextBox ID="TextBox_ImgUlr" CssClass="form-control" runat="server" TextMode="Url"></asp:TextBox>
                 </div>
             </div>
             <div class="row">
@@ -43,6 +43,9 @@
                 <div class="col-md-3">
                     <asp:TextBox CssClass="form-control" ID="TextBox_ProductName" runat="server"></asp:TextBox>
                 </div>
+                 <div class="col-md-3">
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Required" ControlToValidate="TextBox_ProductName"></asp:RequiredFieldValidator>
+                </div>
             </div>
             <%-- Artikelnummer --%>
             <div class="row">
@@ -52,6 +55,9 @@
 
                 <div class="col-md-3">
                     <asp:TextBox CssClass="form-control" ID="TextBox1_ArticleNumber" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-md-3">
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Required" ControlToValidate="TextBox1_ArticleNumber"></asp:RequiredFieldValidator>
                 </div>
             </div>
             <%-- Antal i lager --%>
@@ -73,6 +79,9 @@
                 <div class="col-md-3">
                     <asp:TextBox CssClass="form-control" ID="TextBox_Brand" runat="server"></asp:TextBox>
                 </div>
+                <div class="col-md-3">
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Required" ControlToValidate="TextBox_Brand"></asp:RequiredFieldValidator>
+                </div>
             </div>
             <%-- Kategori --%>
             <div class="row">
@@ -83,8 +92,11 @@
                 <div class="col-md-3">
                     <asp:TextBox CssClass="form-control" ID="TextBox_Category" runat="server"></asp:TextBox>
                 </div>
+                 <div class="col-md-3">
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Required" ControlToValidate="TextBox_Category"></asp:RequiredFieldValidator>
+                </div>
             </div>
-             <%-- B2B --%>
+            <%-- B2B --%>
             <div class="row">
                 <div class="col-md-2">
                     <h4>Pris B2B:  </h4>
@@ -94,7 +106,7 @@
                     <asp:TextBox CssClass="form-control" ID="TextBox_B2B" runat="server" TextMode="Number"></asp:TextBox>
                 </div>
             </div>
-             <%-- B2C --%>
+            <%-- B2C --%>
             <div class="row">
                 <div class="col-md-2">
                     <h4>Pris B2C:  </h4>
