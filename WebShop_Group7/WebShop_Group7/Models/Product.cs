@@ -868,7 +868,7 @@ namespace WebShop_Group7.Models
             return result;
         }
 
-        internal List<ProductObject> GetProductByWhareList(string where)
+        internal List<ProductObject> GetProductByWhereList(string where)
         {
             List<ProductObject> list = new List<ProductObject>();
 
