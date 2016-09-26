@@ -144,7 +144,7 @@ namespace WebShop_Group7.Models
                         int atr = -1;
 
                         int.TryParse(myDataReader["attribute1"].ToString(), out atr);
-                        prod.attribute1 = int.Parse(myDataReader["attribute1"].ToString());
+                        prod.attribute1 = atr;
 
                         int.TryParse(myDataReader["attribute2"].ToString(), out atr);
                         prod.attribute2 = atr;

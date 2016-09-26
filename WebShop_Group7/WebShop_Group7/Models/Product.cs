@@ -903,10 +903,17 @@ namespace WebShop_Group7.Models
                         product.category = myDataReader["Category"].ToString();
                         product.priceB2C = decimal.Parse(myDataReader["B2C"].ToString());
                         product.priceB2B = decimal.Parse(myDataReader["B2B"].ToString());
-                        product.attribute1 = int.Parse(myDataReader["AttributeID1"].ToString());
-                        product.attribute1 = int.Parse(myDataReader["AttributeID2"].ToString());
-                        product.attribute1 = int.Parse(myDataReader["AttributeID3"].ToString());
-                        product.attribute1 = int.Parse(myDataReader["AttributeID4"].ToString());
+
+                        int atr = -1;
+
+                        int.TryParse(myDataReader["AttributeID1"].ToString(), out atr);
+                        product.attribute1 = atr;
+                        int.TryParse(myDataReader["AttributeID2"].ToString(), out atr);
+                        product.attribute2 = atr;
+                        int.TryParse(myDataReader["AttributeID3"].ToString(), out atr);
+                        product.attribute3 = atr;
+                        int.TryParse(myDataReader["AttributeID4"].ToString(), out atr);
+                        product.attribute4 = atr;
 
                         list.Add(product);
                     }
@@ -927,6 +934,46 @@ namespace WebShop_Group7.Models
 
 
             
+        }
+        internal int GetAttributeID(string key, string value) {
+
+            int id = -1;
+
+            try
+            {
+                connection.OpenConnection();
+
+                string sql = @"Select ID " +
+                                @"FROM tbl_Attribute " +
+                                $"WHERE tbl_Attribute.Name = '{key}' AND tbl_Attribute.Value = '{value}'";
+                SqlCommand myCommand = new SqlCommand(sql, connection._connection);
+
+                using (SqlDataReader myDataReader = myCommand.ExecuteReader())
+                {
+
+                    while (myDataReader.Read())
+                    {
+                       id = int.Parse(myDataReader["ID"].ToString());   
+                    }
+                }
+
+
+
+            }
+            catch
+            {
+                return -1;
+            }
+            finally
+            {
+                connection.CloseConnection();
+            }
+
+
+
+            return id;
+
+
         }
     }
 }
