@@ -18,7 +18,7 @@
                     <asp:Button ID="Button_Search" runat="server" Text="Search" />
                 </div>
                 <div class="col-md-3">
-                    <asp:Button ID="Button_Add" runat="server" Text="Add new product" OnClick="Button_Add_Click" />
+                    <asp:Button ID="Button_Add" runat="server" Text="Add new Type" OnClick="Button_Add_Click" />
                 </div>
                   <div class="col-md-1">
                         <asp:Image CssClass="img-responsive img-rounded" ID="Image_Product" AlternateText="Product Img" ImageUrl="http://lundgren84.com/KlädPlagg.jpg" runat="server" />
