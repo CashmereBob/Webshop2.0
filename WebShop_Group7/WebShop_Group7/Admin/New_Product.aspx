@@ -8,7 +8,7 @@
             <div class="row">
                 <%-- IMG --%>
                 <div class="col-md-3">
-                    <asp:Image CssClass="img-responsive img-rounded" ID="Image_Product" ImageUrl="http://lundgren84.com/KlädPlagg.jpg" runat="server" />
+                    <asp:Image CssClass="img-responsive img-rounded" ID="Image_Product" ImageUrl="http://lundgren84.com/KlädPlagg.jpg" AlternateText="Product Img" runat="server" />
                 </div>
             </div>
               <div class="row">

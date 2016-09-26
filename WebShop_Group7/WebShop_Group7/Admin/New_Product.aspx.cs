@@ -12,6 +12,7 @@ namespace WebShop_Group7.Admin
     {
         List<string> attributes = new List<string>();
         Product product = new Product();
+        ProductObject proObj = new ProductObject();
         int ID;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,13 +23,30 @@ namespace WebShop_Group7.Admin
             catch { ID = -1; }
             if (ID > 0)
             {
+                proObj = product.GetMainProduct(ID);
+                proObj.productID = ID;
                 RemakePage();
             }
         }
 
         private void RemakePage()
         {
-            throw new NotImplementedException();
+            Image_Product.ImageUrl = proObj.imgURL;
+            //Name
+            TextBox_ProductName.Text = proObj.name;
+            TextBox_ProductName.Enabled = false;
+            //Category
+            TextBox_Category.Text = proObj.category;
+            TextBox_Category.Enabled = false;
+            //Brand
+            TextBox_Brand.Text = proObj.brandName;
+            TextBox_Brand.Enabled = false;
+            //Img
+            TextBox_ImgUlr.Text = proObj.imgURL;
+            TextBox_ImgUlr.Enabled = false;
+            //Description
+            TextBox_Description.Text = proObj.description;
+            TextBox_Description.Enabled = false;
         }
 
         protected void Button_Save_Click(object sender, EventArgs e)

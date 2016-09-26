@@ -30,7 +30,7 @@ namespace WebShop_Group7.Admin
             ViewState["dt"] = dt;
             BindGrid();
             SetValues();
-         
+            Image_Product.ImageUrl = proObc.imgURL;
         }
         protected void Button_Save_Click(object sender, EventArgs e)
         {
