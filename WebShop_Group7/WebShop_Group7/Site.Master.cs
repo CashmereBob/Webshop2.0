@@ -86,35 +86,39 @@ namespace WebShop_Group7
                 label_user.Text = $"Välkommen tillbaka {user.firstName}";
             }
 
-            Pages pageDal = new Pages();
-
-            foreach (PageObject page in pageDal.ListAllPagesList())
+            if (!IsPostBack)
             {
-                if (page.name != "Startpage")
+
+                Pages pageDal = new Pages();
+
+                foreach (PageObject page in pageDal.ListAllPagesList())
                 {
-                    pageMeny.InnerHtml += $"<li><a href=\"page.aspx?id={page.pageId}\">{page.name}</a></li>";
+                    if (page.name != "Startpage")
+                    {
+                        pageMeny.InnerHtml += $"<li><a href=\"page.aspx?id={page.pageId}\">{page.name}</a></li>";
+                    }
                 }
+
+                Brand brandDal = new Brand();
+
+                foreach (BrandObject brand in brandDal.ListAllBrandsList())
+                {
+
+                    brandMenu.InnerHtml += $"<li><a href=\"brand.aspx?id={brand.brandID}\">{brand.name}</a></li>";
+
+                }
+                brandMenu.InnerHtml += $"<li role = \"separator\" class=\"divider\" ></li><li><a href = \"brand.aspx\" >Alla</a></li>";
+
+                Category categoryDal = new Category();
+
+                foreach (CategoryObject category in categoryDal.ListAllCategoryList())
+                {
+
+                    categoryMenu.InnerHtml += $"<li><a href=\"category.aspx?id={category.categoryID}\">{category.name}</a></li>";
+
+                }
+                categoryMenu.InnerHtml += $"<li role = \"separator\" class=\"divider\" ></li><li><a href = \"category.aspx\" >Alla</a></li>";
             }
-
-            Brand brandDal = new Brand();
-
-            foreach (BrandObject brand in brandDal.ListAllBrandsList())
-            {
-                
-                  brandMenu.InnerHtml += $"<li><a href=\"brand.aspx?id={brand.brandID}\">{brand.name}</a></li>";
-                
-            }
-            brandMenu.InnerHtml += $"<li role = \"separator\" class=\"divider\" ></li><li><a href = \"brand.aspx\" >Alla</a></li>";
-
-            Category categoryDal = new Category();
-
-            foreach (CategoryObject category in categoryDal.ListAllCategoryList())
-            {
-
-                categoryMenu.InnerHtml += $"<li><a href=\"category.aspx?id={category.categoryID}\">{category.name}</a></li>";
-
-            }
-            categoryMenu.InnerHtml += $"<li role = \"separator\" class=\"divider\" ></li><li><a href = \"category.aspx\" >Alla</a></li>";
         }
 
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)

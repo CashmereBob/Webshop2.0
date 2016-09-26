@@ -13,7 +13,7 @@
     </asp:PlaceHolder>
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
+    <link href="Content/simple-sidebar.css" rel="stylesheet" />
 </head>
 <body>
     <form runat="server">
@@ -37,7 +37,7 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-
+        <script src="Scripts/JavaScript.js"></script>
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -54,7 +54,6 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Om oss<span class="caret"></span></a>
                             <ul class="dropdown-menu" id="pageMeny" runat="server">
-
                             </ul>
                         </li>
                     </ul>
@@ -63,7 +62,6 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kategorier <span class="caret"></span></a>
                             <ul class="dropdown-menu" id="categoryMenu" runat="server">
-                                
                             </ul>
                         </li>
                     </ul>
@@ -72,20 +70,16 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Varumärken <span class="caret"></span></a>
                             <ul class="dropdown-menu" id="brandMenu" runat="server">
-                           
-
                             </ul>
                         </li>
                     </ul>
 
                     <div class="navbar-form navbar-left">
-                 
+
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Sök...">
                         </div>
-                        <span class="form-group-btn">
-                            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                        </span>
+
 
 
 
@@ -107,45 +101,52 @@
                 </div>
             </div>
         </div>
-        <div class="container body-content">
+        <div class="container body-content" id="masterwrap">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
-            <footer>
+            <footer id="foot">
+                
 
-                <div id="login" runat="server">
-                    <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-12">
 
-                            <asp:TextBox ID="TextBox_User" CssClass="form-control" runat="server" placeholder="Användarnamn"></asp:TextBox>
-    
+                                    <div id="login" runat="server">
+                                        <div class="form-group">
 
-
-                            <asp:TextBox ID="TextBox_Password" CssClass="form-control" runat="server" placeholder="Lösenord" TextMode="Password"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Required" ControlToValidate="TextBox_Password"></asp:RequiredFieldValidator>
-                         
-                            
-                        
-
-
-                  </br>
+                                            <asp:TextBox ID="TextBox_User" CssClass="form-control" runat="server" placeholder="Användarnamn"></asp:TextBox>
+                                            <asp:TextBox ID="TextBox_Password" CssClass="form-control" runat="server" placeholder="Lösenord" TextMode="Password"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Required" ControlToValidate="TextBox_Password"></asp:RequiredFieldValidator>
+                                            </br>
                         <asp:Button ID="Button_login" CssClass="btn btn-default" runat="server" Text="Logga in" OnClick="Button_login_Click" />
-                        <asp:LinkButton ID="LinkButton_register" runat="server" Text="Skaffa konto"></asp:LinkButton>
-                    </div>
-                </div>
+                                            <asp:LinkButton ID="LinkButton_register" runat="server" Text="Skaffa konto"></asp:LinkButton>
+                                        </div>
 
-                <div id="UserPages" runat="server">
-                    <h4>
-                        <asp:Label ID="label_user" runat="server" Text=""></asp:Label></h4>
-                    <h5>
-                        <asp:LinkButton ID="LinkButton_info" runat="server" Text="Min information"></asp:LinkButton></h5>
-                    <h5>
-                        <asp:LinkButton ID="LinkButton_orders" runat="server" Text="Orderhistoria"></asp:LinkButton></h5>
-                    <h5>
-                        <asp:LinkButton ID="LinkButton_logout" runat="server" Text="Logga ut" OnClick="LinkButton_logout_Click"></asp:LinkButton></h5>
-                </div>
+                                    </div>
 
-                <p>&copy; <%: DateTime.Now.Year %> - Webshop, win15 grupp7</p>
+
+                                    <div id="UserPages" runat="server">
+                                        <h4>
+                                            <asp:Label ID="label_user" runat="server" Text=""></asp:Label></h4>
+                                        <h5>
+                                            <asp:LinkButton ID="LinkButton_info" runat="server" Text="Min information"></asp:LinkButton></h5>
+                                        <h5>
+                                            <asp:LinkButton ID="LinkButton_orders" runat="server" Text="Orderhistoria"></asp:LinkButton></h5>
+                                        <h5>
+                                            <asp:LinkButton ID="LinkButton_logout" runat="server" Text="Logga ut" OnClick="LinkButton_logout_Click"></asp:LinkButton></h5>
+                                    </div>
+
+                                    <p>&copy; <%: DateTime.Now.Year %> - Webshop, win15 grupp7</p>
+                                </div>
+                            </div>
+
             </footer>
         </div>
     </form>
+        <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
 </body>
 </html>
