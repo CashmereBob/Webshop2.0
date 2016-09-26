@@ -804,7 +804,8 @@ namespace WebShop_Group7.Models
         {
             int result = 0;
             string query = $@"Select tbl_Product.ID from tbl_Product
-                       where tbl_Brand.Name = ''";
+                       where tbl_Product.Name = '{proObj.name}'AND tbl_Product.Description = '{proObj.description}' AND
+                             tbl_Product.BrandID = '{proObj.brandName}' AND tbl_Product.ImgUrl = '{proObj.imgURL}' ";
             using (SqlCommand command = new SqlCommand(query, connection._connection))
             {
                 using (dataReader = command.ExecuteReader())
@@ -816,28 +817,7 @@ namespace WebShop_Group7.Models
                         {
                             result = int.Parse(dataReader["ID"].ToString());
                         }
-                        else
-                        {
-                            //Create the Brand
-                            query = $@"INSERT INTO tbl_Product
-                                    (Name) VALUES ('')";
-                            using (SqlCommand command3 = new SqlCommand(query, connection._connection))
-                            {
-                                command3.ExecuteNonQuery();
-                            }
-                            //Get the new brand+s ID
-                            query = $@"SELECT tbl_Product.ID from tbl_Product WHERE tbl_Product.Name = ''";
-                            using (SqlCommand command4 = new SqlCommand(query, connection._connection))
-                            {
-                                using (dataReader = command4.ExecuteReader())
-                                {
-                                    while (dataReader.Read())
-                                    {
-                                        result = int.Parse(dataReader["ID"].ToString());
-                                    }
-                                }
-                            }
-                        }
+                   
 
                     }
                 }
