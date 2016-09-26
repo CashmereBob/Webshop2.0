@@ -2,7 +2,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
-        <div class="jumbotron">
+       
             <div class="row">
                 <div class="col-md-12">
                     <h2><%: Title %>.</h2>
@@ -19,8 +19,8 @@
                     <asp:Button ID="Button_Add" runat="server" Text="Add new product" OnClick="Button_Add_Click" />
                 </div>
             </div>
-        </div>
-        <div class="jumbotron">
+       
+      
             <div class="row">
                 <div class="col-md-12">
                     <asp:GridView ID="GridView_Products" runat="server" AutoGenerateColumns="false"
@@ -46,6 +46,6 @@
                     </asp:GridView>
                 </div>
             </div>
-        </div>
+      
     </div>
 </asp:Content>

@@ -139,6 +139,15 @@ namespace WebShop_Group7.Admin {
         protected global::System.Web.UI.WebControls.TextBox TextBox_Description;
         
         /// <summary>
+        /// Button_Save control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_Save;
+        
+        /// <summary>
         /// Panel_Attribute1 control.
         /// </summary>
         /// <remarks>
@@ -281,14 +290,5 @@ namespace WebShop_Group7.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button_AddAttribute;
-        
-        /// <summary>
-        /// Button_Save control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_Save;
     }
 }

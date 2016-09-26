@@ -3,7 +3,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container-fluid">
         <h2><%: Title %>.</h2>
-        <div class="jumbotron">
+     
 
             <div class="row">
                 <div class="col-md-12">
@@ -133,7 +133,12 @@
                     <asp:TextBox ID="TextBox_Description" runat="server" ReadOnly="False" Height="100%" TextMode="MultiLine" Width="100%"></asp:TextBox>
                 </div>--%>
             </div>
-
+               <%-- Save button --%>
+            <div class="row">
+                <div class="col-md-4">
+                    <asp:Button CssClass="btn btn-default" Csstype="button" ID="Button_Save" runat="server" Text="Spara" OnClick="Button_Save_Click" />
+                </div>
+            </div>
             <%-- Egenskaper --%>
             <div class="row">
                 <div class="col-md-2">
@@ -213,12 +218,7 @@
                     </div>
                 </div>
             </asp:Panel>
-            <%-- Save button --%>
-            <div class="row">
-                <div class="col-md-4">
-                    <asp:Button CssClass="btn btn-default" Csstype="button" ID="Button_Save" runat="server" Text="Spara" OnClick="Button_Save_Click" />
-                </div>
-            </div>
+         
         </div>
-    </div>
+   
 </asp:Content>

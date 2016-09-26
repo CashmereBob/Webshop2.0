@@ -2,7 +2,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
-        <div class="jumbotron">
+     
 
             <div class="row">
                 <div class="col-md-12">
@@ -82,10 +82,11 @@
                       <%--  <asp:DropDownList OnSelectedIndexChanged="itemSelected" CssClass="form-control" ID="DropDownList_Category" runat="server" >
                              <asp:ListItem Value="Select"></asp:ListItem>
                         </asp:DropDownList>--%>
-                        <asp:TextBox ID="TextBox_Category" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox_Category" CssClass="form-control" runat="server"></asp:TextBox>
                     </asp:TableCell>
                 </asp:TableRow>
                 <%-- Brand --%>
+
                 <asp:TableRow CssClass="row">
                     <asp:TableCell CssClass="col-md-2">
                         <asp:Label ID="Label5" runat="server" Text="Märke: "></asp:Label>
@@ -100,7 +101,7 @@
                       <%--  <asp:DropDownList OnSelectedIndexChanged="itemSelected" CssClass="form-control" ID="DropDownList_Brand"  runat="server">
                             <asp:ListItem Value="Select"></asp:ListItem>
                         </asp:DropDownList>--%>
-                        <asp:TextBox ID="TextBox_Brand" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox_Brand" CssClass="form-control" runat="server"></asp:TextBox>
                     </asp:TableCell>
                 </asp:TableRow>
                 <%-- Img --%>
@@ -146,8 +147,7 @@
             <%-- Star GridView --%>
             <div class="row">
             </div>
-        </div>
-        <div class="jumbotron">
+  
 
 
             <div class="row">
@@ -171,6 +171,6 @@
                     </asp:GridView>
                 </div>
             </div>
-        </div>
+     
     </div>
 </asp:Content>

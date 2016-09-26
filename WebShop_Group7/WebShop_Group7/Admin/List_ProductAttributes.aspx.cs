@@ -72,7 +72,7 @@ namespace WebShop_Group7.Admin
             Label_ProductBrand.Text = proObc.brandName;
             Label_imgURL.Text = proObc.imgURL;
             TextBox_ProductDescription.Text = proObc.description;
-           
+            Image_Product.ImageUrl = proObc.imgURL;
         }
         private void GetProduct()
         {
