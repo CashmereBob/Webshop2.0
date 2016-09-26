@@ -811,12 +811,13 @@ namespace WebShop_Group7.Models
         private int CheckProduct(ProductObject proObj,int brandID,int categoryID)
         {
             int result = 0;
+       
             string query = $@"Select tbl_Product.ID from tbl_Product
                        where tbl_Product.Name = '{proObj.name}'AND 
                              tbl_Product.Description = '{proObj.description}' AND
-                             tbl_Product.BrandID = dbo.GetBrandID('{proObj.brandName}') AND 
+                             tbl_Product.BrandID = '{brandID}' AND 
                              tbl_Product.ImgUrl = '{proObj.imgURL}' AND
-                             tbl_Product.CategoryID = dbo.GetCategoryID('{proObj.category}')
+                             tbl_Product.CategoryID = '{categoryID}'
 ";
             using (SqlCommand command = new SqlCommand(query, connection._connection))
             {

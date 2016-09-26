@@ -59,13 +59,13 @@ namespace WebShop_Group7.Admin
 
         private void FillValues(ProductObject proObj)
         {
-            proObj.name = TextBox_ProductName.Text;
-            proObj.artNr = TextBox1_ArticleNumber.Text;
-            proObj.brandName = TextBox_Brand.Text;
-            proObj.category = TextBox_Category.Text;
-            proObj.description = TextBox_Description.Text;
-            proObj.imgURL = TextBox_ImgUlr.Text;
-            proObj.quantity = int.Parse(TextBox_Quantity.Text);
+            proObj.name = TextBox_ProductName.Text;        
+            proObj.artNr = TextBox1_ArticleNumber.Text;           
+            proObj.brandName = TextBox_Brand.Text;         
+            proObj.category = TextBox_Category.Text;         
+            proObj.description = TextBox_Description.Text;         
+            proObj.imgURL = TextBox_ImgUlr.Text;        
+            proObj.quantity = int.Parse(TextBox_Quantity.Text);      
             proObj.priceB2B = int.Parse(TextBox_B2B.Text);
             proObj.priceB2C = int.Parse(TextBox_B2C.Text);
             if (!string.IsNullOrWhiteSpace(TextBox_Attribute1_Name.Text) && !string.IsNullOrWhiteSpace(TextBox_Attribute1_Value.Text)) { attributes.Add(TextBox_Attribute1_Name.Text + " " + TextBox_Attribute1_Value.Text); }
