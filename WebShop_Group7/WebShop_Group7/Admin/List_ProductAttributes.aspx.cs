@@ -11,7 +11,7 @@ namespace WebShop_Group7.Admin
 {
     public partial class List_ProductAttributes : System.Web.UI.Page
     {
-        ProductObejct product = new ProductObejct();
+        Product product = new Product();
         ProductObject proObc;
         int ProductID;
         //List<string> brandNames;
@@ -119,7 +119,9 @@ namespace WebShop_Group7.Admin
 
         protected void Button_Add_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Admin/New_Product.aspx");
+            var ID = ProductID;
+            Response.Redirect($"~/Admin/New_Product.aspx?id={ID}");//SKickar med variablen ID till Edit
+    
         }
     }
 }

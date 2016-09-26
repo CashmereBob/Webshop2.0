@@ -11,17 +11,31 @@ namespace WebShop_Group7.Admin
     public partial class New_Product : System.Web.UI.Page
     {
         List<string> attributes = new List<string>();
-        ProductObejct product = new ProductObejct();
+        Product product = new Product();
+        int ID;
         protected void Page_Load(object sender, EventArgs e)
         {
-          
+            try
+            {
+                ID = int.Parse(Request.QueryString["id"]);
+            }
+            catch { ID = -1; }
+            if (ID > 0)
+            {
+                RemakePage();
+            }
+        }
+
+        private void RemakePage()
+        {
+            throw new NotImplementedException();
         }
 
         protected void Button_Save_Click(object sender, EventArgs e)
         {
             ProductObject proObj = new ProductObject();
             FillValues(proObj);
-            product.AddProduct(proObj,attributes);
+            product.AddProduct(proObj, attributes);
         }
 
         private void FillValues(ProductObject proObj)

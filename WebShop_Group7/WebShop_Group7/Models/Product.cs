@@ -7,7 +7,7 @@ using System.Web;
 
 namespace WebShop_Group7.Models
 {
-    public class ProductObejct
+    public class Product
     {
         DBConnection connection = new DBConnection();
         SqlDataReader dataReader;

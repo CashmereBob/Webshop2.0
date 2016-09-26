@@ -14,7 +14,7 @@ namespace WebShop_Group7.Admin
     public partial class List_Products : System.Web.UI.Page
     {
 
-        ProductObejct products;
+        Product products;
        
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,7 +22,7 @@ namespace WebShop_Group7.Admin
             //{
             //    Response.Redirect("~/Admin/index.aspx"); //Om inte gå tillbaka till inloggning.
             //}
-            products = new ProductObejct();
+            products = new Product();
           
             DataTable dt = products.GetListProducts();
             ViewState["dt"] = dt;

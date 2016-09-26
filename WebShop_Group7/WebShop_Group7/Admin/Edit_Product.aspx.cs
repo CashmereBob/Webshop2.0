@@ -14,7 +14,7 @@ namespace WebShop_Group7.Admin
 {
     public partial class Edit_Product : System.Web.UI.Page
     {
-        ProductObejct product = new ProductObejct();
+        Product product = new Product();
         ProductObject proObc;
         
         Image img = new Image();
