@@ -14,8 +14,8 @@ namespace WebShop_Group7.Admin
         ProductObejct product = new ProductObejct();
         ProductObject proObc;
         int ProductID;
-        List<string> brandNames;
-        List<string> categoryNames;
+        //List<string> brandNames;
+        //List<string> categoryNames;
 
         protected void Page_Load(object sender, EventArgs e)
         {

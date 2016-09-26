@@ -533,9 +533,10 @@ namespace WebShop_Group7.Models
         internal void SaveProduct_AttributeChanges(ProductObject proObc)
         {
             string query;
+            connection.OpenConnection();
             int brandID = CheckBrand(proObc.brandName);
             int categoryID = CheckCategory(proObc.category);
-            connection.OpenConnection();
+       
             query = $@"";
 
             query = $@"UPDATE tbl_Product SET
@@ -554,6 +555,7 @@ namespace WebShop_Group7.Models
         internal int CheckBrand(string Brand)
         {
             int result = 0;
+            
             string query = $@"Select tbl_Brand.ID from tbl_Brand
                        where tbl_Brand.Name = '{Brand}'";
             using (SqlCommand command = new SqlCommand(query, connection._connection))
@@ -567,29 +569,30 @@ namespace WebShop_Group7.Models
                         {
                             result = int.Parse(dataReader["ID"].ToString());
                         }
-                        else
-                        {
-                            //Create the Brand
-                            query = $@"INSERT INTO tbl_Brand
-                                    (Name) VALUES ('{Brand}')";
-                            using (SqlCommand command3 = new SqlCommand(query, connection._connection))
-                            {
-                                command3.ExecuteNonQuery();
-                            }
-                            //Get the new brand+s ID
-                            query = $@"SELECT tbl_Brand.ID from tbl_Brand WHERE tbl_Brand.Name = '{Brand}'";
-                            using (SqlCommand command4 = new SqlCommand(query, connection._connection))
-                            {
-                                using (dataReader = command4.ExecuteReader())
-                                {
-                                    while (dataReader.Read())
-                                    {
-                                        result = int.Parse(dataReader["ID"].ToString());
-                                    }
-                                }
-                            }
-                        }
+                      
 
+                    }
+                }
+            }
+            if(result == 0)
+            {
+                //Create the Brand
+                query = $@"INSERT INTO tbl_Brand
+                                    (Name) VALUES ('{Brand}')";
+                using (SqlCommand command3 = new SqlCommand(query, connection._connection))
+                {
+                    command3.ExecuteNonQuery();
+                }
+                //Get the new brand+s ID
+                query = $@"SELECT tbl_Brand.ID from tbl_Brand WHERE tbl_Brand.Name = '{Brand}'";
+                using (SqlCommand command4 = new SqlCommand(query, connection._connection))
+                {
+                    using (dataReader = command4.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            result = int.Parse(dataReader["ID"].ToString());
+                        }
                     }
                 }
             }
@@ -599,7 +602,7 @@ namespace WebShop_Group7.Models
         internal int CheckCategory(string Category)
         {
             int result = 0;
-            string query = $@"Select tbl_Category.ID from tbl_Brand
+            string query = $@"Select tbl_Category.ID from tbl_Category
                        where tbl_Category.Name = '{Category}'";
             using (SqlCommand command = new SqlCommand(query, connection._connection))
             {
@@ -612,33 +615,31 @@ namespace WebShop_Group7.Models
                         {
                             result = int.Parse(dataReader["ID"].ToString());
                         }
-                        else
-                        {
-                            //Create the Brand
-                            query = $@"INSERT INTO tbl_Category
-                                    (Name) VALUES ('{Category}')";
-                            using (SqlCommand command3 = new SqlCommand(query, connection._connection))
-                            {
-                                command3.ExecuteNonQuery();
-                            }
-                            //Get the new brand+s ID
-                            query = $@"SELECT tbl_Category.ID from tbl_Category WHERE tbl_Category.Name = '{Category}'";
-                            using (SqlCommand command4 = new SqlCommand(query, connection._connection))
-                            {
-                                using (dataReader = command4.ExecuteReader())
-                                {
-                                    while (dataReader.Read())
-                                    {
-                                        result = int.Parse(dataReader["ID"].ToString());
-                                    }
-                                }
-                            }
-                        }
-
                     }
                 }
             }
-
+            if (result == 0)
+            {
+                //Create the Brand
+                query = $@"INSERT INTO tbl_Category
+                                    (Name) VALUES ('{Category}')";
+                using (SqlCommand command3 = new SqlCommand(query, connection._connection))
+                {
+                    command3.ExecuteNonQuery();
+                }
+                //Get the new brand+s ID
+                query = $@"SELECT tbl_Category.ID from tbl_Category WHERE tbl_Category.Name = '{Category}'";
+                using (SqlCommand command4 = new SqlCommand(query, connection._connection))
+                {
+                    using (dataReader = command4.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            result = int.Parse(dataReader["ID"].ToString());
+                        }
+                    }
+                }
+            }
             return result;
         }
         //Save New Attribute
