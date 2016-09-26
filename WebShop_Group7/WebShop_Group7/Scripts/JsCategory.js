@@ -16,14 +16,14 @@ function filter(val) {
     var string = "?filter=";
     var id = "";
 
-    if (getUrlParameter('id') !== null) {
+    if (getUrlParameter('id') != null) {
         string = "&filter="
         id = "?id=" + getUrlParameter('id');
     } 
 
-    if (getUrlParameter('filter') !== null) {
-        string = "&filter=";
-    }
+    //if (getUrlParameter('filter') != null && getUrlParameter('id') != null) {
+    //    string = "&filter=";
+    //}
 
     $(".filter").each(function (index) {
 
@@ -51,15 +51,15 @@ function getUrlParameter(sParam) {
     for (i = 0; i < sURLVariables.length; i++) {
         sParameterName = sURLVariables[i].split('=');
 
-        if (sParameterName[0] === sParam) {
-            return sParameterName[1] === undefined ? true : sParameterName[1];
+        if (sParameterName[0] == sParam) {
+            return sParameterName[1] == undefined ? true : sParameterName[1];
         }
     }
 };
 
 function fillChecked() {
 
-    if (getUrlParameter('filter') !== null) {
+    if (getUrlParameter('filter') != null) {
         var filter = getUrlParameter('filter').split(":");
 
         for (i = 0; i < filter.length; i++) {

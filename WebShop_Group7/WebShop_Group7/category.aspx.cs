@@ -13,24 +13,26 @@ namespace WebShop_Group7
     public partial class category : System.Web.UI.Page
     {
         Product prudDal = new Product();
+        Users usrDal = new Users();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 var where = string.Empty;
-            
-            if (Request.QueryString["id"] != null)
-            {
-                where = $"WHERE tbl_Category.ID = '{Request.QueryString["id"]}'";
-            }
 
-            List<ProductObject> products = prudDal.GetProductByWhereList(where);
+                if (Request.QueryString["id"] != null)
+                {
+                    where = $"WHERE tbl_Category.ID = '{Request.QueryString["id"]}'";
+                }
+
+                List<ProductObject> products = prudDal.GetProductByWhereList(where);
 
                 AddCategorys(products);
-                
+
             }
 
-            if (Request.QueryString["filter"] != null) {
+            if (Request.QueryString["filter"] != null)
+            {
                 GetProducts();
             }
 
@@ -41,22 +43,28 @@ namespace WebShop_Group7
             List<string> param = Request.QueryString["filter"].Split(':').ToList();
             List<int> attributes = new List<int>();
 
-            foreach(string value in param)
+            foreach (string value in param)
             {
-                if (!string.IsNullOrEmpty(value)) { 
-                attributes.Add(int.Parse(value));
+                if (!string.IsNullOrEmpty(value))
+                {
+                    attributes.Add(int.Parse(value));
                 }
             }
 
             List<ProductObject> products = new List<ProductObject>();
 
-            StringBuilder str = new StringBuilder();
+
             foreach (int atr in attributes)
             {
-                str.Append($"WHERE tbl_Product_Attribute.AttributeID1 = '{atr}' ");
+                StringBuilder str = new StringBuilder();
+                str.Append($"WHERE (tbl_Product_Attribute.AttributeID1 = '{atr}' ");
                 str.Append($"OR tbl_Product_Attribute.AttributeID2 = '{atr}' ");
                 str.Append($"OR tbl_Product_Attribute.AttributeID3 = '{atr}' ");
-                str.Append($"OR tbl_Product_Attribute.AttributeID3 = '{atr}' ");
+                str.Append($"OR tbl_Product_Attribute.AttributeID3 = '{atr}') ");
+                if (Request.QueryString["id"] != null)
+                {
+                    str.Append($"AND tbl_Category.ID = '{Request.QueryString["id"]}' ");
+                }
 
                 List<ProductObject> productsTEMP = prudDal.GetProductByWhereList(str.ToString());
 
@@ -67,7 +75,8 @@ namespace WebShop_Group7
 
             }
 
-            foreach (ProductObject prod in products) {
+            foreach (ProductObject prod in products)
+            {
                 productCont.InnerHtml += " " + prod.name;
             }
         }
@@ -76,9 +85,10 @@ namespace WebShop_Group7
         {
             Dictionary<string, List<string>> attributes = new Dictionary<string, List<string>>();
 
-            foreach (ProductObject product in products) {
+            foreach (ProductObject product in products)
+            {
 
-                Dictionary<string, string> attribute= prudDal.GetAttribute(product);
+                Dictionary<string, string> attribute = prudDal.GetAttribute(product);
                 foreach (KeyValuePair<string, string> values in attribute)
                 {
                     if (attributes.ContainsKey(values.Key))
@@ -89,14 +99,16 @@ namespace WebShop_Group7
                         }
 
 
-                    } else
+                    }
+                    else
                     {
                         attributes.Add(values.Key, new List<string>() { values.Value });
                     }
                 }
             }
 
-            foreach (KeyValuePair<string, List<string>> value in attributes) {
+            foreach (KeyValuePair<string, List<string>> value in attributes)
+            {
                 filternav.InnerHtml += $"<li class=\"sidebar-brand\">{value.Key}</li>";
 
                 foreach (string atr in value.Value)
@@ -109,9 +121,37 @@ namespace WebShop_Group7
 
             }
 
-            
+            filternav.InnerHtml += $"<li class=\"sidebar-brand\">Price</li>";
 
+            int pricegroup = 1;
+            decimal low = 0;
+            decimal high = 0;
 
-    }
+            UserObject usr = null;
+            if (Session["User"] != null)
+            {
+                usr = usrDal.GetUserById((int)Session["User"]);
+            }
+
+            if (usr != null)
+            {
+                pricegroup = usr.priceGroup;
+            }
+
+            foreach (ProductObject product in products)
+            {
+
+                if (pricegroup == 1)
+                {
+                    if (product.priceB2C < low) { low = product.priceB2C; }
+                    if (product.priceB2C > high) { high = product.priceB2C; }
+                }
+                if (pricegroup == 2)
+                {
+                    if (product.priceB2B < low) { low = product.priceB2B; }
+                    if (product.priceB2B > high) { high = product.priceB2B; }
+                }
+            }
+        }
     }
 }
