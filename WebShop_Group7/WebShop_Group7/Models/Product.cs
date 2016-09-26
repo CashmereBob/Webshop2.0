@@ -298,14 +298,15 @@ namespace WebShop_Group7.Models
                             Result.productID = int.Parse(dataReader["ID"].ToString());
                             Result.name = dataReader["productName"].ToString();
                             Result.description = dataReader["Description"].ToString();
-                            Result.priceB2B = decimal.Parse(dataReader["b2b"].ToString());
+                            Result.priceB2B = decimal.Parse(dataReader["b2b"].ToString();
                             Result.priceB2C = decimal.Parse(dataReader["b2c"].ToString());
                             Result.brandName = dataReader["theBrand"].ToString();
                             Result.category = dataReader["category"].ToString();
                             try { Result.imgURL = dataReader["ImgUrl"].ToString(); } catch { Result.imgURL = ""; }
                             Result.quantity = int.Parse(dataReader["Quantity"].ToString());
                             Result.artNr = dataReader["ArticleNumber"].ToString();
-
+                            Result.priceB2B.ToString("#.##");
+                            Result.priceB2C.ToString("#.##");
                         }
                     }
                 }
@@ -364,7 +365,8 @@ namespace WebShop_Group7.Models
                             try { Result.imgURL = dataReader["ImgUrl"].ToString(); } catch { Result.imgURL = ""; }
                             Result.quantity = int.Parse(dataReader["Quantity"].ToString());
                             Result.artNr = dataReader["ArticleNumber"].ToString();
-
+                            Result.priceB2B.ToString("#.##");
+                            Result.priceB2C.ToString("#.##");
                         }
                     }
                 }

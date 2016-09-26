@@ -118,7 +118,7 @@
                     </asp:TableCell>
                      <%-- New Vlaue --%>
                     <asp:TableCell CssClass="col-md-3">
-                        <asp:TextBox ID="TextBox_ImgUrl" CssClass="form-control" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox_ImgUrl" CssClass="form-control" runat="server" TextMode="Url"></asp:TextBox>
                     </asp:TableCell>
                    
                 </asp:TableRow>
