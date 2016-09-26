@@ -151,7 +151,10 @@ namespace WebShop_Group7
                     if (product.priceB2B < low) { low = product.priceB2B; }
                     if (product.priceB2B > high) { high = product.priceB2B; }
                 }
+
+                
             }
+            filternav.InnerHtml += $"<li><input type=\"range\" min=\"{low}\" max=\"{high}\" step=\"10\" /></li>";
         }
     }
 }
