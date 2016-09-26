@@ -298,14 +298,15 @@ namespace WebShop_Group7.Models
                             Result.productID = int.Parse(dataReader["ID"].ToString());
                             Result.name = dataReader["productName"].ToString();
                             Result.description = dataReader["Description"].ToString();
-                            Result.priceB2B = decimal.Parse(dataReader["b2b"].ToString());
+                            Result.priceB2B = decimal.Parse(dataReader["b2b"].ToString();
                             Result.priceB2C = decimal.Parse(dataReader["b2c"].ToString());
                             Result.brandName = dataReader["theBrand"].ToString();
                             Result.category = dataReader["category"].ToString();
                             try { Result.imgURL = dataReader["ImgUrl"].ToString(); } catch { Result.imgURL = ""; }
                             Result.quantity = int.Parse(dataReader["Quantity"].ToString());
                             Result.artNr = dataReader["ArticleNumber"].ToString();
-
+                            Result.priceB2B.ToString("#.##");
+                            Result.priceB2C.ToString("#.##");
                         }
                     }
                 }
@@ -364,7 +365,8 @@ namespace WebShop_Group7.Models
                             try { Result.imgURL = dataReader["ImgUrl"].ToString(); } catch { Result.imgURL = ""; }
                             Result.quantity = int.Parse(dataReader["Quantity"].ToString());
                             Result.artNr = dataReader["ArticleNumber"].ToString();
-
+                            Result.priceB2B.ToString("#.##");
+                            Result.priceB2C.ToString("#.##");
                         }
                     }
                 }
@@ -674,29 +676,6 @@ namespace WebShop_Group7.Models
                         }
                     }
                 }
-
-                //{
-                //    //Check Wath spot to put the Attribute on
-                //    query = $@"use[WebShopGr7]
-                //               Select tbl_Product_Attribute.AttributeID1,
-                //               tbl_Product_Attribute.AttributeID2,
-                //               tbl_Product_Attribute.AttributeID3,
-                //               tbl_Product_Attribute.AttributeID4 FROM tbl_Product_Attribute
-                //               WHERE tbl_Product_Attribute.ID = 1";
-                //    using (SqlCommand commandCheckSpot = new SqlCommand(query, connection._connection))
-                //    {
-                //        using (dataReader = commandCheckSpot.ExecuteReader())
-                //        {
-                //            while (dataReader.Read())
-                //            {
-                //                if (dataReader["AttributeID1"] == null) { spotToFill = "AttributeID1"; }
-                //                else if (dataReader["AttributeID2"] == null) { spotToFill = "AttributeID2"; }
-                //                else if (dataReader["AttributeID3"] == null) { spotToFill = "AttributeID3"; }
-                //                else if (dataReader["AttributeID4"] == null) { spotToFill = "AttributeID4"; }
-                //            }
-                //        }
-                //    }
-                //}
                 if (exists)//Add Attribute to the Objekt
                 {
                     string attriSpot = "";
@@ -788,23 +767,60 @@ namespace WebShop_Group7.Models
             //Category
             int categoryID = CheckCategory(proObj.category);
             //Product
-            int productID = CheckProduct(proObj);//FIX
+            int productID = CheckProduct(proObj,brandID,categoryID);
             //Product_Attributes
-            CreateNew_TBL_ProductAttribute(); //FIX
+            proObj.productID = CreateNew_TBL_ProductAttribute(productID,proObj);
             //Attributes
+            connection.CloseConnection();
             addAttribute(proObj, attributes);
         }
 
-        private void CreateNew_TBL_ProductAttribute()
-        {
-            throw new NotImplementedException();
-        }
-
-        private int CheckProduct(ProductObject proObj)
+        private int CreateNew_TBL_ProductAttribute(int productID, ProductObject proObj)
         {
             int result = 0;
+            //Create the tbl_Product_Attribute
+            string query = $@"INSERT INTO tbl_Product_Attribute
+                            (ProductID,PriceB2B,PriceB2C,Quantity,ArticleNumber) VALUES 
+                            ('{productID}','{proObj.priceB2B}','{proObj.priceB2C}','{proObj.quantity}','{proObj.artNr}')";
+            SqlCommand command = new SqlCommand(query, connection._connection);
+            command.ExecuteNonQuery();
+            //Get the ID
+            query = $@"SELECT tbl_Product_Attribute.ID FROM tbl_Product_Attribute
+                       WHERE 
+                       tbl_Product_Attribute.ProductID = {productID} AND
+                       tbl_Product_Attribute.Quantity = {proObj.quantity} AND
+                       tbl_Product_Attribute.PriceB2B = {proObj.priceB2B} AND
+                       tbl_Product_Attribute.PriceB2C = {proObj.priceB2C} AND
+                       tbl_Product_Attribute.ArticleNumber = '{proObj.artNr}'
+                       ";
+            using (SqlCommand command1 = new SqlCommand(query, connection._connection))
+            {
+                using (dataReader = command1.ExecuteReader())
+                {
+                    while (dataReader.Read())
+                    {
+                        //Check if brand exists
+                        if (dataReader["ID"] != null)
+                        {
+                            result = int.Parse(dataReader["ID"].ToString());
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+
+        private int CheckProduct(ProductObject proObj,int brandID,int categoryID)
+        {
+            int result = 0;
+       
             string query = $@"Select tbl_Product.ID from tbl_Product
-                       where tbl_Brand.Name = ''";
+                       where tbl_Product.Name = '{proObj.name}'AND 
+                             tbl_Product.Description = '{proObj.description}' AND
+                             tbl_Product.BrandID = '{brandID}' AND 
+                             tbl_Product.ImgUrl = '{proObj.imgURL}' AND
+                             tbl_Product.CategoryID = '{categoryID}'
+";
             using (SqlCommand command = new SqlCommand(query, connection._connection))
             {
                 using (dataReader = command.ExecuteReader())
@@ -816,29 +832,35 @@ namespace WebShop_Group7.Models
                         {
                             result = int.Parse(dataReader["ID"].ToString());
                         }
-                        else
-                        {
-                            //Create the Brand
-                            query = $@"INSERT INTO tbl_Product
-                                    (Name) VALUES ('')";
-                            using (SqlCommand command3 = new SqlCommand(query, connection._connection))
-                            {
-                                command3.ExecuteNonQuery();
-                            }
-                            //Get the new brand+s ID
-                            query = $@"SELECT tbl_Product.ID from tbl_Product WHERE tbl_Product.Name = ''";
-                            using (SqlCommand command4 = new SqlCommand(query, connection._connection))
-                            {
-                                using (dataReader = command4.ExecuteReader())
-                                {
-                                    while (dataReader.Read())
-                                    {
-                                        result = int.Parse(dataReader["ID"].ToString());
-                                    }
-                                }
-                            }
-                        }
+                   
 
+                    }
+                }
+            }
+            if(result == 0)// Product dont exists so we need to make It!
+            {
+                query = $@" INSERT INTO tbl_Product
+                            (Name,Description,BrandID,CategoryID,ImgUrl) VALUES 
+                            ('{proObj.name}','{proObj.description}','{brandID}','{categoryID}','{proObj.imgURL}')";
+                using (SqlCommand command = new SqlCommand(query, connection._connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+                    //Get the new Product's ID
+                    query = $@"Select tbl_Product.ID from tbl_Product
+                       where tbl_Product.Name = '{proObj.name}'AND 
+                             tbl_Product.Description = '{proObj.description}' AND
+                             tbl_Product.BrandID = '{brandID}' AND
+                             tbl_Product.CategoryID = '{categoryID}' AND
+                             tbl_Product.ImgUrl = '{proObj.imgURL}' ";
+                using (SqlCommand command = new SqlCommand(query, connection._connection))
+                {
+                    using (dataReader = command.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            result = int.Parse(dataReader["ID"].ToString());
+                        }
                     }
                 }
             }

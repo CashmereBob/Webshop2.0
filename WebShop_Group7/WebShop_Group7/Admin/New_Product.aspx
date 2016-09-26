@@ -8,7 +8,7 @@
             <div class="row">
                 <%-- IMG --%>
                 <div class="col-md-3">
-                    <asp:Image CssClass="img-responsive img-rounded" ID="Image_Product" ImageUrl="http://lundgren84.com/KlädPlagg.jpg" runat="server" />
+                    <asp:Image CssClass="img-responsive img-rounded" ID="Image_Product" ImageUrl="http://lundgren84.com/KlädPlagg.jpg" AlternateText="Product Img" runat="server" />
                 </div>
             </div>
               <div class="row">
@@ -19,7 +19,7 @@
                     <h4>Img Url:</h4>
                 </div>
                     <div class="col-md-3">
-                        <asp:TextBox ID="TextBox_ImgUlr" CssClass="form-control" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox_ImgUlr" CssClass="form-control" runat="server" TextMode="Url"></asp:TextBox>
                 </div>
             </div>
             <div class="row">
@@ -61,7 +61,7 @@
                 </div>
 
                 <div class="col-md-3">
-                    <asp:TextBox CssClass="form-control" ID="TextBox_Quantity" runat="server"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control" ID="TextBox_Quantity" runat="server" TextMode="Number"></asp:TextBox>
                 </div>
             </div>
             <%-- Varumärke --%>
@@ -91,7 +91,7 @@
                 </div>
 
                 <div class="col-md-3">
-                    <asp:TextBox CssClass="form-control" ID="TextBox_B2B" runat="server"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control" ID="TextBox_B2B" runat="server" TextMode="Number"></asp:TextBox>
                 </div>
             </div>
              <%-- B2C --%>
@@ -101,7 +101,7 @@
                 </div>
 
                 <div class="col-md-3">
-                    <asp:TextBox CssClass="form-control" ID="TextBox_B2C" runat="server"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control" ID="TextBox_B2C" runat="server" TextMode="Number"></asp:TextBox>
                 </div>
             </div>
             <%-- Beskrivning --%>

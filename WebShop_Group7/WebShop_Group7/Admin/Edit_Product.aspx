@@ -64,7 +64,7 @@
                         <asp:Label ID="Label_Quantity" runat="server" Text="23"></asp:Label>st</h4>
                 </div>
                 <div class="col-md-3">
-                    <asp:TextBox CssClass="form-control" ID="TextBox_Quantity" runat="server"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control" ID="TextBox_Quantity" runat="server" TextMode="Number"></asp:TextBox>
                 </div>
             </div>
             <%-- Varumärke --%>
@@ -101,7 +101,7 @@
                         <asp:Label ID="Label_PriceB2B" runat="server" Text="0kr"></asp:Label></h4>
                 </div>
                 <div class="col-md-3">
-                    <asp:TextBox CssClass="form-control" ID="TextBox_PriceB2B" runat="server"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control" ID="TextBox_PriceB2B" runat="server" TextMode="Number"></asp:TextBox>
                 </div>
             </div>
             <%-- Pris b2c--%>
@@ -114,7 +114,7 @@
                         <asp:Label ID="Label_PriceB2C" runat="server" Text="0kr"></asp:Label></h4>
                 </div>
                 <div class="col-md-3">
-                    <asp:TextBox CssClass="form-control" ID="TextBox_PriceB2C" runat="server"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control" ID="TextBox_PriceB2C" runat="server" TextMode="Number"></asp:TextBox>
                 </div>
             </div>
             <%-- Beskrivning --%>
