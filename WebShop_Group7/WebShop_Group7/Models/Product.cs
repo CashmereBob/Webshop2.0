@@ -298,7 +298,7 @@ namespace WebShop_Group7.Models
                             Result.productID = int.Parse(dataReader["ID"].ToString());
                             Result.name = dataReader["productName"].ToString();
                             Result.description = dataReader["Description"].ToString();
-                            Result.priceB2B = decimal.Parse(dataReader["b2b"].ToString();
+                            Result.priceB2B = decimal.Parse(dataReader["b2b"].ToString());
                             Result.priceB2C = decimal.Parse(dataReader["b2c"].ToString());
                             Result.brandName = dataReader["theBrand"].ToString();
                             Result.category = dataReader["category"].ToString();
@@ -866,6 +866,67 @@ namespace WebShop_Group7.Models
             }
 
             return result;
+        }
+
+        internal List<ProductObject> GetProductByWhareList(string where)
+        {
+            List<ProductObject> list = new List<ProductObject>();
+
+
+            try
+            {
+                connection.OpenConnection();
+
+                string sql = @"Select tbl_Product.ID AS[ID], tbl_Product.Name AS[Name], tbl_Brand.Name AS[Brand], tbl_Category.Name AS[Category], tbl_Product_Attribute.[PriceB2B] " +
+                             @"AS[B2B], tbl_Product_Attribute.[PriceB2C] AS[B2C], tbl_Product_Attribute.AttributeID1, tbl_Product_Attribute.AttributeID2, tbl_Product_Attribute.AttributeID3, tbl_Product_Attribute.AttributeID4 " +
+                             @"From tbl_Product " +
+                             @"INNER JOIN tbl_Brand " +
+                             @"on tbl_Product.BrandID = tbl_Brand.ID " +
+                             @"INNER JOIN tbl_Category " +
+                             @"on tbl_Product.CategoryID = tbl_Category.ID " +
+                             @"INNER JOIN tbl_Product_Attribute " +
+                             @"on tbl_Product_Attribute.ProductID = tbl_Product.ID " +
+                             $"{where}";
+
+                SqlCommand myCommand = new SqlCommand(sql, connection._connection);
+
+                using (SqlDataReader myDataReader = myCommand.ExecuteReader())
+                {
+
+                    while (myDataReader.Read())
+                    {
+                        var product = new ProductObject();
+
+                        product.productID = int.Parse(myDataReader["ID"].ToString());
+                        product.name = myDataReader["Name"].ToString();
+                        product.brandName = myDataReader["Brand"].ToString();
+                        product.category = myDataReader["Category"].ToString();
+                        product.priceB2C = decimal.Parse(myDataReader["B2C"].ToString());
+                        product.priceB2B = decimal.Parse(myDataReader["B2B"].ToString());
+                        product.attribute1 = int.Parse(myDataReader["AttributeID1"].ToString());
+                        product.attribute1 = int.Parse(myDataReader["AttributeID2"].ToString());
+                        product.attribute1 = int.Parse(myDataReader["AttributeID3"].ToString());
+                        product.attribute1 = int.Parse(myDataReader["AttributeID4"].ToString());
+
+                        list.Add(product);
+                    }
+                }
+
+                return list;
+
+
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                connection.CloseConnection();
+            }
+
+
+            
         }
     }
 }
