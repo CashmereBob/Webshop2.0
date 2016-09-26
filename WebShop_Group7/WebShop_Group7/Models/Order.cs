@@ -186,7 +186,7 @@ namespace WebShop_Group7.Models
                 {
                     string attribut = string.Empty;
 
-                    var productDB = new Product();
+                    var productDB = new ProductObejct();
 
                     Dictionary<string, string> atribut = productDB.GetAttribute(product);
 

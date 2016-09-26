@@ -11,7 +11,7 @@ namespace WebShop_Group7.Admin
 {
     public partial class List_ProductAttributes : System.Web.UI.Page
     {
-        Product product = new Product();
+        ProductObejct product = new ProductObejct();
         ProductObject proObc;
         int ProductID;
         List<string> brandNames;

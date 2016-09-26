@@ -7,7 +7,7 @@ using System.Web;
 
 namespace WebShop_Group7.Models
 {
-    public class Product
+    public class ProductObejct
     {
         DBConnection connection = new DBConnection();
         SqlDataReader dataReader;
@@ -108,10 +108,6 @@ namespace WebShop_Group7.Models
                 dataReader.Close();
             }
         }
-
-
-
-
         public DataTable GetListProducts()
         {
             DataTable dataTable = new DataTable("Product");
@@ -195,7 +191,6 @@ namespace WebShop_Group7.Models
             }
 
         }
-
         internal void removeAttribute(string text, ProductObject proObc)
         {
             int attributeID = -1;
@@ -203,7 +198,7 @@ namespace WebShop_Group7.Models
             //Get the Attribute ID
             string query = $@"Select tbl_Attribute.ID from tbl_Attribute
                               Where tbl_Attribute.Name = '{attri[0]}' AND tbl_Attribute.Value = '{attri[1]}'";
-            connection.OpenConnection();           
+            connection.OpenConnection();
             using (SqlCommand command = new SqlCommand(query, connection._connection))
             {
                 using (dataReader = command.ExecuteReader())
@@ -213,7 +208,7 @@ namespace WebShop_Group7.Models
                         attributeID = (int.Parse(dataReader["ID"].ToString()));
                     }
                 }
-                    dataReader.Close();
+                dataReader.Close();
             }
             //Check all attribute spots and delete the spotted Attribute
             int nr = 1;
@@ -248,7 +243,7 @@ namespace WebShop_Group7.Models
                                 }
                             }
                         }
-                       
+
                     }
                 }
                 catch
@@ -260,7 +255,7 @@ namespace WebShop_Group7.Models
                     dataReader.Close();
                     nr++;
                 }
-              
+
             }
 
             connection.CloseConnection();
@@ -538,62 +533,113 @@ namespace WebShop_Group7.Models
         internal void SaveProduct_AttributeChanges(ProductObject proObc)
         {
             string query;
-            int brandID;
+            int brandID = CheckBrand(proObc.brandName);
+            int categoryID = CheckCategory(proObc.category);
             connection.OpenConnection();
-            //Check brand
-            query = $@"Select tbl_Brand.ID from tbl_Brand
-                       where tbl_Brand.Name = '{proObc.brandName}'";
-            using (SqlCommand command1 = new SqlCommand(query, connection._connection))
+            query = $@"";
+
+            query = $@"UPDATE tbl_Product SET
+                           Name ='{proObc.name}',
+                           Description ='{proObc.description}',
+                           BrandID =({brandID}),
+                           CategoryID =({categoryID}),
+                           ImgUrl ='{proObc.imgURL}'
+                           WHERE tbl_Product.ID = {proObc.productID}           
+                           ";
+
+            SqlCommand command = new SqlCommand(query, connection._connection);
+            command.ExecuteNonQuery();
+            connection.CloseConnection();
+        }
+        internal int CheckBrand(string Brand)
+        {
+            int result = 0;
+            string query = $@"Select tbl_Brand.ID from tbl_Brand
+                       where tbl_Brand.Name = '{Brand}'";
+            using (SqlCommand command = new SqlCommand(query, connection._connection))
             {
-                using (dataReader = command1.ExecuteReader())
+                using (dataReader = command.ExecuteReader())
                 {
                     while (dataReader.Read())
                     {
                         //Check if brand exists
                         if (dataReader["ID"] != null)
                         {
-                            brandID = int.Parse(dataReader["ID"].ToString());
+                            result = int.Parse(dataReader["ID"].ToString());
                         }
                         else
                         {
                             //Create the Brand
                             query = $@"INSERT INTO tbl_Brand
-                                    (Name) VALUES ('{proObc.brandName}')";
+                                    (Name) VALUES ('{Brand}')";
                             using (SqlCommand command3 = new SqlCommand(query, connection._connection))
                             {
                                 command3.ExecuteNonQuery();
                             }
                             //Get the new brand+s ID
-                            query = $@"SELECT tbl_Brand.ID from tbl_Brand WHERE Brand.Name = '{proObc.brandName}'";
+                            query = $@"SELECT tbl_Brand.ID from tbl_Brand WHERE tbl_Brand.Name = '{Brand}'";
                             using (SqlCommand command4 = new SqlCommand(query, connection._connection))
                             {
                                 using (dataReader = command4.ExecuteReader())
                                 {
                                     while (dataReader.Read())
                                     {
-                                        //HERE I AM!!!
+                                        result = int.Parse(dataReader["ID"].ToString());
                                     }
                                 }
                             }
                         }
+
                     }
                 }
-                //Check Category
-                query = $@"";
-
-                query = $@"UPDATE tbl_Product SET
-                           Name ='{proObc.name}',
-                           Description ='{proObc.description}',
-                           BrandID =(select tbl_Brand.ID from tbl_Brand where tbl_Brand.Name = '{proObc.brandName}'),
-                           CategoryID =(select tbl_Category.ID from tbl_Category where tbl_Category.Name = '{proObc.category}'),
-                           ImgUrl ='{proObc.imgURL}'
-                           WHERE tbl_Product.ID = {proObc.productID}           
-                           ";
-
-                SqlCommand command = new SqlCommand(query, connection._connection);
-                command.ExecuteNonQuery();
-                connection.CloseConnection();
             }
+
+            return result;
+        }
+        internal int CheckCategory(string Category)
+        {
+            int result = 0;
+            string query = $@"Select tbl_Category.ID from tbl_Brand
+                       where tbl_Category.Name = '{Category}'";
+            using (SqlCommand command = new SqlCommand(query, connection._connection))
+            {
+                using (dataReader = command.ExecuteReader())
+                {
+                    while (dataReader.Read())
+                    {
+                        //Check if brand exists
+                        if (dataReader["ID"] != null)
+                        {
+                            result = int.Parse(dataReader["ID"].ToString());
+                        }
+                        else
+                        {
+                            //Create the Brand
+                            query = $@"INSERT INTO tbl_Category
+                                    (Name) VALUES ('{Category}')";
+                            using (SqlCommand command3 = new SqlCommand(query, connection._connection))
+                            {
+                                command3.ExecuteNonQuery();
+                            }
+                            //Get the new brand+s ID
+                            query = $@"SELECT tbl_Category.ID from tbl_Category WHERE tbl_Category.Name = '{Category}'";
+                            using (SqlCommand command4 = new SqlCommand(query, connection._connection))
+                            {
+                                using (dataReader = command4.ExecuteReader())
+                                {
+                                    while (dataReader.Read())
+                                    {
+                                        result = int.Parse(dataReader["ID"].ToString());
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            return result;
         }
         //Save New Attribute
         internal void addAttribute(ProductObject proObc, List<string> Attributes)
@@ -733,20 +779,70 @@ namespace WebShop_Group7.Models
 
         }
         //Add a new Product to DB
-        public void AddProduct(ProductObject proObj,List<string> attributes)
+        public void AddProduct(ProductObject proObj, List<string> attributes)
         {
-          
             connection.OpenConnection();
             //Brand
-
+            int brandID = CheckBrand(proObj.brandName);
             //Category
-            
-            //Attributes
-
+            int categoryID = CheckCategory(proObj.category);
             //Product
-
+            int productID = CheckProduct(proObj);//FIX
             //Product_Attributes
-            
+            CreateNew_TBL_ProductAttribute(); //FIX
+            //Attributes
+            addAttribute(proObj, attributes);
+        }
+
+        private void CreateNew_TBL_ProductAttribute()
+        {
+            throw new NotImplementedException();
+        }
+
+        private int CheckProduct(ProductObject proObj)
+        {
+            int result = 0;
+            string query = $@"Select tbl_Product.ID from tbl_Product
+                       where tbl_Brand.Name = ''";
+            using (SqlCommand command = new SqlCommand(query, connection._connection))
+            {
+                using (dataReader = command.ExecuteReader())
+                {
+                    while (dataReader.Read())
+                    {
+                        //Check if brand exists
+                        if (dataReader["ID"] != null)
+                        {
+                            result = int.Parse(dataReader["ID"].ToString());
+                        }
+                        else
+                        {
+                            //Create the Brand
+                            query = $@"INSERT INTO tbl_Product
+                                    (Name) VALUES ('')";
+                            using (SqlCommand command3 = new SqlCommand(query, connection._connection))
+                            {
+                                command3.ExecuteNonQuery();
+                            }
+                            //Get the new brand+s ID
+                            query = $@"SELECT tbl_Product.ID from tbl_Product WHERE tbl_Product.Name = ''";
+                            using (SqlCommand command4 = new SqlCommand(query, connection._connection))
+                            {
+                                using (dataReader = command4.ExecuteReader())
+                                {
+                                    while (dataReader.Read())
+                                    {
+                                        result = int.Parse(dataReader["ID"].ToString());
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            return result;
         }
     }
 }

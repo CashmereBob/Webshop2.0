@@ -11,7 +11,7 @@ namespace WebShop_Group7.Admin
     public partial class New_Product : System.Web.UI.Page
     {
         List<string> attributes = new List<string>();
-        Product product = new Product();
+        ProductObejct product = new ProductObejct();
         protected void Page_Load(object sender, EventArgs e)
         {
           
