@@ -788,19 +788,21 @@ namespace WebShop_Group7.Models
             //Category
             int categoryID = CheckCategory(proObj.category);
             //Product
-            int productID = CheckProduct(proObj);//FIX
+            int productID = CheckProduct(proObj,brandID,categoryID);
             //Product_Attributes
-            CreateNew_TBL_ProductAttribute(); //FIX
+            CreateNew_TBL_ProductAttribute(productID,proObj); 
             //Attributes
             addAttribute(proObj, attributes);
         }
 
-        private void CreateNew_TBL_ProductAttribute()
+        private void CreateNew_TBL_ProductAttribute(int productID, ProductObject proObj)
         {
-            throw new NotImplementedException();
+            string query = $@"INSERT INTO tbl_Product_Attribute
+                            (ProductID,PriceB2B,PriceB2C,Quantity,ArticleNumber) VALUES 
+                            ('{productID}','{proObj.priceB2B}','{proObj.priceB2C}','{proObj.quantity}','{proObj.artNr}')";
         }
 
-        private int CheckProduct(ProductObject proObj)
+        private int CheckProduct(ProductObject proObj,int brandID,int categoryID)
         {
             int result = 0;
             string query = $@"Select tbl_Product.ID from tbl_Product
@@ -819,6 +821,30 @@ namespace WebShop_Group7.Models
                         }
                    
 
+                    }
+                }
+            }
+            if(result == 0)// Product dont exists so we need to make It!
+            {
+                query = $@" INSERT INTO tbl_Product
+                            (Name,Description,BrandID,CategoryID,ImgUrl) VALUES 
+                            ('{proObj.name}','{proObj.description}','{brandID}','{categoryID}','{proObj.imgURL}')";
+                using (SqlCommand command = new SqlCommand(query, connection._connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+                    //Get the new Product's ID
+                    query = $@"Select tbl_Product.ID from tbl_Product
+                       where tbl_Product.Name = '{proObj.name}'AND tbl_Product.Description = '{proObj.description}' AND
+                             tbl_Product.BrandID = '{proObj.brandName}' AND tbl_Product.ImgUrl = '{proObj.imgURL}' ";
+                using (SqlCommand command = new SqlCommand(query, connection._connection))
+                {
+                    using (dataReader = command.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            result = int.Parse(dataReader["ID"].ToString());
+                        }
                     }
                 }
             }

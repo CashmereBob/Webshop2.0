@@ -44,6 +44,7 @@ namespace WebShop_Group7.Admin
             //Img
             TextBox_ImgUlr.Text = proObj.imgURL;
             TextBox_ImgUlr.Enabled = false;
+            Button_NewProductIMG.Visible = false;
             //Description
             TextBox_Description.Text = proObj.description;
             TextBox_Description.Enabled = false;
