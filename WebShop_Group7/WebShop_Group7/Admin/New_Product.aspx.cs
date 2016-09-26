@@ -16,6 +16,10 @@ namespace WebShop_Group7.Admin
         int ID;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Admin"] == null) //Kontrollerar om det finns en Admin session.
+            {
+                Response.Redirect("~/Admin/index.aspx"); //Om inte gå tillbaka till inloggning.
+            }
             try
             {
                 ID = int.Parse(Request.QueryString["id"]);

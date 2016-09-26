@@ -18,10 +18,10 @@ namespace WebShop_Group7.Admin
        
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["Admin"] == null) //Kontrollerar om det finns en Admin session.
-            //{
-            //    Response.Redirect("~/Admin/index.aspx"); //Om inte gå tillbaka till inloggning.
-            //}
+            if (Session["Admin"] == null) //Kontrollerar om det finns en Admin session.
+            {
+                Response.Redirect("~/Admin/index.aspx"); //Om inte gå tillbaka till inloggning.
+            }
             products = new Product();
           
             DataTable dt = products.GetListProducts();
