@@ -2,21 +2,28 @@
 $(document).ready(function () {
 
     $("#masterwrap").append($("</div></div></div>"));
-    $("#filterButton").click(function () {
-        filter();
+    $(".filter").click(function () {
+        filter($(this).val());
     });
+
+    fillChecked();
     
 
 });
 
-function filter() {
+function filter(val) {
 
-    var string = "?filter="
+    var string = "?filter=";
+    var id = "";
 
-    if (getUrlParameter('id') > 0) {
+    if (getUrlParameter('id') !== null) {
         string = "&filter="
-    }
+        id = "?id=" + getUrlParameter('id');
+    } 
 
+    if (getUrlParameter('filter') !== null) {
+        string = "&filter=";
+    }
 
     $(".filter").each(function (index) {
 
@@ -29,7 +36,9 @@ function filter() {
 
             
     });
-    window.location.href = window.location.href + string;
+
+    var url = window.location.origin + window.location.pathname + id + string;
+    window.location.href = url;
 
 }
 
@@ -47,3 +56,30 @@ function getUrlParameter(sParam) {
         }
     }
 };
+
+function fillChecked() {
+
+    if (getUrlParameter('filter') !== null) {
+        var filter = getUrlParameter('filter').split(":");
+
+        for (i = 0; i < filter.length; i++) {
+
+            $(".filter").each(function (index) {
+
+                if ($(this).val() == filter[i]) {
+
+                    $(this).prop('checked', true);
+
+
+                }
+
+
+            });
+
+
+        }
+
+    }
+
+
+}

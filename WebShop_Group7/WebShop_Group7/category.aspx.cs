@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
@@ -29,6 +30,46 @@ namespace WebShop_Group7
                 
             }
 
+            if (Request.QueryString["filter"] != null) {
+                GetProducts();
+            }
+
+        }
+
+        private void GetProducts()
+        {
+            List<string> param = Request.QueryString["filter"].Split(':').ToList();
+            List<int> attributes = new List<int>();
+
+            foreach(string value in param)
+            {
+                if (!string.IsNullOrEmpty(value)) { 
+                attributes.Add(int.Parse(value));
+                }
+            }
+
+            List<ProductObject> products = new List<ProductObject>();
+
+            StringBuilder str = new StringBuilder();
+            foreach (int atr in attributes)
+            {
+                str.Append($"WHERE tbl_Product_Attribute.AttributeID1 = '{atr}' ");
+                str.Append($"OR tbl_Product_Attribute.AttributeID2 = '{atr}' ");
+                str.Append($"OR tbl_Product_Attribute.AttributeID3 = '{atr}' ");
+                str.Append($"OR tbl_Product_Attribute.AttributeID3 = '{atr}' ");
+
+                List<ProductObject> productsTEMP = prudDal.GetProductByWhereList(str.ToString());
+
+                foreach (ProductObject prud in productsTEMP)
+                {
+                    products.Add(prud);
+                }
+
+            }
+
+            foreach (ProductObject prod in products) {
+                productCont.InnerHtml += " " + prod.name;
+            }
         }
 
         public void AddCategorys(List<ProductObject> products)
@@ -68,7 +109,7 @@ namespace WebShop_Group7
 
             }
 
-            filternav.InnerHtml += $"<li><button type=\"button\" class=\"btn btn-default\" id=\"filterButton\">Filtrera</button></li>";
+            
 
 
     }
