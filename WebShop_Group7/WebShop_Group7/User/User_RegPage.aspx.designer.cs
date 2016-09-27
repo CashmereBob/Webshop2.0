@@ -85,6 +85,15 @@ namespace WebShop_Group7.User {
         protected global::System.Web.UI.WebControls.TextBox TextBox_UserMobilePhone;
         
         /// <summary>
+        /// TextBox_UserCompay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_UserCompay;
+        
+        /// <summary>
         /// TextBox_UserPassword control.
         /// </summary>
         /// <remarks>
@@ -101,6 +110,15 @@ namespace WebShop_Group7.User {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_UserPasswordAgain;
+        
+        /// <summary>
+        /// Lable_Passwordmatch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Lable_Passwordmatch;
         
         /// <summary>
         /// Button1 control.
