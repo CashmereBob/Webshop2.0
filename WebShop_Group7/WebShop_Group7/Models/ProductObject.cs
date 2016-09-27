@@ -22,5 +22,6 @@ namespace WebShop_Group7.Models
         public int attribute4 = 0;
         public int quantity { get; set; }
         public string artNr { get; set; }
+        public string DateMade { get; set; }
     }
 }
