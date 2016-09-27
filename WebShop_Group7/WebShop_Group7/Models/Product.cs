@@ -140,14 +140,22 @@ namespace WebShop_Group7.Models
            
         }
 
-        internal void DeleteSubProduct(string iD)
+        internal void DeleteSubProduct(string ID)
         {
-            string query = $@"";
+           string query = $@" use [WebShopGr7]
+                        DELETE FROM tbl_Product_Attribute
+                        WHERE tbl_Product_Attribute.ID = {ID}";
             connection.OpenConnection();
-            using (SqlCommand command = new SqlCommand(query, connection._connection))
+            try
             {
+                using (SqlCommand command = new SqlCommand(query, connection._connection))
+                {
+                    command.ExecuteNonQuery();
+                }
             }
-            connection.CloseConnection();
+            catch { }
+            finally { connection.CloseConnection(); }
+
         }
 
         internal List<ProductObject> GetNewestProducts()
