@@ -291,15 +291,21 @@ namespace WebShop_Group7
                 }
             }
 
-            foreach (ProductObject prod in newProduct) { 
+            foreach (ProductObject prod in newProduct) {
 
-            productCont.InnerHtml += $"<div class=\"col-sm-6 col-md-4 col-lg-3\"> " +
+                string price = string.Empty;
+
+                if (pricegroup == 1) { price = prod.priceB2C.ToString("#,##"); }
+                if (pricegroup == 2) { price = prod.priceB2B.ToString("#,##"); }
+
+                productCont.InnerHtml += $"<div class=\"col-sm-6 col-md-4 col-lg-3\"> " +
                                         $"<div class=\"thumbnail\"> " +
                                           $"<img src = \"{prod.imgURL}\" alt=\"...\" > " +
                                           $"<div class=\"caption\" > " +
                                             $"<h3>{prod.name}</h3> " +
+                                            $"<h4 class=\"green\" >{price} kr</h4>" + 
                                             $"<p>{prod.brandName}</p> " +
-                                            $"<p><a href = \"#\" class=\"btn btn-primary\" role=\"button\" >Button</a></p> " +
+                                            $"<p><a href = \"#\" class=\"btn btn-primary\" role=\"button\" >Mer info</a></p> " +
                                           $"</div> " +
                                         $"</div> " +
                                       $"</div>";
