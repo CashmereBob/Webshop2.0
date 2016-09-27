@@ -123,12 +123,21 @@ namespace WebShop_Group7.Models
                               tbl_Product_Attribute.AttributeID1,
                               tbl_Product_Attribute.AttributeID2,
                               tbl_Product_Attribute.AttributeID3,
-                              tbl_Product_Attribute.AttributeID4
+                              tbl_Product_Attribute.AttributeID4,
+                              tbl_Product.Name,
+                              tbl_Brand.Name,
+                              tbl_Category.Name,
+                              tbl_Product.Description,
+                              tbl_Product.ImgUrl
                               From tbl_Product_Attribute
-                              ORDER BY DateMade DESC;;";
+                              INNER JOIN tbl_Product ON tbl_Product.ID = tbl_Product_Attribute.ProductID
+                              INNER JOIN tbl_Brand ON tbl_Brand.ID = tbl_Product.BrandID
+                              INNER JOIN tbl_Category ON tbl_Category.ID = tbl_Product.CategoryID
+                              ORDER BY DateMade DESC;
+                              ";
             connection.OpenConnection();
             using (SqlCommand command = new SqlCommand(query, connection._connection))
-            {          
+            {
                 using (dataReader = command.ExecuteReader())
                 {
                     while (dataReader.Read())
@@ -137,8 +146,8 @@ namespace WebShop_Group7.Models
                         proObj.ID = int.Parse(dataReader["ID"].ToString());
                         proObj.productID = int.Parse(dataReader["ProductID"].ToString());
                         proObj.quantity = int.Parse(dataReader["Quantity"].ToString());
-                        proObj.priceB2B = int.Parse(dataReader["PriceB2B"].ToString());
-                        proObj.priceB2C = int.Parse(dataReader["PriceB2C"].ToString());
+                        proObj.priceB2B = decimal.Parse(dataReader["PriceB2B"].ToString());
+                        proObj.priceB2C = decimal.Parse(dataReader["PriceB2C"].ToString());
                         proObj.artNr = dataReader["ArticleNumber"].ToString();
                         proObj.DateMade = dataReader["DateMade"].ToString();
 
@@ -146,11 +155,17 @@ namespace WebShop_Group7.Models
                         try { proObj.attribute2 = int.Parse(dataReader["AttributeID2"].ToString()); } catch { }
                         try { proObj.attribute3 = int.Parse(dataReader["AttributeID3"].ToString()); } catch { }
                         try { proObj.attribute4 = int.Parse(dataReader["AttributeID4"].ToString()); } catch { }
+
+                        proObj.priceB2B.ToString("#.##");
+                        proObj.priceB2C.ToString("#.##");
                         result.Add(proObj);
                     }
                 }
-              
+
             }
+      
+        
+
             connection.CloseConnection();
             return result;
         }

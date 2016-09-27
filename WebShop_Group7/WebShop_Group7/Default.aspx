@@ -55,32 +55,32 @@
 
     <%-- Panel logIn --%>
     <div class="row">
-        <asp:Panel CssClass="startPanel panel_login col-md-3" ID="Panel1" runat="server">
+        <asp:Panel CssClass="startPanel panel_login col-md-3" ID="Panel_Login" runat="server">
             <div class="container">
                 <div class="borderStart">
-                     <div class="row">
+                    <div class="row">
                         <div class="col-md-12">
                             <h2>Login</h2>
                         </div>
                     </div>
                     <%-- Username --%>
-                     <div class="row">
+                    <div class="row">
                         <div class="col-md-12">
                             <asp:Label ID="Label6" runat="server" Text="Username"></asp:Label>
                         </div>
                     </div>
-                     <div class="row">
+                    <div class="row">
                         <div class="col-md-12">
                             <asp:TextBox ID="TextBox2" Width="100%" runat="server"></asp:TextBox>
                         </div>
                     </div>
                     <%-- Password --%>
-                     <div class="row">
+                    <div class="row">
                         <div class="col-md-12">
                             <asp:Label ID="Label5" runat="server" Text="Password"></asp:Label>
                         </div>
                     </div>
-                     <div class="row">
+                    <div class="row">
                         <div class="col-md-12">
                             <asp:TextBox ID="TextBox1" Width="100%" runat="server"></asp:TextBox>
                         </div>
@@ -90,7 +90,6 @@
                             <asp:Button ID="Button1" Width="100%" runat="server" Text="Login" />
                         </div>
                     </div>
-                 
 
                     <div class="row">
                         <div class="col-md-12">
@@ -109,7 +108,7 @@
         </asp:Panel>
 
         <%-- Panel erbjudanden --%>
-        <asp:Panel CssClass="startPanel panel_Erbjudanden col-sm-3" ID="Panel_Left" runat="server" Visible="False">
+        <asp:Panel CssClass="startPanel panel_Erbjudanden col-sm-3" ID="Panel_SpecialOffers" runat="server" Visible="False">
             <div class="container">
                 <div class="borderStart">
                     <div class="row">
@@ -184,73 +183,34 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
-                            <asp:Label ID="Label1" runat="server" Text="Label">Skor</asp:Label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 new1">
                             <div class="thumbnail">
-                                <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image4" runat="server" />
+                                <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image_new1" runat="server" />
                                 <div class="caption">
-                                    <h3>Product Name</h3>
+                                    <h3>
+                                        <asp:Label ID="Label_Name_new1" runat="server" Text="ProductName"></asp:Label></h3>
                                     <p>...</p>
                                     <p><a href="#" class="btn btn-primary" role="button">Add to cart</a> <a href="#" class="btn btn-default" role="button">Product Info</a></p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 new2">
                             <div class="thumbnail">
-                                <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image5" runat="server" />
+                                <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image_new2" runat="server" />
                                 <div class="caption">
-                                    <h3>Product Name</h3>
+                                    <h3>
+                                        <asp:Label ID="Label_Name_new2" runat="server" Text="ProductName"></asp:Label></h3>
                                     <p>...</p>
                                     <p><a href="#" class="btn btn-primary" role="button">Add to cart</a> <a href="#" class="btn btn-default" role="button">Product Info</a></p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 new3">
                             <div class="thumbnail">
-                                <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image6" runat="server" />
+                                <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image_new3" runat="server" />
                                 <div class="caption">
-                                    <h3>Product Name</h3>
-                                    <p>...</p>
-                                    <p><a href="#" class="btn btn-primary" role="button">Add to cart</a> <a href="#" class="btn btn-default" role="button">Product Info</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <asp:Label ID="Label3" runat="server" Text="Label">Byxor</asp:Label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="thumbnail">
-                                <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image7" runat="server" />
-                                <div class="caption">
-                                    <h3>Product Name</h3>
-                                    <p>...</p>
-                                    <p><a href="#" class="btn btn-primary" role="button">Add to cart</a> <a href="#" class="btn btn-default" role="button">Product Info</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="thumbnail">
-                                <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image8" runat="server" />
-                                <div class="caption">
-                                    <h3>Product Name</h3>
-                                    <p>...</p>
-                                    <p><a href="#" class="btn btn-primary" role="button">Add to cart</a> <a href="#" class="btn btn-default" role="button">Product Info</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="thumbnail">
-                                <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image9" runat="server" />
-                                <div class="caption">
-                                    <h3>Product Name</h3>
+                                    <h3>
+                                        <asp:Label ID="Label_Name_new3" runat="server" Text="ProductName"></asp:Label></h3>
                                     <p>...</p>
                                     <p><a href="#" class="btn btn-primary" role="button">Add to cart</a> <a href="#" class="btn btn-default" role="button">Product Info</a></p>
                                 </div>
@@ -258,36 +218,69 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-12">
-                            <asp:Label ID="Label4" runat="server" Text="Label">Tröjor</asp:Label>
+                        <div class="col-sm-4 new4">
+                            <div class="thumbnail">
+                                <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image_new4" runat="server" />
+                                <div class="caption">
+                                    <h3>
+                                        <asp:Label ID="Label_Name_new4" runat="server" Text="ProductName"></asp:Label></h3>
+                                    <p>...</p>
+                                    <p><a href="#" class="btn btn-primary" role="button">Add to cart</a> <a href="#" class="btn btn-default" role="button">Product Info</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 new5">
+                            <div class="thumbnail">
+                                <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image_new5" runat="server" />
+                                <div class="caption">
+                                    <h3>
+                                        <asp:Label ID="Label_Name_new5" runat="server" Text="ProductName"></asp:Label></h3>
+                                    <p>...</p>
+                                    <p><a href="#" class="btn btn-primary" role="button">Add to cart</a> <a href="#" class="btn btn-default" role="button">Product Info</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 new6">
+                            <div class="thumbnail">
+                                <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image_new6" runat="server" />
+                                <div class="caption">
+                                    <h3>
+                                        <asp:Label ID="Label_Name_new6" runat="server" Text="ProductName"></asp:Label></h3>
+                                    <p>...</p>
+                                    <p><a href="#" class="btn btn-primary" role="button">Add to cart</a> <a href="#" class="btn btn-default" role="button">Product Info</a></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 new7">
                             <div class="thumbnail">
-                                <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image10" runat="server" />
+                                <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image_new7" runat="server" />
                                 <div class="caption">
-                                    <h3>Product Name</h3>
+                                    <h3>
+                                        <asp:Label ID="Label_Name_new7" runat="server" Text="ProductName"></asp:Label></h3>
                                     <p>...</p>
                                     <p><a href="#" class="btn btn-primary" role="button">Add to cart</a> <a href="#" class="btn btn-default" role="button">Product Info</a></p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 new8">
                             <div class="thumbnail">
-                                <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image11" runat="server" />
+                                <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image_new8" runat="server" />
                                 <div class="caption">
-                                    <h3>Product Name</h3>
+                                    <h3>
+                                        <asp:Label ID="Label_Name_new8" runat="server" Text="ProductName"></asp:Label></h3>
                                     <p>...</p>
                                     <p><a href="#" class="btn btn-primary" role="button">Add to cart</a> <a href="#" class="btn btn-default" role="button">Product Info</a></p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 new9">
                             <div class="thumbnail">
-                                <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image12" runat="server" />
+                                <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image_new9" runat="server" />
                                 <div class="caption">
-                                    <h3>Product Name</h3>
+                                    <h3>
+                                        <asp:Label ID="Label_Name_new9" runat="server" Text="ProductName"></asp:Label></h3>
                                     <p>...</p>
                                     <p><a href="#" class="btn btn-primary" role="button">Add to cart</a> <a href="#" class="btn btn-default" role="button">Product Info</a></p>
                                 </div>
