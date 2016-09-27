@@ -13,5 +13,10 @@ namespace WebShop_Group7
         {
 
         }
+
+        internal static void DeleteMainProduct(string iD)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -109,6 +109,47 @@ namespace WebShop_Group7.Models
             }
         }
 
+        internal void DeleteMainProduct(string ID)
+        {
+            string query = $@"use [WebShopGr7]
+                              DELETE FROM tbl_Product
+                              WHERE tbl_Product.ID = {ID}";
+            connection.OpenConnection();
+            try
+            {
+                using (SqlCommand command = new SqlCommand(query, connection._connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch { }
+            finally { connection.CloseConnection(); }
+            query = $@" use [WebShopGr7]
+                        DELETE FROM tbl_Product_Attribute
+                        WHERE tbl_Product_Attribute.ProductID = {ID}";
+            connection.OpenConnection();
+            try
+            {
+                using (SqlCommand command = new SqlCommand(query, connection._connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch { }
+            finally { connection.CloseConnection(); }
+           
+        }
+
+        internal void DeleteSubProduct(string iD)
+        {
+            string query = $@"";
+            connection.OpenConnection();
+            using (SqlCommand command = new SqlCommand(query, connection._connection))
+            {
+            }
+            connection.CloseConnection();
+        }
+
         internal List<ProductObject> GetNewestProducts()
         {
             List<ProductObject> result = new List<ProductObject>();
@@ -168,8 +209,8 @@ namespace WebShop_Group7.Models
                 }
 
             }
-      
-        
+
+
 
             connection.CloseConnection();
             return result;
