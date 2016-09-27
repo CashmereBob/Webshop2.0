@@ -197,6 +197,7 @@
     <Content Include="login.aspx" />
     <Content Include="page.aspx" />
     <Content Include="Pictures\KlädPlagg.jpg" />
+    <Content Include="product.aspx" />
     <Content Include="Scripts\bootstrap-slider.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -652,6 +653,13 @@
     </Compile>
     <Compile Include="page.aspx.designer.cs">
       <DependentUpon>page.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="product.aspx.cs">
+      <DependentUpon>product.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="product.aspx.designer.cs">
+      <DependentUpon>product.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
