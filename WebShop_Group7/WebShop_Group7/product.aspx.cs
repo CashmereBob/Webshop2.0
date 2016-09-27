@@ -42,7 +42,8 @@ namespace WebShop_Group7
 
             string price = string.Empty;
 
-            ProductObject product = proDal.GetProduct(id);
+
+            ProductObject product = proDal.GetMainProduct(id);
 
             Dictionary<string, List<string>> attributes = GetAllAtributes(id);
 
@@ -77,7 +78,7 @@ namespace WebShop_Group7
             if (pricegroup == 1) { price = product.priceB2C.ToString("#,##"); }
             if (pricegroup == 2) { price = product.priceB2B.ToString("#,##"); }
 
-            str.Append($"<h2 class=\"text-right\" >{price}kr</h2><p class=\"text-right\" ><i>moms: {(int.Parse(price) * 0.25)}kr</i></p>");
+            str.Append($"<h2 class=\"text-right\" >{price}kr</h2><p class=\"text-right\" ><i>moms: {(decimal)(int.Parse(price) * 0.25)}kr</i></p>");
             str.Append($"<p class=\"text-right\"><a href =\"/product.aspx?id={id}\" class=\"btn btn-success\" role=\"button\">Lägg i varukorg</a></p>");
 
 
