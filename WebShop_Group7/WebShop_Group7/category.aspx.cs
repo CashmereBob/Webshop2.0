@@ -80,6 +80,7 @@ namespace WebShop_Group7
                 {
 
                     Dictionary<string, string> attribute = prudDal.GetAttribute(product);
+                    if (attribute != null) { 
                     foreach (KeyValuePair<string, string> values in attribute)
                     {
                         if (attributes.ContainsKey(values.Key))
@@ -95,6 +96,7 @@ namespace WebShop_Group7
                         {
                             attributes.Add(values.Key, new List<string>() { values.Value });
                         }
+                    }
                     }
                 }
 
