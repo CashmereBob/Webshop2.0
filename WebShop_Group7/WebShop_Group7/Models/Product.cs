@@ -125,8 +125,8 @@ namespace WebShop_Group7.Models
                               tbl_Product_Attribute.AttributeID3,
                               tbl_Product_Attribute.AttributeID4,
                               tbl_Product.Name,
-                              tbl_Brand.Name,
-                              tbl_Category.Name,
+                              tbl_Brand.Name as Brand,
+                              tbl_Category.Name as Category,
                               tbl_Product.Description,
                               tbl_Product.ImgUrl
                               From tbl_Product_Attribute
@@ -151,13 +151,18 @@ namespace WebShop_Group7.Models
                         proObj.artNr = dataReader["ArticleNumber"].ToString();
                         proObj.DateMade = dataReader["DateMade"].ToString();
 
+                        proObj.name = dataReader["Name"].ToString();
+                        proObj.brandName = dataReader["Brand"].ToString();
+                        proObj.category = dataReader["Category"].ToString();
+                        proObj.description = dataReader["Description"].ToString();
+                        proObj.imgURL = dataReader["ImgUrl"].ToString();
+
                         try { proObj.attribute1 = int.Parse(dataReader["AttributeID1"].ToString()); } catch { }
                         try { proObj.attribute2 = int.Parse(dataReader["AttributeID2"].ToString()); } catch { }
                         try { proObj.attribute3 = int.Parse(dataReader["AttributeID3"].ToString()); } catch { }
                         try { proObj.attribute4 = int.Parse(dataReader["AttributeID4"].ToString()); } catch { }
 
-                        proObj.priceB2B.ToString("#.##");
-                        proObj.priceB2C.ToString("#.##");
+
                         result.Add(proObj);
                     }
                 }
