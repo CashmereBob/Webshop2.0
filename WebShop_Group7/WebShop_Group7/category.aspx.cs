@@ -165,7 +165,23 @@ namespace WebShop_Group7
                 }
             }
             catch { }
-            filternav.InnerHtml += $"<li><b>{(int)low}kr </b><input id=\"ex2\" type=\"text\" class=\"span2\" value=\"\" data-slider-min=\"{(int)low}\" data-slider-max=\"{(int)high}\" data-slider-step=\"5\" data-slider-value=\"[250, 450]\" /><b> {(int)high}kr</b></ li>";
+
+            List<string> str = null;
+            var valueOne = low;
+            var valueTwo = high;
+
+            if (Request.QueryString["value"] != null)
+            {
+                str = new List<string>();
+                str = Request.QueryString["value"].Split(',').ToList();
+                valueOne = int.Parse(str[0]);
+                valueTwo = int.Parse(str[1]);
+            }
+
+            
+            
+
+            filternav.InnerHtml += $"<li><b>{(int)low}kr </b><input id=\"ex2\" type=\"text\" class=\"span2\" value=\"\" data-slider-min=\"{(int)low}\" data-slider-max=\"{(int)high}\" data-slider-step=\"5\" data-slider-value=\"[{(int)valueOne}, {(int)valueTwo}]\" /><b> {(int)high}kr</b></ li>";
 
         }
     }
