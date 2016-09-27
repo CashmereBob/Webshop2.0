@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
 
-    $("#masterwrap").append($("</div></div></div>"));
+    $("#masterwrap").append($("</div></div>"));
     $(".filter").click(function () {
         filter($(this).val());
     });
@@ -13,6 +13,7 @@
 
     });
 
+    
 });
 
 function filter(val) {
