@@ -12,6 +12,12 @@ namespace WebShop_Group7
 {
     public partial class category : System.Web.UI.Page
     {
+
+        decimal low = 0;
+        decimal high = 0;
+        int pricegroup = 1;
+
+
         Product prudDal = new Product();
         Users usrDal = new Users();
         protected void Page_Load(object sender, EventArgs e)
@@ -20,7 +26,7 @@ namespace WebShop_Group7
             {
                 var where = string.Empty;
 
-                if (Request.QueryString["id"] != null)
+                if (!string.IsNullOrWhiteSpace(Request.QueryString["id"]))
                 {
                     where = $"WHERE tbl_Category.ID = '{Request.QueryString["id"]}'";
                 }
@@ -31,54 +37,36 @@ namespace WebShop_Group7
 
             }
 
-            if (Request.QueryString["filter"] != null)
-            {
-                GetProducts();
-            }
+
+            GetProducts();
+
 
         }
 
         private void GetProducts()
         {
-            List<string> param = Request.QueryString["filter"].Split(':').ToList();
-            List<int> attributes = new List<int>();
+            List<string> vals = null;
+            decimal valueOne = low;
+            decimal valueTwo = high;
 
-            foreach (string value in param)
+            if (!string.IsNullOrWhiteSpace(Request.QueryString["value"]))
             {
-                if (!string.IsNullOrEmpty(value))
-                {
-                    attributes.Add(int.Parse(value));
-                }
+                vals = new List<string>();
+                vals = Request.QueryString["value"].Split(',').ToList();
+                valueOne = int.Parse(vals[0]);
+                valueTwo = int.Parse(vals[1]);
             }
 
-            List<ProductObject> products = new List<ProductObject>();
 
-
-            foreach (int atr in attributes)
+            if (!string.IsNullOrWhiteSpace(Request.QueryString["filter"]))
             {
-                StringBuilder str = new StringBuilder();
-                str.Append($"WHERE (tbl_Product_Attribute.AttributeID1 = '{atr}' ");
-                str.Append($"OR tbl_Product_Attribute.AttributeID2 = '{atr}' ");
-                str.Append($"OR tbl_Product_Attribute.AttributeID3 = '{atr}' ");
-                str.Append($"OR tbl_Product_Attribute.AttributeID3 = '{atr}') ");
-                if (Request.QueryString["id"] != null)
-                {
-                    str.Append($"AND tbl_Category.ID = '{Request.QueryString["id"]}' ");
-                }
-
-                List<ProductObject> productsTEMP = prudDal.GetProductByWhereList(str.ToString());
-
-                foreach (ProductObject prud in productsTEMP)
-                {
-                    products.Add(prud);
-                }
-
+                AddProductsAttribute((int)valueOne, (int)valueTwo);
+            } else
+            {
+                AddProductValue((int)valueOne, (int)valueTwo);
             }
 
-            foreach (ProductObject prod in products)
-            {
-                productCont.InnerHtml += " " + prod.name;
-            }
+
         }
 
         public void AddCategorys(List<ProductObject> products)
@@ -128,11 +116,7 @@ namespace WebShop_Group7
 
 
 
-            filternav.InnerHtml += $"<li class=\"sidebar-brand\">Price</li>";
-
-            int pricegroup = 1;
-            decimal low = 0;
-            decimal high = 0;
+            filternav.InnerHtml += $"<li class=\"sidebar-brand\">Prisintervall</li>";
 
             UserObject usr = null;
             if (Session["User"] != null)
@@ -152,12 +136,12 @@ namespace WebShop_Group7
 
                     if (pricegroup == 1)
                     {
-                        if (product.priceB2C < low) { low = product.priceB2C; }
+                        if (product.priceB2C < low || low == 0) { low = product.priceB2C; }
                         if (product.priceB2C > high) { high = product.priceB2C; }
                     }
                     if (pricegroup == 2)
                     {
-                        if (product.priceB2B < low) { low = product.priceB2B; }
+                        if (product.priceB2B < low || low == 0) { low = product.priceB2B; }
                         if (product.priceB2B > high) { high = product.priceB2B; }
                     }
 
@@ -167,10 +151,10 @@ namespace WebShop_Group7
             catch { }
 
             List<string> str = null;
-            var valueOne = low;
-            var valueTwo = high;
+            decimal valueOne = low;
+            decimal valueTwo = high;
 
-            if (Request.QueryString["value"] != null)
+            if (!string.IsNullOrWhiteSpace(Request.QueryString["value"]))
             {
                 str = new List<string>();
                 str = Request.QueryString["value"].Split(',').ToList();
@@ -178,11 +162,149 @@ namespace WebShop_Group7
                 valueTwo = int.Parse(str[1]);
             }
 
-            
-            
 
-            filternav.InnerHtml += $"<li><b>{(int)low}kr </b><input id=\"ex2\" type=\"text\" class=\"span2\" value=\"\" data-slider-min=\"{(int)low}\" data-slider-max=\"{(int)high}\" data-slider-step=\"5\" data-slider-value=\"[{(int)valueOne}, {(int)valueTwo}]\" /><b> {(int)high}kr</b></ li>";
 
+
+            filternav.InnerHtml += $"<li><input id=\"ex2\" type=\"text\" class=\"span2\" value=\"\" data-slider-min=\"{(int)low}\" data-slider-max=\"{(int)high}\" data-slider-step=\"5\" data-slider-value=\"[{(int)valueOne}, {(int)valueTwo}]\" /></ li>";
+
+        }
+
+        public void AddProductsAttribute(int lowerValue, int higherValue)
+        {
+            List<int> attributes = new List<int>();
+            List<ProductObject> products = new List<ProductObject>();
+            List<string> param = Request.QueryString["filter"].Split(':').ToList();
+
+
+            foreach (string value in param)
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    attributes.Add(int.Parse(value));
+                }
+            }
+
+
+            foreach (int atr in attributes)
+            {
+                StringBuilder str = new StringBuilder();
+
+                str.Append($"WHERE (tbl_Product_Attribute.AttributeID1 = '{atr}' ");
+                str.Append($"OR tbl_Product_Attribute.AttributeID2 = '{atr}' ");
+                str.Append($"OR tbl_Product_Attribute.AttributeID3 = '{atr}' ");
+                str.Append($"OR tbl_Product_Attribute.AttributeID3 = '{atr}') ");
+
+                if (!string.IsNullOrWhiteSpace(Request.QueryString["id"]))
+                {
+                    str.Append($"AND tbl_Category.ID = '{Request.QueryString["id"]}' ");
+                }
+                if (pricegroup == 1)
+                {
+                    str.Append($"AND tbl_Product_Attribute.PriceB2C >= '{lowerValue}' AND tbl_Product_Attribute.PriceB2C <= '{higherValue}' ");
+                }
+                if (pricegroup == 2)
+                {
+                    str.Append($"AND tbl_Product_Attribute.PriceB2B >= '{lowerValue}' AND tbl_Product_Attribute.PriceB2B <= '{higherValue}' ");
+                }
+
+                List<ProductObject> productsTEMP = prudDal.GetProductByWhereList(str.ToString());
+
+                foreach (ProductObject prud in productsTEMP)
+                {
+                    products.Add(prud);
+                }
+
+            }
+
+            DrawProducts(products);
+
+        }
+
+        public void AddProductValue(int lowerValue, int higherValue)
+        {
+            List<ProductObject> products = new List<ProductObject>();
+            StringBuilder str = new StringBuilder();
+
+            str.Append($"WHERE ");
+
+
+            if (!string.IsNullOrWhiteSpace(Request.QueryString["id"]))
+            {
+                str.Append($"tbl_Category.ID = '{Request.QueryString["id"]}' ");
+            }
+
+            if (pricegroup == 1)
+            {
+                if (!string.IsNullOrWhiteSpace(Request.QueryString["id"]))
+                {
+                    str.Append($"AND tbl_Product_Attribute.PriceB2C >= '{lowerValue}' AND tbl_Product_Attribute.PriceB2C <= '{higherValue}' ");
+                } else
+                {
+                    str.Append($"tbl_Product_Attribute.PriceB2C >= '{lowerValue}' AND tbl_Product_Attribute.PriceB2C <= '{higherValue}' ");
+                }
+            }
+            if (pricegroup == 2)
+            {
+                if (!string.IsNullOrWhiteSpace(Request.QueryString["id"]))
+                {
+                    str.Append($"AND tbl_Product_Attribute.PriceB2B >= '{lowerValue}' AND tbl_Product_Attribute.PriceB2B <= '{higherValue}' ");
+                }
+                else
+                {
+                    str.Append($"tbl_Product_Attribute.PriceB2B >= '{lowerValue}' AND tbl_Product_Attribute.PriceB2B <= '{higherValue}' ");
+                }
+            }
+
+            List<ProductObject> productsTEMP = prudDal.GetProductByWhereList(str.ToString());
+
+            foreach (ProductObject prud in productsTEMP)
+            {
+                products.Add(prud);
+            }
+
+                DrawProducts(products);
+
+        }
+
+        public void DrawProducts(List<ProductObject> product)
+        {
+            List<ProductObject> newProduct = new List<ProductObject>();
+
+            foreach (ProductObject prod in product) {
+                if (newProduct.Count() == 0)
+                {
+                    newProduct.Add(prod);
+                }
+                else
+                {
+                    bool add = true;
+
+                    foreach (ProductObject newProd in newProduct)
+                    {
+                        if (prod.productID == newProd.productID) { add = false; }
+                    }
+
+                    if (add)
+                    {
+                        newProduct.Add(prod);
+                    }
+                }
+            }
+
+            foreach (ProductObject prod in newProduct) { 
+
+            productCont.InnerHtml += $"<div class=\"col-sm-6 col-md-4 col-lg-3\"> " +
+                                        $"<div class=\"thumbnail\"> " +
+                                          $"<img src = \"{prod.imgURL}\" alt=\"...\" > " +
+                                          $"<div class=\"caption\" > " +
+                                            $"<h3>{prod.name}</h3> " +
+                                            $"<p>{prod.brandName}</p> " +
+                                            $"<p><a href = \"#\" class=\"btn btn-primary\" role=\"button\" >Button</a></p> " +
+                                          $"</div> " +
+                                        $"</div> " +
+                                      $"</div>";
+
+            }
         }
     }
 }
