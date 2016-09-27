@@ -115,7 +115,7 @@
                                         <div class="form-group">
 
                                             <asp:TextBox ID="TextBox_User" CssClass="form-control" runat="server" placeholder="Användarnamn"></asp:TextBox>
-                                            <asp:TextBox ID="TextBox_Password" CssClass="form-control" runat="server" placeholder="Lösenord" TextMode="Password"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Required" ControlToValidate="TextBox_Password"></asp:RequiredFieldValidator>
+                                            <asp:TextBox ID="TextBox_Password" CssClass="form-control" runat="server" placeholder="Lösenord" TextMode="Password"></asp:TextBox>
                                             </br>
                         <asp:Button ID="Button_login" CssClass="btn btn-default" runat="server" Text="Logga in" OnClick="Button_login_Click" />
                                             <asp:LinkButton ID="LinkButton_register" runat="server" Text="Skaffa konto"></asp:LinkButton>
