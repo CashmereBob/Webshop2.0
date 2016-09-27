@@ -28,10 +28,8 @@
                         <hr>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xs-12" id="productCont" runat="server">
-                      
-                    </div>
+                <div class="row" id="productCont" runat="server">
+                    
                 </div>
                
 

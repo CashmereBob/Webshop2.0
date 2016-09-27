@@ -31,8 +31,7 @@ namespace WebShop_Group7.User
             newUser.telephone = TextBox_UserPhone.Text;
             newUser.mobile = TextBox_UserMobilePhone.Text;
             newUser.company = TextBox_UserCompay.Text;
-            newUser.password = TextBox_UserPassword.Text;
-            newUser.password = TextBox_UserPasswordAgain.Text;
+            
 
             if (!string.IsNullOrWhiteSpace(TextBox_UserPassword.Text) || string.IsNullOrWhiteSpace(TextBox_UserPasswordAgain.Text))
             {

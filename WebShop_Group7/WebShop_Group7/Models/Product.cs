@@ -945,7 +945,7 @@ namespace WebShop_Group7.Models
             {
                 connection.OpenConnection();
 
-                string sql = @"Select tbl_Product.ID AS[ID], tbl_Product.Name AS[Name], tbl_Brand.Name AS[Brand], tbl_Category.Name AS[Category], tbl_Product_Attribute.[PriceB2B] " +
+                string sql = @"Select tbl_Product.ID AS[ID], tbl_Product.Name AS[Name], tbl_Brand.Name AS[Brand], tbl_Product.ImgUrl AS [img], tbl_Category.Name AS[Category], tbl_Product_Attribute.[PriceB2B] " +
                              @"AS[B2B], tbl_Product_Attribute.[PriceB2C] AS[B2C], tbl_Product_Attribute.AttributeID1, tbl_Product_Attribute.AttributeID2, tbl_Product_Attribute.AttributeID3, tbl_Product_Attribute.AttributeID4 " +
                              @"From tbl_Product " +
                              @"INNER JOIN tbl_Brand " +
@@ -969,6 +969,7 @@ namespace WebShop_Group7.Models
                         product.name = myDataReader["Name"].ToString();
                         product.brandName = myDataReader["Brand"].ToString();
                         product.category = myDataReader["Category"].ToString();
+                        product.imgURL = myDataReader["img"].ToString();
                         product.priceB2C = decimal.Parse(myDataReader["B2C"].ToString());
                         product.priceB2B = decimal.Parse(myDataReader["B2B"].ToString());
 

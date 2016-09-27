@@ -94,24 +94,6 @@ namespace WebShop_Group7.User {
         protected global::System.Web.UI.WebControls.TextBox TextBox_mail;
         
         /// <summary>
-        /// TextBox_password01 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_password01;
-        
-        /// <summary>
-        /// TextBox_password02 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_password02;
-        
-        /// <summary>
         /// Lable_Passwordmatch control.
         /// </summary>
         /// <remarks>
@@ -121,12 +103,30 @@ namespace WebShop_Group7.User {
         protected global::System.Web.UI.WebControls.Label Lable_Passwordmatch;
         
         /// <summary>
-        /// Button_submitUser control.
+        /// TextBox_UserPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_submitUser;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_UserPassword;
+        
+        /// <summary>
+        /// TextBox_UserPasswordAgain control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_UserPasswordAgain;
+        
+        /// <summary>
+        /// Button_UpdateUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_UpdateUser;
     }
 }
