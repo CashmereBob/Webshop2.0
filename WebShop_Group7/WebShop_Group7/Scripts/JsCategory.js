@@ -1,5 +1,4 @@
-﻿
-$(document).ready(function () {
+﻿$(document).ready(function () {
 
     $("#masterwrap").append($("</div></div></div>"));
     $(".filter").click(function () {
@@ -7,37 +6,38 @@ $(document).ready(function () {
     });
 
     fillChecked();
-    
+    $("#ex2").slider({});
+
+    $("#ex2").slider().on('change', function () {
+        filter($(this).val());
+
+    });
 
 });
 
 function filter(val) {
 
-    var string = "?filter=";
-    var id = "";
+    var slider = "&value="
+    var string = "&filter=";
+    var id = "?id=";
 
     if (getUrlParameter('id') != null) {
-        string = "&filter="
-        id = "?id=" + getUrlParameter('id');
-    } 
+        id += getUrlParameter('id');
 
-    //if (getUrlParameter('filter') != null && getUrlParameter('id') != null) {
-    //    string = "&filter=";
-    //}
-
+    }
+ 
     $(".filter").each(function (index) {
 
         if ($(this).is(':checked')) {
         
-            string += ":" + $(this).val()
-            
+            string += ":" + $(this).val()   
         
-        }
-
-            
+        }   
     });
 
-    var url = window.location.origin + window.location.pathname + id + string;
+    slider += $("#ex2").slider().val();
+
+    var url = window.location.origin + window.location.pathname + id + string + slider;
     window.location.href = url;
 
 }
