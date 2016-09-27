@@ -59,7 +59,7 @@ namespace WebShop_Group7.Admin
             ProductObject proObj = new ProductObject();
             FillValues(proObj);
             product.AddProduct(proObj, attributes);
-            Response.Redirect("~/Admin/List_Product.aspx");
+            Response.Redirect("~/Admin/List_Products.aspx");
             Response.Write("Product created");
         }
 

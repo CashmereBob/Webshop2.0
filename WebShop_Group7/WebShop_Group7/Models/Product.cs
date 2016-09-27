@@ -108,6 +108,12 @@ namespace WebShop_Group7.Models
                 dataReader.Close();
             }
         }
+
+        internal List<ProductObject> GetNewestProducts()
+        {
+            throw new NotImplementedException();
+        }
+
         public DataTable GetListProducts()
         {
             DataTable dataTable = new DataTable("Product");
