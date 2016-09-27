@@ -45,7 +45,9 @@ namespace WebShop_Group7.Admin
             GridViewRow row = (sender as LinkButton).NamingContainer as GridViewRow;
             var ID = row.Cells[0].Text;
             products.DeleteMainProduct(ID);
-            
+            DataTable dt = products.GetListProducts();
+            ViewState["dt"] = dt;
+            BindGrid();
         }
         
 

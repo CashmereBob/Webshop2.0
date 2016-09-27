@@ -121,6 +121,12 @@ namespace WebShop_Group7.Admin
             GridViewRow row = (sender as LinkButton).NamingContainer as GridViewRow;
             var ID = row.Cells[0].Text;
             product.DeleteSubProduct(ID);
+            GetProduct();
+            CLearTextBoxes();
+            DataTable dt = product.GetListProductAttributes(ProductID);
+            ViewState["dt"] = dt;
+            BindGrid();
+            SetValues();
 
         }
         protected void Button_Add_Click(object sender, EventArgs e)
