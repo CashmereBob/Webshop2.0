@@ -1,7 +1,15 @@
 ﻿<%@ Page Title="Start page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WebShop_Group7._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
- 
+    <style>
+        .start{
+    margin-top: 5%;
+        }
+        .startPanel {
+            border: 2px solid lightgray;
+        
+        }
+    </style>
     <div id="carousel-example-generic"  class="row carousel slide" data-ride="carousel">
         <%-- Indicators --%>
         <ol class="carousel-indicators">
@@ -47,7 +55,7 @@
             <asp:Label ID="Label6" runat="server" Text="Erbjudanden!"></asp:Label></div>
         <div class="col-md-1"></div>
         <div class="col-md-8">
-            <asp:Label ID="Label5" runat="server" Text="Mest sålda"></asp:Label></div>
+            <asp:Label ID="Label5" runat="server" Text="Nyheter"></asp:Label></div>
     </div>
     <div class="row">
         <%-- Left side panel --%>
@@ -229,15 +237,7 @@
             <%--  --%>
         </div>
     </div>
-    <style>
-        .start{
-    margin-top: 5%;
-        }
-        .startPanel {
-            border: 2px solid lightgray;
-        
-        }
-    </style>
+ 
 
 
     <div id="content" runat="server"></div>
