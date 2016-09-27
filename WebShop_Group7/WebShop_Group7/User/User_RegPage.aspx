@@ -3,7 +3,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
         <h2><%: Title %>.</h2>
-        <div class="jumbotron">
+        
             <div class="row">
                 <div class="col-md-5">
                     <h3>Kund uppgifter</h3>
@@ -60,7 +60,7 @@
                 </div>
             </div>
             <%-- Email --%>
-            <%--<div class="row">--%>
+            <div class="row">
                 <div class="col-md-2">
                     <h4>Email:</h4>
                 </div>
@@ -79,10 +79,10 @@
                     <asp:TextBox CssClass="form-control" ID="TextBox_UserPhone" runat="server"></asp:TextBox>
                 </div>
             </div>
-            <%-- MobilePhone --%>
+            <%-- Mobile --%>
             <div class="row">
                 <div class="col-md-2">
-                    <h4>MobilTelefon:</h4>
+                    <h4>Mobil:</h4>
                 </div>
 
                 <div class="col-md-3">
@@ -106,7 +106,7 @@
                     <h4>Password:</h4>
                 </div>
                 <div class="col-md-3">
-                    <asp:TextBox CssClass="form-control" ID="TextBox_UserPassword" runat="server"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control" ID="TextBox_UserPassword" runat="server" TextMode="Password"></asp:TextBox>
                 </div>
             </div>
             <div class="row">
@@ -114,7 +114,7 @@
                     <h4>Password again:</h4>
                 </div>
                 <div class="col-md-3">
-                    <asp:TextBox CssClass="form-control" ID="TextBox_UserPasswordAgain" runat="server"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control" ID="TextBox_UserPasswordAgain" runat="server" TextMode="Password"></asp:TextBox>
 
                     <asp:Label ID="Lable_Passwordmatch" runat="server" Text=""></asp:Label>
 
@@ -127,9 +127,9 @@
             </div>
 
             <%-- END --%>
-        </div>
+        
 
-    </div>
+    
 
 
 </asp:Content>
