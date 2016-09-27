@@ -7,6 +7,7 @@ namespace WebShop_Group7.Models
 {
     public class ProductObject
     {
+        public int ID { get; set; }
         public int productID { get; set; }
         public string name { get; set; }
         public string description { get; set; }

@@ -111,8 +111,38 @@ namespace WebShop_Group7.Models
 
         internal List<ProductObject> GetNewestProducts()
         {
-            throw new NotImplementedException();
+            string query = $@"select TOP 10 
+                              tbl_Product_Attribute.ID, 
+                              tbl_Product_Attribute.ProductID,
+                              tbl_Product_Attribute.Quantity,
+                              tbl_Product_Attribute.PriceB2B,
+                              tbl_Product_Attribute.PriceB2C,
+                              tbl_Product_Attribute.ArticleNumber,
+                              tbl_Product_Attribute.DateMade ,
+                              tbl_Product_Attribute.AttributeID1,
+                              tbl_Product_Attribute.AttributeID2,
+                              tbl_Product_Attribute.AttributeID3,
+                              tbl_Product_Attribute.AttributeID4
+                              From tbl_Product_Attribute
+                              ORDER BY DateMade DESC;;";
+            connection.OpenConnection();
+            using (SqlCommand command = new SqlCommand(query, connection._connection))
+            {
+                using (dataReader = command.ExecuteReader())
+                {
+
+                    while (dataReader.Read())
+                    {
+                        ProductObject proObj = new ProductObject();
+                        proObj.Id = dataReader[]
+                    }
+                }
+            }
+
+            connection.CloseConnection();
+            return new List<ProductObject>();
         }
+
 
         public DataTable GetListProducts()
         {

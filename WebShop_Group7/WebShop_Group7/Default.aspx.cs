@@ -16,15 +16,15 @@ namespace WebShop_Group7
         protected void Page_Load(object sender, EventArgs e)
         {
             PageObject page = pageDal.GetStartPage();
-            content.InnerHtml = page.content;
-
+            content.InnerHtml = page.content;    
+              
             productList = product.GetNewestProducts();
             FillNews(productList);
         }
 
         private void FillNews(List<ProductObject> productList)
         {
-            throw new NotImplementedException();
+        
         }
     }
 }
