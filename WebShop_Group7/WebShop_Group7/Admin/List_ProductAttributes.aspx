@@ -164,6 +164,7 @@
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <asp:LinkButton Text="Redigera" runat="server" OnClick="OnUpdate" />
+                                    <asp:LinkButton Text="Delete" runat="server" OnClick="DeleteObj" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

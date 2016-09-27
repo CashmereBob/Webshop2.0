@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <asp:GridView ID="GridView_Products" runat="server" AutoGenerateColumns="false"
-                        AllowSorting="true" AllowPaging="true" PageSize="10" CssClass="table-striped table list-group">
+                        AllowSorting="true" AllowPaging="true" PageSize="10" CssClass="table-striped table list-group" OnSelectedIndexChanged="GridView_Products_SelectedIndexChanged">
                         <Columns>
                             <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
                         
@@ -39,6 +39,7 @@
                                 <asp:TemplateField>
                             <ItemTemplate>
                                 <asp:LinkButton Text="Visa" runat="server" OnClick="OnUpdate" />
+                                <asp:LinkButton Text="Delete" runat="server" OnClick="DeleteObj" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         </Columns>

@@ -40,10 +40,25 @@ namespace WebShop_Group7.Admin
             var ID = row.Cells[0].Text; // Lägger Värdet från första raden i ID
             Response.Redirect($"~/Admin/List_ProductAttributes.aspx?id={ID}");//SKickar med variablen ID till Edit
         }
+        protected void DeleteObj(object sender, EventArgs e)
+        {
+            GridViewRow row = (sender as LinkButton).NamingContainer as GridViewRow;
+            var ID = row.Cells[0].Text;
+            products.DeleteMainProduct(ID);
+            DataTable dt = products.GetListProducts();
+            ViewState["dt"] = dt;
+            BindGrid();
+        }
+        
 
         protected void Button_Add_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Admin/New_Product.aspx");
+        }
+
+        protected void GridView_Products_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -116,7 +116,19 @@ namespace WebShop_Group7.Admin
             var ID = row.Cells[0].Text; // Lägger Värdet från första raden i ID
             Response.Redirect($"~/Admin/Edit_Product.aspx?id={ID}");//SKickar med variablen ID till Edit
         }
+        protected void DeleteObj(object sender, EventArgs e)
+        {
+            GridViewRow row = (sender as LinkButton).NamingContainer as GridViewRow;
+            var ID = row.Cells[0].Text;
+            product.DeleteSubProduct(ID);
+            GetProduct();
+            CLearTextBoxes();
+            DataTable dt = product.GetListProductAttributes(ProductID);
+            ViewState["dt"] = dt;
+            BindGrid();
+            SetValues();
 
+        }
         protected void Button_Add_Click(object sender, EventArgs e)
         {
             var ID = ProductID;
