@@ -22,7 +22,7 @@
     <h4>Stad
     </h4>
     <asp:TextBox ID="TextBox_city" runat="server"></asp:TextBox>
-    
+
     <h3>Kontaktuppgifter</h3>
 
     <h4>Telefon</h4>
@@ -32,13 +32,21 @@
     <h4>Mail</h4>
     <asp:TextBox ID="TextBox_mail" runat="server"></asp:TextBox>
     <h4>Lösenord</h4>
-    <asp:TextBox ID="TextBox_password01" runat="server"></asp:TextBox>
-    <asp:TextBox ID="TextBox_password02" runat="server"></asp:TextBox>
+        <asp:Label ID="Lable_Passwordmatch" runat="server" Text=""></asp:Label>
 
-    <asp:Label ID="Lable_Passwordmatch" runat="server" Text=""></asp:Label>
+
+    <asp:TextBox CssClass="form-control" ID="TextBox_UserPassword" runat="server" TextMode="Password"></asp:TextBox>
+    <asp:TextBox CssClass="form-control" ID="TextBox_UserPasswordAgain" runat="server" TextMode="Password"></asp:TextBox>
+
+
 
     <br />
-    <asp:Button ID="Button_submitUser" runat="server" Text="Spara" OnClick="Button_submitUser_Click" />
+    <%--<asp:Button ID="Button_submitUser" runat="server" Text="Spara" OnClick="Button_submitUser_Click" />--%>
+
+
+
+                    <asp:Button CssClass="btn btn-default" Csstype="button" ID="Button_UpdateUser" runat="server" Text="Uppdatera" OnClick="SendUpdatedUser" />
+    
 
 
 
