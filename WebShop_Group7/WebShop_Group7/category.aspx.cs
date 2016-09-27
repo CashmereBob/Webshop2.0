@@ -83,43 +83,50 @@ namespace WebShop_Group7
 
         public void AddCategorys(List<ProductObject> products)
         {
+
+
             Dictionary<string, List<string>> attributes = new Dictionary<string, List<string>>();
-
-            foreach (ProductObject product in products)
+            try
             {
-
-                Dictionary<string, string> attribute = prudDal.GetAttribute(product);
-                foreach (KeyValuePair<string, string> values in attribute)
+                foreach (ProductObject product in products)
                 {
-                    if (attributes.ContainsKey(values.Key))
+
+                    Dictionary<string, string> attribute = prudDal.GetAttribute(product);
+                    foreach (KeyValuePair<string, string> values in attribute)
                     {
-                        if (!attributes[values.Key].Contains(values.Value))
+                        if (attributes.ContainsKey(values.Key))
                         {
-                            attributes[values.Key].Add(values.Value);
+                            if (!attributes[values.Key].Contains(values.Value))
+                            {
+                                attributes[values.Key].Add(values.Value);
+                            }
+
+
                         }
-
-
-                    }
-                    else
-                    {
-                        attributes.Add(values.Key, new List<string>() { values.Value });
+                        else
+                        {
+                            attributes.Add(values.Key, new List<string>() { values.Value });
+                        }
                     }
                 }
-            }
 
-            foreach (KeyValuePair<string, List<string>> value in attributes)
-            {
-                filternav.InnerHtml += $"<li class=\"sidebar-brand\">{value.Key}</li>";
-
-                foreach (string atr in value.Value)
+                foreach (KeyValuePair<string, List<string>> value in attributes)
                 {
-                    filternav.InnerHtml += $"<li><input type=\"checkbox\" class=\"filter\" name=\"{atr}\" value =\"{prudDal.GetAttributeID(value.Key, atr)}\"> {atr}</li>";
+                    filternav.InnerHtml += $"<li class=\"sidebar-brand\">{value.Key}</li>";
+
+                    foreach (string atr in value.Value)
+                    {
+                        filternav.InnerHtml += $"<li><input type=\"checkbox\" class=\"filter\" name=\"{atr}\" value =\"{prudDal.GetAttributeID(value.Key, atr)}\"> {atr}</li>";
 
 
+
+                    }
 
                 }
-
             }
+            catch { }
+
+
 
             filternav.InnerHtml += $"<li class=\"sidebar-brand\">Price</li>";
 
@@ -138,23 +145,28 @@ namespace WebShop_Group7
                 pricegroup = usr.priceGroup;
             }
 
-            foreach (ProductObject product in products)
+            try
             {
-
-                if (pricegroup == 1)
+                foreach (ProductObject product in products)
                 {
-                    if (product.priceB2C < low) { low = product.priceB2C; }
-                    if (product.priceB2C > high) { high = product.priceB2C; }
-                }
-                if (pricegroup == 2)
-                {
-                    if (product.priceB2B < low) { low = product.priceB2B; }
-                    if (product.priceB2B > high) { high = product.priceB2B; }
-                }
 
-                
+                    if (pricegroup == 1)
+                    {
+                        if (product.priceB2C < low) { low = product.priceB2C; }
+                        if (product.priceB2C > high) { high = product.priceB2C; }
+                    }
+                    if (pricegroup == 2)
+                    {
+                        if (product.priceB2B < low) { low = product.priceB2B; }
+                        if (product.priceB2B > high) { high = product.priceB2B; }
+                    }
+
+
+                }
             }
-            filternav.InnerHtml += $"<li><input type=\"range\" min=\"{low}\" max=\"{high}\" step=\"10\" /></li>";
+            catch { }
+            filternav.InnerHtml += $"<li><b>{(int)low}kr </b><input id=\"ex2\" type=\"text\" class=\"span2\" value=\"\" data-slider-min=\"{(int)low}\" data-slider-max=\"{(int)high}\" data-slider-step=\"5\" data-slider-value=\"[250, 450]\" /><b> {(int)high}kr</b></ li>";
+
         }
     }
 }
