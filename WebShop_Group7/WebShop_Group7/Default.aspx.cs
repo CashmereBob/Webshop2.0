@@ -34,26 +34,26 @@ namespace WebShop_Group7
             //1
             try
             {
-                if (productList[0] != null)
+                if (productList_Old[0] != null)
                 {
-                    Label_Name_new1.Text = productList_Old[0].name;
-                    Image_new1.ImageUrl = productList_Old[0].imgURL;
-                    Label_Brand_new1.Text = productList_Old[0].brandName;
-                    Label_Cat_new1.Text = productList_Old[0].category;
-                    //Attributes
-                    Label_Attri_new1.Text = "|";
-                    Attri = product.GetAttribute(productList_Old[0]);
-                    try
-                    {
-                        foreach (var item in Attri)
-                        {
-                            Label_Attri_new1.Text += item.Key + ": " + item.Value + " | ";
-                        }
-                    }
-                    catch (Exception)
-                    {
+                    //Label_Name_new1.Text = productList_Old[0].name;
+                    //Image_new1.ImageUrl = productList_Old[0].imgURL;
+                    //Label_Brand_new1.Text = productList_Old[0].brandName;
+                    //Label_Cat_new1.Text = productList_Old[0].category;
+                    ////Attributes
+                    //Label_Attri_new1.Text = "|";
+                    //Attri = product.GetAttribute(productList_Old[0]);
+                    //try
+                    //{
+                    //    foreach (var item in Attri)
+                    //    {
+                    //        Label_Attri_new1.Text += item.Key + ": " + item.Value + " | ";
+                    //    }
+                    //}
+                    //catch (Exception)
+                    //{
 
-                    }
+                    //}
                 }
             }
             catch (Exception)
@@ -63,27 +63,27 @@ namespace WebShop_Group7
             //2
             try
             {
-                if (productList[0] != null)
-                {
-                    Label_Name_new1.Text = productList_Old[0].name;
-                    Image_new1.ImageUrl = productList_Old[0].imgURL;
-                    Label_Brand_new1.Text = productList_Old[0].brandName;
-                    Label_Cat_new1.Text = productList_Old[0].category;
-                    //Attributes
-                    Label_Attri_new1.Text = "|";
-                    Attri = product.GetAttribute(productList_Old[0]);
-                    try
-                    {
-                        foreach (var item in Attri)
-                        {
-                            Label_Attri_new1.Text += item.Key + ": " + item.Value + " | ";
-                        }
-                    }
-                    catch (Exception)
-                    {
+                //if (productList_Old[0] != null)
+                //{
+                //    Label_Name_new1.Text = productList_Old[0].name;
+                //    Image_new1.ImageUrl = productList_Old[0].imgURL;
+                //    Label_Brand_new1.Text = productList_Old[0].brandName;
+                //    Label_Cat_new1.Text = productList_Old[0].category;
+                //    //Attributes
+                //    Label_Attri_new1.Text = "|";
+                //    Attri = product.GetAttribute(productList_Old[0]);
+                //    try
+                //    {
+                //        foreach (var item in Attri)
+                //        {
+                //            Label_Attri_new1.Text += item.Key + ": " + item.Value + " | ";
+                //        }
+                //    }
+                //    catch (Exception)
+                //    {
 
-                    }
-                }
+                //    }
+                //}
             }
             catch (Exception)
             {
@@ -92,27 +92,27 @@ namespace WebShop_Group7
             //3
             try
             {
-                if (productList[0] != null)
-                {
-                    Label_Name_new1.Text = productList_Old[0].name;
-                    Image_new1.ImageUrl = productList_Old[0].imgURL;
-                    Label_Brand_new1.Text = productList_Old[0].brandName;
-                    Label_Cat_new1.Text = productList_Old[0].category;
-                    //Attributes
-                    Label_Attri_new1.Text = "|";
-                    Attri = product.GetAttribute(productList_Old[0]);
-                    try
-                    {
-                        foreach (var item in Attri)
-                        {
-                            Label_Attri_new1.Text += item.Key + ": " + item.Value + " | ";
-                        }
-                    }
-                    catch (Exception)
-                    {
+                //if (productList_Old[0] != null)
+                //{
+                //    Label_Name_new1.Text = productList_Old[0].name;
+                //    Image_new1.ImageUrl = productList_Old[0].imgURL;
+                //    Label_Brand_new1.Text = productList_Old[0].brandName;
+                //    Label_Cat_new1.Text = productList_Old[0].category;
+                //    //Attributes
+                //    Label_Attri_new1.Text = "|";
+                //    Attri = product.GetAttribute(productList_Old[0]);
+                //    try
+                //    {
+                //        foreach (var item in Attri)
+                //        {
+                //            Label_Attri_new1.Text += item.Key + ": " + item.Value + " | ";
+                //        }
+                //    }
+                //    catch (Exception)
+                //    {
 
-                    }
-                }
+                //    }
+                //}
             }
             catch (Exception)
             {
