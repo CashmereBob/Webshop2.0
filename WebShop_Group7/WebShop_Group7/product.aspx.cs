@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using WebShop_Group7.Models;
+
 
 namespace WebShop_Group7
 {
@@ -13,6 +15,7 @@ namespace WebShop_Group7
     {
         Users usrDal = new Users();
         Product proDal = new Product();
+        OrderObject order = new OrderObject();
         int pricegroup = 1;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -50,39 +53,46 @@ namespace WebShop_Group7
             head.InnerHtml = $"<h2>{product.name}</h2><h3>{product.brandName}</h3><h4>{product.category}</h4>";
             img.InnerHtml = $"<div class=\"thumbnail\"><img src = \"{product.imgURL}\" alt=\"{product.name}\" ></div>";
 
-            StringBuilder str = new StringBuilder();
-
-            str.Append($"<h3>Produktbeskrivning</h3><p>{product.description}</p>");
-
-            str.Append($"<span class=\"input-group-addon\"><h4 class=\"text-right\">");
+            prodbesk.InnerHtml = product.description;
+            int counter = 0;
 
             if (attributes != null)
             {
                 foreach (KeyValuePair<string, List<string>> atr in attributes)
                 {
-                    str.Append($" {atr.Key}: <select class=\"form-control filter\"> ");
+                    
+                    if (counter == 0) { atr1lable.InnerHtml = atr.Key; }
+                    if (counter == 1) { atr2lable.InnerHtml = atr.Key; }
+                    if (counter == 2) { atr3lable.InnerHtml = atr.Key; }
+                    if (counter == 3) { atr4lable.InnerHtml = atr.Key; }
 
                     foreach (string value in atr.Value)
                     {
-                        str.Append($" <option value=\"{proDal.GetAttributeID(atr.Key, value)}\">{value}</option> ");
+
+                        if (counter == 0) { atr1.Items.Insert(0, new ListItem(value, proDal.GetAttributeID(atr.Key, value).ToString())); }
+                        if (counter == 1) { atr2.Items.Insert(0, new ListItem(value, proDal.GetAttributeID(atr.Key, value).ToString())); }
+                        if (counter == 2) { atr3.Items.Insert(0, new ListItem(value, proDal.GetAttributeID(atr.Key, value).ToString())); }
+                        if (counter == 3) { atr4.Items.Insert(0, new ListItem(value, proDal.GetAttributeID(atr.Key, value).ToString())); }
+
                     }
-                    str.Append("</select>");
+                    
+                    counter++;
                 }
             }
+            if (counter == 0) { atr1.Visible = false; atr1lable.Visible = false; atr2.Visible = false; atr2lable.Visible = false; atr3.Visible = false; atr3lable.Visible = false; atr4.Visible = false; atr4lable.Visible = false; }
+            if (counter == 1) { atr2.Visible = false; atr2lable.Visible = false; atr3.Visible = false; atr3lable.Visible = false; atr4.Visible = false; atr4lable.Visible = false; }
+            if (counter == 2) { atr3.Visible = false; atr3lable.Visible = false; atr4.Visible = false; atr4lable.Visible = false; }
+            if (counter == 3) { atr4.Visible = false; atr4lable.Visible = false; }
 
-           str.Append("</h4>");
-            
+
             if (pricegroup == 1) { price = product.priceB2C; }
             if (pricegroup == 2) { price = product.priceB2B; }
 
             vat = Decimal.Multiply(price, 0.25M);
 
-            str.Append($"<h2 class=\"text-right\" >{price.ToString("#.##")}kr</h2><p class=\"text-right\" ><i>moms: {vat.ToString("#.##")}kr</i></p>");
-            str.Append($"<p class=\"text-right\"><input type=\"number\" class=\"form-control\" id=\"quantity\" id=\"quantity\" min=\"0\" max=\"100\" step=\"1\" value=\"1\" ></input><a href=\"javascript:AddToCart('{id}');\" class=\"btn btn-success\" role=\"button\" >Lägg i varukorg</a></p></span>");
-
-
-
-            description.InnerHtml = str.ToString();
+            pris.InnerHtml = price.ToString("#.##");
+            moms.InnerHtml = vat.ToString("#.##");
+            
         }
 
 
@@ -123,5 +133,31 @@ namespace WebShop_Group7
             return attributes;
         }
 
+        protected void Button_addtocart_Click(object sender, EventArgs e)
+        {
+            var attribute1 = "IS NULL";
+            var attribute2 = "IS NULL";
+            var attribute3 = "IS NULL";
+            var attribute4 = "IS NULL";
+
+            if (!string.IsNullOrWhiteSpace(atr1.SelectedValue)) { attribute1 = $"= '{atr1.SelectedValue}'"; }
+            if (!string.IsNullOrWhiteSpace(atr2.SelectedValue)) { attribute2 = $"= '{atr2.SelectedValue}'"; }
+            if (!string.IsNullOrWhiteSpace(atr3.SelectedValue)) { attribute3 = $"= '{atr3.SelectedValue}'"; }
+            if (!string.IsNullOrWhiteSpace(atr4.SelectedValue)) { attribute4 = $"= '{atr4.SelectedValue}'"; }
+
+            List<ProductObject> prod = proDal.GetProductByWhereList($@"WHERE tbl_Product.ID = '{int.Parse(Request.QueryString["id"])}' AND (AttributeID1 {attribute1} OR AttributeID2 {attribute1} OR AttributeID3 {attribute1} OR AttributeID4 {attribute1})
+             AND (AttributeID1 {attribute2} OR AttributeID2 {attribute2} OR AttributeID3 {attribute2} OR AttributeID4 {attribute2})
+             AND (AttributeID1 {attribute3} OR AttributeID2 {attribute3} OR AttributeID3 {attribute3} OR AttributeID4 {attribute3})
+             AND (AttributeID1 {attribute4} OR AttributeID2 {attribute4} OR AttributeID3 {attribute4} OR AttributeID4 {attribute4})");
+
+            foreach (ProductObject prud in prod)
+            {
+                
+                prud.quantity = int.Parse(ant.Text);
+                order.AddProduct(prud);
+            }
+
+            
+        }
     }
 }
