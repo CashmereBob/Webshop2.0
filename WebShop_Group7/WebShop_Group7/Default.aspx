@@ -13,9 +13,9 @@
             <li data-target="#carousel-example-generic" data-slide-to-="1"></li>
             <li data-target="#carousel-example-generic" data-slide-to-="2"></li>
         </ol>
-        <%-- Panel logIn --%>
+
         <div class="carousel-inner" role="listbox">
-            <%-- Username --%>
+            <%-- carousel img 1 --%>
             <div class="item active">
                 <a href="#">
                     <asp:Image class="img-responsive" ImageUrl="http://lundgren84.com/Grupp7/slide1.PNG" ID="Image13" runat="server" />
@@ -24,7 +24,7 @@
                 </a>
 
             </div>
-            <%-- Password --%>
+            <%-- carousel img 2 --%>
             <div class="item">
                 <a href="#">
                     <asp:Image class="img-responsive" ImageUrl="http://lundgren84.com/Grupp7/slide2.PNG" ID="Image14" runat="server" />
@@ -32,7 +32,7 @@
                     </div>
                 </a>
             </div>
-            <%-- Panel erbjudanden --%>
+            <%-- carousel img 3 --%>
             <div class="item">
                 <a href="#">
                     <asp:Image class="img-responsive" ImageUrl="http://lundgren84.com/Grupp7/slide3.PNG" ID="Image15" runat="server" />
@@ -41,7 +41,7 @@
                 </a>
             </div>
         </div>
-        <%-- SpecialoOffer 1 --%>
+        <%-- Carousel controler--%>
         <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
@@ -52,135 +52,43 @@
         </a>
     </div>
 
-    <%-- SpecialoOffer 2 --%>
+
+    <%-- Page --%>
     <div class="row">
-        <asp:Panel CssClass="startPanel panel_login col-md-3" ID="Panel_Login" runat="server">
-            <div class="container">
-                <div class="borderStart">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h2>Login</h2>
-                        </div>
-                    </div>
-                    <%-- Username --%>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <asp:Label ID="Label6" runat="server" Text="Username"></asp:Label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <asp:TextBox ID="TextBox2" Width="100%" runat="server"></asp:TextBox>
-                        </div>
-                    </div>
-                    <%-- Password --%>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <asp:Label ID="Label5" runat="server" Text="Password"></asp:Label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <asp:TextBox ID="TextBox1" Width="100%" runat="server"></asp:TextBox>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <asp:Button ID="Button1" Width="100%" runat="server" Text="Login" />
-                        </div>
-                    </div>
+        <%-- Panel left 1 --%>
+        <asp:Panel CssClass="startPanel  col-sm-4" ID="panel_left1" runat="server" Visible=" true">
+            <h3>Web Shop</h3>
+            <p>
+                Tote bag marfa biodiesel wayfarers. Banjo hot chicken enamel pin bitters mixtape prism. Tumeric small batch four loko, XOXO master cleanse bicycle rights yuccie iPhone shoreditch. Authentic squid retro ramps, farm-to-table put a bird on it ethical post-ironic cred bushwick cliche truffaut swag mixtape. Mumblecore snackwave poutine raclette affogato drinking vinegar tousled ramps church-key, unicorn hot chicken. Kinfolk cliche paleo cronut fingerstache. Pork belly flexitarian wayfarers 8-bit.
+            </p>
+              <p>
+               Humblebrag pop-up poke, cardigan fingerstache farm-to-table beard bushwick chambray. You probably haven't heard of them live-edge stumptown pinterest. Pour-over letterpress edison bulb, portland waistcoat microdosing cliche. Truffaut try-hard ugh, PBR&B gochujang gastropub slow-carb VHS stumptown banh mi schlitz. Ramps you probably haven't heard of them health goth waistcoat church-key synth disrupt tacos stumptown.
+            </p>
+            <h3>Group Seven</h3>
+          <p>Lyft echo park copper mug, freegan air plant portland jianbing glossier. Chicharrones venmo brunch, shoreditch art party lo-fi intelligentsia fam microdosing cred chambray. Twee church-key mlkshk 90's wolf af. Chambray occupy literally tattooed, pickled art party wayfarers. Small batch squid enamel pin, DIY mumblecore swag XOXO trust fund everyday carry VHS PBR&B art party. Yr freegan photo booth 8-bit. Occupy art party biodiesel bitters, cornhole prism everyday carry keffiyeh jianbing listicle keytar shabby chic disrupt schlitz.
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <asp:Button ID="Button_Register" Width="100%" runat="server" Text="Register" OnClick="Button_Register_Click" />
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <asp:Panel ID="Panel2" runat="server">
-                                    Register stuff gets visible when button pressed
-                                </asp:Panel>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+Shoreditch unicorn tbh fingerstache bitters, viral tousled hot chicken leggings kombucha organic glossier. Four dollar toast chartreuse keytar, snackwave iPhone chia sartorial plaid yr listicle shabby chic meh literally ramps. Tofu offal mumblecore cliche mustache tumeric. Deep v woke artisan, biodiesel scenester copper mug occupy cliche drinking vinegar shoreditch. Pop-up marfa cliche master cleanse try-hard tumblr. Vinyl ethical pabst authentic waistcoat pug, celiac pinterest migas unicorn humblebrag distillery. Lo-fi slow-carb man bun, prism edison bulb la croix crucifix distillery snackwave cliche plaid messenger bag.
+</p>
+
         </asp:Panel>
-
-        <%-- Main panel --%>
-        <asp:Panel CssClass="startPanel panel_Erbjudanden col-sm-3" ID="Panel_SpecialOffers" runat="server" Visible="False">
+        <%-- Panel left 2 --%>
+        <asp:Panel CssClass="startPanel  col-sm-4" ID="panel_left2" runat="server" Visible="False">
             <div class="container">
-                <div class="borderStart">
+                <div class="borderStart ">
                     <div class="row">
                         <div class="col-md-12">
                             <h2>Erbjudanden</h2>
                         </div>
                     </div>
-
-                    <%-- SpecialoOffer 1 --%>
                     <div class="row">
-                        <div class="col-sm-12 col-sm-12">                        
-                                <asp:Panel ID="Panel10" CssClass="thumbnail" runat="server">
-                                    <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image4" runat="server" />
-                                    <div class="caption">
-                                        <%-- Name --%>
-                                        <asp:Label Font-Size="X-Large" ID="Label1" runat="server" Text="ProductName"></asp:Label><span>,</span>
-                                        <%-- Brand --%>
-                                        <asp:Label ID="Label2" runat="server" Text="Brand"></asp:Label><span>,</span>
-                                        <%-- Category --%>
-                                        <asp:Label ID="Label4" runat="server" Text="Category"></asp:Label><span>,</span>
-                                        <%-- Attributes --%>
-                                        <asp:Label ID="Label7" runat="server" Text="Color: Red, Size: XL"></asp:Label>
-                                        <%-- Price --%><br />
-                                        <span>Pris: </span>
-                                        <asp:Label ID="Label8" runat="server" Text="Pris"></asp:Label><asp:Label ID="Label9" runat="server" Text="kr"></asp:Label>
-                                       <p><asp:TextBox ID="TextBox6" placeholder="0" Width="50px" runat="server" TextMode="Number"></asp:TextBox> <a href="#" class="btn btn-primary" role="button">Add to cart</a></p> <a href="#" class="btn btn-default" role="button">More Info</a>
-                                    </div>
-                                </asp:Panel>
-                        </div>    
-                        
-                         
-                     
-                               
-                    </div>
-                    <%-- SpecialoOffer 2 --%>
-
-                    <div class="row">
-                        <div class="col-sm-12 col-md-12">
-                            <div class="thumbnail">
-                                <img src="Pictures/REA.png" />
-                                <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image2" runat="server" />
-                                <img src="Pictures/REA.png" />
-                                <div class="caption">
-                                    <h3>Product Name</h3>
-                                    <p>...</p>
-                                      <p><asp:TextBox ID="TextBox4" placeholder="0" Width="50px" runat="server" TextMode="Number"></asp:TextBox><a href="#" class="btn btn-primary" role="button">Add to cart</a></p> <a href="#" class="btn btn-default" role="button">Product Info</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <%-- Specialo+Offer 3 --%>
-
-                    <div class="row">
-                        <div class="col-sm-12 col-md-12">
-                            <div class="thumbnail">
-                                <img src="Pictures/REA.png" />
-                                <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image3" runat="server" />
-                                <img src="Pictures/REA.png" />
-                                <div class="caption">
-                                    <h3>Product Name</h3>
-                                    <p>...</p>
-                                     <p><asp:TextBox ID="TextBox3" placeholder="0" Width="50px" runat="server" TextMode="Number"></asp:TextBox><a href="#" class="btn btn-primary" role="button">Add to cart</a></p> <a href="#" class="btn btn-default" role="button">Product Info</a>
-                                </div>
-                            </div>
+                        <div runat="server" id="SpecialOffers">
                         </div>
                     </div>
                 </div>
-
             </div>
         </asp:Panel>
-        <%-- Category --%>
-        <div class="col-sm-1"></div>
-        <%-- Attributes --%>
+
+        <%-- Panel right --%>
         <asp:Panel CssClass="startPanel col-sm-8" ID="Panel_Main" runat="server">
             <div class="container">
                 <div class="borderStart">
@@ -189,203 +97,15 @@
                             <h2>Nyheter</h2>
                         </div>
                     </div>
-                    <%-- 1 --%>
-                    <div class="row">
-                        <div class="col-sm-4 new1">
-                            <div class="">
-                                <asp:Panel ID="Panel1" CssClass="thumbnail" runat="server">
-                                    <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image_new1" runat="server" />
-                                    <div class="caption">
-                                        <%-- Name --%>
-                                        <asp:Label Font-Size="X-Large" ID="Label_Name_new1" runat="server" Text="ProductName"></asp:Label><span>,</span>
-                                        <%-- Brand --%>
-                                        <asp:Label ID="Label_Brand_new1" runat="server" Text="Brand"></asp:Label><span>,</span>
-                                        <%-- Category --%>
-                                        <asp:Label ID="Label_Cat_new1" runat="server" Text="Category"></asp:Label><span>,</span>
-                                        <%-- Attributes --%>
-                                        <asp:Label ID="Label_Attri_new1" runat="server" Text="Color: Red, Size: XL"></asp:Label>
-                                        <%-- Price --%><br />
-                                        <span>Pris: </span>
-                                        <asp:Label ID="Label_Price_new1" runat="server" Text="Pris"></asp:Label><asp:Label ID="Label3" runat="server" Text="kr"></asp:Label>
-                                       <p><asp:TextBox ID="TextBox_Amount_new1" placeholder="0" Width="50px" runat="server" TextMode="Number"></asp:TextBox> <a href="#" class="btn btn-primary" role="button">Add to cart</a></p> <a href="#" class="btn btn-default" role="button">More Info</a>
-                                    </div>
-                                </asp:Panel>
-                            </div>
-                        </div>
-
-                        <%-- 2 --%>
-                        <div class="col-sm-4 new1">
-
-                            <asp:Panel ID="Panel_2" CssClass="thumbnail" runat="server">
-                                <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image_new2" runat="server" />
-                                <div class="caption">
-                                    <%-- Name --%>
-                                    <asp:Label Font-Size="X-Large" ID="Label_Name_new2" runat="server" Text="ProductName"></asp:Label><span>,</span>
-                                    <%-- Brand --%>
-                                    <asp:Label ID="Label_Brand_new2" runat="server" Text="Brand"></asp:Label><span>,</span>
-                                    <%-- Category --%>
-                                    <asp:Label ID="Label_Cat_new2" runat="server" Text="Category"></asp:Label><span>,</span>
-                                    <%-- Attributes --%>
-                                    <asp:Label ID="Label_Attri_new2" runat="server" Text="Color: Red, Size: XL"></asp:Label>
-                                    <%-- Price --%><br />
-                                    <span>Pris: </span>
-                                    <asp:Label ID="Label_Price_new2" runat="server" Text="Pris"></asp:Label><asp:Label ID="Label15" runat="server" Text="kr"></asp:Label>
-                                    <p><asp:TextBox ID="TextBox_Amount_new2" placeholder="0" Width="50px" runat="server" TextMode="Number"></asp:TextBox><a href="#" class="btn btn-primary" role="button">Add to cart</a></p> <a href="#" class="btn btn-default" role="button">More Info</a>
-                                </div>
-                            </asp:Panel>
-
-                        </div>
-                        <%-- 3 --%>
-                        <div class="col-sm-4 new1">
-                            <asp:Panel ID="Panel3" CssClass="thumbnail" runat="server">
-                                <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image_new3" runat="server" />
-                                <div class="caption">
-                                    <%-- Name --%>
-                                    <asp:Label Font-Size="X-Large" ID="Label_Name_new3" runat="server" Text="ProductName"></asp:Label><span>,</span>
-                                    <%-- Brand --%>
-                                    <asp:Label ID="Label_Brand_new3" runat="server" Text="Brand"></asp:Label><span>,</span>
-                                    <%-- Category --%>
-                                    <asp:Label ID="Label_Cat_new3" runat="server" Text="Category"></asp:Label><span>,</span>
-                                    <%-- Attributes --%>
-                                    <asp:Label ID="Label_Attri_new3" runat="server" Text="Color: Red, Size: XL"></asp:Label>
-                                    <%-- Price --%><br />
-                                    <span>Pris: </span>
-                                    <asp:Label ID="Label_Price_new3" runat="server" Text="Pris"></asp:Label><asp:Label ID="Label24" runat="server" Text="kr"></asp:Label>
-                                    <p><asp:TextBox ID="TextBox_Amount_new3" placeholder="0" Width="50px" runat="server" TextMode="Number"></asp:TextBox><a href="#" class="btn btn-primary" role="button">Add to cart</a></p> <a href="#" class="btn btn-default" role="button">More Info</a>
-                                </div>
-                            </asp:Panel>
-                        </div>
+                    <%-- All news --%>
+                    <div runat="server" id="productCont">
                     </div>
-                    <%-- 4 --%>
-                    <div class="row">
-                        <div class="col-sm-4 new1">
-                            <asp:Panel ID="Panel4" CssClass="thumbnail" runat="server">
-                                <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image_new4" runat="server" />
-                                <div class="caption">
-                                    <%-- Name --%>
-                                    <asp:Label Font-Size="X-Large" ID="Label_Name_new4" runat="server" Text="ProductName"></asp:Label><span>,</span>
-                                    <%-- Brand --%>
-                                    <asp:Label ID="Label_Brand_new4" runat="server" Text="Brand"></asp:Label><span>,</span>
-                                    <%-- Category --%>
-                                    <asp:Label ID="Label_Cat_new4" runat="server" Text="Category"></asp:Label><span>,</span>
-                                    <%-- Attributes --%>
-                                    <asp:Label ID="Label_Attri_new4" runat="server" Text="Color: Red, Size: XL"></asp:Label>
-                                    <%-- Price --%><br />
-                                    <span>Pris: </span>
-                                    <asp:Label ID="Label_Price_new4" runat="server" Text="Pris"></asp:Label><asp:Label ID="Label29" runat="server" Text="kr"></asp:Label>
-                                     <p><asp:TextBox ID="TextBox_Amount_new4" placeholder="0" Width="50px" runat="server" TextMode="Number"></asp:TextBox><a href="#" class="btn btn-primary" role="button">Add to cart</a></p> <a href="#" class="btn btn-default" role="button">More Info</a>
-                                </div>
-                            </asp:Panel>
-                        </div>
 
-                        <%-- 5 --%>
-                        <div class="col-sm-4 new1">
-                            <asp:Panel ID="Panel5" CssClass="thumbnail" runat="server">
-                                <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image_new5" runat="server" />
-                                <div class="caption">
-                                    <%-- Name --%>
-                                    <asp:Label Font-Size="X-Large" ID="Label_Name_new5" runat="server" Text="ProductName"></asp:Label><span>,</span>
-                                    <%-- Brand --%>
-                                    <asp:Label ID="Label_Brand_new5" runat="server" Text="Brand"></asp:Label><span>,</span>
-                                    <%-- Category --%>
-                                    <asp:Label ID="Label_Cat_new5" runat="server" Text="Category"></asp:Label><span>,</span>
-                                    <%-- Attributes --%>
-                                    <asp:Label ID="Label_Attri_new5" runat="server" Text="Color: Red, Size: XL"></asp:Label>
-                                    <%-- Price --%><br />
-                                    <span>Pris: </span>
-                                    <asp:Label ID="Label_Price_new5" runat="server" Text="Pris"></asp:Label><asp:Label ID="Label34" runat="server" Text="kr"></asp:Label>
-                                     <p><asp:TextBox ID="TextBox_Amount_new5" placeholder="0" Width="50px" runat="server" TextMode="Number"></asp:TextBox><a href="#" class="btn btn-primary" role="button">Add to cart</a></p> <a href="#" class="btn btn-default" role="button">More Info</a>
-                                </div>
-                            </asp:Panel>
-                        </div>
-                        <%-- 6 --%>
-                        <div class="col-sm-4 new1">
-                            <asp:Panel ID="Panel6" CssClass="thumbnail" runat="server">
-                                <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image_new6" runat="server" />
-                                <div class="caption">
-                                    <%-- Name --%>
-                                    <asp:Label Font-Size="X-Large" ID="Label_Name_new6" runat="server" Text="ProductName"></asp:Label><span>,</span>
-                                    <%-- Brand --%>
-                                    <asp:Label ID="Label_Brand_new6" runat="server" Text="Brand"></asp:Label><span>,</span>
-                                    <%-- Category --%>
-                                    <asp:Label ID="Label_Cat_new6" runat="server" Text="Category"></asp:Label><span>,</span>
-                                    <%-- Attributes --%>
-                                    <asp:Label ID="Label_Attri_new6" runat="server" Text="Color: Red, Size: XL"></asp:Label>
-                                    <%-- Price --%><br />
-                                    <span>Pris: </span>
-                                    <asp:Label ID="Label_Price_new6" runat="server" Text="Pris"></asp:Label><asp:Label ID="Label39" runat="server" Text="kr"></asp:Label>
-                                    <p><asp:TextBox ID="TextBox_Amount_new6" placeholder="0" Width="50px" runat="server" TextMode="Number"></asp:TextBox><a href="#" class="btn btn-primary" role="button">Add to cart</a></p> <a href="#" class="btn btn-default" role="button">More Info</a>
-                                </div>
-                            </asp:Panel>
-                        </div>
-                    </div>
-                    <%-- 7 --%>
-                    <div class="row">
-                        <div class="col-sm-4 new1">
-                            <asp:Panel ID="Panel7" CssClass="thumbnail" runat="server">
-                                <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image_new7" runat="server" />
-                                <div class="caption">
-                                    <%-- Name --%>
-                                    <asp:Label Font-Size="X-Large" ID="Label_Name_new7" runat="server" Text="ProductName"></asp:Label><span>,</span>
-                                    <%-- Brand --%>
-                                    <asp:Label ID="Label_Brand_new7" runat="server" Text="Brand"></asp:Label><span>,</span>
-                                    <%-- Category --%>
-                                    <asp:Label ID="Label_Cat_new7" runat="server" Text="Category"></asp:Label><span>,</span>
-                                    <%-- Attributes --%>
-                                    <asp:Label ID="Label_Attri_new7" runat="server" Text="Color: Red, Size: XL"></asp:Label>
-                                    <%-- Price --%><br />
-                                    <span>Pris: </span>
-                                    <asp:Label ID="Label_Price_new7" runat="server" Text="Pris"></asp:Label><asp:Label ID="Label44" runat="server" Text="kr"></asp:Label>
-                                     <p><asp:TextBox ID="TextBox_Amount_new7" placeholder="0" Width="50px" runat="server" TextMode="Number"></asp:TextBox><a href="#" class="btn btn-primary" role="button">Add to cart</a></p> <a href="#" class="btn btn-default" role="button">More Info</a>
-                                </div>
-                            </asp:Panel>
-                        </div>
 
-                        <%-- 8 --%>
-                        <div class="col-sm-4 new1">
-                            <asp:Panel ID="Panel8" CssClass="thumbnail" runat="server">
-                                <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image_new8" runat="server" />
-                                <div class="caption">
-                                    <%-- Name --%>
-                                    <asp:Label Font-Size="X-Large" ID="Label_Name_new8" runat="server" Text="ProductName"></asp:Label><span>,</span>
-                                    <%-- Brand --%>
-                                    <asp:Label ID="Label_Brand_new8" runat="server" Text="Brand"></asp:Label><span>,</span>
-                                    <%-- Category --%>
-                                    <asp:Label ID="Label_Cat_new8" runat="server" Text="Category"></asp:Label><span>,</span>
-                                    <%-- Attributes --%>
-                                    <asp:Label ID="Label_Attri_new8" runat="server" Text="Color: Red, Size: XL"></asp:Label>
-                                    <%-- Price --%><br />
-                                    <span>Pris: </span>
-                                    <asp:Label ID="Label_Price_new8" runat="server" Text="Pris"></asp:Label><asp:Label ID="Label49" runat="server" Text="kr"></asp:Label>
-                                    <p><asp:TextBox ID="TextBox_Amount_new8" placeholder="0" Width="50px" runat="server" TextMode="Number"></asp:TextBox><a href="#" class="btn btn-primary" role="button">Add to cart</a></p> <a href="#" class="btn btn-default" role="button">More Info</a>
-                                </div>
-                            </asp:Panel>
-                        </div>
-                        <%-- 9 --%>
-                        <div class="col-sm-4 new1">
-                            <asp:Panel ID="Panel9" CssClass="thumbnail" runat="server">
-                                <asp:Image ImageUrl="http://lundgren84.com/Grupp7/TröjaG7.PNG" AlternateText="Product img" class="img-responsive" ID="Image_new9" runat="server" />
-                                <div class="caption">
-                                    <%-- Name --%>
-                                    <asp:Label Font-Size="X-Large" ID="Label_Name_new9" runat="server" Text="ProductName"></asp:Label><span>,</span>
-                                    <%-- Brand --%>
-                                    <asp:Label ID="Label_Brand_new9" runat="server" Text="Brand"></asp:Label><span>,</span>
-                                    <%-- Category --%>
-                                    <asp:Label ID="Label_Cat_new9" runat="server" Text="Category"></asp:Label><span>,</span>
-                                    <%-- Attributes --%>
-                                    <asp:Label ID="Label_Attri_new9" runat="server" Text="Color: Red, Size: XL"></asp:Label>
-                                    <%-- Price --%><br />
-                                    <span>Pris: </span>
-                                    <asp:Label ID="Label_Price_new9" runat="server" Text="Pris"></asp:Label><asp:Label ID="Label54" runat="server" Text="kr"></asp:Label>
-                                    <p><asp:TextBox ID="TextBox_Amount_new9" placeholder="0" Width="50px" runat="server" TextMode="Number"></asp:TextBox><a href="#" class="btn btn-primary" role="button">Add to cart</a></p> <a href="#" class="btn btn-default" role="button">More Info</a>
-                                </div>
-                            </asp:Panel>
-                        </div>
-                    </div>
                 </div>
             </div>
         </asp:Panel>
-        <%--  --%>
+
     </div>
 
 

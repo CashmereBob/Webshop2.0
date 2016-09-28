@@ -111,14 +111,14 @@
                     </asp:TableCell>
                     <%-- Current value --%>
                     <asp:TableCell CssClass="col-md-2">
-                        <asp:Label ID="Label_imgURL" runat="server" Text="imgURL"></asp:Label>
+                        <asp:Label ID="Label_imgURL" runat="server"  Text="imgURL"></asp:Label>
                     </asp:TableCell>
                     <asp:TableCell CssClass="col-md-2">
                         <asp:Label ID="Label11" runat="server" Text=" Ändra till:"></asp:Label>
                     </asp:TableCell>
                      <%-- New Vlaue --%>
                     <asp:TableCell CssClass="col-md-3">
-                        <asp:TextBox ID="TextBox_ImgUrl" CssClass="form-control" runat="server" TextMode="Url"></asp:TextBox>
+                        <asp:TextBox ID="TextBox_ImgUrl" AutoSize="true" CssClass="form-control" runat="server" TextMode="Url"></asp:TextBox>
                     </asp:TableCell>
                    
                 </asp:TableRow>
@@ -153,7 +153,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <asp:GridView ID="GridView_Products" runat="server" AutoGenerateColumns="false"
-                        AllowSorting="true" AllowPaging="true" PageSize="10" CssClass="table-striped table">
+                        AllowSorting="true" AllowPaging="true" PageSize="100" CssClass="table-striped table">
                         <Columns>
                             <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
                             <asp:BoundField DataField="ArticleNr" HeaderText="Artikel nr" SortExpression="Artikel nr" />                          

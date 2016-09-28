@@ -14,6 +14,7 @@ namespace WebShop_Group7.Admin
         Product product = new Product();
         ProductObject proObj = new ProductObject();
         int ID;
+        bool makeSub;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["Admin"] == null) //Kontrollerar om det finns en Admin session.
@@ -27,10 +28,30 @@ namespace WebShop_Group7.Admin
             catch { ID = -1; }
             if (ID > 0)
             {
+            
                 proObj = product.GetMainProduct(ID);
+              
                 proObj.productID = ID;
                 RemakePage();
+                makeSub = true;
+
             }
+            else
+            {
+                makeSub = false;
+                TextBox_B2B.TextMode =TextBoxMode.Number;
+                TextBox_B2C.TextMode = TextBoxMode.Number;
+            }
+        }
+
+        private decimal GetB2C(int iD)
+        {
+            throw new NotImplementedException();
+        }
+
+        private decimal GetB2B(int iD)
+        {
+            throw new NotImplementedException();
         }
 
         private void RemakePage()
@@ -52,13 +73,18 @@ namespace WebShop_Group7.Admin
             //Description
             TextBox_Description.Text = proObj.description;
             TextBox_Description.Enabled = false;
+            //Price B2B      
+            TextBox_B2B.Text = proObj.priceB2B.ToString("#.##");
+            TextBox_B2B.Enabled = false;
+            //Price B2C
+            TextBox_B2C.Text = proObj.priceB2C.ToString("#.##");
+            TextBox_B2C.Enabled = false;
         }
 
         protected void Button_Save_Click(object sender, EventArgs e)
-        {
-            ProductObject proObj = new ProductObject();
+        {       
             FillValues(proObj);
-            product.AddProduct(proObj, attributes);
+            product.AddProduct(proObj, attributes, makeSub);
             Response.Redirect("~/Admin/List_Products.aspx");
             Response.Write("Product created");
         }
