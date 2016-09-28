@@ -77,7 +77,7 @@
                     <div class="navbar-form navbar-left">
 
                         <div class="form-group">
-                            <input runat="server" id="Main_Search" type="text" class="form-control" placeholder="Sök...">
+                            <asp:TextBox class="form-control" placeholder="Sök..."  ID="TextBox_Main_Search" OnTextChanged="TextBox_Main_Search_TextChanged" AutoPostBack="true"  runat="server"></asp:TextBox>                       
                         </div>
 
 

@@ -398,6 +398,7 @@
     <Content Include="User\CategoryPage.aspx" />
     <Content Include="User\OrdsSamSida.aspx" />
     <Content Include="User\ProductPage.aspx" />
+    <Content Include="User\Search_Result.aspx" />
     <Content Include="User\User_Page.aspx" />
     <Content Include="User\ShopingBasket.aspx" />
     <Content Include="User\User_LoginPage.aspx" />
@@ -698,6 +699,13 @@
     </Compile>
     <Compile Include="User\ProductPage.aspx.designer.cs">
       <DependentUpon>ProductPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\Search_Result.aspx.cs">
+      <DependentUpon>Search_Result.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\Search_Result.aspx.designer.cs">
+      <DependentUpon>Search_Result.aspx</DependentUpon>
     </Compile>
     <Compile Include="User\User_Page.aspx.cs">
       <DependentUpon>User_Page.aspx</DependentUpon>

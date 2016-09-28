@@ -12,7 +12,7 @@ using System.Data.SqlClient;
 
 namespace WebShop_Group7
 {
-  
+
     public partial class SiteMaster : MasterPage
     {
         private const string AntiXsrfTokenKey = "__AntiXsrfToken";
@@ -73,8 +73,7 @@ namespace WebShop_Group7
         }
 
         protected void Page_Load(object sender, EventArgs e)
-        {
-            
+        {        
             UserPages.Visible = false;
 
             if (Session["User"] != null)
@@ -85,6 +84,8 @@ namespace WebShop_Group7
                 login.Visible = false;
                 label_user.Text = $"Välkommen tillbaka {user.firstName}";
             }
+
+
 
             if (!IsPostBack)
             {
@@ -152,7 +153,7 @@ namespace WebShop_Group7
                     {
                         saltFromDb = myDataReader["Salt"].ToString(); //Lägger användarens Salt i SaltFromDb variabeln
                         passwordFromDb = myDataReader["Password"].ToString(); //Lägger användarens Password i passwordFromDb variabeln
-                        userID = int.Parse(myDataReader["ID"].ToString()); 
+                        userID = int.Parse(myDataReader["ID"].ToString());
                     }
                 }
                 //myCommand.ExecuteNonQuery(); //Executar vårt command.
@@ -186,6 +187,12 @@ namespace WebShop_Group7
 
         }
 
+        protected void TextBox_Main_Search_TextChanged(object sender, EventArgs e)
+        {
+            
+            Response.Write("You writed: "+TextBox_Main_Search.Text);
+        
+        }
     }
 
 }

@@ -40,13 +40,13 @@ namespace WebShop_Group7 {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl brandMenu;
         
         /// <summary>
-        /// Main_Search control.
+        /// TextBox_Main_Search control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Main_Search;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Main_Search;
         
         /// <summary>
         /// MainContent control.
