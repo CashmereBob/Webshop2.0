@@ -32,7 +32,7 @@ namespace WebShop_Group7.User
             }
             else
             {
-                FillSearchName(productNameSearchList, "");
+                FillSearchName(productNameSearchList);
             }
             //Check BrandSearchList
             if (brandSearchList.Count == 0)
@@ -41,7 +41,7 @@ namespace WebShop_Group7.User
             }
             else
             {
-                FillSearchName(brandSearchList, "brand");
+                FillSearchBrand(brandSearchList);
             }
             //Check CategoryList
             if (categorySearchList.Count == 0)
@@ -50,7 +50,7 @@ namespace WebShop_Group7.User
             }
             else
             {
-                FillSearchName(categorySearchList, "category");
+                FillSearchCategory(categorySearchList);
             }
             //Check Description
             if (descriptionSearchList.Count == 0)
@@ -59,7 +59,7 @@ namespace WebShop_Group7.User
             }
             else
             {
-                FillSearchName(descriptionSearchList, "div");
+                FillSearchDiv(descriptionSearchList);
             }
             if (productNameSearchList.Count == 0 && brandSearchList.Count == 0 && categorySearchList.Count == 0 && descriptionSearchList.Count == 0)
             {
@@ -75,16 +75,9 @@ namespace WebShop_Group7.User
                 priceGroup = uo.priceGroup;
             }
         }
-        protected void FillSearchName(List<ProductObject> productObjectList, string type)
+        protected void FillSearchName(List<ProductObject> productObjectList)
         {
             NameResult.InnerHtml = "";
-            BrandResult.InnerHtml = "";
-            CategoryResult.InnerHtml = "";
-            Div_DivResult.InnerHtml = "";
-
-            if (type == "brand") { NameResult = BrandResult; }
-            if (type == "category") { NameResult = CategoryResult; }
-            if (type == "div") { NameResult = Div_DivResult; }
 
             foreach (var item in productObjectList)
             {
@@ -94,6 +87,90 @@ namespace WebShop_Group7.User
                 if (priceGroup == 2) { price = item.priceB2B.ToString("#,##"); }
 
                 NameResult.InnerHtml +=
+                                                     $"<div class=\"col-sm-6 col-md-4 col-lg-4\"> " +
+                                                        $"<div class=\"thumbnail\"> " +
+                                                          $"<img src = \"Pictures/REA.png\" alt=\"...\" > " +
+                                                          $"<img src = \"{item.imgURL}\" alt=\"...\" > " +
+                                                            $"<img src = \"Pictures/REA.png\" alt=\"...\" > " +
+                                                          $"<div class=\"caption\" > " +
+                                                            $"<h3>{item.name}</h3> " +
+                                                            $"<h4 class=\"green\" >{price} kr</h4>" +
+                                                            $"<p>{item.brandName}</p> " +
+                                                            $"<p><a href=\"/product.aspx?id={item.productID}\" class=\"btn btn-primary\" role=\"button\">Mer info</a></p> " +
+                                                          $"</div> " +
+                                                        $"</div> " +
+
+                                                    $"</div>";
+            }
+        }
+        protected void FillSearchBrand(List<ProductObject> productObjectList)
+        {
+            BrandResult.InnerHtml = "";
+
+            foreach (var item in productObjectList)
+            {
+                string price = string.Empty;
+
+                if (priceGroup == 1) { price = item.priceB2C.ToString("#,##"); }
+                if (priceGroup == 2) { price = item.priceB2B.ToString("#,##"); }
+
+                BrandResult.InnerHtml +=
+                                                     $"<div class=\"col-sm-6 col-md-4 col-lg-4\"> " +
+                                                        $"<div class=\"thumbnail\"> " +
+                                                          $"<img src = \"Pictures/REA.png\" alt=\"...\" > " +
+                                                          $"<img src = \"{item.imgURL}\" alt=\"...\" > " +
+                                                            $"<img src = \"Pictures/REA.png\" alt=\"...\" > " +
+                                                          $"<div class=\"caption\" > " +
+                                                            $"<h3>{item.name}</h3> " +
+                                                            $"<h4 class=\"green\" >{price} kr</h4>" +
+                                                            $"<p>{item.brandName}</p> " +
+                                                            $"<p><a href=\"/product.aspx?id={item.productID}\" class=\"btn btn-primary\" role=\"button\">Mer info</a></p> " +
+                                                          $"</div> " +
+                                                        $"</div> " +
+
+                                                    $"</div>";
+            }
+        }
+        protected void FillSearchCategory(List<ProductObject> productObjectList)
+        {
+            CategoryResult.InnerHtml = "";
+
+            foreach (var item in productObjectList)
+            {
+                string price = string.Empty;
+
+                if (priceGroup == 1) { price = item.priceB2C.ToString("#,##"); }
+                if (priceGroup == 2) { price = item.priceB2B.ToString("#,##"); }
+
+                CategoryResult.InnerHtml +=
+                                                     $"<div class=\"col-sm-6 col-md-4 col-lg-4\"> " +
+                                                        $"<div class=\"thumbnail\"> " +
+                                                          $"<img src = \"Pictures/REA.png\" alt=\"...\" > " +
+                                                          $"<img src = \"{item.imgURL}\" alt=\"...\" > " +
+                                                            $"<img src = \"Pictures/REA.png\" alt=\"...\" > " +
+                                                          $"<div class=\"caption\" > " +
+                                                            $"<h3>{item.name}</h3> " +
+                                                            $"<h4 class=\"green\" >{price} kr</h4>" +
+                                                            $"<p>{item.brandName}</p> " +
+                                                            $"<p><a href=\"/product.aspx?id={item.productID}\" class=\"btn btn-primary\" role=\"button\">Mer info</a></p> " +
+                                                          $"</div> " +
+                                                        $"</div> " +
+
+                                                    $"</div>";
+            }
+        }
+        protected void FillSearchDiv(List<ProductObject> productObjectList)
+        {
+            Div_DivResult.InnerHtml = "";
+
+            foreach (var item in productObjectList)
+            {
+                string price = string.Empty;
+
+                if (priceGroup == 1) { price = item.priceB2C.ToString("#,##"); }
+                if (priceGroup == 2) { price = item.priceB2B.ToString("#,##"); }
+
+                Div_DivResult.InnerHtml +=
                                                      $"<div class=\"col-sm-6 col-md-4 col-lg-4\"> " +
                                                         $"<div class=\"thumbnail\"> " +
                                                           $"<img src = \"Pictures/REA.png\" alt=\"...\" > " +
