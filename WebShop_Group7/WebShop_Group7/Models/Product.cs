@@ -157,10 +157,10 @@ namespace WebShop_Group7.Models
             finally { connection.CloseConnection(); }
 
         }
-        internal List<ProductObject> GetOldestProducts()
+        internal List<ProductObject> GetOldestProducts(int HowManny)
         {
             List<ProductObject> result = new List<ProductObject>();
-            string query = $@"select TOP 3 
+            string query = $@"select TOP {HowManny} 
                               tbl_Product_Attribute.ID, 
                               tbl_Product_Attribute.ProductID,
                               tbl_Product_Attribute.Quantity,
@@ -222,10 +222,10 @@ namespace WebShop_Group7.Models
             connection.CloseConnection();
             return result;
         }
-        internal List<ProductObject> GetNewestProducts()
+        internal List<ProductObject> GetNewestProducts(int HowManny)
         {
             List<ProductObject> result = new List<ProductObject>();
-            string query = $@"select TOP 10 
+            string query = $@"select TOP {HowManny} 
                               tbl_Product_Attribute.ID, 
                               tbl_Product_Attribute.ProductID,
                               tbl_Product_Attribute.Quantity,
