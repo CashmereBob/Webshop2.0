@@ -7,153 +7,135 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebShop_Group7 {
+namespace WebShop_Group7.User {
     
     
-    public partial class SiteMaster {
+    public partial class Search_Result {
         
         /// <summary>
-        /// Cart control.
+        /// Label_SearchString control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField Cart;
+        protected global::System.Web.UI.WebControls.Label Label_SearchString;
         
         /// <summary>
-        /// pageMeny control.
+        /// Panel_SearchFailed control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pageMeny;
+        protected global::System.Web.UI.WebControls.Panel Panel_SearchFailed;
         
         /// <summary>
-        /// categoryMenu control.
+        /// Panel_NameSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl categoryMenu;
+        protected global::System.Web.UI.WebControls.Panel Panel_NameSearch;
         
         /// <summary>
-        /// brandMenu control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl brandMenu;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// TextBox_Main_Search control.
+        /// NameResult control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Main_Search;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl NameResult;
         
         /// <summary>
-        /// MainContent control.
+        /// Panel_BrandSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.Panel Panel_BrandSearch;
         
         /// <summary>
-        /// login control.
+        /// Label2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl login;
+        protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// TextBox_User control.
+        /// BrandResult control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_User;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl BrandResult;
         
         /// <summary>
-        /// TextBox_Password control.
+        /// Panel_CategorySearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Password;
+        protected global::System.Web.UI.WebControls.Panel Panel_CategorySearch;
         
         /// <summary>
-        /// Button_login control.
+        /// Label3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_login;
+        protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// LinkButton_register control.
+        /// CategoryResult control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton_register;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CategoryResult;
         
         /// <summary>
-        /// UserPages control.
+        /// Panel_DivSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl UserPages;
+        protected global::System.Web.UI.WebControls.Panel Panel_DivSearch;
         
         /// <summary>
-        /// label_user control.
+        /// Label_DivResult control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label_user;
+        protected global::System.Web.UI.WebControls.Label Label_DivResult;
         
         /// <summary>
-        /// LinkButton_info control.
+        /// Div_DivResult control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton_info;
-        
-        /// <summary>
-        /// LinkButton_orders control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton_orders;
-        
-        /// <summary>
-        /// LinkButton_logout control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton_logout;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div_DivResult;
     }
 }

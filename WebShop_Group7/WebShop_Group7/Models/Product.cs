@@ -109,6 +109,61 @@ namespace WebShop_Group7.Models
             }
         }
 
+        internal List<ProductObject> SearchName(string table, string searchString)
+        {
+            List<ProductObject> result = new List<ProductObject>();
+            string query = $@"select 
+                              tbl_Product.ID, 
+                              tbl_Product.DateMade,
+                              tbl_Product.Name,
+                              tbl_Product.Description,
+                              tbl_Product.ImgUrl,                            
+                              tbl_Product_Attribute.PriceB2B,
+                              tbl_Product_Attribute.PriceB2C,                             
+                              tbl_Brand.Name as Brand,
+                              tbl_Category.Name as Category                          
+                              
+                              From tbl_Product_Attribute
+                              INNER JOIN tbl_Product ON tbl_Product.ID = tbl_Product_Attribute.ProductID
+                              INNER JOIN tbl_Brand ON tbl_Brand.ID = tbl_Product.BrandID
+                              INNER JOIN tbl_Category ON tbl_Category.ID = tbl_Product.CategoryID
+                              WHERE {table} LIKE '%{searchString}%'
+                              GROUP BY tbl_Product.ID,PriceB2B,PriceB2C, tbl_Product.DateMade,tbl_Product.Name,tbl_Brand.Name,tbl_Category.Name,tbl_Product.Description,tbl_Product.ImgUrl
+                              ";
+            connection.OpenConnection();
+            using (SqlCommand command = new SqlCommand(query, connection._connection))
+            {
+                using (dataReader = command.ExecuteReader())
+                {
+                    while (dataReader.Read())
+                    {
+                        ProductObject proObj = new ProductObject();
+                        proObj.ID = int.Parse(dataReader["ID"].ToString());
+                        proObj.productID = int.Parse(dataReader["ID"].ToString());
+
+                        proObj.priceB2B = decimal.Parse(dataReader["PriceB2B"].ToString());
+                        proObj.priceB2C = decimal.Parse(dataReader["PriceB2C"].ToString());
+
+                        proObj.DateMade = dataReader["DateMade"].ToString();
+
+                        proObj.name = dataReader["Name"].ToString();
+                        proObj.brandName = dataReader["Brand"].ToString();
+                        proObj.category = dataReader["Category"].ToString();
+                        proObj.description = dataReader["Description"].ToString();
+                        proObj.imgURL = dataReader["ImgUrl"].ToString();
+
+                        result.Add(proObj);
+                    }
+                }
+
+            }
+
+
+
+            connection.CloseConnection();
+            return result;
+        }
+
         internal void DeleteMainProduct(string ID)
         {
             string query = $@"use [WebShopGr7]
