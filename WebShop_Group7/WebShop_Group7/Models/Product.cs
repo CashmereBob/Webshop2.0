@@ -157,7 +157,71 @@ namespace WebShop_Group7.Models
             finally { connection.CloseConnection(); }
 
         }
+        internal List<ProductObject> GetOldestProducts()
+        {
+            List<ProductObject> result = new List<ProductObject>();
+            string query = $@"select TOP 3 
+                              tbl_Product_Attribute.ID, 
+                              tbl_Product_Attribute.ProductID,
+                              tbl_Product_Attribute.Quantity,
+                              tbl_Product_Attribute.PriceB2B,
+                              tbl_Product_Attribute.PriceB2C,
+                              tbl_Product_Attribute.ArticleNumber,
+                              tbl_Product_Attribute.DateMade ,
+                              tbl_Product_Attribute.AttributeID1,
+                              tbl_Product_Attribute.AttributeID2,
+                              tbl_Product_Attribute.AttributeID3,
+                              tbl_Product_Attribute.AttributeID4,
+                              tbl_Product.Name,
+                              tbl_Brand.Name as Brand,
+                              tbl_Category.Name as Category,
+                              tbl_Product.Description,
+                              tbl_Product.ImgUrl
+                              From tbl_Product_Attribute
+                              INNER JOIN tbl_Product ON tbl_Product.ID = tbl_Product_Attribute.ProductID
+                              INNER JOIN tbl_Brand ON tbl_Brand.ID = tbl_Product.BrandID
+                              INNER JOIN tbl_Category ON tbl_Category.ID = tbl_Product.CategoryID
+                              ORDER BY DateMade;
+                              ";
+            connection.OpenConnection();
+            using (SqlCommand command = new SqlCommand(query, connection._connection))
+            {
+                using (dataReader = command.ExecuteReader())
+                {
+                    while (dataReader.Read())
+                    {
+                        ProductObject proObj = new ProductObject();
+                        proObj.ID = int.Parse(dataReader["ID"].ToString());
+                        proObj.productID = int.Parse(dataReader["ProductID"].ToString());
+                        proObj.quantity = int.Parse(dataReader["Quantity"].ToString());
+                        proObj.priceB2B = decimal.Parse(dataReader["PriceB2B"].ToString());
+                        proObj.priceB2C = decimal.Parse(dataReader["PriceB2C"].ToString());
+                        proObj.artNr = dataReader["ArticleNumber"].ToString();
+                        proObj.DateMade = dataReader["DateMade"].ToString();
 
+                        proObj.name = dataReader["Name"].ToString();
+                        proObj.brandName = dataReader["Brand"].ToString();
+                        proObj.category = dataReader["Category"].ToString();
+                        proObj.description = dataReader["Description"].ToString();
+                        proObj.imgURL = dataReader["ImgUrl"].ToString();
+
+                        try { proObj.attribute1 = int.Parse(dataReader["AttributeID1"].ToString()); } catch { }
+                        try { proObj.attribute2 = int.Parse(dataReader["AttributeID2"].ToString()); } catch { }
+                        try { proObj.attribute3 = int.Parse(dataReader["AttributeID3"].ToString()); } catch { }
+                        try { proObj.attribute4 = int.Parse(dataReader["AttributeID4"].ToString()); } catch { }
+
+
+                        result.Add(proObj);
+                    }
+                }
+
+            }
+
+
+
+            connection.CloseConnection();
+            return result;
+        }
         internal List<ProductObject> GetNewestProducts()
         {
             List<ProductObject> result = new List<ProductObject>();

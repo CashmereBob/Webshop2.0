@@ -70,7 +70,7 @@ namespace WebShop_Group7.Admin
             proObj.brandName = TextBox_Brand.Text;         
             proObj.category = TextBox_Category.Text;         
             proObj.description = TextBox_Description.Text;         
-            proObj.imgURL = TextBox_ImgUlr.Text;        
+            proObj.imgURL = Label_ImgUrl.Text;        
             proObj.quantity = int.Parse(TextBox_Quantity.Text);      
             proObj.priceB2B = int.Parse(TextBox_B2B.Text);
             proObj.priceB2C = int.Parse(TextBox_B2C.Text);

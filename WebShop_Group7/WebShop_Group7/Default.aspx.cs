@@ -15,6 +15,7 @@ namespace WebShop_Group7
         Pages pageDal = new Pages();
         Product product = new Product();
         List<ProductObject> productList;
+        List<ProductObject> productList_Old;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["User"] != null) { Panel_Login.Visible = false; Panel_SpecialOffers.Visible = true; }
@@ -23,10 +24,101 @@ namespace WebShop_Group7
 
             productList = product.GetNewestProducts();
             FillNews(productList);
-
+            productList_Old = product.GetOldestProducts();
+            FillSpecialOffers(productList_Old);
         }
 
+        private void FillSpecialOffers(List<ProductObject> productList_Old)
+        {
+            Dictionary<string, string> Attri;
+            //1
+            try
+            {
+                if (productList[0] != null)
+                {
+                    Label_Name_new1.Text = productList_Old[0].name;
+                    Image_new1.ImageUrl = productList_Old[0].imgURL;
+                    Label_Brand_new1.Text = productList_Old[0].brandName;
+                    Label_Cat_new1.Text = productList_Old[0].category;
+                    //Attributes
+                    Label_Attri_new1.Text = "|";
+                    Attri = product.GetAttribute(productList_Old[0]);
+                    try
+                    {
+                        foreach (var item in Attri)
+                        {
+                            Label_Attri_new1.Text += item.Key + ": " + item.Value + " | ";
+                        }
+                    }
+                    catch (Exception)
+                    {
 
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                Panel1.Visible = false;
+            }
+            //2
+            try
+            {
+                if (productList[0] != null)
+                {
+                    Label_Name_new1.Text = productList_Old[0].name;
+                    Image_new1.ImageUrl = productList_Old[0].imgURL;
+                    Label_Brand_new1.Text = productList_Old[0].brandName;
+                    Label_Cat_new1.Text = productList_Old[0].category;
+                    //Attributes
+                    Label_Attri_new1.Text = "|";
+                    Attri = product.GetAttribute(productList_Old[0]);
+                    try
+                    {
+                        foreach (var item in Attri)
+                        {
+                            Label_Attri_new1.Text += item.Key + ": " + item.Value + " | ";
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                Panel1.Visible = false;
+            }
+            //3
+            try
+            {
+                if (productList[0] != null)
+                {
+                    Label_Name_new1.Text = productList_Old[0].name;
+                    Image_new1.ImageUrl = productList_Old[0].imgURL;
+                    Label_Brand_new1.Text = productList_Old[0].brandName;
+                    Label_Cat_new1.Text = productList_Old[0].category;
+                    //Attributes
+                    Label_Attri_new1.Text = "|";
+                    Attri = product.GetAttribute(productList_Old[0]);
+                    try
+                    {
+                        foreach (var item in Attri)
+                        {
+                            Label_Attri_new1.Text += item.Key + ": " + item.Value + " | ";
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                Panel1.Visible = false;
+            }
+        }
 
         private void FillNews(List<ProductObject> productList)
         {
@@ -54,11 +146,13 @@ namespace WebShop_Group7
                     }
                     catch (Exception)
                     {
+                        
                     }
                 }
             }
             catch (Exception)
             {
+                Panel1.Visible = false;
             }
             //2
             try
@@ -81,11 +175,13 @@ namespace WebShop_Group7
                     }
                     catch (Exception)
                     {
+                        
                     }
                 }
             }
             catch (Exception)
             {
+                Panel_2.Visible = false;
             }
             //3
             try
@@ -108,11 +204,13 @@ namespace WebShop_Group7
                     }
                     catch (Exception)
                     {
+                      
                     }
                 }
             }
             catch (Exception)
             {
+                Panel3.Visible = false;
             }
             //4
             try
@@ -135,11 +233,13 @@ namespace WebShop_Group7
                     }
                     catch (Exception)
                     {
+                       
                     }
                 }
             }
             catch (Exception)
             {
+                Panel4.Visible = false;
             }
             //5
             try
@@ -162,11 +262,13 @@ namespace WebShop_Group7
                     }
                     catch (Exception)
                     {
+                       
                     }
                 }
             }
             catch (Exception)
             {
+                Panel5.Visible = false;
             }
             //6
             try
@@ -189,11 +291,13 @@ namespace WebShop_Group7
                     }
                     catch (Exception)
                     {
+                      
                     }
                 }
             }
             catch (Exception)
             {
+                Panel6.Visible = false;
             }
             //7
             try
@@ -216,11 +320,13 @@ namespace WebShop_Group7
                     }
                     catch (Exception)
                     {
+                       
                     }
                 }
             }
             catch (Exception)
             {
+                Panel7.Visible = false;
             }
             //8
             try
@@ -243,11 +349,13 @@ namespace WebShop_Group7
                     }
                     catch (Exception)
                     {
+                       
                     }
                 }
             }
             catch (Exception)
             {
+                Panel8.Visible = false;
             }
             //9
             try
@@ -271,11 +379,13 @@ namespace WebShop_Group7
                     }
                     catch (Exception)
                     {
+                      
                     }
                 }
             }
             catch (Exception)
             {
+                Panel9.Visible = false;
             }
             SetPrice();
         }

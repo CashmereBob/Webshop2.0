@@ -24,7 +24,7 @@
             </div>
             <div class="row">
                 <div class="col-md-2">
-                    <asp:Button CssClass="btn btn-default" Csstype="button" ID="Button_NewProductIMG" runat="server" Text="Upload" OnClick="Button_NewProductIMG_Click" />
+                    <asp:Button CssClass="btn btn-default" Csstype="button" ID="Button_NewProductIMG" runat="server" Text="Upload" CausesValidation="false" OnClick="Button_NewProductIMG_Click" />
                 </div>
             </div>
 

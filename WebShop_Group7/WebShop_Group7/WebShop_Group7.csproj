@@ -197,6 +197,7 @@
     <Content Include="login.aspx" />
     <Content Include="page.aspx" />
     <Content Include="Pictures\KlädPlagg.jpg" />
+    <Content Include="Pictures\REA.png" />
     <Content Include="product.aspx" />
     <Content Include="Scripts\bootstrap-slider.min.js" />
     <Content Include="Scripts\bootstrap.js" />
