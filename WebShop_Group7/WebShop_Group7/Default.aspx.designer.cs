@@ -193,15 +193,6 @@ namespace WebShop_Group7 {
         protected global::System.Web.UI.WebControls.Label Label9;
         
         /// <summary>
-        /// TextBox6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox6;
-        
-        /// <summary>
         /// Image2 control.
         /// </summary>
         /// <remarks>
@@ -211,15 +202,6 @@ namespace WebShop_Group7 {
         protected global::System.Web.UI.WebControls.Image Image2;
         
         /// <summary>
-        /// TextBox4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
-        
-        /// <summary>
         /// Image3 control.
         /// </summary>
         /// <remarks>
@@ -227,15 +209,6 @@ namespace WebShop_Group7 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image3;
-        
-        /// <summary>
-        /// TextBox3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
         
         /// <summary>
         /// Panel_Main control.
@@ -319,15 +292,6 @@ namespace WebShop_Group7 {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// TextBox_Amount_new1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Amount_new1;
-        
-        /// <summary>
         /// Panel_2 control.
         /// </summary>
         /// <remarks>
@@ -398,15 +362,6 @@ namespace WebShop_Group7 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label15;
-        
-        /// <summary>
-        /// TextBox_Amount_new2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Amount_new2;
         
         /// <summary>
         /// Panel3 control.
@@ -481,15 +436,6 @@ namespace WebShop_Group7 {
         protected global::System.Web.UI.WebControls.Label Label24;
         
         /// <summary>
-        /// TextBox_Amount_new3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Amount_new3;
-        
-        /// <summary>
         /// Panel4 control.
         /// </summary>
         /// <remarks>
@@ -560,15 +506,6 @@ namespace WebShop_Group7 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label29;
-        
-        /// <summary>
-        /// TextBox_Amount_new4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Amount_new4;
         
         /// <summary>
         /// Panel5 control.
@@ -643,15 +580,6 @@ namespace WebShop_Group7 {
         protected global::System.Web.UI.WebControls.Label Label34;
         
         /// <summary>
-        /// TextBox_Amount_new5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Amount_new5;
-        
-        /// <summary>
         /// Panel6 control.
         /// </summary>
         /// <remarks>
@@ -722,15 +650,6 @@ namespace WebShop_Group7 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label39;
-        
-        /// <summary>
-        /// TextBox_Amount_new6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Amount_new6;
         
         /// <summary>
         /// Panel7 control.
@@ -805,15 +724,6 @@ namespace WebShop_Group7 {
         protected global::System.Web.UI.WebControls.Label Label44;
         
         /// <summary>
-        /// TextBox_Amount_new7 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Amount_new7;
-        
-        /// <summary>
         /// Panel8 control.
         /// </summary>
         /// <remarks>
@@ -886,15 +796,6 @@ namespace WebShop_Group7 {
         protected global::System.Web.UI.WebControls.Label Label49;
         
         /// <summary>
-        /// TextBox_Amount_new8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Amount_new8;
-        
-        /// <summary>
         /// Panel9 control.
         /// </summary>
         /// <remarks>
@@ -965,15 +866,6 @@ namespace WebShop_Group7 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label54;
-        
-        /// <summary>
-        /// TextBox_Amount_new9 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Amount_new9;
         
         /// <summary>
         /// content control.
