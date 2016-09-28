@@ -103,7 +103,7 @@
                 </div>
 
                 <div class="col-md-3">
-                    <asp:TextBox CssClass="form-control" ID="TextBox_B2B" runat="server" TextMode="Number"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control" ID="TextBox_B2B" runat="server" TextMode="SingleLine"></asp:TextBox>
                 </div>
             </div>
             <%-- B2C --%>
@@ -113,7 +113,7 @@
                 </div>
 
                 <div class="col-md-3">
-                    <asp:TextBox CssClass="form-control" ID="TextBox_B2C" runat="server" TextMode="Number"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control" ID="TextBox_B2C" runat="server" TextMode="SingleLine"></asp:TextBox>
                 </div>
             </div>
             <%-- Beskrivning --%>

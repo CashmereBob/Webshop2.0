@@ -28,7 +28,9 @@ namespace WebShop_Group7.Admin
             catch { ID = -1; }
             if (ID > 0)
             {
+            
                 proObj = product.GetMainProduct(ID);
+              
                 proObj.productID = ID;
                 RemakePage();
                 makeSub = true;
@@ -37,7 +39,19 @@ namespace WebShop_Group7.Admin
             else
             {
                 makeSub = false;
+                TextBox_B2B.TextMode =TextBoxMode.Number;
+                TextBox_B2C.TextMode = TextBoxMode.Number;
             }
+        }
+
+        private decimal GetB2C(int iD)
+        {
+            throw new NotImplementedException();
+        }
+
+        private decimal GetB2B(int iD)
+        {
+            throw new NotImplementedException();
         }
 
         private void RemakePage()
@@ -59,6 +73,12 @@ namespace WebShop_Group7.Admin
             //Description
             TextBox_Description.Text = proObj.description;
             TextBox_Description.Enabled = false;
+            //Price B2B      
+            TextBox_B2B.Text = proObj.priceB2B.ToString("#.##");
+            TextBox_B2B.Enabled = false;
+            //Price B2C
+            TextBox_B2C.Text = proObj.priceB2C.ToString("#.##");
+            TextBox_B2C.Enabled = false;
         }
 
         protected void Button_Save_Click(object sender, EventArgs e)

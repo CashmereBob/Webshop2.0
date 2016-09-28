@@ -24,10 +24,10 @@ namespace WebShop_Group7
 
             CheckPricegroup();
 
-            productList = product.GetNewestProducts(12);
+            productList = product.GetNewestProducts(9);
             FillTheNews(productList);
 
-            productList_Old = product.GetOldestProducts(4);
+            productList_Old = product.GetOldestProducts(3);
             FillTheOlds(productList_Old);
         }
 
@@ -51,7 +51,7 @@ namespace WebShop_Group7
                 if (priceGroup == 1) { price = item.priceB2C.ToString("#,##"); }
                 if (priceGroup == 2) { price = item.priceB2B.ToString("#,##"); }
 
-                productCont.InnerHtml += $"<div class=\"col-sm-6 col-md-4 col-lg-3\"> " +
+                productCont.InnerHtml += $"<div class=\"col-sm-6 col-md-4 col-lg-4\"> " +
                                                         $"<div class=\"thumbnail\"> " +
                                                           $"<img src = \"{item.imgURL}\" alt=\"...\" > " +
                                                           $"<div class=\"caption\" > " +

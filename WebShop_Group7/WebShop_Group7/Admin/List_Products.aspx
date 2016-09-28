@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-md-12">
                 <asp:GridView ID="GridView_Products" runat="server" AutoGenerateColumns="false"
-                    AllowSorting="true" AllowPaging="true" PageSize="10" CssClass="table-striped table list-group" OnSelectedIndexChanged="GridView_Products_SelectedIndexChanged">
+                    AllowSorting="true" AllowPaging="true" PageSize="100" CssClass="table-striped table list-group" OnSelectedIndexChanged="GridView_Products_SelectedIndexChanged">
                     <Columns>
                         <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
 

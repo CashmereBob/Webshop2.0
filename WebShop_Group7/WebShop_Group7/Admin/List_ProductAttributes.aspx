@@ -153,7 +153,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <asp:GridView ID="GridView_Products" runat="server" AutoGenerateColumns="false"
-                        AllowSorting="true" AllowPaging="true" PageSize="10" CssClass="table-striped table">
+                        AllowSorting="true" AllowPaging="true" PageSize="100" CssClass="table-striped table">
                         <Columns>
                             <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
                             <asp:BoundField DataField="ArticleNr" HeaderText="Artikel nr" SortExpression="Artikel nr" />                          

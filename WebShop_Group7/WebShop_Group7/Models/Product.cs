@@ -137,12 +137,12 @@ namespace WebShop_Group7.Models
             }
             catch { }
             finally { connection.CloseConnection(); }
-           
+
         }
 
         internal void DeleteSubProduct(string ID)
         {
-           string query = $@" use [WebShopGr7]
+            string query = $@" use [WebShopGr7]
                         DELETE FROM tbl_Product_Attribute
                         WHERE tbl_Product_Attribute.ID = {ID}";
             connection.OpenConnection();
@@ -160,18 +160,14 @@ namespace WebShop_Group7.Models
         internal List<ProductObject> GetOldestProducts(int HowManny)
         {
             List<ProductObject> result = new List<ProductObject>();
-            string query = $@"select TOP {HowManny} 
-                              tbl_Product_Attribute.ID, 
-                              tbl_Product_Attribute.ProductID,
-                              tbl_Product_Attribute.Quantity,
+            string query = $@"select TOP {HowManny}
+
+                              tbl_Product.ID, 
+                           
                               tbl_Product_Attribute.PriceB2B,
                               tbl_Product_Attribute.PriceB2C,
-                              tbl_Product_Attribute.ArticleNumber,
-                              tbl_Product_Attribute.DateMade ,
-                              tbl_Product_Attribute.AttributeID1,
-                              tbl_Product_Attribute.AttributeID2,
-                              tbl_Product_Attribute.AttributeID3,
-                              tbl_Product_Attribute.AttributeID4,
+                              tbl_Product.DateMade,
+                           
                               tbl_Product.Name,
                               tbl_Brand.Name as Brand,
                               tbl_Category.Name as Category,
@@ -181,7 +177,8 @@ namespace WebShop_Group7.Models
                               INNER JOIN tbl_Product ON tbl_Product.ID = tbl_Product_Attribute.ProductID
                               INNER JOIN tbl_Brand ON tbl_Brand.ID = tbl_Product.BrandID
                               INNER JOIN tbl_Category ON tbl_Category.ID = tbl_Product.CategoryID
-                              ORDER BY DateMade;
+							  GROUP BY tbl_Product.ID,PriceB2B,PriceB2C, tbl_Product.DateMade,tbl_Product.Name,tbl_Brand.Name,tbl_Category.Name,tbl_Product.Description,tbl_Product.ImgUrl
+                             
                               ";
             connection.OpenConnection();
             using (SqlCommand command = new SqlCommand(query, connection._connection))
@@ -192,23 +189,16 @@ namespace WebShop_Group7.Models
                     {
                         ProductObject proObj = new ProductObject();
                         proObj.ID = int.Parse(dataReader["ID"].ToString());
-                        proObj.productID = int.Parse(dataReader["ProductID"].ToString());
-                        proObj.quantity = int.Parse(dataReader["Quantity"].ToString());
                         proObj.priceB2B = decimal.Parse(dataReader["PriceB2B"].ToString());
-                        proObj.priceB2C = decimal.Parse(dataReader["PriceB2C"].ToString());
-                        proObj.artNr = dataReader["ArticleNumber"].ToString();
+                        proObj.priceB2C = decimal.Parse(dataReader["PriceB2C"].ToString());                   
                         proObj.DateMade = dataReader["DateMade"].ToString();
-
                         proObj.name = dataReader["Name"].ToString();
                         proObj.brandName = dataReader["Brand"].ToString();
                         proObj.category = dataReader["Category"].ToString();
                         proObj.description = dataReader["Description"].ToString();
                         proObj.imgURL = dataReader["ImgUrl"].ToString();
 
-                        try { proObj.attribute1 = int.Parse(dataReader["AttributeID1"].ToString()); } catch { }
-                        try { proObj.attribute2 = int.Parse(dataReader["AttributeID2"].ToString()); } catch { }
-                        try { proObj.attribute3 = int.Parse(dataReader["AttributeID3"].ToString()); } catch { }
-                        try { proObj.attribute4 = int.Parse(dataReader["AttributeID4"].ToString()); } catch { }
+     
 
 
                         result.Add(proObj);
@@ -225,18 +215,14 @@ namespace WebShop_Group7.Models
         internal List<ProductObject> GetNewestProducts(int HowManny)
         {
             List<ProductObject> result = new List<ProductObject>();
-            string query = $@"select TOP {HowManny} 
-                              tbl_Product_Attribute.ID, 
-                              tbl_Product_Attribute.ProductID,
-                              tbl_Product_Attribute.Quantity,
+            string query = $@"select TOP {HowManny}
+
+                              tbl_Product.ID, 
+                           
                               tbl_Product_Attribute.PriceB2B,
                               tbl_Product_Attribute.PriceB2C,
-                              tbl_Product_Attribute.ArticleNumber,
-                              tbl_Product_Attribute.DateMade ,
-                              tbl_Product_Attribute.AttributeID1,
-                              tbl_Product_Attribute.AttributeID2,
-                              tbl_Product_Attribute.AttributeID3,
-                              tbl_Product_Attribute.AttributeID4,
+                              tbl_Product.DateMade,
+                           
                               tbl_Product.Name,
                               tbl_Brand.Name as Brand,
                               tbl_Category.Name as Category,
@@ -246,6 +232,7 @@ namespace WebShop_Group7.Models
                               INNER JOIN tbl_Product ON tbl_Product.ID = tbl_Product_Attribute.ProductID
                               INNER JOIN tbl_Brand ON tbl_Brand.ID = tbl_Product.BrandID
                               INNER JOIN tbl_Category ON tbl_Category.ID = tbl_Product.CategoryID
+							  GROUP BY tbl_Product.ID,PriceB2B,PriceB2C, tbl_Product.DateMade,tbl_Product.Name,tbl_Brand.Name,tbl_Category.Name,tbl_Product.Description,tbl_Product.ImgUrl
                               ORDER BY DateMade DESC;
                               ";
             connection.OpenConnection();
@@ -257,11 +244,11 @@ namespace WebShop_Group7.Models
                     {
                         ProductObject proObj = new ProductObject();
                         proObj.ID = int.Parse(dataReader["ID"].ToString());
-                        proObj.productID = int.Parse(dataReader["ProductID"].ToString());
-                        proObj.quantity = int.Parse(dataReader["Quantity"].ToString());
+                        proObj.productID = int.Parse(dataReader["ID"].ToString());
+
                         proObj.priceB2B = decimal.Parse(dataReader["PriceB2B"].ToString());
                         proObj.priceB2C = decimal.Parse(dataReader["PriceB2C"].ToString());
-                        proObj.artNr = dataReader["ArticleNumber"].ToString();
+
                         proObj.DateMade = dataReader["DateMade"].ToString();
 
                         proObj.name = dataReader["Name"].ToString();
@@ -269,12 +256,6 @@ namespace WebShop_Group7.Models
                         proObj.category = dataReader["Category"].ToString();
                         proObj.description = dataReader["Description"].ToString();
                         proObj.imgURL = dataReader["ImgUrl"].ToString();
-
-                        try { proObj.attribute1 = int.Parse(dataReader["AttributeID1"].ToString()); } catch { }
-                        try { proObj.attribute2 = int.Parse(dataReader["AttributeID2"].ToString()); } catch { }
-                        try { proObj.attribute3 = int.Parse(dataReader["AttributeID3"].ToString()); } catch { }
-                        try { proObj.attribute4 = int.Parse(dataReader["AttributeID4"].ToString()); } catch { }
-
 
                         result.Add(proObj);
                     }
@@ -305,8 +286,8 @@ namespace WebShop_Group7.Models
                        new DataColumn("CategoryID"),
                        new DataColumn("BrandID"),
                        new DataColumn("Description"),
-                     
-                    
+
+
 
                     });
 
@@ -345,8 +326,8 @@ namespace WebShop_Group7.Models
                                     var categoryid = dataReader["category"].ToString();
                                     var brandid = dataReader["theBrand"].ToString();
                                     var description = dataReader["Description"].ToString();
-                                 
-                                   
+
+
 
                                     oldId = id;
                                     dataTable.Rows.Add(id, name, categoryid, brandid,
@@ -938,7 +919,7 @@ namespace WebShop_Group7.Models
 
         }
         //Add a new Product to DB
-        public void AddProduct(ProductObject proObj, List<string> attributes,bool makeSub)
+        public void AddProduct(ProductObject proObj, List<string> attributes, bool makeSub)
         {
             connection.OpenConnection();
             //Brand
@@ -949,7 +930,7 @@ namespace WebShop_Group7.Models
             //Product
             if (makeSub) { productID = proObj.productID; }
             else { productID = CheckProduct(proObj, brandID, categoryID); }
-           
+
             //Product_Attributes
             proObj.productID = CreateNew_TBL_ProductAttribute(productID, proObj);
             //Attributes

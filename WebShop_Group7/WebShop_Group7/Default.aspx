@@ -13,7 +13,7 @@
             <li data-target="#carousel-example-generic" data-slide-to-="1"></li>
             <li data-target="#carousel-example-generic" data-slide-to-="2"></li>
         </ol>
-    
+
         <div class="carousel-inner" role="listbox">
             <%-- carousel img 1 --%>
             <div class="item active">
@@ -52,22 +52,25 @@
         </a>
     </div>
 
-   
+
     <%-- Page --%>
     <div class="row">
         <%-- Panel left 1 --%>
-          <asp:Panel CssClass="startPanel  col-sm-4" ID="panel_left1" runat="server" Visible =" true">
-
+        <asp:Panel CssClass="startPanel  col-sm-4" ID="panel_left1" runat="server" Visible=" true">
+            <h3>Web Shop</h3>
+            <p>
+                Tote bag marfa biodiesel wayfarers. Banjo hot chicken enamel pin bitters mixtape prism. Tumeric small batch four loko, XOXO master cleanse bicycle rights yuccie iPhone shoreditch. Authentic squid retro ramps, farm-to-table put a bird on it ethical post-ironic cred bushwick cliche truffaut swag mixtape. Mumblecore snackwave poutine raclette affogato drinking vinegar tousled ramps church-key, unicorn hot chicken. Kinfolk cliche paleo cronut fingerstache. Pork belly flexitarian wayfarers 8-bit.
+            </p>
               <p>
-                  Where does it come from?
+               Humblebrag pop-up poke, cardigan fingerstache farm-to-table beard bushwick chambray. You probably haven't heard of them live-edge stumptown pinterest. Pour-over letterpress edison bulb, portland waistcoat microdosing cliche. Truffaut try-hard ugh, PBR&B gochujang gastropub slow-carb VHS stumptown banh mi schlitz. Ramps you probably haven't heard of them health goth waistcoat church-key synth disrupt tacos stumptown.
+            </p>
+            <h3>Group Seven</h3>
+          <p>Lyft echo park copper mug, freegan air plant portland jianbing glossier. Chicharrones venmo brunch, shoreditch art party lo-fi intelligentsia fam microdosing cred chambray. Twee church-key mlkshk 90's wolf af. Chambray occupy literally tattooed, pickled art party wayfarers. Small batch squid enamel pin, DIY mumblecore swag XOXO trust fund everyday carry VHS PBR&B art party. Yr freegan photo booth 8-bit. Occupy art party biodiesel bitters, cornhole prism everyday carry keffiyeh jianbing listicle keytar shabby chic disrupt schlitz.
 
-Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+Shoreditch unicorn tbh fingerstache bitters, viral tousled hot chicken leggings kombucha organic glossier. Four dollar toast chartreuse keytar, snackwave iPhone chia sartorial plaid yr listicle shabby chic meh literally ramps. Tofu offal mumblecore cliche mustache tumeric. Deep v woke artisan, biodiesel scenester copper mug occupy cliche drinking vinegar shoreditch. Pop-up marfa cliche master cleanse try-hard tumblr. Vinyl ethical pabst authentic waistcoat pug, celiac pinterest migas unicorn humblebrag distillery. Lo-fi slow-carb man bun, prism edison bulb la croix crucifix distillery snackwave cliche plaid messenger bag.
+</p>
 
-The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
-
-              </p>
-
-              </asp:Panel>
+        </asp:Panel>
         <%-- Panel left 2 --%>
         <asp:Panel CssClass="startPanel  col-sm-4" ID="panel_left2" runat="server" Visible="False">
             <div class="container">
@@ -84,7 +87,7 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
                 </div>
             </div>
         </asp:Panel>
-      
+
         <%-- Panel right --%>
         <asp:Panel CssClass="startPanel col-sm-8" ID="Panel_Main" runat="server">
             <div class="container">
