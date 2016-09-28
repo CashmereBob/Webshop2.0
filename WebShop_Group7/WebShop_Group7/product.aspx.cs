@@ -40,8 +40,8 @@ namespace WebShop_Group7
         protected void DrawProduct(int id)
         {
 
-            string price = string.Empty;
-
+            decimal price = 0;
+            decimal vat = 0;
 
             ProductObject product = proDal.GetMainProduct(id);
 
@@ -54,13 +54,13 @@ namespace WebShop_Group7
 
             str.Append($"<h3>Produktbeskrivning</h3><p>{product.description}</p>");
 
-            str.Append($"<h4 class=\"text-right\">");
+            str.Append($"<span class=\"input-group-addon\"><h4 class=\"text-right\">");
 
             if (attributes != null)
             {
                 foreach (KeyValuePair<string, List<string>> atr in attributes)
                 {
-                    str.Append($" {atr.Key}: <select> ");
+                    str.Append($" {atr.Key}: <select class=\"form-control filter\"> ");
 
                     foreach (string value in atr.Value)
                     {
@@ -70,16 +70,15 @@ namespace WebShop_Group7
                 }
             }
 
-            str.Append("</h4>");
+           str.Append("</h4>");
             
+            if (pricegroup == 1) { price = product.priceB2C; }
+            if (pricegroup == 2) { price = product.priceB2B; }
 
-            
+            vat = Decimal.Multiply(price, 0.25M);
 
-            if (pricegroup == 1) { price = product.priceB2C.ToString("#,##"); }
-            if (pricegroup == 2) { price = product.priceB2B.ToString("#,##"); }
-
-            str.Append($"<h2 class=\"text-right\" >{price}kr</h2><p class=\"text-right\" ><i>moms: {(decimal)(int.Parse(price) * 0.25)}kr</i></p>");
-            str.Append($"<p class=\"text-right\"><a href =\"/product.aspx?id={id}\" class=\"btn btn-success\" role=\"button\">Lägg i varukorg</a></p>");
+            str.Append($"<h2 class=\"text-right\" >{price.ToString("#.##")}kr</h2><p class=\"text-right\" ><i>moms: {vat.ToString("#.##")}kr</i></p>");
+            str.Append($"<p class=\"text-right\"><input type=\"number\" class=\"form-control\" id=\"quantity\" id=\"quantity\" min=\"0\" max=\"100\" step=\"1\" value=\"1\" ></input><a href=\"javascript:AddToCart('{id}');\" class=\"btn btn-success\" role=\"button\" >Lägg i varukorg</a></p></span>");
 
 
 

@@ -15,9 +15,11 @@
 
         </div>
         <div id="description" class="col-xs-12 col-sm-6" runat="server">
+            <div>
 
-        </div>
-        <div id="details" class="col-xs-12 col-sm-6" runat="server">
+
+            </div>
+       
 
         </div>
     </div>
