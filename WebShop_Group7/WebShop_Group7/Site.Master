@@ -77,7 +77,7 @@
                     <div class="navbar-form navbar-left">
 
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Sök...">
+                            <input runat="server" id="Main_Search" type="text" class="form-control" placeholder="Sök...">
                         </div>
 
 
