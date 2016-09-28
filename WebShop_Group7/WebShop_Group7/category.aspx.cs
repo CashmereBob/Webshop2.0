@@ -307,7 +307,7 @@ namespace WebShop_Group7
                                             $"<h3>{prod.name}</h3> " +
                                             $"<h4 class=\"green\" >{price} kr</h4>" + 
                                             $"<p>{prod.brandName}</p> " +
-                                            $"<p><a href = \"#\" class=\"btn btn-primary\" role=\"button\" >Mer info</a></p> " +
+                                            $"<p><a href=\"/product.aspx?id={prod.productID}\" class=\"btn btn-primary\" role=\"button\">Mer info</a></p> " +
                                           $"</div> " +
                                         $"</div> " +
                                       $"</div>";
