@@ -10,6 +10,7 @@ namespace WebShop_Group7.User
 {
     public partial class Search_Result : System.Web.UI.Page
     {
+      
         ProductObject productObject = new ProductObject();
         Product product = new Product();
         int priceGroup = 0;
@@ -17,19 +18,53 @@ namespace WebShop_Group7.User
         {
             string searchString = Request.QueryString["search"];
             Label_SearchString.Text = searchString;
+            Panel_SearchFailed.Visible = false;
+            List<ProductObject> productNameSearchList = product.SearchName("tbl_Product.Name", searchString);
+            List<ProductObject> brandSearchList = product.SearchName("tbl_Brand.Name", searchString);
+            List<ProductObject> categorySearchList = product.SearchName("tbl_Category.Name", searchString);
+            List<ProductObject> descriptionSearchList = product.SearchName("tbl_Product.Description", searchString);
+            CheckPricegroup();
 
-            List<ProductObject> productObjectList = product.SearchProducts(searchString);
-           
-            if (productObjectList.Count == 0)
+            //Check ProductName Search list
+            if (productNameSearchList.Count == 0)
             {
-
+                Panel_NameSearch.Visible = false;
+            }
+            else
+            {           
+                FillSearchName(productNameSearchList,"");
+            }
+            //Check BrandSearchList
+            if(brandSearchList.Count == 0)
+            {
+                Panel_BrandSearch.Visible = false;
             }
             else
             {
-                CheckPricegroup();
-                FillTheOlds(productObjectList);
+                FillSearchName(brandSearchList,"brand");
             }
-         
+            //Check CategoryList
+            if (categorySearchList.Count == 0)
+            {
+                Panel_CategorySearch.Visible = false;
+            }
+            else
+            {
+                FillSearchName(categorySearchList,"");
+            }
+            //Check Description
+            if (descriptionSearchList.Count == 0)
+            {
+                Panel_DivSearch.Visible = false;
+            }
+            else
+            {
+                FillSearchName(descriptionSearchList,"");
+            }
+            if(productNameSearchList.Count == 0 && brandSearchList.Count == 0 && categorySearchList.Count == 0 && descriptionSearchList.Count == 0)
+            {
+                Panel_SearchFailed.Visible = true;
+            }
         }
         private void CheckPricegroup()
         {
@@ -40,8 +75,12 @@ namespace WebShop_Group7.User
                 priceGroup = uo.priceGroup;
             }
         }
-        protected void FillTheOlds(List<ProductObject> productObjectList)
+        protected void FillSearchName(List<ProductObject> productObjectList,string type)
         {
+            if(type == "brand") { NameResult = BrandResult; }
+            if(type == "category") { NameResult = CategoryResult; }
+            if(type == "div") { NameResult = Div_DivResult; }
+          
             foreach (var item in productObjectList)
             {            
                 string price = string.Empty;
@@ -49,7 +88,7 @@ namespace WebShop_Group7.User
                 if (priceGroup == 1) { price = item.priceB2C.ToString("#,##"); }
                 if (priceGroup == 2) { price = item.priceB2B.ToString("#,##"); }
 
-                productResult.InnerHtml +=
+                NameResult.InnerHtml +=
                                                      $"<div class=\"col-sm-6 col-md-4 col-lg-4\"> " +
                                                         $"<div class=\"thumbnail\"> " +
                                                           $"<img src = \"Pictures/REA.png\" alt=\"...\" > " +
