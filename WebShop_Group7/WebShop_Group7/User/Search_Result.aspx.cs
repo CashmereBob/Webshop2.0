@@ -10,7 +10,7 @@ namespace WebShop_Group7.User
 {
     public partial class Search_Result : System.Web.UI.Page
     {
-      
+
         ProductObject productObject = new ProductObject();
         Product product = new Product();
         int priceGroup = 0;
@@ -31,17 +31,17 @@ namespace WebShop_Group7.User
                 Panel_NameSearch.Visible = false;
             }
             else
-            {           
-                FillSearchName(productNameSearchList,"");
+            {
+                FillSearchName(productNameSearchList, "");
             }
             //Check BrandSearchList
-            if(brandSearchList.Count == 0)
+            if (brandSearchList.Count == 0)
             {
                 Panel_BrandSearch.Visible = false;
             }
             else
             {
-                FillSearchName(brandSearchList,"brand");
+                FillSearchName(brandSearchList, "brand");
             }
             //Check CategoryList
             if (categorySearchList.Count == 0)
@@ -50,7 +50,7 @@ namespace WebShop_Group7.User
             }
             else
             {
-                FillSearchName(categorySearchList,"");
+                FillSearchName(categorySearchList, "");
             }
             //Check Description
             if (descriptionSearchList.Count == 0)
@@ -59,9 +59,9 @@ namespace WebShop_Group7.User
             }
             else
             {
-                FillSearchName(descriptionSearchList,"");
+                FillSearchName(descriptionSearchList, "");
             }
-            if(productNameSearchList.Count == 0 && brandSearchList.Count == 0 && categorySearchList.Count == 0 && descriptionSearchList.Count == 0)
+            if (productNameSearchList.Count == 0 && brandSearchList.Count == 0 && categorySearchList.Count == 0 && descriptionSearchList.Count == 0)
             {
                 Panel_SearchFailed.Visible = true;
             }
@@ -75,14 +75,19 @@ namespace WebShop_Group7.User
                 priceGroup = uo.priceGroup;
             }
         }
-        protected void FillSearchName(List<ProductObject> productObjectList,string type)
+        protected void FillSearchName(List<ProductObject> productObjectList, string type)
         {
-            if(type == "brand") { NameResult = BrandResult; }
-            if(type == "category") { NameResult = CategoryResult; }
-            if(type == "div") { NameResult = Div_DivResult; }
-          
+            NameResult.InnerHtml = "";
+            BrandResult.InnerHtml = "";
+            CategoryResult.InnerHtml = "";
+            Div_DivResult.InnerHtml = "";
+
+            if (type == "brand") { NameResult = BrandResult; }
+            if (type == "category") { NameResult = CategoryResult; }
+            if (type == "div") { NameResult = Div_DivResult; }
+
             foreach (var item in productObjectList)
-            {            
+            {
                 string price = string.Empty;
 
                 if (priceGroup == 1) { price = item.priceB2C.ToString("#,##"); }
