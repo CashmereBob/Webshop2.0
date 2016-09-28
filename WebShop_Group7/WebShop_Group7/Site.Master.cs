@@ -76,7 +76,7 @@ namespace WebShop_Group7
         {        
             UserPages.Visible = false;
 
-            if (Session["Cart"] != null)
+            if (Session["Cart"] == null)
             {
                 Session["Cart"] = new OrderObject();
             }

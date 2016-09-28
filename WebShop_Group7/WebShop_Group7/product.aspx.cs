@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
+using Newtonsoft.Json;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
@@ -15,7 +16,6 @@ namespace WebShop_Group7
     {
         Users usrDal = new Users();
         Product proDal = new Product();
-        OrderObject order = new OrderObject();
         int pricegroup = 1;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -135,6 +135,19 @@ namespace WebShop_Group7
 
         protected void Button_addtocart_Click(object sender, EventArgs e)
         {
+            
+            HiddenField hdnID = (HiddenField)Page.Master.FindControl("Cart");
+
+            OrderObject cart = (OrderObject)Session["Cart"];
+
+            if (!string.IsNullOrWhiteSpace(hdnID.Value)) {
+                
+
+                cart = JsonConvert.DeserializeObject<OrderObject>(hdnID.Value);
+
+            }
+
+
             var attribute1 = "IS NULL";
             var attribute2 = "IS NULL";
             var attribute3 = "IS NULL";
@@ -150,14 +163,30 @@ namespace WebShop_Group7
              AND (AttributeID1 {attribute3} OR AttributeID2 {attribute3} OR AttributeID3 {attribute3} OR AttributeID4 {attribute3})
              AND (AttributeID1 {attribute4} OR AttributeID2 {attribute4} OR AttributeID3 {attribute4} OR AttributeID4 {attribute4})");
 
-            foreach (ProductObject prud in prod)
-            {
-                
-                prud.quantity = int.Parse(ant.Text);
-                order.AddProduct(prud);
-            }
 
             
+
+            foreach (ProductObject prud in prod)
+            {
+                bool inCart = false;
+
+                if (cart.products != null) { 
+                foreach (ProductObject cartProduct in cart.products)
+                {
+                    if (cartProduct.ID == prud.ID) { prud.quantity = prud.quantity + int.Parse(ant.Text); inCart = true; }
+                }
+                }
+
+                if (!inCart) { 
+                prud.quantity = int.Parse(ant.Text);
+                cart.AddProduct(prud);
+                }
+            }
+
+
+            var JsonObj = JsonConvert.SerializeObject(cart);
+
+            hdnID.Value = JsonObj;
         }
     }
 }

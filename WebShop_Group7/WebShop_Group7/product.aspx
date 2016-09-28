@@ -43,7 +43,7 @@
 
             <div class="input-group">
                 
-                <asp:TextBox ID="ant" TextMode="number" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:TextBox ID="ant" TextMode="number" runat="server" CssClass="form-control" Text="1"></asp:TextBox>
                 <span class="input-group-addon" id="antallable" runat="server">Antal</span>
             </div>
             </br>
