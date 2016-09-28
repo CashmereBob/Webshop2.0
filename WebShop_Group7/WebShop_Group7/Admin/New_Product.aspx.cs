@@ -14,6 +14,7 @@ namespace WebShop_Group7.Admin
         Product product = new Product();
         ProductObject proObj = new ProductObject();
         int ID;
+        bool makeSub;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["Admin"] == null) //Kontrollerar om det finns en Admin session.
@@ -30,6 +31,12 @@ namespace WebShop_Group7.Admin
                 proObj = product.GetMainProduct(ID);
                 proObj.productID = ID;
                 RemakePage();
+                makeSub = true;
+
+            }
+            else
+            {
+                makeSub = false;
             }
         }
 
@@ -55,10 +62,9 @@ namespace WebShop_Group7.Admin
         }
 
         protected void Button_Save_Click(object sender, EventArgs e)
-        {
-            ProductObject proObj = new ProductObject();
+        {       
             FillValues(proObj);
-            product.AddProduct(proObj, attributes);
+            product.AddProduct(proObj, attributes, makeSub);
             Response.Redirect("~/Admin/List_Products.aspx");
             Response.Write("Product created");
         }

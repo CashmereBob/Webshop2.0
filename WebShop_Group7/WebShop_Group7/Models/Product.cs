@@ -297,7 +297,7 @@ namespace WebShop_Group7.Models
                 connection.OpenConnection();
                 using (dataTable)
                 {
-                    dataTable.Columns.AddRange(new DataColumn[8]
+                    dataTable.Columns.AddRange(new DataColumn[5]
                     {
                        new DataColumn("ID"),
 
@@ -305,9 +305,8 @@ namespace WebShop_Group7.Models
                        new DataColumn("CategoryID"),
                        new DataColumn("BrandID"),
                        new DataColumn("Description"),
-                       new DataColumn("b2bPrice"),
-                       new DataColumn("b2cPrice"),
-                       new DataColumn("Attribute")
+                     
+                    
 
                     });
 
@@ -317,16 +316,16 @@ namespace WebShop_Group7.Models
                                       tbl_Product.Name,
                                       tbl_Category.Name AS category,
                                       tbl_Brand.Name AS theBrand, 
-                                      tbl_Product.Description,
-                                      tbl_Product_Attribute.PriceB2B as b2b,
-                                      tbl_Product_Attribute.PriceB2C AS b2c,
-                                      dbo.CheckAttributeAmount(tbl_Product.ID) as nrAttribute
+                                      tbl_Product.Description
+                                 
+                                     
                                       
                                       From tbl_Product
                                       
                                       INNER JOIN tbl_Product_Attribute ON tbl_Product_Attribute.ProductID = tbl_Product.ID
                                       INNER JOIN tbl_Brand ON tbl_Brand.ID = tbl_Product.BrandID
-                                      INNER JOIN tbl_Category ON tbl_Category.ID = tbl_Product.CategoryID";
+                                      INNER JOIN tbl_Category ON tbl_Category.ID = tbl_Product.CategoryID
+									  Group BY tbl_Product.ID,tbl_Product.Name ,tbl_Category.Name,tbl_Brand.Name,tbl_Product.Description";
 
                     using (SqlCommand command = new SqlCommand(test2, connection._connection))
                     {
@@ -346,13 +345,12 @@ namespace WebShop_Group7.Models
                                     var categoryid = dataReader["category"].ToString();
                                     var brandid = dataReader["theBrand"].ToString();
                                     var description = dataReader["Description"].ToString();
-                                    var buissniesPrice = (dataReader["b2b"].ToString() + " kr");
-                                    var customPrice = (dataReader["b2c"].ToString() + " kr");
-                                    string attributes = (dataReader["nrAttribute"].ToString());
+                                 
+                                   
 
                                     oldId = id;
                                     dataTable.Rows.Add(id, name, categoryid, brandid,
-                                    description, buissniesPrice, customPrice, attributes);
+                                    description);
                                 }
                             }
 
@@ -940,15 +938,18 @@ namespace WebShop_Group7.Models
 
         }
         //Add a new Product to DB
-        public void AddProduct(ProductObject proObj, List<string> attributes)
+        public void AddProduct(ProductObject proObj, List<string> attributes,bool makeSub)
         {
             connection.OpenConnection();
             //Brand
+            int productID = -1;
             int brandID = CheckBrand(proObj.brandName);
             //Category
             int categoryID = CheckCategory(proObj.category);
             //Product
-            int productID = CheckProduct(proObj, brandID, categoryID);
+            if (makeSub) { productID = proObj.productID; }
+            else { productID = CheckProduct(proObj, brandID, categoryID); }
+           
             //Product_Attributes
             proObj.productID = CreateNew_TBL_ProductAttribute(productID, proObj);
             //Attributes
