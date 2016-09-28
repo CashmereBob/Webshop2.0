@@ -109,6 +109,11 @@ namespace WebShop_Group7.Models
             }
         }
 
+        internal List<ProductObject> SearchProducts(string searchString)
+        {
+            throw new NotImplementedException();
+        }
+
         internal void DeleteMainProduct(string ID)
         {
             string query = $@"use [WebShopGr7]

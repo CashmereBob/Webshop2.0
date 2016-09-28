@@ -190,8 +190,13 @@ namespace WebShop_Group7
         protected void TextBox_Main_Search_TextChanged(object sender, EventArgs e)
         {
             
-            Response.Write("You writed: "+TextBox_Main_Search.Text);
-        
+            if(!string.IsNullOrWhiteSpace(TextBox_Main_Search.Text))
+            {
+                string searchString = TextBox_Main_Search.Text;
+                Response.Redirect($"~/User/Search_Result.aspx?search={searchString}");
+             
+            }
+           
         }
     }
 

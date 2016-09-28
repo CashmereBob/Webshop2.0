@@ -1,16 +1,13 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Search_Result.aspx.cs" Inherits="WebShop_Group7.User.Search_Result" %>
+﻿<%@ Page Title="Search Result" Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Search_Result.aspx.cs" Inherits="WebShop_Group7.User.Search_Result" %>
 
-<!DOCTYPE html>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-    
-    </div>
-    </form>
-</body>
-</html>
+
+
+    <h1>Sök ord: <asp:Label ID="Label_SearchString" runat="server" Text=""></asp:Label></h1>
+
+
+    <div id="productResult" runat="server"></div>
+
+
+    </asp:Content>
