@@ -491,5 +491,10 @@ namespace WebShop_Group7
             {
             }   
         }
+
+        protected void Button_Register_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/User/User_RegPage.aspx");
+        }
     }
 }

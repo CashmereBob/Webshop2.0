@@ -7,15 +7,15 @@
         }
     </style>
     <div id="carousel-example-generic" class="row carousel slide" data-ride="carousel">
-        <%-- Indicators --%>
+        <%-- Controls --%>
         <ol class="carousel-indicators">
             <li data-target="#carousel-example-generic" data-slide-to-="0" class="active"></li>
             <li data-target="#carousel-example-generic" data-slide-to-="1"></li>
             <li data-target="#carousel-example-generic" data-slide-to-="2"></li>
         </ol>
-        <%-- Wrapper for slides --%>
+        <%-- Panel logIn --%>
         <div class="carousel-inner" role="listbox">
-            <%-- 1 --%>
+            <%-- Username --%>
             <div class="item active">
                 <a href="#">
                     <asp:Image class="img-responsive" ImageUrl="http://lundgren84.com/Grupp7/slide1.PNG" ID="Image13" runat="server" />
@@ -24,7 +24,7 @@
                 </a>
 
             </div>
-            <%-- 2 --%>
+            <%-- Password --%>
             <div class="item">
                 <a href="#">
                     <asp:Image class="img-responsive" ImageUrl="http://lundgren84.com/Grupp7/slide2.PNG" ID="Image14" runat="server" />
@@ -32,7 +32,7 @@
                     </div>
                 </a>
             </div>
-            <%-- 3 --%>
+            <%-- Panel erbjudanden --%>
             <div class="item">
                 <a href="#">
                     <asp:Image class="img-responsive" ImageUrl="http://lundgren84.com/Grupp7/slide3.PNG" ID="Image15" runat="server" />
@@ -41,7 +41,7 @@
                 </a>
             </div>
         </div>
-        <%-- Controls --%>
+        <%-- SpecialoOffer 1 --%>
         <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
@@ -52,7 +52,7 @@
         </a>
     </div>
 
-    <%-- Panel logIn --%>
+    <%-- SpecialoOffer 2 --%>
     <div class="row">
         <asp:Panel CssClass="startPanel panel_login col-md-3" ID="Panel_Login" runat="server">
             <div class="container">
@@ -92,7 +92,7 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <asp:Button ID="Button2" Width="100%" runat="server" Text="Register" />
+                            <asp:Button ID="Button_Register" Width="100%" runat="server" Text="Register" OnClick="Button_Register_Click" />
                         </div>
                         <div class="row">
                             <div class="col-md-12">
@@ -106,7 +106,7 @@
             </div>
         </asp:Panel>
 
-        <%-- Panel erbjudanden --%>
+        <%-- Main panel --%>
         <asp:Panel CssClass="startPanel panel_Erbjudanden col-sm-3" ID="Panel_SpecialOffers" runat="server" Visible="False">
             <div class="container">
                 <div class="borderStart">
@@ -168,9 +168,9 @@
 
             </div>
         </asp:Panel>
-        <%-- Space --%>
+        <%-- Category --%>
         <div class="col-sm-1"></div>
-        <%-- Main panel --%>
+        <%-- Attributes --%>
         <asp:Panel CssClass="startPanel col-sm-8" ID="Panel_Main" runat="server">
             <div class="container">
                 <div class="borderStart">
