@@ -13,7 +13,7 @@ namespace WebShop_Group7.User
 
         ProductObject productObject = new ProductObject();
         Product product = new Product();
-        int priceGroup = 0;
+        int priceGroup = 1;
         protected void Page_Load(object sender, EventArgs e)
         {
             string searchString = Request.QueryString["search"];
@@ -87,11 +87,11 @@ namespace WebShop_Group7.User
                 if (priceGroup == 2) { price = item.priceB2B.ToString("#,##"); }
 
                 NameResult.InnerHtml +=
-                                                     $"<div class=\"col-sm-6 col-md-4 col-lg-4\"> " +
+                                                     $"<div class=\"col-sm-6 col-md-4 col-lg-3\"> " +
                                                         $"<div class=\"thumbnail\"> " +
-                                                          $"<img src = \"Pictures/REA.png\" alt=\"...\" > " +
+                                                  
                                                           $"<img src = \"{item.imgURL}\" alt=\"...\" > " +
-                                                            $"<img src = \"Pictures/REA.png\" alt=\"...\" > " +
+                                                      
                                                           $"<div class=\"caption\" > " +
                                                             $"<h3>{item.name}</h3> " +
                                                             $"<h4 class=\"green\" >{price} kr</h4>" +
@@ -115,11 +115,11 @@ namespace WebShop_Group7.User
                 if (priceGroup == 2) { price = item.priceB2B.ToString("#,##"); }
 
                 BrandResult.InnerHtml +=
-                                                     $"<div class=\"col-sm-6 col-md-4 col-lg-4\"> " +
+                                                     $"<div class=\"col-sm-6 col-md-4 col-lg-3\"> " +
                                                         $"<div class=\"thumbnail\"> " +
-                                                          $"<img src = \"Pictures/REA.png\" alt=\"...\" > " +
+                                                 
                                                           $"<img src = \"{item.imgURL}\" alt=\"...\" > " +
-                                                            $"<img src = \"Pictures/REA.png\" alt=\"...\" > " +
+                                                      
                                                           $"<div class=\"caption\" > " +
                                                             $"<h3>{item.name}</h3> " +
                                                             $"<h4 class=\"green\" >{price} kr</h4>" +
@@ -143,11 +143,11 @@ namespace WebShop_Group7.User
                 if (priceGroup == 2) { price = item.priceB2B.ToString("#,##"); }
 
                 CategoryResult.InnerHtml +=
-                                                     $"<div class=\"col-sm-6 col-md-4 col-lg-4\"> " +
+                                                     $"<div class=\"col-sm-6 col-md-4 col-lg-3\"> " +
                                                         $"<div class=\"thumbnail\"> " +
-                                                          $"<img src = \"Pictures/REA.png\" alt=\"...\" > " +
+                                               
                                                           $"<img src = \"{item.imgURL}\" alt=\"...\" > " +
-                                                            $"<img src = \"Pictures/REA.png\" alt=\"...\" > " +
+                                                     
                                                           $"<div class=\"caption\" > " +
                                                             $"<h3>{item.name}</h3> " +
                                                             $"<h4 class=\"green\" >{price} kr</h4>" +
@@ -171,11 +171,11 @@ namespace WebShop_Group7.User
                 if (priceGroup == 2) { price = item.priceB2B.ToString("#,##"); }
 
                 Div_DivResult.InnerHtml +=
-                                                     $"<div class=\"col-sm-6 col-md-4 col-lg-4\"> " +
+                                                     $"<div class=\"col-sm-6 col-md-4 col-lg-3\"> " +
                                                         $"<div class=\"thumbnail\"> " +
-                                                          $"<img src = \"Pictures/REA.png\" alt=\"...\" > " +
+
                                                           $"<img src = \"{item.imgURL}\" alt=\"...\" > " +
-                                                            $"<img src = \"Pictures/REA.png\" alt=\"...\" > " +
+                                                     
                                                           $"<div class=\"caption\" > " +
                                                             $"<h3>{item.name}</h3> " +
                                                             $"<h4 class=\"green\" >{price} kr</h4>" +
