@@ -50,7 +50,7 @@ namespace WebShop_Group7.User
             }
             else
             {
-                FillSearchName(categorySearchList, "");
+                FillSearchName(categorySearchList, "category");
             }
             //Check Description
             if (descriptionSearchList.Count == 0)
@@ -59,7 +59,7 @@ namespace WebShop_Group7.User
             }
             else
             {
-                FillSearchName(descriptionSearchList, "");
+                FillSearchName(descriptionSearchList, "div");
             }
             if (productNameSearchList.Count == 0 && brandSearchList.Count == 0 && categorySearchList.Count == 0 && descriptionSearchList.Count == 0)
             {
