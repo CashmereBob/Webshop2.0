@@ -184,6 +184,15 @@ namespace WebShop_Group7 {
         protected global::System.Web.UI.WebControls.Panel Panel_Main;
         
         /// <summary>
+        /// Panel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel1;
+        
+        /// <summary>
         /// Image_new1 control.
         /// </summary>
         /// <remarks>
@@ -245,6 +254,15 @@ namespace WebShop_Group7 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label3;
+        
+        /// <summary>
+        /// Panel_2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel_2;
         
         /// <summary>
         /// Image_new2 control.
@@ -310,6 +328,15 @@ namespace WebShop_Group7 {
         protected global::System.Web.UI.WebControls.Label Label15;
         
         /// <summary>
+        /// Panel3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel3;
+        
+        /// <summary>
         /// Image_new3 control.
         /// </summary>
         /// <remarks>
@@ -371,6 +398,15 @@ namespace WebShop_Group7 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label24;
+        
+        /// <summary>
+        /// Panel4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel4;
         
         /// <summary>
         /// Image_new4 control.
@@ -436,6 +472,15 @@ namespace WebShop_Group7 {
         protected global::System.Web.UI.WebControls.Label Label29;
         
         /// <summary>
+        /// Panel5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel5;
+        
+        /// <summary>
         /// Image_new5 control.
         /// </summary>
         /// <remarks>
@@ -497,6 +542,15 @@ namespace WebShop_Group7 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label34;
+        
+        /// <summary>
+        /// Panel6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel6;
         
         /// <summary>
         /// Image_new6 control.
@@ -562,6 +616,15 @@ namespace WebShop_Group7 {
         protected global::System.Web.UI.WebControls.Label Label39;
         
         /// <summary>
+        /// Panel7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel7;
+        
+        /// <summary>
         /// Image_new7 control.
         /// </summary>
         /// <remarks>
@@ -625,6 +688,15 @@ namespace WebShop_Group7 {
         protected global::System.Web.UI.WebControls.Label Label44;
         
         /// <summary>
+        /// Panel8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel8;
+        
+        /// <summary>
         /// Image_new8 control.
         /// </summary>
         /// <remarks>
@@ -686,6 +758,15 @@ namespace WebShop_Group7 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label49;
+        
+        /// <summary>
+        /// Panel9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel9;
         
         /// <summary>
         /// Image_new9 control.
