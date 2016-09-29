@@ -59,6 +59,36 @@ namespace WebShop_Group7.Models
             }
         }
 
+        internal List<CarrierObject> GetAllCarriers()
+        {
+            List<CarrierObject> result = new List<CarrierObject>();
+            List<int> carrierID = new List<int>(); 
+            string query; 
+            try
+            {
+                query = $@"SELECT tbl_Carrier.ID FROM tbl_Carrier";
+                db.OpenConnection();
+                SqlCommand myCommand = new SqlCommand(query, db._connection);
+
+                using (SqlDataReader myDataReader = myCommand.ExecuteReader())
+                {
+                    while (myDataReader.Read())
+                    {
+                        carrierID.Add(int.Parse(myDataReader["ID"].ToString()));
+                    }
+                }
+            }
+            catch { }
+            finally { db.CloseConnection(); }
+
+            foreach (var item in carrierID)
+            {
+                result.Add(GetCarrierById(item));
+            }
+
+            return result;
+        }
+
         public CarrierObject GetCarrierById(int id)
         {
             CarrierObject carrier = new CarrierObject();
