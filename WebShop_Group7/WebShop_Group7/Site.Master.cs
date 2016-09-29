@@ -76,7 +76,12 @@ namespace WebShop_Group7
         {        
             UserPages.Visible = false;
 
-            if (Session["User"] != null)
+            if (Session["Cart"] == null)
+            {
+                Session["Cart"] = new OrderObject();
+            }
+
+                if (Session["User"] != null)
             {
                 UserObject user = userDal.GetUserById((int)Session["User"]);
 

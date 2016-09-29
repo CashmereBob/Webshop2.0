@@ -17,6 +17,7 @@
 </head>
 <body>
     <form runat="server">
+        <asp:HiddenField id="Cart" value="" runat="server"/>
         <asp:ScriptManager runat="server">
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
