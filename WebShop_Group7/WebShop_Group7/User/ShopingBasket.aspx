@@ -36,14 +36,20 @@
         </div>
         <%-- OrderInfo --%>
         <div class="row">
-            <div class="col-md-3"><strong>Art. Nummer</strong></div>
-            <div class="col-md-2"><strong>Artikel</strong></div>
-            <div class="col-md-2"><strong>Attribut</strong></div>
-            <div class="col-md-2"><strong>Pris (kr)</strong></div>
-            <div class="col-md-1"><strong>Antal</strong></div>
-            <div class="col-md-2"><strong>Summa (kr)</strong></div>
+            <div class="col-xs-12">
+                <asp:Table ID="Table_OrderInfo" CssClass="table" runat="server">
+                    <asp:TableHeaderRow>
+
+                        <asp:TableHeaderCell><strong>Artikel</strong></asp:TableHeaderCell>
+                        <asp:TableHeaderCell><strong>Attribut</strong></asp:TableHeaderCell>
+                        <asp:TableHeaderCell><strong>Pris (kr)</strong></asp:TableHeaderCell>
+                        <asp:TableHeaderCell><strong>Antal</strong></asp:TableHeaderCell>
+                        <asp:TableHeaderCell><strong>Summa (kr)</strong></asp:TableHeaderCell>
+                    </asp:TableHeaderRow>           
+                </asp:Table>
+            </div>
         </div>
-        <%-- Fraks bolag --%>
+        <%-- Frakt bolag --%>
 
         <div class="row">
             <div class="col-xs-6">
@@ -66,6 +72,50 @@
                 <li role="presentation"><a href="#">Bank Överföring</a></li>
             </ul>
         </div>
+        <%-- Result info --%>
+
+        <div class="row">
+            <div class="col-xs-6">
+                <h3>Total summa</h3>
+                <asp:Table ID="Table1" CssClass=" table" runat="server">
+
+                    <asp:TableRow>
+                        <asp:TableCell>
+                            <asp:Label ID="Label_Total_PaymentMethod" runat="server" Text="Label"></asp:Label></asp:TableCell>
+                        <asp:TableCell>
+                            <asp:Label ID="Label_Total_PaymentPrice" runat="server" Text="0,00"></asp:Label>kr</asp:TableCell>
+                    </asp:TableRow>
+                    <asp:TableRow>
+                        <asp:TableCell>
+                            <asp:Label ID="Label_Total_Carrier" runat="server" Text="Label"></asp:Label>
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:Label ID="Label_Total_CarrierPrice" runat="server" Text="0,00"></asp:Label>kr</asp:TableCell>
+                    </asp:TableRow>
+                    <asp:TableRow>
+                        <asp:TableCell>Produkt Summa </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:Label ID="Label_ProductPrice" runat="server" Text="0,00"></asp:Label>kr
+                        </asp:TableCell>
+                    </asp:TableRow>
+                    <asp:TableRow>
+                        <asp:TableCell><strong>Total Summa</strong> </asp:TableCell>
+                        <asp:TableCell>
+                            <strong>
+                                <asp:Label ID="Label_TotalPrice" runat="server" Text="0,00"></asp:Label>
+                                kr</strong>
+                        </asp:TableCell>
+                    </asp:TableRow>
+                    <asp:TableRow>
+                        <asp:TableCell><small>Var av moms:  </small></asp:TableCell>
+                        <asp:TableCell><small>
+                            <asp:Label ID="Label_TotalMoms" runat="server" Text="0,00"></asp:Label>
+                            kr </small></asp:TableCell>
+                    </asp:TableRow>
+                </asp:Table>
+            </div>
+        </div>
+        <%-- ÉND --%>
         <div class="row">
             <div class="col-xs-12">
                 <asp:Label ID="Label1" runat="server" Text="Jag godkänner "></asp:Label><a>Köpvilkoren</a><asp:CheckBox ID="CheckBox1" runat="server" />
