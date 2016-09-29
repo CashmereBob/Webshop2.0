@@ -304,15 +304,18 @@ namespace WebShop_Group7
             cart.sum = cart.CalculatePrice();
 
             Session["Cart"] = cart;
-            var JsonObj = JsonConvert.SerializeObject(cart);
-
-            hdnID.Value = JsonObj;
+            
 
         }
 
         public void UpdateCart(object sender, EventArgs e)
         {
             BuildCart();
+
+
+            HiddenField hdnID = (HiddenField)Page.Master.FindControl("Cart");
+            var JsonObj = JsonConvert.SerializeObject(Session["Cart"]);
+            hdnID.Value = JsonObj;
         }
 
         public void Checkout(object sender, EventArgs e)

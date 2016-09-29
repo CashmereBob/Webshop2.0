@@ -8,6 +8,8 @@ $(document).ready(function () {
         localStorage.setItem('Cart', $("#Cart").val());
     }
 
+    
+
     $(".quantity").each(function (index) {
 
         $(this).bind('keyup mouseup', function () {
@@ -31,18 +33,21 @@ $(document).ready(function () {
     $('#showDD').on('hide.bs.dropdown', function () {
         return false;
     });
-    });
+
+});
+
+    
 
 
 
 
 function UpdateCart() {
 
-
     var productsInCart = 0;
     var sum = "";
 
-    if ($("#Cart").val() != ""){
+    if ($("#Cart").val() != "") {
+        console.log($("#Cart").val());
         var cart = JSON.parse($("#Cart").val());
         sum = (cart.sum + 1) + "kr";
 
@@ -111,8 +116,9 @@ function changeProduct(id, quantity) {
             }
 
         }
+
         $("#priceSum").html(sum);
-        $("#Cart").val(JSON.stringify(cart))
+        $("#Cart").val(JSON.stringify(cart));
         localStorage.setItem('Cart', $("#Cart").val());
         
     }

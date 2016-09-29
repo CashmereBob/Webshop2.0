@@ -101,6 +101,9 @@
                                
                             <ul class="dropdown-menu" id="cartDD" runat="server">
                                 <li>
+                                    <button type="submit" id="close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                                </li>
+                                <li>
                                     <ul id="cartPP">
                                         <li>
                                             <span id="tableFill" runat="server">
