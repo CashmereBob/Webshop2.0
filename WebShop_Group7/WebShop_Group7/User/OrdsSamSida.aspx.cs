@@ -16,6 +16,9 @@ namespace WebShop_Group7.User
         {
             orderObject = Session["Cart"] as OrderObject;
             userObject = orderObject.usr;
+
+
+            Label1.Text = userObject.firstName;
         }
     }
 }
