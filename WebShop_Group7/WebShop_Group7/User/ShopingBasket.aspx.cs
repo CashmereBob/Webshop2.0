@@ -23,10 +23,10 @@ namespace WebShop_Group7.User
         protected void Page_Load(object sender, EventArgs e)
         {
             SetUserTextboxVisible();
-            // OrderObject orderObject = Session["Cart"] as OrderObject;
-            orderObject = order.GetOrder(1);
-            //UserObject user = orderObject.usr;
-            user = users.GetUserById(3);
+            orderObject = Session["Cart"] as OrderObject;
+           // orderObject = order.GetOrder(1);
+            user = orderObject.usr;
+           // user = users.GetUserById(3);
             carriers = carrier.GetAllCarriers();
             FillCarrierInfo();
             FillUserInfo(user);
