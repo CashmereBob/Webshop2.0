@@ -16,6 +16,7 @@ namespace WebShop_Group7.User
         OrderObject orderObject;
         UserObject user;
         List<CarrierObject> carriers;
+        List<RadioButton> radioList = new List<RadioButton>();
         decimal totalOrderPrice = 0;
         decimal totalPrice = 0;
         decimal carrierPrice = 0;
@@ -60,7 +61,7 @@ namespace WebShop_Group7.User
                 radio.GroupName = "Carrier";
                 tcR.Controls.Add(radio);            
                 radio.CheckedChanged += Radio_CheckedChanged;
-
+                radioList.Add(radio);
                 //Add TableCells CarrierName
                 TableCell tc1 = new TableCell();
                 tc1.CssClass = "tc";
@@ -98,7 +99,15 @@ namespace WebShop_Group7.User
 
         private void Radio_CheckedChanged(object sender, EventArgs e)
         {
-            
+            for (int i = 0; i < radioList.Count; i++)
+            {
+                if (radioList[i].Checked)
+                {
+
+                    carrierPrice = 0;
+                    return;
+                }
+            }
         }
 
         private void UpdateTotalPrice()
