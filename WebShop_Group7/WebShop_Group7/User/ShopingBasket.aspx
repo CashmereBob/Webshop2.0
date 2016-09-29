@@ -34,7 +34,7 @@
                 <h3>Order info</h3>
             </div>
         </div>
-        <%-- OrderInfo --%>      
+        <%-- OrderInfo --%>
         <div class="row">
             <div class="col-xs-12">
                 <asp:Table ID="Table_OrderInfo" CssClass="table" runat="server">
@@ -49,7 +49,7 @@
                 </asp:Table>
             </div>
         </div>
-        <%-- Fraks bolag --%>
+        <%-- Frakt bolag --%>
 
         <div class="row">
             <div class="col-xs-6">
@@ -72,6 +72,33 @@
                 <li role="presentation"><a href="#">Bank Överföring</a></li>
             </ul>
         </div>
+        <%-- Result info --%>
+
+        <div class="row">
+            <div class="col-xs-6">
+                <h3>Total summa</h3>
+                <asp:Table ID="Table1" CssClass=" table" runat="server">
+                
+                    <asp:TableRow>
+                        <asp:TableCell><asp:Label ID="Label_Total_PaymentMethod" runat="server" Text="Label"></asp:Label></asp:TableCell>
+                        <asp:TableCell><asp:Label ID="Label_Total_PaymentPrice" runat="server" Text="Label"></asp:Label>  <asp:Label ID="Label2" runat="server" Text="kr"></asp:Label></asp:TableCell>
+                    </asp:TableRow>
+                    <asp:TableRow>
+                        <asp:TableCell>Posten Paket: </asp:TableCell>
+                        <asp:TableCell> 200  <asp:Label ID="Label3" runat="server" Text="kr"></asp:Label></asp:TableCell>
+                    </asp:TableRow>
+                    <asp:TableRow>
+                        <asp:TableCell>Total Summa </asp:TableCell>
+                        <asp:TableCell>123123  <asp:Label ID="Label4" runat="server" Text="kr"></asp:Label></asp:TableCell>
+                    </asp:TableRow>
+                    <asp:TableRow>
+                        <asp:TableCell>Var av moms:  </asp:TableCell>
+                        <asp:TableCell>123  <asp:Label ID="Label5" runat="server" Text="kr"></asp:Label></asp:TableCell>
+                    </asp:TableRow>
+                </asp:Table>
+            </div>
+        </div>
+        <%-- ÉND --%>
         <div class="row">
             <div class="col-xs-12">
                 <asp:Label ID="Label1" runat="server" Text="Jag godkänner "></asp:Label><a>Köpvilkoren</a><asp:CheckBox ID="CheckBox1" runat="server" />

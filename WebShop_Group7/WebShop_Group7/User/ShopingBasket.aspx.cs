@@ -83,7 +83,7 @@ namespace WebShop_Group7.User
 
         private void FillOrderInfo(Order order)
         {
-            
+            decimal totalPrice = 0;
           var OrderInfoList =  order.GetProductsToList(orderObject);
             foreach (var item in OrderInfoList)
             {
@@ -157,22 +157,24 @@ namespace WebShop_Group7.User
                 lb_Total.ID = "lb_Total" + item.ID;
                 lb_Total.Text = (item.quantity * item.priceB2B).ToString("##.#");
                 tc_Total.Controls.Add(lb_Total);
-                ////////////////////////////////////////////////////////////
-                //Add row total
-                TableRow tr2 = new TableRow();
-                tr2.ID = "tr2";
-                Table_OrderInfo.Controls.Add(tr2);
-                //Add Cells
-                TableCell tc1 = new TableCell(); tc1.ID = "tc1"; tr2.Controls.Add(tc1);
-                TableCell tc2 = new TableCell(); tc2.ID = "tc2"; tr2.Controls.Add(tc2);
-                TableCell tc3 = new TableCell(); tc3.ID = "tc3"; tr2.Controls.Add(tc3);
-                TableCell tc4 = new TableCell(); tc4.ID = "tc4"; tr2.Controls.Add(tc4);
-                TableCell tc5 = new TableCell(); tc5.ID = "tc5"; tr2.Controls.Add(tc5);
-                TableCell tc6 = new TableCell(); tc6.ID = "tc6"; tr2.Controls.Add(tc6);
+                totalPrice += item.priceB2B * item.quantity;
+            }        
+            //Add row total
+            TableRow tr2 = new TableRow();
+            tr2.ID = "tr2";
+            Table_OrderInfo.Controls.Add(tr2);
+            //Add Cells
+            TableCell tc1 = new TableCell(); tc1.ID = "tc1"; tr2.Controls.Add(tc1);
+            TableCell tc2 = new TableCell(); tc2.ID = "tc2"; tr2.Controls.Add(tc2);
+            TableCell tc3 = new TableCell(); tc3.ID = "tc3"; tr2.Controls.Add(tc3);
+            TableCell tc4 = new TableCell(); tc4.ID = "tc4"; tr2.Controls.Add(tc4);
+            TableCell tc5 = new TableCell(); tc5.ID = "tc5"; tr2.Controls.Add(tc5);
+            TableCell tc6 = new TableCell(); tc6.ID = "tc6"; tr2.Controls.Add(tc6);
 
-
-
-            }
+            Label Label_total = new Label();
+            Label_total.ID = "Label_total";
+            Label_total.Text = totalPrice.ToString("#.##");
+            tc6.Controls.Add(Label_total);
         }
 
         private void FillUserInfo(UserObject user)
