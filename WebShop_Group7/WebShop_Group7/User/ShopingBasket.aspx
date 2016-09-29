@@ -3,6 +3,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h1>Varukorg</h1>
     <div class="container">
+
         <div class="row">
             <div class="col-xs-12">
                 <h3>Person uppgifter</h3>
@@ -45,7 +46,7 @@
                         <asp:TableHeaderCell><strong>Pris (kr)</strong></asp:TableHeaderCell>
                         <asp:TableHeaderCell><strong>Antal</strong></asp:TableHeaderCell>
                         <asp:TableHeaderCell><strong>Summa (kr)</strong></asp:TableHeaderCell>
-                    </asp:TableHeaderRow>           
+                    </asp:TableHeaderRow>
                 </asp:Table>
             </div>
         </div>
@@ -66,12 +67,19 @@
 
         <%-- Payment Info --%>
         <div class="row">
-            <ul class="nav nav-tabs">
-                <li role="presentation" class="active"><a href="#">Kort</a></li>
-                <li role="presentation"><a href="#">Faktura</a></li>
-                <li role="presentation"><a href="#">Bank Överföring</a></li>
-            </ul>
+            <div class="col-xs-6">
+                <h3>Betalnings metod</h3>
+                  <asp:Table ID="Table_Payment" CssClass=" table" runat="server">
+                    <asp:TableHeaderRow>
+                        <asp:TableHeaderCell></asp:TableHeaderCell>
+                        <asp:TableHeaderCell>Namn</asp:TableHeaderCell>
+                        <asp:TableHeaderCell>Pris</asp:TableHeaderCell>
+                    </asp:TableHeaderRow>
+                </asp:Table>
+            </div>
         </div>
+        <asp:Button ID="Button_GetTotal" OnClick="Button_GetTotal_Click" runat="server" Text="Sammanställ" />
+
         <%-- Result info --%>
 
         <div class="row">
@@ -81,16 +89,19 @@
 
                     <asp:TableRow>
                         <asp:TableCell>
-                            <asp:Label ID="Label_Total_PaymentMethod" runat="server" Text="Label"></asp:Label></asp:TableCell>
+                            <asp:Label ID="Label_Total_PaymentMethod" runat="server" Text="Label"></asp:Label>
+                        </asp:TableCell>
                         <asp:TableCell>
-                            <asp:Label ID="Label_Total_PaymentPrice" runat="server" Text="0,00"></asp:Label>kr</asp:TableCell>
+                            <asp:Label ID="Label_Total_PaymentPrice" runat="server" Text="0,00"></asp:Label>kr
+                        </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell>
                             <asp:Label ID="Label_Total_Carrier" runat="server" Text="Label"></asp:Label>
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:Label ID="Label_Total_CarrierPrice" runat="server" Text="0,00"></asp:Label>kr</asp:TableCell>
+                            <asp:Label ID="Label_Total_CarrierPrice" runat="server" Text="0,00"></asp:Label>kr
+                        </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell>Produkt Summa </asp:TableCell>
@@ -108,9 +119,11 @@
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell><small>Var av moms:  </small></asp:TableCell>
-                        <asp:TableCell><small>
-                            <asp:Label ID="Label_TotalMoms" runat="server" Text="0,00"></asp:Label>
-                            kr </small></asp:TableCell>
+                        <asp:TableCell>
+                            <small>
+                                <asp:Label ID="Label_TotalMoms" runat="server" Text="0,00"></asp:Label>
+                                kr </small>
+                        </asp:TableCell>
                     </asp:TableRow>
                 </asp:Table>
             </div>
@@ -126,6 +139,7 @@
                 <asp:Button ID="Button1" runat="server" Text="Köp" />
             </div>
         </div>
+
     </div>
 </asp:Content>
 

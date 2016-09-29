@@ -25,18 +25,22 @@ namespace WebShop_Group7.User
         int priceGroup;
         protected void Page_Load(object sender, EventArgs e)
         {
-            SetUserTextboxVisible();
-            orderObject = Session["Cart"] as OrderObject;
-           // orderObject = order.GetOrder(1);
-            user = orderObject.usr;
-            priceGroup = user.priceGroup;
-            if(priceGroup != 2) { priceGroup = 1; }
-           // user = users.GetUserById(3);
-            carriers = carrier.GetAllCarriers();
-            FillCarrierInfo();
-            FillUserInfo(user);
-            FillOrderInfo(order);
-            FillResultInfo();
+          
+                SetUserTextboxVisible();
+                orderObject = Session["Cart"] as OrderObject;
+                // orderObject = order.GetOrder(1);
+                user = orderObject.usr;
+                priceGroup = user.priceGroup;
+
+                if (priceGroup != 2) { priceGroup = 1; }
+                // user = users.GetUserById(3);
+                carriers = carrier.GetAllCarriers();
+            if (!IsPostBack)
+            { 
+                FillCarrierInfo();
+                FillUserInfo(user);
+                FillOrderInfo(order);
+            }
         }
         private void FillCarrierInfo()
         {
@@ -105,6 +109,7 @@ namespace WebShop_Group7.User
                 {
 
                     carrierPrice = 0;
+                    Label_Total_CarrierPrice.Text = "0";
                     return;
                 }
             }
@@ -125,17 +130,6 @@ namespace WebShop_Group7.User
                 TableRow tr = new TableRow();
                 tr.ID = "tr_" + item.ID;
                 Table_OrderInfo.Controls.Add(tr);
-                ////////////////////////////////////////////////////////////
-                ////Add Cell Art. Nummer
-                //TableCell tc_ArtN = new TableCell();
-                //tc_ArtN.ID = "tc_ArtN" + item.ID;
-                //tr.Controls.Add(tc_ArtN);
-
-                ////Add Lable Art. Nummer
-                //Label lb_ArtNr = new Label();
-                //lb_ArtNr.ID = "lb_ArtNr" + item.ID;
-                //lb_ArtNr.Text = item.artNr;
-                //tc_ArtN.Controls.Add(lb_ArtNr);
                 ////////////////////////////////////////////////////////////
                 //Add Cell Article
                 TableCell tc_Article = new TableCell();
@@ -167,7 +161,7 @@ namespace WebShop_Group7.User
                 //Add Price
                 Label lb_Price = new Label();
                 lb_Price.ID = "lb_Price" + item.ID;
-                if (priceGroup == 1) { lb_Price.Text = item.priceB2C.ToString("#.##") + "kr"; }
+                if (priceGroup == 1) { lb_Price.Text = item.priceB2C.ToString("#.##"); }
                 else { lb_Price.Text = item.priceB2B.ToString("#.##") + "kr"; }
                 tc_Price.Controls.Add(lb_Price);
                 ////////////////////////////////////////////////////////////
@@ -190,9 +184,10 @@ namespace WebShop_Group7.User
                 //Add Total
                 Label lb_Total = new Label();
                 lb_Total.ID = "lb_Total" + item.ID;
-                lb_Total.Text = (item.quantity * item.priceB2B).ToString("##.#");
+                if(priceGroup == 1) { lb_Total.Text = (item.quantity * item.priceB2C).ToString("##.#"); totalOrderPrice += (item.quantity * item.priceB2C); }
+               else { lb_Total.Text = (item.quantity * item.priceB2B).ToString("##.#"); totalOrderPrice += (item.quantity * item.priceB2B); }
                 tc_Total.Controls.Add(lb_Total);
-                totalOrderPrice += item.priceB2B * item.quantity;
+           
             }
             //Add row total
             TableRow tr2 = new TableRow();
@@ -267,6 +262,12 @@ namespace WebShop_Group7.User
             TextBox_FirstNameValue.Visible = false;
             TextBox_LastNameValue.Visible = false;
             TextBox_EmailValue.Visible = false;
+        }
+
+        protected void Button_GetTotal_Click(object sender, EventArgs e)
+        {
+
+            FillResultInfo();
         }
     }
 }
