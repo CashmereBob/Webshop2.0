@@ -10,13 +10,7 @@
                 </div>
             </div>
             <%-- Search and stuff --%>
-            <div class="row">
-                <div class="col-md-3">
-                    <asp:TextBox ID="TextBox_Search" runat="server"></asp:TextBox>
-                </div>
-                <div class="col-md-3">
-                    <asp:Button ID="Button_Search" runat="server" Text="Search" />
-                </div>
+            <div class="row">             
                 <div class="col-md-3">
                     <asp:Button ID="Button_Add" runat="server" Text="Add new Type" OnClick="Button_Add_Click" />
                 </div>

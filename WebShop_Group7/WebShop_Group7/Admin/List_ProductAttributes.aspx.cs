@@ -52,11 +52,13 @@ namespace WebShop_Group7.Admin
 
         private string CheckText(string text)
         {
+            string result = "";
             for (int i = 0; i < text.Length; i++)
             {
-
+                if(text[i] == '\'') { result += '/'; }
+                result += text[i];
             }
-            return text;
+            return result;
         }
 
         //protected void itemSelected(object sender, EventArgs e)

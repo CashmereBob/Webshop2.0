@@ -10,10 +10,66 @@ namespace WebShop_Group7.User
 {
     public partial class Varukorg : System.Web.UI.Page
     {
+        Users users = new Users();
+        Order order = new Order();
         protected void Page_Load(object sender, EventArgs e)
         {
-            OrderObject orderObject = Session["Cart"] as OrderObject;
-            UserObject user = orderObject.usr;
+            SetUserTextboxVisible();
+            // OrderObject orderObject = Session["Cart"] as OrderObject;
+            OrderObject orderObject = order.GetOrder(1);
+            //UserObject user = orderObject.usr;
+            UserObject user = users.GetUserById(3);
+            FillUserInfo(user);
+            FillOrderInfo(order);
+        }
+
+        private void FillOrderInfo(Order order)
+        {
+           
+        }
+
+        private void FillUserInfo(UserObject user)
+        {
+            UserHeadingFirstName.InnerHtml = "<strong>Förnamn</strong>";
+            UserHeadingLastName.InnerHtml = "<strong>Efternamn</strong>";
+            UserHeadingEmail.InnerHtml = "<strong>Email</strong>";
+
+
+
+            if (users.GetUserById(user.userId) == null)
+            {
+                //User dont exists
+                TextBox_FirstNameValue.Visible = true;
+                TextBox_LastNameValue.Visible = true;
+               TextBox_EmailValue.Visible = true;
+
+            }
+           else
+            {
+                FirstNameValue.InnerHtml = user.firstName;
+                LastNameValue.InnerHtml = user.lastName;
+                EmailValue.InnerHtml = user.email;
+               //User exists!
+               if (user.priceGroup == 1)
+                {
+                    //B2C   
+                                
+                }
+               else
+                {
+                    //B2B
+                    UserHeadingComany.InnerHtml = "<strong>Företag</strong>";
+                    CompanyValue.InnerHtml = user.company;
+
+
+                }
+            }
+        }
+        private void SetUserTextboxVisible()
+        {
+            TextBox_FirstNameValue.Visible = false;
+            TextBox_LastNameValue.Visible = false;
+            TextBox_EmailValue.Visible = false;
         }
     }
 }
