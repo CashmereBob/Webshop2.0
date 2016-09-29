@@ -34,14 +34,20 @@
                 <h3>Order info</h3>
             </div>
         </div>
-        <%-- OrderInfo --%>
+        <%-- OrderInfo --%>      
         <div class="row">
-            <div class="col-md-3"><strong>Art. Nummer</strong></div>
-            <div class="col-md-2"><strong>Artikel</strong></div>
-            <div class="col-md-2"><strong>Attribut</strong></div>
-            <div class="col-md-2"><strong>Pris (kr)</strong></div>
-            <div class="col-md-1"><strong>Antal</strong></div>
-            <div class="col-md-2"><strong>Summa (kr)</strong></div>
+            <div class="col-xs-12">
+                <asp:Table ID="Table_OrderInfo" CssClass="table" runat="server">
+                    <asp:TableHeaderRow>
+                        <asp:TableHeaderCell><strong>Art. Nummer</strong></asp:TableHeaderCell>
+                        <asp:TableHeaderCell><strong>Artikel</strong></asp:TableHeaderCell>
+                        <asp:TableHeaderCell><strong>Attribut</strong></asp:TableHeaderCell>
+                        <asp:TableHeaderCell><strong>Pris (kr)</strong></asp:TableHeaderCell>
+                        <asp:TableHeaderCell><strong>Antal</strong></asp:TableHeaderCell>
+                        <asp:TableHeaderCell><strong>Summa (kr)</strong></asp:TableHeaderCell>
+                    </asp:TableHeaderRow>
+                </asp:Table>
+            </div>
         </div>
         <%-- Fraks bolag --%>
 
