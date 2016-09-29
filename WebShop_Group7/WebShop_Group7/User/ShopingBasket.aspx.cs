@@ -19,6 +19,7 @@ namespace WebShop_Group7.User
         List<CarrierObject> carriers;
         List<PaymentObject> paymentObjects = new List<PaymentObject>();
         List<RadioButton> radioList = new List<RadioButton>();
+        bool userExists = false;
         decimal totalOrderPrice = 0;
         decimal totalPrice = 0;
         decimal carrierPrice = 0;
@@ -32,9 +33,15 @@ namespace WebShop_Group7.User
             SetUserTextboxVisible();
             orderObject = Session["Cart"] as OrderObject;
             // orderObject = order.GetOrder(1);
-            user = orderObject.usr;
+          if(Session["User"] != null)
+            { 
+            user = users.GetUserById(Convert.ToInt32(Session["User"]));
+                userExists = true;
+            }
+          try { 
             priceGroup = user.priceGroup;
-
+            }
+            catch { }
             if (priceGroup != 2) { priceGroup = 1; }
             // user = users.GetUserById(3);
             carriers = carrier.GetAllCarriers();
@@ -74,12 +81,11 @@ namespace WebShop_Group7.User
                 tcR.Controls.Add(radio);
                 radio.CheckedChanged += Radio_CheckedChanged;
                 radioList.Add(radio);
-                //Add TableCells CarrierName
+                //Add TableCells PaymentName
                 TableCell tc1 = new TableCell();
                 tc1.CssClass = "tc";
                 tc1.ID = "tc_" + item.paymentId + item;
                 tr.Controls.Add(tc1);
-
 
                 //Add Lable PaymentServise
                 Label lb = new Label();
@@ -87,12 +93,24 @@ namespace WebShop_Group7.User
                 lb.Text = item.service;
                 tc1.Controls.Add(lb);
 
-                //Add TableCells CarrierPrice
+                //Add TableCells PaymentType
+                TableCell tc2 = new TableCell();
+                tc2.CssClass = "tc";
+                tc2.ID = "tc2_" + item.paymentId + item;
+                tr.Controls.Add(tc2);
+
+                //Add Lable PaymentServise
+                Label lbType = new Label();
+                lbType.ID = "lbType" + item.paymentId + item.service;
+                lbType.Text = item.payment;
+                tc2.Controls.Add(lbType);
+
+                //Add TableCells Price
                 TableCell tc_Price = new TableCell();
                 tc_Price.CssClass = "tc";
                 tc_Price.ID = "tc_" + item.paymentId + item.price;
                 tr.Controls.Add(tc_Price);
-                //Add Lable CarrierPrice
+                //Add Lable Price
                 Label lb_Price = new Label();
                 lb_Price.ID = "lb_" + item.paymentId + item.price;
                 lb_Price.Text = item.price.ToString("#.##") + "kr";
@@ -280,20 +298,28 @@ namespace WebShop_Group7.User
             UserHeadingEmail.InnerHtml = "<strong>Email</strong>";
 
 
-
-            if (users.GetUserById(user.userId) == null)
+ 
+            if (!userExists)
             {
                 //User dont exists
                 TextBox_FirstNameValue.Visible = true;
                 TextBox_LastNameValue.Visible = true;
                 TextBox_EmailValue.Visible = true;
-
+                TextBox_Adress.Visible = true;
+                TextBox_Zip.Visible = true;
+                TextBox_City.Visible = true;
+                TextBox_Phone.Visible = true;
             }
             else
             {
                 FirstNameValue.InnerHtml = user.firstName;
                 LastNameValue.InnerHtml = user.lastName;
                 EmailValue.InnerHtml = user.email;
+                Div_AdressValue.InnerText = user.adress;
+                Div_ZipValue.InnerText = user.postalCode;
+                Div_CityValue.InnerText = user.city;            
+                Div1_PhoneValue.InnerText = user.telephone;
+
                 //User exists!
                 if (user.priceGroup == 1)
                 {
@@ -314,11 +340,11 @@ namespace WebShop_Group7.User
 
         private void FillResultInfo()
         {
-            Label_Total_PaymentMethod.Text = payName;
+           // Label_Total_PaymentMethod.Text = payName;
             Label_Total_PaymentPrice.Text = payPrice.ToString("#.##");
 
             totalPrice = totalOrderPrice + carrierPrice + payPrice;
-            Label_Total_Carrier.Text = carrierName;
+           // Label_Total_Carrier.Text = carrierName;
             Label_Total_CarrierPrice.Text = carrierPrice.ToString("##.#");
             Label_ProductPrice.Text = totalOrderPrice.ToString("#.##");
             Label_TotalPrice.Text = totalPrice.ToString("#.##");
@@ -329,12 +355,32 @@ namespace WebShop_Group7.User
             TextBox_FirstNameValue.Visible = false;
             TextBox_LastNameValue.Visible = false;
             TextBox_EmailValue.Visible = false;
+            TextBox_Adress.Visible = false;
+              TextBox_Zip.Visible = false;
+            TextBox_City.Visible = false;
+            TextBox_Phone.Visible = false;
         }
 
-        protected void Button_GetTotal_Click(object sender, EventArgs e)
+        protected void Button_Buy_Click(object sender, EventArgs e)
         {
+            UserObject thisUser = new UserObject();
+            if (userExists)
+            {
+                thisUser = user;
+            }
+            else
+            {
+                thisUser.firstName = TextBox_FirstNameValue.Text;
+                thisUser.lastName = TextBox_LastNameValue.Text;
+                thisUser.priceGroup = 1;
+                thisUser.adress = TextBox_Adress.Text;
+                thisUser.city = TextBox_City.Text;
+                thisUser.postalCode = TextBox_Zip.Text;
+                thisUser.telephone = TextBox_Phone.Text;
+            }
+            orderObject.usr = thisUser;
 
-            FillResultInfo();
+            Response.Redirect($"~/User/OrdsSamSida.aspx");
         }
     }
 }

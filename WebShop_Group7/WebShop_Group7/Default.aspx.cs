@@ -22,13 +22,16 @@ namespace WebShop_Group7
             PageObject page = pageDal.GetStartPage();
             content.InnerHtml = page.content;
 
-            CheckPricegroup();
+            
+           
+                CheckPricegroup();
+                productList = product.GetNewestProducts(9);
+                FillTheNews(productList);
 
-            productList = product.GetNewestProducts(9);
-            FillTheNews(productList);
-
-            productList_Old = product.GetOldestProducts(3);
-            FillTheOlds(productList_Old);
+                productList_Old = product.GetOldestProducts(3);
+                FillTheOlds(productList_Old);
+            
+       
         }
 
         private void CheckPricegroup()

@@ -9,7 +9,7 @@
                 <h3>Person uppgifter</h3>
             </div>
         </div>
-        <%-- User Heading --%>
+        <%-- ÉND --%>
         <div class="row" runat="server" id="UserHeadings">
             <div class="col-md-3" runat="server" id="UserHeadingFirstName"></div>
             <div class="col-md-3" runat="server" id="UserHeadingLastName"></div>
@@ -28,6 +28,26 @@
                 <asp:TextBox ID="TextBox_EmailValue" CssClass="form-control" runat="server"></asp:TextBox>
             </div>
             <div class="col-md-3" runat="server" id="CompanyValue">
+            </div>
+        </div>
+         <div class="row" runat="server" id="Div1">
+            <div class="col-md-3" runat="server" id="Div2"><strong>Adress</strong></div>
+            <div class="col-md-3" runat="server" id="Div3"><strong>Zip</strong></div>
+            <div class="col-md-3" runat="server" id="Div4"><strong>City</strong></div>
+            <div class="col-md-3" runat="server" id="Div5"><strong>Phone</strong></div>
+        </div>
+            <div class="row" runat="server" id="Div6">
+            <div class="col-md-3" runat="server" id="Div_AdressValue">
+                <asp:TextBox ID="TextBox_Adress" CssClass="form-control" runat="server"></asp:TextBox>
+            </div>
+            <div class="col-md-3" runat="server" id="Div_ZipValue">
+                <asp:TextBox ID="TextBox_Zip" CssClass="form-control" runat="server"></asp:TextBox>
+            </div>
+            <div class="col-md-3" runat="server" id="Div_CityValue">
+                <asp:TextBox ID="TextBox_City" CssClass="form-control" runat="server"></asp:TextBox>
+            </div>
+               <div class="col-md-3" runat="server" id="Div1_PhoneValue">
+                <asp:TextBox ID="TextBox_Phone" CssClass="form-control" runat="server"></asp:TextBox>
             </div>
         </div>
         <div class="row">
@@ -88,7 +108,7 @@
 
                     <asp:TableRow>
                         <asp:TableCell>
-                            <asp:Label ID="Label_Total_PaymentMethod" runat="server" Text="Label"></asp:Label>
+                            <asp:Label ID="Betalning" runat="server" Text="Label"></asp:Label>
                         </asp:TableCell>
                         <asp:TableCell>
                             <asp:Label ID="Label_Total_PaymentPrice" runat="server" Text="0,00"></asp:Label>kr
@@ -96,7 +116,7 @@
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell>
-                            <asp:Label ID="Label_Total_Carrier" runat="server" Text="Label"></asp:Label>
+                            <asp:Label ID="Frakt" runat="server" Text="Label"></asp:Label>
                         </asp:TableCell>
                         <asp:TableCell>
                             <asp:Label ID="Label_Total_CarrierPrice" runat="server" Text="0,00"></asp:Label>kr
@@ -135,7 +155,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12">
-                <asp:Button ID="Button1" runat="server" Text="Köp" />
+                <asp:Button ID="Button_Buy" runat="server" Text="Köp" OnClick="Button_Buy_Click" />
             </div>
         </div>
 
