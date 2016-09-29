@@ -169,18 +169,24 @@ namespace WebShop_Group7
             foreach (ProductObject prud in prod)
             {
                 bool inCart = false;
-
+                int quantity = 0;
                 if (cart.products != null) { 
                 foreach (ProductObject cartProduct in cart.products)
                 {
-                    if (cartProduct.ID == prud.ID) { prud.quantity = prud.quantity + int.Parse(ant.Text); inCart = true; }
+                        
+                    if (cartProduct.ID == prud.ID) {
+                            quantity = cartProduct.quantity + int.Parse(ant.Text);
+                            inCart = true;
+                            cartProduct.quantity = quantity;
+                        }
+                    
                 }
                 }
 
                 if (!inCart) { 
                 prud.quantity = int.Parse(ant.Text);
                 cart.AddProduct(prud);
-                }
+                } 
             }
 
 
