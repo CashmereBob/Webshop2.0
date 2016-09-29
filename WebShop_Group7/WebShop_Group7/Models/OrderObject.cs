@@ -7,7 +7,7 @@ namespace WebShop_Group7.Models
 {
     public class OrderObject
     {
-        UserObject usr = new UserObject();
+        public UserObject usr = new UserObject();
         public int orderId { get; set; }
         public int priceGroup { get; set; }
         public string company { get; set; }
@@ -16,7 +16,7 @@ namespace WebShop_Group7.Models
         public string adress { get; set; }
         public string postalCode { get; set; }
         public string city { get; set; }
-        
+
         public string telephone { get; set; }
         public string mobile { get; set; }
         public string email { get; set; }
