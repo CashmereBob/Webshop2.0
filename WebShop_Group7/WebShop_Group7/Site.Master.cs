@@ -77,7 +77,7 @@ namespace WebShop_Group7
         }
 
         protected void Page_Load(object sender, EventArgs e)
-        {        
+        {
             UserPages.Visible = false;
 
             if (Session["Cart"] == null)
@@ -85,7 +85,7 @@ namespace WebShop_Group7
                 Session["Cart"] = new OrderObject();
             }
 
-                if (Session["User"] != null)
+            if (Session["User"] != null)
             {
                 UserObject user = userDal.GetUserById((int)Session["User"]);
 
@@ -128,13 +128,13 @@ namespace WebShop_Group7
                     categoryMenu.InnerHtml += $"<li><a href=\"category.aspx?id={category.categoryID}\">{category.name}</a></li>";
 
                 }
-                categoryMenu.InnerHtml += $"<li role = \"separator\" class=\"divider\" ></li><li><a href = \"category.aspx\" >Alla</a></li>";
+                categoryMenu.InnerHtml += $"<li role =\"separator\" class=\"divider\" ></li><li><a href = \"category.aspx\" >Alla</a></li>";
             }
 
 
 
             BuildCart();
-    
+
         }
 
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
@@ -204,14 +204,14 @@ namespace WebShop_Group7
 
         protected void TextBox_Main_Search_TextChanged(object sender, EventArgs e)
         {
-            
-            if(!string.IsNullOrWhiteSpace(TextBox_Main_Search.Text))
+
+            if (!string.IsNullOrWhiteSpace(TextBox_Main_Search.Text))
             {
                 string searchString = TextBox_Main_Search.Text;
                 Response.Redirect($"~/User/Search_Result.aspx?search={searchString}");
-             
+
             }
-           
+
         }
 
         public void BuildCart()
@@ -222,28 +222,30 @@ namespace WebShop_Group7
             HiddenField hdnID = (HiddenField)Page.Master.FindControl("Cart");
             OrderObject cart = (OrderObject)Session["Cart"];
             Button_checkout.Visible = false;
+            Button1.Visible = false;
 
             if (!string.IsNullOrWhiteSpace(hdnID.Value))
             {
 
                 cart = JsonConvert.DeserializeObject<OrderObject>(hdnID.Value);
-               
+
                 Session["Cart"] = cart;
-               
 
-            } 
 
-          
+            }
 
+
+            List<ProductObject> deletes = new List<ProductObject>();
 
             cart.priceGroup = pricegroup;
 
             if (cart.products.Count > 0)
             {
                 Button_checkout.Visible = true;
+                Button1.Visible = true;
                 Button_upd.Visible = false;
                 StringBuilder str = new StringBuilder();
-                str.Append("<table>");
+                str.Append("<table class=\"table table-striped\">");
                 str.Append(@"<tr>
                               <th>Art.nr</th>
                                 <th>Artikel</th>
@@ -251,36 +253,60 @@ namespace WebShop_Group7
                                 <th>Pris</th>
                                 <th>Antal</th>
                                 <th>Summa</th>
+                                <th></th>
                                 </tr>");
+
+                
+
                 foreach (ProductObject product in cart.products)
                 {
-                    decimal price = product.priceB2C;
-                    if (pricegroup != 1) { price = product.priceB2B;  }
-
-                    string atr = string.Empty;
-
-                    Dictionary<string, string> atribbut = pruDal.GetAttribute(product);
-
-                    if (atribbut != null) { 
-                    foreach (KeyValuePair<string, string> val in atribbut)
+                    if (product.quantity > 0)
                     {
-                        atr += val.Value + ", ";
-                    }
-                }
-                str.Append($@"<tr>
+                        decimal price = product.priceB2C;
+                        if (pricegroup != 1) { price = product.priceB2B; }
+
+                        string atr = string.Empty;
+
+                        Dictionary<string, string> atribbut = pruDal.GetAttribute(product);
+
+                        if (atribbut != null)
+                        {
+                            foreach (KeyValuePair<string, string> val in atribbut)
+                            {
+                                atr += val.Value + ", ";
+                            }
+                        }
+                    
+                    str.Append($@"<tr>
                               <td>{product.artNr}</td>
                                 <td>{product.name}</td>
                                 <td>{atr}</td>
-                                <td>{price.ToString("#.##")}</td>
-                                <td>{product.quantity}</td>
-                                <td>{(product.quantity * price).ToString("#.##")}</td>
+                                <td>{price.ToString("#.##")}kr</td>
+                                <td><input id='{product.ID}' class='quantity' style='width: 70px;' type='number' value='{product.quantity}' min='0'/></td>
+                                <td>{(product.quantity * price).ToString("#.##")}kr</td>
+                                <td><button id='{product.ID}' class='delete'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></td>
                                 </tr>");
+                    } else
+                    {
+                        deletes.Add(product);
+                    }
                 }
                 str.Append("</table>");
                 tableFill.InnerHtml = str.ToString();
             }
 
-          
+            foreach (ProductObject delete in deletes)
+            {
+                cart.products.Remove(delete);
+            }
+
+            cart.priceGroup = pricegroup;
+            cart.sum = cart.CalculatePrice();
+
+            Session["Cart"] = cart;
+            var JsonObj = JsonConvert.SerializeObject(cart);
+
+            hdnID.Value = JsonObj;
 
         }
 

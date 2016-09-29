@@ -91,7 +91,7 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <%-- Droppdown --%>
-                        <li class="dropdown">
+                        <li class="dropdown" id="showDD">
                             
                             <a href="#" id="cartDesign" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" runat="server" onclick="UpdateCart">
                                 <span id="numProducts" class=""></span>
@@ -112,11 +112,11 @@
                                 </li>
 
                                 <li role="separator" class="divider"></li>
-                                <li id="updKnapp" class="hide"><asp:Button ID="Button_upd" runat="server" Text="Hämta sparad kundvagn" CssClass="btn .btn-danger" onclick="UpdateCart"/></li>
+                                <li id="updKnapp" class="hide"><asp:Button ID="Button_upd" runat="server" Text="Hämta sparad kundvagn" CssClass="btn .btn-primary" onclick="UpdateCart"/></li>
                                 <li>
                                     
                                     <p class="text-right">
-                                        <asp:Button ID="Button_checkout" runat="server" Text="Gå till kassan" CssClass="btn btn-success" onclick="Checkout"/>
+                                        <asp:Button ID="Button1" runat="server" Text="Uppdatera" CssClass="btn btn-primary" onclick="UpdateCart"/> <asp:Button ID="Button_checkout" runat="server" Text="Gå till kassan" CssClass="btn btn-success" onclick="Checkout"/>
                                     </p>
                                 </li>
                             </ul>
