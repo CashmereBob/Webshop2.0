@@ -12,6 +12,8 @@ namespace WebShop_Group7.User
     {
         Users users = new Users();
         Order order = new Order();
+        Carrier carrier = new Carrier();
+        List<CarrierObject> carriers;
         protected void Page_Load(object sender, EventArgs e)
         {
             SetUserTextboxVisible();
@@ -19,6 +21,7 @@ namespace WebShop_Group7.User
             OrderObject orderObject = order.GetOrder(1);
             //UserObject user = orderObject.usr;
             UserObject user = users.GetUserById(3);
+            carriers = carrier.GetAllCarriers();
             FillUserInfo(user);
             FillOrderInfo(order);
         }
