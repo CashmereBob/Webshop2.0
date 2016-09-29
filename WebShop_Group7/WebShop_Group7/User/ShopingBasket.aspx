@@ -39,13 +39,13 @@
             <div class="col-xs-12">
                 <asp:Table ID="Table_OrderInfo" CssClass="table" runat="server">
                     <asp:TableHeaderRow>
-                        <asp:TableHeaderCell><strong>Art. Nummer</strong></asp:TableHeaderCell>
+
                         <asp:TableHeaderCell><strong>Artikel</strong></asp:TableHeaderCell>
                         <asp:TableHeaderCell><strong>Attribut</strong></asp:TableHeaderCell>
                         <asp:TableHeaderCell><strong>Pris (kr)</strong></asp:TableHeaderCell>
                         <asp:TableHeaderCell><strong>Antal</strong></asp:TableHeaderCell>
                         <asp:TableHeaderCell><strong>Summa (kr)</strong></asp:TableHeaderCell>
-                    </asp:TableHeaderRow>
+                    </asp:TableHeaderRow>           
                 </asp:Table>
             </div>
         </div>
@@ -78,28 +78,39 @@
             <div class="col-xs-6">
                 <h3>Total summa</h3>
                 <asp:Table ID="Table1" CssClass=" table" runat="server">
-                
+
                     <asp:TableRow>
-                        <asp:TableCell><asp:Label ID="Label_Total_PaymentMethod" runat="server" Text="Label"></asp:Label></asp:TableCell>
-                        <asp:TableCell><asp:Label ID="Label_Total_PaymentPrice" runat="server" Text="0,00"></asp:Label>kr</asp:TableCell>
+                        <asp:TableCell>
+                            <asp:Label ID="Label_Total_PaymentMethod" runat="server" Text="Label"></asp:Label></asp:TableCell>
+                        <asp:TableCell>
+                            <asp:Label ID="Label_Total_PaymentPrice" runat="server" Text="0,00"></asp:Label>kr</asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
-                        <asp:TableCell><asp:Label ID="Label_Total_Carrier" runat="server" Text="Label"></asp:Label> </asp:TableCell>
-                        <asp:TableCell> <asp:Label ID="Label_Total_CarrierPrice" runat="server" Text="0,00"></asp:Label>kr</asp:TableCell>
+                        <asp:TableCell>
+                            <asp:Label ID="Label_Total_Carrier" runat="server" Text="Label"></asp:Label>
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:Label ID="Label_Total_CarrierPrice" runat="server" Text="0,00"></asp:Label>kr</asp:TableCell>
                     </asp:TableRow>
-                     <asp:TableRow>
+                    <asp:TableRow>
                         <asp:TableCell>Produkt Summa </asp:TableCell>
                         <asp:TableCell>
-                            <asp:Label ID="Label_ProductPrice" runat="server" Text="0,00"></asp:Label>kr</asp:TableCell>
+                            <asp:Label ID="Label_ProductPrice" runat="server" Text="0,00"></asp:Label>kr
+                        </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
-                        <asp:TableCell>Total Summa </asp:TableCell>
+                        <asp:TableCell><strong>Total Summa</strong> </asp:TableCell>
                         <asp:TableCell>
-                            <asp:Label ID="Label_TotalPrice" runat="server" Text="0,00"></asp:Label>kr</asp:TableCell>
+                            <strong>
+                                <asp:Label ID="Label_TotalPrice" runat="server" Text="0,00"></asp:Label>
+                                kr</strong>
+                        </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell><small>Var av moms:  </small></asp:TableCell>
-                        <asp:TableCell><asp:Label ID="Label_TotalMoms" runat="server" Text="0,00"></asp:Label> kr</asp:TableCell>
+                        <asp:TableCell><small>
+                            <asp:Label ID="Label_TotalMoms" runat="server" Text="0,00"></asp:Label>
+                            kr </small></asp:TableCell>
                     </asp:TableRow>
                 </asp:Table>
             </div>
