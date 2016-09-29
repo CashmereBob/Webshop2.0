@@ -14,10 +14,11 @@
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="Content/simple-sidebar.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
 </head>
 <body>
     <form runat="server">
-        <asp:HiddenField id="Cart" value="" runat="server"/>
+        <asp:HiddenField ID="Cart" Value="" runat="server" />
         <asp:ScriptManager runat="server">
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
@@ -78,7 +79,7 @@
                     <div class="navbar-form navbar-left">
 
                         <div class="form-group">
-                            <asp:TextBox class="form-control" placeholder="Sök..."  ID="TextBox_Main_Search" OnTextChanged="TextBox_Main_Search_TextChanged" AutoPostBack="true"  runat="server"></asp:TextBox>                       
+                            <asp:TextBox class="form-control" placeholder="Sök..." ID="TextBox_Main_Search" OnTextChanged="TextBox_Main_Search_TextChanged" AutoPostBack="true" runat="server"></asp:TextBox>
                         </div>
 
 
@@ -89,8 +90,42 @@
 
 
                     <ul class="nav navbar-nav navbar-right">
+                        <%-- Droppdown --%>
+                        <li class="dropdown">
+                            <a href="#" id="cartDesign" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <span id="numProducts" class="numProducts"></span>
+                                <span id="cartIcon" class="glyphicon glyphicon-shopping-cart cartIcon" aria-hidden="true"></span>
+                                <span id="priceSum" class="priceSum"></span><span class="caret"></span>
 
-                        <li><a runat="server" href="~/User/ShopingBasket"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+                            </a>
+                            <ul class="dropdown-menu" id="cartDD" runat="server">
+                                <li> 
+                                    <table class="tblCart">
+                                            <tr>
+                                                <td>Artikel</td>
+                                                <td>Attribut</td>
+                                                <td>Pris</td>
+                                                <td>Antal</td>
+                                            </tr>
+                                        </table>
+                                </li>
+                                <li> 
+                                    <table class="tblCart">
+                                            <tr>
+                                                <td>Artikel</td>
+                                                <td>Attribut</td>
+                                                <td>Pris</td>
+                                                <td>Antal</td>
+                                            </tr>
+                                        </table>
+                                </li>
+                                <li role ="separator" class="divider" ></li>
+                                <li>
+                                    <p class="text-right"><asp:Button ID="Button_checkout" runat="server" Text="Gå till kassan" CssClass="btn btn-success" /></p>
+                                </li>
+                            </ul>
+                        </li>
+
 
                     </ul>
 
@@ -107,43 +142,44 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer id="foot">
-                
-
-                            <div class="row">
-                                <div class="col-xs-12">
-
-                                    <div id="login" runat="server">
-                                        <div class="form-group">
-
-                                            <asp:TextBox ID="TextBox_User" CssClass="form-control" runat="server" placeholder="Användarnamn"></asp:TextBox>
-                                            <asp:TextBox ID="TextBox_Password" CssClass="form-control" runat="server" placeholder="Lösenord" TextMode="Password"></asp:TextBox>
-                                            </br>
-                        <asp:Button ID="Button_login" CssClass="btn btn-default" runat="server" Text="Logga in" OnClick="Button_login_Click" />
-                                            <asp:LinkButton ID="LinkButton_register" runat="server" Text="Skaffa konto"></asp:LinkButton>
-                                        </div>
-
-                                    </div>
 
 
-                                    <div id="UserPages" runat="server">
-                                        <h4>
-                                            <asp:Label ID="label_user" runat="server" Text=""></asp:Label></h4>
-                                        <h5>
-                                            <asp:LinkButton ID="LinkButton_info" runat="server" Text="Min information"></asp:LinkButton></h5>
-                                        <h5>
-                                            <asp:LinkButton ID="LinkButton_orders" runat="server" Text="Orderhistoria"></asp:LinkButton></h5>
-                                        <h5>
-                                            <asp:LinkButton ID="LinkButton_logout" runat="server" Text="Logga ut" OnClick="LinkButton_logout_Click"></asp:LinkButton></h5>
-                                    </div>
+                <div class="row">
+                    <div class="col-xs-12">
 
-                                    <p>&copy; <%: DateTime.Now.Year %> - Webshop, win15 grupp7</p>
-                                </div>
+                        <div id="login" runat="server">
+                            <div class="form-group">
+
+                                <asp:TextBox ID="TextBox_User" CssClass="form-control" runat="server" placeholder="Användarnamn"></asp:TextBox>
+                                <asp:TextBox ID="TextBox_Password" CssClass="form-control" runat="server" placeholder="Lösenord" TextMode="Password"></asp:TextBox>
+                                </br>
+                       
+                                <asp:Button ID="Button_login" CssClass="btn btn-default" runat="server" Text="Logga in" OnClick="Button_login_Click" />
+                                <asp:LinkButton ID="LinkButton_register" runat="server" Text="Skaffa konto"></asp:LinkButton>
                             </div>
+
+                        </div>
+
+
+                        <div id="UserPages" runat="server">
+                            <h4>
+                                <asp:Label ID="label_user" runat="server" Text=""></asp:Label></h4>
+                            <h5>
+                                <asp:LinkButton ID="LinkButton_info" runat="server" Text="Min information"></asp:LinkButton></h5>
+                            <h5>
+                                <asp:LinkButton ID="LinkButton_orders" runat="server" Text="Orderhistoria"></asp:LinkButton></h5>
+                            <h5>
+                                <asp:LinkButton ID="LinkButton_logout" runat="server" Text="Logga ut" OnClick="LinkButton_logout_Click"></asp:LinkButton></h5>
+                        </div>
+
+                        <p>&copy; <%: DateTime.Now.Year %> - Webshop, win15 grupp7</p>
+                    </div>
+                </div>
 
             </footer>
         </div>
     </form>
-        <script>
+    <script>
         $("#menu-toggle").click(function (e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");

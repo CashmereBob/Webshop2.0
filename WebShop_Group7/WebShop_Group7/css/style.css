@@ -1,0 +1,31 @@
+﻿.numProducts {
+    color: white;
+    background-color: #9d0202;
+    padding: 5px 8px;
+    border-radius: 100%;
+    margin-right: 6px;
+}
+
+.cartIcon {
+    color: white;
+    font-size: 18px;
+}
+
+.priceSum {
+    color: white;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.tblCart {
+    color: #747171;
+    width: 100%;
+}
+.tblCart td {
+    border-bottom: 1px solid #909090;
+    min-width: 60px;
+}
+
+#cartDD {
+    padding: 20px;
+}
