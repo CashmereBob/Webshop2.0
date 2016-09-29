@@ -61,7 +61,8 @@ namespace WebShop_Group7.Models
 
         internal List<CarrierObject> GetAllCarriers()
         {
-            List<CarrierObject> result = new List<CarrierObject>();     
+            List<CarrierObject> result = new List<CarrierObject>();
+            List<int> carrierID = new List<int>(); 
             string query; 
             try
             {
@@ -73,12 +74,18 @@ namespace WebShop_Group7.Models
                 {
                     while (myDataReader.Read())
                     {
-                        result.Add(GetCarrierById(int.Parse(myDataReader["ID"].ToString())));
+                        carrierID.Add(int.Parse(myDataReader["ID"].ToString()));
                     }
                 }
             }
             catch { }
             finally { db.CloseConnection(); }
+
+            foreach (var item in carrierID)
+            {
+                result.Add(GetCarrierById(item));
+            }
+
             return result;
         }
 

@@ -37,22 +37,27 @@
         <%-- OrderInfo --%>
         <div class="row">
             <div class="col-md-3"><strong>Art. Nummer</strong></div>
-              <div class="col-md-2"><strong>Artikel</strong></div>
-              <div class="col-md-2"><strong>Attribut</strong></div>
-             <div class="col-md-2"><strong>Pris (kr)</strong></div>
-             <div class="col-md-1"><strong>Antal</strong></div>
-             <div class="col-md-2"><strong>Summa (kr)</strong></div>
-
-
+            <div class="col-md-2"><strong>Artikel</strong></div>
+            <div class="col-md-2"><strong>Attribut</strong></div>
+            <div class="col-md-2"><strong>Pris (kr)</strong></div>
+            <div class="col-md-1"><strong>Antal</strong></div>
+            <div class="col-md-2"><strong>Summa (kr)</strong></div>
         </div>
         <%-- Fraks bolag --%>
-        <div class="row">
-            <div class="col-xs-12">
-                <h3>Fraktbolag</h3>
-                <asp:RadioButton ID="RadioButton1" runat="server" /><asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
 
+        <div class="row">
+            <div class="col-xs-6">
+                <h3>Fraktbolag</h3>
+                <asp:Table ID="Table_Carriers" CssClass=" table" runat="server">
+                    <asp:TableHeaderRow>
+                        <asp:TableHeaderCell></asp:TableHeaderCell>
+                        <asp:TableHeaderCell>Namn</asp:TableHeaderCell>
+                        <asp:TableHeaderCell>Pris</asp:TableHeaderCell>
+                    </asp:TableHeaderRow>
+                </asp:Table>
             </div>
         </div>
+
         <%-- Payment Info --%>
         <div class="row">
             <ul class="nav nav-tabs">
@@ -61,7 +66,7 @@
                 <li role="presentation"><a href="#">Bank Överföring</a></li>
             </ul>
         </div>
-          <div class="row">
+        <div class="row">
             <div class="col-xs-12">
                 <asp:Label ID="Label1" runat="server" Text="Jag godkänner "></asp:Label><a>Köpvilkoren</a><asp:CheckBox ID="CheckBox1" runat="server" />
             </div>
