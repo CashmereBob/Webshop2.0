@@ -13,41 +13,108 @@ namespace WebShop_Group7.User
         Users users = new Users();
         Order order = new Order();
         Carrier carrier = new Carrier();
+        Payment payment = new Payment();
         OrderObject orderObject;
         UserObject user;
         List<CarrierObject> carriers;
+        List<PaymentObject> paymentObjects = new List<PaymentObject>();
         List<RadioButton> radioList = new List<RadioButton>();
         decimal totalOrderPrice = 0;
         decimal totalPrice = 0;
         decimal carrierPrice = 0;
         decimal payPrice = 0;
         string carrierName = "";
+        string payName = "";
         int priceGroup;
         protected void Page_Load(object sender, EventArgs e)
         {
-          
-                SetUserTextboxVisible();
-                orderObject = Session["Cart"] as OrderObject;
-                // orderObject = order.GetOrder(1);
-                user = orderObject.usr;
-                priceGroup = user.priceGroup;
 
-                if (priceGroup != 2) { priceGroup = 1; }
-                // user = users.GetUserById(3);
-                carriers = carrier.GetAllCarriers();
+            SetUserTextboxVisible();
+            orderObject = Session["Cart"] as OrderObject;
+            // orderObject = order.GetOrder(1);
+            user = orderObject.usr;
+            priceGroup = user.priceGroup;
+
+            if (priceGroup != 2) { priceGroup = 1; }
+            // user = users.GetUserById(3);
+            carriers = carrier.GetAllCarriers();
+            paymentObjects = payment.GetAllPayments();
             if (!IsPostBack)
-            { 
+            {
                 FillCarrierInfo();
                 FillUserInfo(user);
                 FillOrderInfo(order);
+                FillPayment();
+                FillResultInfo();
             }
         }
+
+        private void FillPayment()
+        {
+            bool check = false;
+            foreach (var item in paymentObjects)
+            {
+                //Add TableRow
+
+                TableRow tr = new TableRow();
+                tr.ID = "tr_" + item.paymentId;
+                Table_Payment.Controls.Add(tr);
+
+
+
+                //Add tablrCellRadio
+                TableCell tcR = new TableCell();
+                tcR.ID = "tcr_" + item.paymentId;
+                tr.Controls.Add(tcR);
+
+                //RadioButton
+                RadioButton radio = new RadioButton();
+                radio.ID = "radio_" + item.paymentId;
+                radio.GroupName = "Payment";
+                tcR.Controls.Add(radio);
+                radio.CheckedChanged += Radio_CheckedChanged;
+                radioList.Add(radio);
+                //Add TableCells CarrierName
+                TableCell tc1 = new TableCell();
+                tc1.CssClass = "tc";
+                tc1.ID = "tc_" + item.paymentId + item;
+                tr.Controls.Add(tc1);
+
+
+                //Add Lable PaymentServise
+                Label lb = new Label();
+                lb.ID = "lb_" + item.paymentId + item.service;
+                lb.Text = item.service;
+                tc1.Controls.Add(lb);
+
+                //Add TableCells CarrierPrice
+                TableCell tc_Price = new TableCell();
+                tc_Price.CssClass = "tc";
+                tc_Price.ID = "tc_" + item.paymentId + item.price;
+                tr.Controls.Add(tc_Price);
+                //Add Lable CarrierPrice
+                Label lb_Price = new Label();
+                lb_Price.ID = "lb_" + item.paymentId + item.price;
+                lb_Price.Text = item.price.ToString("#.##") + "kr";
+                tc_Price.Controls.Add(lb_Price);
+
+                if (!check)
+                {
+                    radio.Checked = true;
+                    check = true;
+                    payPrice = item.price;
+                    payName = item.service;
+                }
+            }
+        }
+
         private void FillCarrierInfo()
         {
             bool check = false;
             foreach (var item in carriers)
             {
                 //Add TableRow
+
                 TableRow tr = new TableRow();
                 tr.ID = "tr_" + item.carrierId;
                 Table_Carriers.Controls.Add(tr);
@@ -63,7 +130,7 @@ namespace WebShop_Group7.User
                 RadioButton radio = new RadioButton();
                 radio.ID = "radio_" + item.carrierId;
                 radio.GroupName = "Carrier";
-                tcR.Controls.Add(radio);            
+                tcR.Controls.Add(radio);
                 radio.CheckedChanged += Radio_CheckedChanged;
                 radioList.Add(radio);
                 //Add TableCells CarrierName
@@ -109,7 +176,7 @@ namespace WebShop_Group7.User
                 {
 
                     carrierPrice = 0;
-                    Label_Total_CarrierPrice.Text = "0";
+                    Label_Total_CarrierPrice.Text = "Radio CheckedChanged";
                     return;
                 }
             }
@@ -184,17 +251,17 @@ namespace WebShop_Group7.User
                 //Add Total
                 Label lb_Total = new Label();
                 lb_Total.ID = "lb_Total" + item.ID;
-                if(priceGroup == 1) { lb_Total.Text = (item.quantity * item.priceB2C).ToString("##.#"); totalOrderPrice += (item.quantity * item.priceB2C); }
-               else { lb_Total.Text = (item.quantity * item.priceB2B).ToString("##.#"); totalOrderPrice += (item.quantity * item.priceB2B); }
+                if (priceGroup == 1) { lb_Total.Text = (item.quantity * item.priceB2C).ToString("##.#"); totalOrderPrice += (item.quantity * item.priceB2C); }
+                else { lb_Total.Text = (item.quantity * item.priceB2B).ToString("##.#"); totalOrderPrice += (item.quantity * item.priceB2B); }
                 tc_Total.Controls.Add(lb_Total);
-           
+
             }
             //Add row total
             TableRow tr2 = new TableRow();
             tr2.ID = "tr2";
             Table_OrderInfo.Controls.Add(tr2);
             //Add Cells
-           
+
             TableCell tc2 = new TableCell(); tc2.ID = "tc2"; tr2.Controls.Add(tc2);
             TableCell tc3 = new TableCell(); tc3.ID = "tc3"; tr2.Controls.Add(tc3);
             TableCell tc4 = new TableCell(); tc4.ID = "tc4"; tr2.Controls.Add(tc4);
@@ -203,7 +270,7 @@ namespace WebShop_Group7.User
 
             Label Label_total = new Label();
             Label_total.ID = "Label_total";
-            Label_total.Text = totalOrderPrice.ToString("#.##")+"kr";
+            Label_total.Text = totalOrderPrice.ToString("#.##") + "kr";
             tc6.Controls.Add(Label_total);
         }
         private void FillUserInfo(UserObject user)
@@ -243,19 +310,19 @@ namespace WebShop_Group7.User
                 }
             }
         }
-      
+
 
         private void FillResultInfo()
         {
-            Label_Total_PaymentMethod.Text = "Payment";
-            Label_Total_PaymentPrice.Text = "0,0";
+            Label_Total_PaymentMethod.Text = payName;
+            Label_Total_PaymentPrice.Text = payPrice.ToString("#.##");
 
             totalPrice = totalOrderPrice + carrierPrice + payPrice;
             Label_Total_Carrier.Text = carrierName;
             Label_Total_CarrierPrice.Text = carrierPrice.ToString("##.#");
             Label_ProductPrice.Text = totalOrderPrice.ToString("#.##");
             Label_TotalPrice.Text = totalPrice.ToString("#.##");
-            Label_TotalMoms.Text = (decimal.Multiply(totalPrice,(decimal)0.2)).ToString("#.##");
+            Label_TotalMoms.Text = (decimal.Multiply(totalPrice, (decimal)0.2)).ToString("#.##");
         }
         private void SetUserTextboxVisible()
         {

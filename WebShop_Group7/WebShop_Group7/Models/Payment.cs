@@ -58,6 +58,47 @@ namespace WebShop_Group7.Models
                 db.CloseConnection();
             }
         }
+
+        internal List<PaymentObject> GetAllPayments()
+        {
+            List<PaymentObject> result = new List<PaymentObject>();
+            try
+            {
+                db.OpenConnection();
+
+                    string sql = "Select * From tbl_Payment";
+                    SqlCommand myCommand = new SqlCommand(sql, db._connection);
+
+
+                    using (SqlDataReader myDataReader = myCommand.ExecuteReader())
+                    {
+
+                        while (myDataReader.Read())
+                        {
+
+                        PaymentObject p = new PaymentObject();
+                        p.paymentId = int.Parse(myDataReader["ID"].ToString());
+                        p.service = myDataReader["Service"].ToString();
+                        p.price = decimal.Parse(myDataReader["Price"].ToString());
+                        p.service = myDataReader["Provider"].ToString();
+                        result.Add(p);
+
+                    }
+                    return result;
+          
+                }
+
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+        }
+
         public PaymentObject GetPaymentById(int id) 
 {
 

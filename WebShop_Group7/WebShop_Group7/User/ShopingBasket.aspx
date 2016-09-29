@@ -78,8 +78,7 @@
                 </asp:Table>
             </div>
         </div>
-        <asp:Button ID="Button_GetTotal" OnClick="Button_GetTotal_Click" runat="server" Text="Sammanställ" />
-
+     
         <%-- Result info --%>
 
         <div class="row">
