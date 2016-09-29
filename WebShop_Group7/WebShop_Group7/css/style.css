@@ -28,3 +28,19 @@
 #cartDD {
     padding: 20px;
 }
+
+#cartPP {
+    list-style: none;
+     padding: 0;
+}
+
+#cartPP td, th {
+    min-width: 80px;
+    border-bottom: 1px solid #747171;
+    color: #747171;
+   
+}
+
+.hide {
+    display: none;
+}

@@ -136,6 +136,7 @@ namespace WebShop_Group7
         protected void Button_addtocart_Click(object sender, EventArgs e)
         {
             
+
             HiddenField hdnID = (HiddenField)Page.Master.FindControl("Cart");
 
             OrderObject cart = (OrderObject)Session["Cart"];
@@ -189,10 +190,19 @@ namespace WebShop_Group7
                 } 
             }
 
+            cart.priceGroup = pricegroup;
+            cart.sum = cart.CalculatePrice();
 
+            Session["Cart"] = cart;
             var JsonObj = JsonConvert.SerializeObject(cart);
 
             hdnID.Value = JsonObj;
+
+
+
+            (this.Master as SiteMaster).BuildCart();
         }
+
+
     }
 }

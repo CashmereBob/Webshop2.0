@@ -19,18 +19,19 @@ function UpdateCart() {
 
 
     var productsInCart = 0;
-    var sumOfCart = 0
+    var sum = "";
 
 
 
     if ($("#Cart").val() != ""){
         var cart = JSON.parse($("#Cart").val());
+        sum = cart.sum + "kr";
 
         for (var i = 0 ; i < cart.products.length; i++) {
 
             productsInCart += cart.products[i].quantity;
 
-            sumOfCart += cart.products[i].sum;
+            
           
 
         }
@@ -39,7 +40,7 @@ function UpdateCart() {
 
     }
     
-    console.log(productsInCart);
+   
     if (productsInCart < 10) {
         $("#numProducts").css('padding', '5px 8px');
     } else {
@@ -49,9 +50,15 @@ function UpdateCart() {
     if (productsInCart == 0) {
         $("#numProducts").removeClass("numProducts");
         $("#cartIcon").removeClass("cartIcon");
+       
     } else {
         $("#cartIcon").addClass("cartIcon");
         $("#numProducts").addClass("numProducts");
         $("#numProducts").html(productsInCart);
+        $("#priceSum").html(sum);
+        $("#updKnapp").removeClass("hide");
+       
     }
 }
+
+
