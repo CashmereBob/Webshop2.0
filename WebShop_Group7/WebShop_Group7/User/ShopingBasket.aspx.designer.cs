@@ -175,40 +175,49 @@ namespace WebShop_Group7.User {
         protected global::System.Web.UI.WebControls.Label Label_Total_PaymentPrice;
         
         /// <summary>
-        /// Label2 control.
+        /// Label_Total_Carrier control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label Label_Total_Carrier;
         
         /// <summary>
-        /// Label3 control.
+        /// Label_Total_CarrierPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.Label Label_Total_CarrierPrice;
         
         /// <summary>
-        /// Label4 control.
+        /// Label_ProductPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
+        protected global::System.Web.UI.WebControls.Label Label_ProductPrice;
         
         /// <summary>
-        /// Label5 control.
+        /// Label_TotalPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label5;
+        protected global::System.Web.UI.WebControls.Label Label_TotalPrice;
+        
+        /// <summary>
+        /// Label_TotalMoms control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_TotalMoms;
         
         /// <summary>
         /// Label1 control.

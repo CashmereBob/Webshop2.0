@@ -81,19 +81,25 @@
                 
                     <asp:TableRow>
                         <asp:TableCell><asp:Label ID="Label_Total_PaymentMethod" runat="server" Text="Label"></asp:Label></asp:TableCell>
-                        <asp:TableCell><asp:Label ID="Label_Total_PaymentPrice" runat="server" Text="Label"></asp:Label>  <asp:Label ID="Label2" runat="server" Text="kr"></asp:Label></asp:TableCell>
+                        <asp:TableCell><asp:Label ID="Label_Total_PaymentPrice" runat="server" Text="0,00"></asp:Label>kr</asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
-                        <asp:TableCell>Posten Paket: </asp:TableCell>
-                        <asp:TableCell> 200  <asp:Label ID="Label3" runat="server" Text="kr"></asp:Label></asp:TableCell>
+                        <asp:TableCell><asp:Label ID="Label_Total_Carrier" runat="server" Text="Label"></asp:Label> </asp:TableCell>
+                        <asp:TableCell> <asp:Label ID="Label_Total_CarrierPrice" runat="server" Text="0,00"></asp:Label>kr</asp:TableCell>
+                    </asp:TableRow>
+                     <asp:TableRow>
+                        <asp:TableCell>Produkt Summa </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:Label ID="Label_ProductPrice" runat="server" Text="0,00"></asp:Label>kr</asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell>Total Summa </asp:TableCell>
-                        <asp:TableCell>123123  <asp:Label ID="Label4" runat="server" Text="kr"></asp:Label></asp:TableCell>
+                        <asp:TableCell>
+                            <asp:Label ID="Label_TotalPrice" runat="server" Text="0,00"></asp:Label>kr</asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
-                        <asp:TableCell>Var av moms:  </asp:TableCell>
-                        <asp:TableCell>123  <asp:Label ID="Label5" runat="server" Text="kr"></asp:Label></asp:TableCell>
+                        <asp:TableCell><small>Var av moms:  </small></asp:TableCell>
+                        <asp:TableCell><asp:Label ID="Label_TotalMoms" runat="server" Text="0,00"></asp:Label> kr</asp:TableCell>
                     </asp:TableRow>
                 </asp:Table>
             </div>

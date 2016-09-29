@@ -16,6 +16,10 @@ namespace WebShop_Group7.User
         OrderObject orderObject;
         UserObject user;
         List<CarrierObject> carriers;
+        decimal totalOrderPrice = 0;
+        decimal totalPrice = 0;
+        decimal carrierPrice = 0;
+        decimal payPrice = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             SetUserTextboxVisible();
@@ -27,11 +31,11 @@ namespace WebShop_Group7.User
             FillCarrierInfo();
             FillUserInfo(user);
             FillOrderInfo(order);
+            FillResultInfo();
         }
-
         private void FillCarrierInfo()
         {
- 
+
             foreach (var item in carriers)
             {
                 //Add TableRow
@@ -39,13 +43,13 @@ namespace WebShop_Group7.User
                 tr.ID = "tr_" + item.carrierId;
                 Table_Carriers.Controls.Add(tr);
 
-              
+
 
                 //Add tablrCellRadio
                 TableCell tcR = new TableCell();
                 tcR.ID = "tcr_" + item.carrierId;
                 tr.Controls.Add(tcR);
-                
+
                 //RadioButton
                 RadioButton radio = new RadioButton();
                 radio.ID = "radio_" + item.carrierId;
@@ -56,13 +60,13 @@ namespace WebShop_Group7.User
                 //Add TableCells CarrierName
                 TableCell tc1 = new TableCell();
                 tc1.CssClass = "tc";
-                tc1.ID = "tc_" + item.carrierId+item.carrier;
+                tc1.ID = "tc_" + item.carrierId + item.carrier;
                 tr.Controls.Add(tc1);
 
 
                 //Add Lable CarrierName
                 Label lb = new Label();
-                lb.ID = "lb_" + item.carrierId+item.carrier;
+                lb.ID = "lb_" + item.carrierId + item.carrier;
                 lb.Text = item.carrier;
                 tc1.Controls.Add(lb);
 
@@ -74,17 +78,16 @@ namespace WebShop_Group7.User
                 //Add Lable CarrierPrice
                 Label lb_Price = new Label();
                 lb_Price.ID = "lb_" + item.carrierId + item.price;
-                lb_Price.Text = item.price.ToString("#.##")+"kr";
+                lb_Price.Text = item.price.ToString("#.##") + "kr";
                 tc_Price.Controls.Add(lb_Price);
 
             }
 
         }
-
         private void FillOrderInfo(Order order)
         {
-            decimal totalPrice = 0;
-          var OrderInfoList =  order.GetProductsToList(orderObject);
+
+            var OrderInfoList = order.GetProductsToList(orderObject);
             foreach (var item in OrderInfoList)
             {
                 //Add TableRow
@@ -99,7 +102,7 @@ namespace WebShop_Group7.User
 
                 //Add Lable Art. Nummer
                 Label lb_ArtNr = new Label();
-                lb_ArtNr.ID = "lb_ArtNr" +  item.ID;
+                lb_ArtNr.ID = "lb_ArtNr" + item.ID;
                 lb_ArtNr.Text = item.artNr;
                 tc_ArtN.Controls.Add(lb_ArtNr);
                 ////////////////////////////////////////////////////////////
@@ -157,8 +160,8 @@ namespace WebShop_Group7.User
                 lb_Total.ID = "lb_Total" + item.ID;
                 lb_Total.Text = (item.quantity * item.priceB2B).ToString("##.#");
                 tc_Total.Controls.Add(lb_Total);
-                totalPrice += item.priceB2B * item.quantity;
-            }        
+                totalOrderPrice += item.priceB2B * item.quantity;
+            }
             //Add row total
             TableRow tr2 = new TableRow();
             tr2.ID = "tr2";
@@ -176,7 +179,6 @@ namespace WebShop_Group7.User
             Label_total.Text = totalPrice.ToString("#.##");
             tc6.Controls.Add(Label_total);
         }
-
         private void FillUserInfo(UserObject user)
         {
             UserHeadingFirstName.InnerHtml = "<strong>Förnamn</strong>";
@@ -190,21 +192,21 @@ namespace WebShop_Group7.User
                 //User dont exists
                 TextBox_FirstNameValue.Visible = true;
                 TextBox_LastNameValue.Visible = true;
-               TextBox_EmailValue.Visible = true;
+                TextBox_EmailValue.Visible = true;
 
             }
-           else
+            else
             {
                 FirstNameValue.InnerHtml = user.firstName;
                 LastNameValue.InnerHtml = user.lastName;
                 EmailValue.InnerHtml = user.email;
-               //User exists!
-               if (user.priceGroup == 1)
+                //User exists!
+                if (user.priceGroup == 1)
                 {
                     //B2C   
-                                
+
                 }
-               else
+                else
                 {
                     //B2B
                     UserHeadingComany.InnerHtml = "<strong>Företag</strong>";
@@ -213,6 +215,15 @@ namespace WebShop_Group7.User
 
                 }
             }
+        }
+      
+
+        private void FillResultInfo()
+        {
+            totalPrice = totalOrderPrice + carrierPrice + payPrice;
+            Label_ProductPrice.Text = totalOrderPrice.ToString("#.##");
+            Label_TotalPrice.Text = totalPrice.ToString("#.##");
+            Label_TotalMoms.Text = (decimal.Multiply(totalPrice,(decimal)0.2)).ToString("#.##");
         }
         private void SetUserTextboxVisible()
         {
