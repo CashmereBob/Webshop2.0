@@ -9,6 +9,9 @@ using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
 using WebShop_Group7.Models;
 using System.Data.SqlClient;
+using System.Data;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace WebShop_Group7
 {
@@ -20,6 +23,7 @@ namespace WebShop_Group7
         private string _antiXsrfTokenValue;
 
         Users userDal = new Users();
+        int pricegroup = 1;
 
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -88,6 +92,7 @@ namespace WebShop_Group7
                 UserPages.Visible = true;
                 login.Visible = false;
                 label_user.Text = $"Välkommen tillbaka {user.firstName}";
+                pricegroup = user.priceGroup;
             }
 
 
@@ -125,6 +130,11 @@ namespace WebShop_Group7
                 }
                 categoryMenu.InnerHtml += $"<li role = \"separator\" class=\"divider\" ></li><li><a href = \"category.aspx\" >Alla</a></li>";
             }
+
+
+
+            BuildCart();
+    
         }
 
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
@@ -202,6 +212,86 @@ namespace WebShop_Group7
              
             }
            
+        }
+
+        public void BuildCart()
+        {
+            Product pruDal = new Product();
+            tableFill.InnerHtml = @"<h4>Kundkorgen är tom</h4>";
+
+            HiddenField hdnID = (HiddenField)Page.Master.FindControl("Cart");
+            OrderObject cart = (OrderObject)Session["Cart"];
+            Button_checkout.Visible = false;
+
+            if (!string.IsNullOrWhiteSpace(hdnID.Value))
+            {
+
+                cart = JsonConvert.DeserializeObject<OrderObject>(hdnID.Value);
+               
+                Session["Cart"] = cart;
+               
+
+            } 
+
+          
+
+
+            cart.priceGroup = pricegroup;
+
+            if (cart.products.Count > 0)
+            {
+                Button_checkout.Visible = true;
+                Button_upd.Visible = false;
+                StringBuilder str = new StringBuilder();
+                str.Append("<table>");
+                str.Append(@"<tr>
+                              <th>Art.nr</th>
+                                <th>Artikel</th>
+                                <th>Attribut</th>
+                                <th>Pris</th>
+                                <th>Antal</th>
+                                <th>Summa</th>
+                                </tr>");
+                foreach (ProductObject product in cart.products)
+                {
+                    decimal price = product.priceB2C;
+                    if (pricegroup != 1) { price = product.priceB2B;  }
+
+                    string atr = string.Empty;
+
+                    Dictionary<string, string> atribbut = pruDal.GetAttribute(product);
+
+                    if (atribbut != null) { 
+                    foreach (KeyValuePair<string, string> val in atribbut)
+                    {
+                        atr += val.Value + ", ";
+                    }
+                }
+                str.Append($@"<tr>
+                              <td>{product.artNr}</td>
+                                <td>{product.name}</td>
+                                <td>{atr}</td>
+                                <td>{price.ToString("#.##")}</td>
+                                <td>{product.quantity}</td>
+                                <td>{(product.quantity * price).ToString("#.##")}</td>
+                                </tr>");
+                }
+                str.Append("</table>");
+                tableFill.InnerHtml = str.ToString();
+            }
+
+          
+
+        }
+
+        public void UpdateCart(object sender, EventArgs e)
+        {
+            BuildCart();
+        }
+
+        public void Checkout(object sender, EventArgs e)
+        {
+            Response.Redirect("~/User/ShopingBasket.aspx");
         }
     }
 

@@ -92,36 +92,32 @@
                     <ul class="nav navbar-nav navbar-right">
                         <%-- Droppdown --%>
                         <li class="dropdown">
-                            <a href="#" id="cartDesign" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            
+                            <a href="#" id="cartDesign" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" runat="server" onclick="UpdateCart">
                                 <span id="numProducts" class=""></span>
                                 <span id="cartIcon" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                                 <span id="priceSum" class="priceSum"></span><span class="caret"></span>
-
                             </a>
+                               
                             <ul class="dropdown-menu" id="cartDD" runat="server">
-                                <li> 
-                                    <table class="tblCart">
-                                            <tr>
-                                                <td>Artikel</td>
-                                                <td>Attribut</td>
-                                                <td>Pris</td>
-                                                <td>Antal</td>
-                                            </tr>
-                                        </table>
-                                </li>
-                                <li> 
-                                    <table class="tblCart">
-                                            <tr>
-                                                <td>Artikel</td>
-                                                <td>Attribut</td>
-                                                <td>Pris</td>
-                                                <td>Antal</td>
-                                            </tr>
-                                        </table>
-                                </li>
-                                <li role ="separator" class="divider" ></li>
                                 <li>
-                                    <p class="text-right"><asp:Button ID="Button_checkout" runat="server" Text="Gå till kassan" CssClass="btn btn-success" /></p>
+                                    <ul id="cartPP">
+                                        <li>
+                                            <span id="tableFill" runat="server">
+                                                
+
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li role="separator" class="divider"></li>
+                                <li id="updKnapp" class="hide"><asp:Button ID="Button_upd" runat="server" Text="Hämta sparad kundvagn" CssClass="btn .btn-danger" onclick="UpdateCart"/></li>
+                                <li>
+                                    
+                                    <p class="text-right">
+                                        <asp:Button ID="Button_checkout" runat="server" Text="Gå till kassan" CssClass="btn btn-success" onclick="Checkout"/>
+                                    </p>
                                 </li>
                             </ul>
                         </li>
@@ -178,6 +174,7 @@
 
             </footer>
         </div>
+
     </form>
     <script>
         $("#menu-toggle").click(function (e) {
@@ -185,5 +182,6 @@
             $("#wrapper").toggleClass("toggled");
         });
     </script>
+
 </body>
 </html>
