@@ -32,6 +32,8 @@ namespace WebShop_Group7.Models
         public string paymentService { get; set; }
         public decimal paymentPrice { get; set; }
 
+        public decimal sum = 0M;
+
         public decimal CalculatePrice()
         {
             decimal sum = -1;

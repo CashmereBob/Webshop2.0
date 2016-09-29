@@ -188,6 +188,7 @@
     <Content Include="Content\simple-sidebar.css" />
     <Content Include="Content\Site.css" />
     <Content Include="css\bootstrap-slider.min.css" />
+    <Content Include="css\style.css" />
     <Content Include="Error Pages\Error.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
