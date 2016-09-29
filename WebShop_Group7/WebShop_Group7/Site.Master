@@ -76,14 +76,15 @@
                         </li>
                     </ul>
 
-                    <div class="navbar-form navbar-left">
-
+                    <div class="navbar-form navbar-left" id="search">
+                        <label for="TextBox_Main_Search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></label>
                         <div class="form-group">
-                            <asp:TextBox class="form-control" placeholder="Sök..." ID="TextBox_Main_Search" OnTextChanged="TextBox_Main_Search_TextChanged" AutoPostBack="true" runat="server"></asp:TextBox>
+                            
+                                
+                                <asp:TextBox placeholder="....." ID="TextBox_Main_Search" OnTextChanged="TextBox_Main_Search_TextChanged" AutoPostBack="true" runat="server"></asp:TextBox>
+
+                          
                         </div>
-
-
-
 
                     </div>
 
@@ -92,13 +93,13 @@
                     <ul class="nav navbar-nav navbar-right">
                         <%-- Droppdown --%>
                         <li class="dropdown" id="showDD">
-                            
+
                             <a href="#" id="cartDesign" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" runat="server" onclick="UpdateCart">
                                 <span id="numProducts" class=""></span>
                                 <span id="cartIcon" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                                 <span id="priceSum" class="priceSum"></span><span class="caret"></span>
                             </a>
-                               
+
                             <ul class="dropdown-menu" id="cartDD" runat="server">
                                 <li>
                                     <button type="submit" id="close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
@@ -106,20 +107,19 @@
                                 <li>
                                     <ul id="cartPP">
                                         <li>
-                                            <span id="tableFill" runat="server">
-                                                
-
-                                            </span>
+                                            <span id="tableFill" runat="server"></span>
                                         </li>
                                     </ul>
                                 </li>
 
                                 <li role="separator" class="divider"></li>
-                                <li id="updKnapp" class="hide"><asp:Button ID="Button_upd" runat="server" Text="Hämta sparad kundvagn" CssClass="btn .btn-primary" onclick="UpdateCart"/></li>
+                                <li id="updKnapp" class="hide">
+                                    <asp:Button ID="Button_upd" runat="server" Text="Hämta sparad kundvagn" CssClass="btn .btn-primary" OnClick="UpdateCart" /></li>
                                 <li>
-                                    
+
                                     <p class="text-right">
-                                        <asp:Button ID="Button1" runat="server" Text="Uppdatera" CssClass="btn btn-primary" onclick="UpdateCart"/> <asp:Button ID="Button_checkout" runat="server" Text="Gå till kassan" CssClass="btn btn-success" onclick="Checkout"/>
+                                        <asp:Button ID="Button1" runat="server" Text="Uppdatera" CssClass="btn btn-primary" OnClick="UpdateCart" />
+                                        <asp:Button ID="Button_checkout" runat="server" Text="Gå till kassan" CssClass="btn btn-success" OnClick="Checkout" />
                                     </p>
                                 </li>
                             </ul>
@@ -164,9 +164,9 @@
                             <h4>
                                 <asp:Label ID="label_user" runat="server" Text=""></asp:Label></h4>
                             <h5>
-                                <asp:LinkButton ID="LinkButton_info" runat="server" Text="Min information"></asp:LinkButton></h5>
+                                <asp:LinkButton ID="LinkButton_info" runat="server" Text="Min information" onclientclick="redirect('~/User/User_Page.aspx')"></asp:LinkButton></h5>
                             <h5>
-                                <asp:LinkButton ID="LinkButton_orders" runat="server" Text="Orderhistoria"></asp:LinkButton></h5>
+                                <asp:LinkButton ID="LinkButton_orders" runat="server" Text="Orderhistoria" onclientclick="redirect('~/User/OrderSamSida.aspx')"></asp:LinkButton></h5>
                             <h5>
                                 <asp:LinkButton ID="LinkButton_logout" runat="server" Text="Logga ut" OnClick="LinkButton_logout_Click"></asp:LinkButton></h5>
                         </div>
