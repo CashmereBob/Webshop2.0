@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebShop_Group7.Models;
 
 namespace WebShop_Group7.User
 {
@@ -11,7 +12,8 @@ namespace WebShop_Group7.User
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            OrderObject orderObject = Session["Cart"] as OrderObject;
+            UserObject user = orderObject.usr;
         }
     }
 }
