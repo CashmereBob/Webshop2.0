@@ -216,6 +216,44 @@ namespace WebShop_Group7.Models
                 return dt;
             }
         }
+        public List<ProductObject> GetProductsToList(OrderObject ord)
+        {
+            List<ProductObject> productList = new List<ProductObject>();
 
+
+                foreach (ProductObject product in ord.products)
+                {
+                    string attribut = string.Empty;
+
+                    var productDB = new Product();
+
+                    Dictionary<string, string> atribut = productDB.GetAttribute(product);
+
+                    foreach (KeyValuePair<string, string> atr in atribut)
+                    {
+
+                        attribut += atr.Value + " ";
+
+                    }
+
+                    decimal sum = -1;
+
+                    if (ord.priceGroup == 2)
+                    {
+                        sum += product.priceB2B;
+                    }
+                    if (ord.priceGroup == 1)
+                    {
+                        sum += product.priceB2C;
+                    }
+
+                    decimal prodSum = sum * product.quantity;
+
+                    productList.Add(product);
+                }
+
+                return productList;
+            }
+        }
     }
-}
+
