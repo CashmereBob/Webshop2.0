@@ -32,7 +32,7 @@ namespace WebShop_Group7.Models
                                     @"ORDER BY tbl_Order.[Date] DESC, [orderID], [Firstname], [Lastname]";
 
 
-        SqlCommand myCommand = new SqlCommand(sql, db._connection);
+                    SqlCommand myCommand = new SqlCommand(sql, db._connection);
 
 
                     using (SqlDataReader myDataReader = myCommand.ExecuteReader())
@@ -63,11 +63,65 @@ namespace WebShop_Group7.Models
             }
         }
 
+        public DataTable ListUserOrder(int id)
+        {
+            try
+            {
+                db.OpenConnection();
+
+                using (DataTable dt = new DataTable("Order"))
+                {
+                    dt.Columns.AddRange(new DataColumn[4] { new DataColumn("ID"), new DataColumn("Date"), new DataColumn("Firstname"), new DataColumn("Lastname") });
+
+                    string sql = @"Select tbl_Order.ID AS[orderID], tbl_User.Firstname AS[Firstname], tbl_User.Lastname AS[Lastname], tbl_Order.[Date] " +
+                                    @"From tbl_Order " +
+                                    @"INNER JOIN tbl_User " +
+                                    @"ON tbl_Order.UserID = tbl_User.ID " +
+                                    @"INNER JOIN tbl_Carrier " +
+                                    @"ON tbl_Order.CarrierID = tbl_Carrier.ID " +
+                                    @"INNER JOIN tbl_Payment " +
+                                    @"ON tbl_Order.PaymentID = tbl_Payment.ID " +
+                                    $@"WHERE tbl_User.ID = '{id}' " +
+                                    @"ORDER BY tbl_Order.[Date] DESC, [orderID], [Firstname], [Lastname]";
+
+
+                    SqlCommand myCommand = new SqlCommand(sql, db._connection);
+
+
+                    using (SqlDataReader myDataReader = myCommand.ExecuteReader())
+                    {
+
+                        while (myDataReader.Read())
+                        {
+                            int orderID = int.Parse(myDataReader["orderID"].ToString());
+                            string firstname = myDataReader["Firstname"].ToString();
+                            string lastname = myDataReader["Lastname"].ToString();
+                            string date = myDataReader["Date"].ToString();
+
+                            dt.Rows.Add(orderID, date, firstname, lastname);
+                        }
+                    }
+                    myCommand.ExecuteNonQuery();
+                    return dt;
+                }
+
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+
+        }
+
         public OrderObject GetOrder(int id)
         {
             OrderObject order = new OrderObject();
-           
-            
+
+
 
             try
             {
@@ -160,10 +214,10 @@ namespace WebShop_Group7.Models
                 }
 
 
-            return order;
+                return order;
 
 
-        }
+            }
             catch
             {
                 return null;
@@ -180,45 +234,6 @@ namespace WebShop_Group7.Models
             using (DataTable dt = new DataTable("Products"))
             {
                 dt.Columns.AddRange(new DataColumn[6] { new DataColumn("ArtNr"), new DataColumn("name"), new DataColumn("attribut"), new DataColumn("price"), new DataColumn("quantity"), new DataColumn("sum") });
-
-
-                foreach (ProductObject product in ord.products)
-                {
-                    string attribut = string.Empty;
-
-                    var productDB = new Product();
-
-                    Dictionary<string, string> atribut = productDB.GetAttribute(product);
-
-                    foreach (KeyValuePair<string, string> atr in atribut)
-                    {
-                        
-                            attribut += atr.Value + " ";
-                                
-                    }
-
-                    decimal sum = -1;
-             
-                        if (ord.priceGroup == 2)
-                        {
-                            sum += product.priceB2B;
-                        }
-                        if (ord.priceGroup == 1)
-                        {
-                            sum += product.priceB2C;
-                        }
-
-                    decimal prodSum = sum * product.quantity;
-
-                    dt.Rows.Add(product.artNr, product.name, attribut, sum.ToString("#.##"), product.quantity, prodSum.ToString("#.##"));
-                }
-
-                return dt;
-            }
-        }
-        public List<ProductObject> GetProductsToList(OrderObject ord)
-        {
-            List<ProductObject> productList = new List<ProductObject>();
 
 
                 foreach (ProductObject product in ord.products)
@@ -249,11 +264,50 @@ namespace WebShop_Group7.Models
 
                     decimal prodSum = sum * product.quantity;
 
-                    productList.Add(product);
+                    dt.Rows.Add(product.artNr, product.name, attribut, sum.ToString("#.##"), product.quantity, prodSum.ToString("#.##"));
                 }
 
-                return productList;
+                return dt;
             }
         }
+        public List<ProductObject> GetProductsToList(OrderObject ord)
+        {
+            List<ProductObject> productList = new List<ProductObject>();
+
+
+            foreach (ProductObject product in ord.products)
+            {
+                string attribut = string.Empty;
+
+                var productDB = new Product();
+
+                Dictionary<string, string> atribut = productDB.GetAttribute(product);
+
+                foreach (KeyValuePair<string, string> atr in atribut)
+                {
+
+                    attribut += atr.Value + " ";
+
+                }
+
+                decimal sum = -1;
+
+                if (ord.priceGroup == 2)
+                {
+                    sum += product.priceB2B;
+                }
+                if (ord.priceGroup == 1)
+                {
+                    sum += product.priceB2C;
+                }
+
+                decimal prodSum = sum * product.quantity;
+
+                productList.Add(product);
+            }
+
+            return productList;
+        }
     }
+}
 
