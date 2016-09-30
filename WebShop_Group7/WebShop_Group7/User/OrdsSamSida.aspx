@@ -139,11 +139,12 @@
                     <td>0</td>
                 </tr>
                 <tr>
-                    <th>Total</th>
                     <th>
-                        <asp:Label ID="Label_totalMoms" runat="server" Text="Label"></asp:Label></th>
+                        <asp:Label ForeColor="Black"  Font-Bold="true"  ID="Label1" runat="server" Text="Total"></asp:Label></th>
                     <th>
-                        <asp:Label ID="Label_totalPrice" runat="server" Text="Label"></asp:Label></th>
+                        <asp:Label ID="Label_totalMoms" ForeColor="Black"  Font-Bold="true" runat="server" Text="Label"></asp:Label></th>
+                    <th>
+                        <asp:Label ID="Label_totalPrice" ForeColor="Black" runat="server" Font-Bold="true" Text="Label"></asp:Label></th>
                 </tr>
             </table>
         </div>
