@@ -38,7 +38,7 @@ namespace WebShop_Group7.User
         {
             GridViewRow row = (sender as LinkButton).NamingContainer as GridViewRow;
             var ID = row.Cells[0].Text;
-            Response.Redirect($"~/Admin/Edit_Order.aspx?id={ID}");
+            Response.Redirect($"~/User/User_EditOrder.aspx?id={ID}");
         }
     }
 }

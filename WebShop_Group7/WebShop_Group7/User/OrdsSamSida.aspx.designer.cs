@@ -85,6 +85,15 @@ namespace WebShop_Group7.User {
         protected global::System.Web.UI.WebControls.Label Label_Adress;
         
         /// <summary>
+        /// productTable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl productTable;
+        
+        /// <summary>
         /// Label_CarrierName control.
         /// </summary>
         /// <remarks>
@@ -146,5 +155,23 @@ namespace WebShop_Group7.User {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label_PayPrice;
+        
+        /// <summary>
+        /// Label_totalMoms control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_totalMoms;
+        
+        /// <summary>
+        /// Label_totalPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_totalPrice;
     }
 }
