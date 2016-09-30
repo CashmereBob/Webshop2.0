@@ -14,11 +14,11 @@ namespace WebShop_Group7.User
         UserObject userObject;
         protected void Page_Load(object sender, EventArgs e)
         {
-            orderObject = Session["Cart"] as OrderObject;
-            userObject = orderObject.usr;
+            //orderObject = Session["Cart"] as OrderObject;
+            //userObject = orderObject.usr;
 
 
-            Label1.Text = userObject.firstName;
+           
         }
     }
 }
