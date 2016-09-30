@@ -48,8 +48,8 @@
     
 
     <h4>Lösenord</h4>
-    <asp:TextBox ID="TextBox_password01" runat="server"></asp:TextBox>
-    <asp:TextBox ID="TextBox_password02" runat="server"></asp:TextBox>
+    <asp:TextBox ID="TextBox_password01" runat="server" TextMode="Password"></asp:TextBox>
+    <asp:TextBox ID="TextBox_password02" runat="server" TextMode="Password"></asp:TextBox>
 
 
 
