@@ -319,22 +319,22 @@ namespace WebShop_Group7.User {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator7;
         
         /// <summary>
-        /// Table_OrderInfo control.
+        /// ProductTable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Table_OrderInfo;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ProductTable;
         
         /// <summary>
-        /// Table_Carriers control.
+        /// CarrierTable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Table_Carriers;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CarrierTable;
         
         /// <summary>
         /// Table_Payment control.

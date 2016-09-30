@@ -10,6 +10,7 @@ namespace WebShop_Group7.Admin
 {
     public partial class New_Product : System.Web.UI.Page
     {
+        HelpMethods help = new HelpMethods();
         List<string> attributes = new List<string>();
         Product product = new Product();
         ProductObject proObj = new ProductObject();
@@ -80,16 +81,7 @@ namespace WebShop_Group7.Admin
             TextBox_B2C.Text = proObj.priceB2C.ToString("#.##");
             TextBox_B2C.Enabled = false;
         }
-        private string CheckText(string text)
-        {
-            string result = "";
-            for (int i = 0; i < text.Length; i++)
-            {
-                if (text[i] == '\'') { result += '\\'; }
-                result += text[i];
-            }
-            return result;
-        }
+      
         protected void Button_Save_Click(object sender, EventArgs e)
         {       
             FillValues(proObj);
@@ -104,7 +96,7 @@ namespace WebShop_Group7.Admin
             proObj.artNr = TextBox1_ArticleNumber.Text;           
             proObj.brandName = TextBox_Brand.Text;         
             proObj.category = TextBox_Category.Text;         
-            proObj.description = CheckText(TextBox_Description.Text);         
+            proObj.description = help.StringToSql(TextBox_Description.Text);         
             proObj.imgURL = Label_ImgUrl.Text;        
             proObj.quantity = int.Parse(TextBox_Quantity.Text);      
             proObj.priceB2B = int.Parse(TextBox_B2B.Text);

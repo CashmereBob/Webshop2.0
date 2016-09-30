@@ -6,7 +6,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebShop_Group7.Models;
-using System.Web.UI.WebControls;
 using System.Net;
 using Newtonsoft.Json;
 
@@ -22,6 +21,7 @@ namespace WebShop_Group7.User
         decimal totalCarrierPrice = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
+       
             oO = Session["Cart"] as OrderObject;
             OrderMail = $@"Dear {oO.usr.firstName} {oO.usr.lastName}! {Environment.NewLine} Hope your prushase fill your needs.{Environment.NewLine}
                            Your order nummer is {oO.orderId}{Environment.NewLine}{Environment.NewLine}";
@@ -74,13 +74,13 @@ namespace WebShop_Group7.User
             productTable.InnerHtml +=
                      $"<table class=\"table col-xs-12\">   " +
                      $"<tr> " +
-                     $"<th>Artikel</th> " +
-                     $"<th>Attribut</th> " +
-                     $"<th>Pris(kr)</th> " +
-                     $"<th>Antal</th> " +
-                     $"<th>Moms(kr)</th> " +
-                     $"<th>Summa(kr)</th> " +
-                     $"</tr> ";
+                     $"<th>Artikel<//th> " +
+                     $"<th>Attribut<//th> " +
+                     $"<th>Pris(kr)<//th> " +
+                     $"<th>Antal<//th> " +
+                     $"<th>Moms(kr)<//th> " +
+                     $"<th>Summa(kr)<//th> " +
+                     $"<//tr> ";
 
             OrderMail += $@"Your products{Environment.NewLine}";
             foreach (var item in oO.products)

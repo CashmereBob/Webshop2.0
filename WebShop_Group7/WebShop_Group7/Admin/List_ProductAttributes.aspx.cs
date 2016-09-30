@@ -11,6 +11,7 @@ namespace WebShop_Group7.Admin
 {
     public partial class List_ProductAttributes : System.Web.UI.Page
     {
+        HelpMethods help = new HelpMethods();
         Product product = new Product();
         ProductObject proObc;
         int ProductID;
@@ -39,7 +40,7 @@ namespace WebShop_Group7.Admin
             if (!string.IsNullOrWhiteSpace(TextBox_Brand.Text)) { proObc.brandName = TextBox_Brand.Text; }
             if (!string.IsNullOrWhiteSpace(TextBox_Category.Text)) { proObc.category = TextBox_Category.Text; }
             if (!string.IsNullOrWhiteSpace(TextBox_ImgUrl.Text)) { proObc.imgURL = TextBox_ImgUrl.Text; }
-            if (!string.IsNullOrWhiteSpace(TextBox_ProductNewDescription.Text)) { proObc.description = CheckText(TextBox_ProductNewDescription.Text); }
+            if (!string.IsNullOrWhiteSpace(TextBox_ProductNewDescription.Text)) { proObc.description = help.StringToSql(TextBox_ProductNewDescription.Text); }
 
             product.SaveProduct_AttributeChanges(proObc);
             GetProduct();
@@ -50,16 +51,7 @@ namespace WebShop_Group7.Admin
             SetValues();
         }
 
-        private string CheckText(string text)
-        {
-            string result = "";
-            for (int i = 0; i < text.Length; i++)
-            {
-                if(text[i] == '\'') { result += '\\'; }
-                result += text[i];
-            }
-            return result;
-        }
+       
 
         //protected void itemSelected(object sender, EventArgs e)
         //{

@@ -64,31 +64,14 @@
         </div>
         <%-- OrderInfo --%>
         <div class="row">
-            <div class="col-xs-12">
-                <asp:Table ID="Table_OrderInfo" CssClass="table" runat="server">
-                    <asp:TableHeaderRow>
-
-                        <asp:TableHeaderCell><strong>Artikel</strong></asp:TableHeaderCell>
-                        <asp:TableHeaderCell><strong>Attribut</strong></asp:TableHeaderCell>
-                        <asp:TableHeaderCell><strong>Pris (kr)</strong></asp:TableHeaderCell>
-                        <asp:TableHeaderCell><strong>Antal</strong></asp:TableHeaderCell>
-                        <asp:TableHeaderCell><strong>Summa (kr)</strong></asp:TableHeaderCell>
-                    </asp:TableHeaderRow>
-                </asp:Table>
+            <div id="ProductTable" runat="server" class=" col-xs-12">
             </div>
         </div>
         <%-- Frakt bolag --%>
 
         <div class="row">
-            <div class="col-xs-6">
-                <h3>Fraktbolag</h3>
-                <asp:Table ID="Table_Carriers" CssClass=" table" runat="server">
-                    <asp:TableHeaderRow>
-                        <asp:TableHeaderCell></asp:TableHeaderCell>
-                        <asp:TableHeaderCell>Namn</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>Pris</asp:TableHeaderCell>
-                    </asp:TableHeaderRow>
-                </asp:Table>
+            <div runat="server" id="CarrierTable" class="col-xs-6">
+ 
             </div>
         </div>
 
