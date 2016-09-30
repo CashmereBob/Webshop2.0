@@ -128,7 +128,7 @@ namespace WebShop_Group7.Models
                 db.OpenConnection();
 
                 string sql = @"Select tbl_Order.ID AS[orderID], tbl_User.Firstname AS[firstName], tbl_User.Lastname AS[lastName], tbl_User.Pricegroup AS[priceGroup], " +
-                                @"tbl_User.Company AS[company], tbl_User.Adress AS[adress], tbl_User.Postalcode AS[postalCode], tbl_User.City AS[city], " +
+                                @"tbl_User.Company AS[company], tbl_User.ID AS [usrID], tbl_User.Adress AS[adress], tbl_User.Postalcode AS[postalCode], tbl_User.City AS[city], " +
                                 @"tbl_User.Pricegroup AS[priceGroup], tbl_User.Telephone AS[telephone], tbl_User.Mobilephone AS[mobile], tbl_User.Email AS[email], " +
                                 @"tbl_Product_Attribute.PriceB2B AS[priceB2B], tbl_Product_Attribute.PriceB2C AS[priceB2C], tbl_Product_Attribute.ArticleNumber AS[ArtNr], " +
                                 @"[tbl_Order_Product-Attribute].Quantity AS[quantity], tbl_Product.Name AS[productName], tbl_User.Pricegroup AS[priceGroup], tbl_Carrier.Carrier AS [carrier], " +
@@ -169,6 +169,7 @@ namespace WebShop_Group7.Models
                         order.postalCode = myDataReader["postalCode"].ToString();
                         order.city = myDataReader["city"].ToString();
                         order.date = myDataReader["Date"].ToString();
+                        order.userID = int.Parse(myDataReader["usrID"].ToString());
 
                         order.telephone = myDataReader["telephone"].ToString();
                         order.mobile = myDataReader["mobile"].ToString();

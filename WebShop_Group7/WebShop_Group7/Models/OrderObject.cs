@@ -8,6 +8,7 @@ namespace WebShop_Group7.Models
     public class OrderObject
     {
         public UserObject usr = new UserObject();
+        public int userID { get; set; }
         public int orderId { get; set; }
         public int priceGroup { get; set; }
         public string company { get; set; }
