@@ -164,11 +164,11 @@
                             <h4>
                                 <asp:Label ID="label_user" runat="server" Text=""></asp:Label></h4>
                             <h5>
-                                <asp:LinkButton ID="LinkButton_info" runat="server" Text="Min information" onclientclick="redirect('~/User/User_Page.aspx')"></asp:LinkButton></h5>
+                                <asp:LinkButton ID="LinkButton_info" runat="server" Text="Min information" OnClick="goToInfo" ></asp:LinkButton></h5>
                             <h5>
-                                <asp:LinkButton ID="LinkButton_orders" runat="server" Text="Orderhistoria" onclientclick="redirect('~/User/OrderSamSida.aspx')"></asp:LinkButton></h5>
+                                <asp:LinkButton ID="LinkButton_orders" runat="server" Text="Orderhistoria" OnClick="goToOrder" ></asp:LinkButton></h5>
                             <h5>
-                                <asp:LinkButton ID="LinkButton_logout" runat="server" Text="Logga ut" OnClick="LinkButton_logout_Click"></asp:LinkButton></h5>
+                                <asp:LinkButton ID="LinkButton_logout" runat="server" Text="Logga ut" OnClick="LinkButton_logout_Click" ></asp:LinkButton></h5>
                         </div>
 
                         <p>&copy; <%: DateTime.Now.Year %> - Webshop, win15 grupp7</p>

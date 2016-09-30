@@ -333,6 +333,16 @@ namespace WebShop_Group7
             var JsonObj = JsonConvert.SerializeObject(Session["Cart"]);
             hdnID.Value = JsonObj;
         }
+        protected void goToInfo(object sender, EventArgs e)
+        {
+            Response.Redirect($"~/User/User_Page.aspx");
+
+        }
+        protected void goToOrder(object sender, EventArgs e)
+        {
+            Response.Redirect($"~/User/User_Orders.aspx");
+
+        }
     }
 
 }
