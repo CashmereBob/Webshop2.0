@@ -13,13 +13,13 @@ namespace WebShop_Group7.User {
     public partial class OrdsSamSida {
         
         /// <summary>
-        /// Label1 control.
+        /// Label_thanx control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label Label_thanx;
         
         /// <summary>
         /// Label_Orderid control.
@@ -58,13 +58,13 @@ namespace WebShop_Group7.User {
         protected global::System.Web.UI.WebControls.Label Label_Email;
         
         /// <summary>
-        /// Label_Adress control.
+        /// Label_Phone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_Adress;
+        protected global::System.Web.UI.WebControls.Label Label_Phone;
         
         /// <summary>
         /// Label_City control.
@@ -76,13 +76,13 @@ namespace WebShop_Group7.User {
         protected global::System.Web.UI.WebControls.Label Label_City;
         
         /// <summary>
-        /// Label_Phone control.
+        /// Label_Adress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_Phone;
+        protected global::System.Web.UI.WebControls.Label Label_Adress;
         
         /// <summary>
         /// Label_CarrierName control.
@@ -92,6 +92,15 @@ namespace WebShop_Group7.User {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label_CarrierName;
+        
+        /// <summary>
+        /// Label_CarrierMoms control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_CarrierMoms;
         
         /// <summary>
         /// Label_CarrierPrice control.

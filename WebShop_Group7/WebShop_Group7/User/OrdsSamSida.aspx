@@ -8,12 +8,13 @@
         </div>
         <div class="row">
             <div class="col-xs-12">
-                <asp:Label ID="Label1" runat="server" Text="Tack (User name) för ditt köp! vi skickar en orderbekräftelse till (User mail) "></asp:Label>
+                <asp:Label ID="Label_thanx" runat="server" Text="Tack (User name) för ditt köp! vi skickar en orderbekräftelse till (User mail) "></asp:Label>
 
             </div>
         </div>
         <div class="row">
-            <h3>Order ID : <asp:Label ID="Label_Orderid" runat="server" Text="Label"></asp:Label></h3>
+            <h3>Order ID :
+                <asp:Label ID="Label_Orderid" runat="server" Text="Label"></asp:Label></h3>
         </div>
         <%-- User --%>
         <div class="row">
@@ -37,11 +38,13 @@
                     <td>
                         <asp:Label ID="Label_Email" runat="server" Text="Email"></asp:Label></td>
                     <td>
-                        <asp:Label ID="Label_Adress" runat="server" Text="Adress"></asp:Label></td>
+                        <asp:Label ID="Label_Phone" runat="server" Text="Phone"></asp:Label></td>
                     <td>
                         <asp:Label ID="Label_City" runat="server" Text="City"></asp:Label></td>
                     <td>
-                        <asp:Label ID="Label_Phone" runat="server" Text="Phone"></asp:Label></td>
+                        <asp:Label ID="Label_Adress" runat="server" Text="Adress"></asp:Label></td>
+
+
                 </tr>
             </table>
         </div>
@@ -78,12 +81,12 @@
         <div class="row">
             <table class="col-xs-12">
                 <tr>
+                    <th>Namn</th>
                     <th></th>
                     <th></th>
                     <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
+                    <th>Moms(kr)</th>
+                    <th>Summa(kr)</th>
                 </tr>
                 <tr>
                     <td>
@@ -91,7 +94,8 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>5</td>
+                    <td>
+                        <asp:Label ID="Label_CarrierMoms" runat="server" Text="Label">0,00</asp:Label></td>
                     <td>
                         <asp:Label ID="Label_CarrierPrice" runat="server" Text="Label">0,00</asp:Label></td>
                 </tr>
@@ -131,7 +135,7 @@
         <div class="row">
             <table class="align-right col-md-6">
                 <tr>
-                    <th></th>             
+                    <th></th>
                     <th>Moms(kr)</th>
                     <th>Summa(kr)</th>
                 </tr>
@@ -140,21 +144,21 @@
                     <td>0</td>
                     <td>0</td>
                 </tr>
-                  <tr>
+                <tr>
                     <td>Frakt</td>
                     <td>0</td>
                     <td>0</td>
                 </tr>
-                  <tr>
+                <tr>
                     <td>Produkt</td>
                     <td>0</td>
                     <td>0</td>
                 </tr>
-            <tr>
-                <th>Total</th>
-                <th>0</th>
-                  <th>0</th>
-            </tr>
+                <tr>
+                    <th>Total</th>
+                    <th>0</th>
+                    <th>0</th>
+                </tr>
             </table>
         </div>
         <%-- END --%>
