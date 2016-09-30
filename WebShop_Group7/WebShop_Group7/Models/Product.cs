@@ -108,7 +108,6 @@ namespace WebShop_Group7.Models
                 dataReader.Close();
             }
         }
-
         internal List<ProductObject> SearchName(string table, string searchString)
         {
             List<ProductObject> result = new List<ProductObject>();
@@ -163,7 +162,6 @@ namespace WebShop_Group7.Models
             connection.CloseConnection();
             return result;
         }
-
         internal void DeleteMainProduct(string ID)
         {
             string query = $@"use [WebShopGr7]
@@ -194,7 +192,6 @@ namespace WebShop_Group7.Models
             finally { connection.CloseConnection(); }
 
         }
-
         internal void DeleteSubProduct(string ID)
         {
             string query = $@" use [WebShopGr7]
@@ -323,8 +320,6 @@ namespace WebShop_Group7.Models
             connection.CloseConnection();
             return result;
         }
-
-
         public DataTable GetListProducts()
         {
             DataTable dataTable = new DataTable("Product");
@@ -475,7 +470,6 @@ namespace WebShop_Group7.Models
 
             connection.CloseConnection();
         }
-
         public ProductObject GetMainProduct(int ID)
         {
             ProductObject Result = new ProductObject();
