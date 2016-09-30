@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="Order" MasterPageFile="~/Site.Master" Language="C#" AutoEventWireup="true" CodeBehind="User_Orders.aspx.cs" Inherits="WebShop_Group7.User.User_Orders" %>
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container-fluid">
 
         <div class="row">
