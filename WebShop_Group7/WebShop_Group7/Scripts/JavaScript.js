@@ -75,18 +75,6 @@ function UpdateCart() {
         $("#numProducts").html(productsInCart);
         $("#priceSum").html(sum);
         $("#updKnapp").removeClass("hide");
-
-        $.ajax({
-            type: 'POST',
-            url: 'product.aspx/UpdateWebCart',
-            data: '{}',
-            contentType: 'application/json; charset=utf-8',
-            dataType: 'json',
-            success: function (msg) {
-                
-            }
-        });
-
        
     }
     
