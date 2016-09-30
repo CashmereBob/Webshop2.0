@@ -8,35 +8,50 @@
         </div>
         <div class="row">
             <div class="col-xs-12">
-                <asp:Label ID="Label1" runat="server" Text="Tack (User name) för ditt köp! vi skickar en orderbekräftelse till (User mail) "></asp:Label>
+                <asp:Label ID="Label_thanx" runat="server" Text="Tack (User name) för ditt köp! vi skickar en orderbekräftelse till (User mail) "></asp:Label>
 
             </div>
         </div>
-        <%-- Product Info --%>
         <div class="row">
-            <h3>Order upgifter</h3>
-        </div>
-        <div class="row">
-            <table class="col-xs-12">
-                <tr>
-                    <th>Artikel</th>
-                    <th>Attribut</th>
-                    <th>Pris(kr)</th>
-                    <th>Antal</th>
-                    <th>Summa(kr)</th>
-                </tr>
-                <tr>
-                    <td>Strumpa</td>
-                    <td>Vit</td>
-                    <td>20</td>
-                    <td>2</td>
-                    <td>40</td>
-                </tr>
-            </table>
+            <h3>Order ID :
+                <asp:Label ID="Label_Orderid" runat="server" Text="Label"></asp:Label></h3>
         </div>
         <%-- User --%>
         <div class="row">
-            <h3>Order upgifter</h3>
+            <h4>Person upgifter</h4>
+        </div>
+        <div class="row">
+            <table class="col-xs-12">
+                <tr>
+                    <th>Förnamn</th>
+                    <th>Efternamn</th>
+                    <th>Email</th>
+                    <th>Adress</th>
+                    <th>Stad</th>
+                    <th>Telefon</th>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="Label_Fnamn" runat="server" Text="FirstName"></asp:Label></td>
+                    <td>
+                        <asp:Label ID="Label_Lnamn" runat="server" Text="LastName"></asp:Label></td>
+                    <td>
+                        <asp:Label ID="Label_Email" runat="server" Text="Email"></asp:Label></td>
+                    <td>
+                        <asp:Label ID="Label_Phone" runat="server" Text="Phone"></asp:Label></td>
+                    <td>
+                        <asp:Label ID="Label_City" runat="server" Text="City"></asp:Label></td>
+                    <td>
+                        <asp:Label ID="Label_Adress" runat="server" Text="Adress"></asp:Label></td>
+
+
+                </tr>
+            </table>
+        </div>
+        <%-- Product Info --%>
+
+        <div class="row">
+            <h4>Produkt upgifter</h4>
         </div>
         <div class="row">
             <table class="col-xs-12">
@@ -45,6 +60,7 @@
                     <th>Attribut</th>
                     <th>Pris(kr)</th>
                     <th>Antal</th>
+                    <th>Moms(kr)</th>
                     <th>Summa(kr)</th>
                 </tr>
                 <tr>
@@ -52,73 +68,96 @@
                     <td>Vit</td>
                     <td>20</td>
                     <td>2</td>
+                    <td>5</td>
                     <td>40</td>
                 </tr>
             </table>
         </div>
+
         <%-- Carrier --%>
         <div class="row">
-            <h3>Order upgifter</h3>
+            <h4>Leverantör upgifter</h4>
         </div>
         <div class="row">
             <table class="col-xs-12">
                 <tr>
-                    <th>Artikel</th>
-                    <th>Attribut</th>
-                    <th>Pris(kr)</th>
-                    <th>Antal</th>
+                    <th>Namn</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th>Moms(kr)</th>
                     <th>Summa(kr)</th>
                 </tr>
                 <tr>
-                    <td>Strumpa</td>
-                    <td>Vit</td>
-                    <td>20</td>
-                    <td>2</td>
-                    <td>40</td>
+                    <td>
+                        <asp:Label ID="Label_CarrierName" runat="server" Text="Label">Carrier Name</asp:Label></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <asp:Label ID="Label_CarrierMoms" runat="server" Text="Label">0,00</asp:Label></td>
+                    <td>
+                        <asp:Label ID="Label_CarrierPrice" runat="server" Text="Label">0,00</asp:Label></td>
                 </tr>
             </table>
         </div>
         <%-- Payment --%>
         <div class="row">
-            <h3>Order upgifter</h3>
+            <h4>Betlnings upgifter</h4>
         </div>
         <div class="row">
             <table class="col-xs-12">
                 <tr>
-                    <th>Artikel</th>
-                    <th>Attribut</th>
-                    <th>Pris(kr)</th>
-                    <th>Antal</th>
+                    <th>Namn</th>
+                    <th></th>
+                    <th></th>
+                    <th>Typ</th>
+                    <th>Moms(kr)</th>
                     <th>Summa(kr)</th>
                 </tr>
                 <tr>
-                    <td>Strumpa</td>
-                    <td>Vit</td>
-                    <td>20</td>
-                    <td>2</td>
-                    <td>40</td>
+                    <td>
+                        <asp:Label ID="Label_PayName" runat="server" Text="Pay name"></asp:Label></td>
+                    <td></td>
+                    <td>
+                        <asp:Label ID="Label_PayType" runat="server" Text="Pay type"></asp:Label></td>
+                    <td>
+                        <asp:Label ID="Label_PayMoms" runat="server" Text="0,0"></asp:Label></td>
+                    <td>
+                        <asp:Label ID="Label_PayPrice" runat="server" Text="0,0"></asp:Label></td>
                 </tr>
             </table>
         </div>
         <%-- Total --%>
         <div class="row">
-            <h3>Order upgifter</h3>
+            <h4>Sammanställning</h4>
         </div>
         <div class="row">
-            <table class="col-xs-12">
+            <table class="align-right col-md-6">
                 <tr>
-                    <th>Artikel</th>
-                    <th>Attribut</th>
-                    <th>Pris(kr)</th>
-                    <th>Antal</th>
+                    <th></th>
+                    <th>Moms(kr)</th>
                     <th>Summa(kr)</th>
                 </tr>
                 <tr>
-                    <td>Strumpa</td>
-                    <td>Vit</td>
-                    <td>20</td>
-                    <td>2</td>
-                    <td>40</td>
+                    <td>Bettlaing</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>Frakt</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>Produkt</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <th>Total</th>
+                    <th>0</th>
+                    <th>0</th>
                 </tr>
             </table>
         </div>
