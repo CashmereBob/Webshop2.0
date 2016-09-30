@@ -27,9 +27,9 @@
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Required" ControlToValidate="TextBox_LastNameValue"></asp:RequiredFieldValidator>
             </div>
             <div class="col-md-3" runat="server" id="EmailValue">
-                <asp:TextBox ID="TextBox_EmailValue" CssClass="form-control" runat="server" TextMode="Email"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Required" ControlToValidate="TextBox_EmailValue"></asp:RequiredFieldValidator>
-            </div>
+                <asp:TextBox ID="TextBox_EmailValue" CssClass="form-control" runat="server" TextMode="SingleLine"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Required" ControlToValidate="TextBox_EmailValue"></asp:RequiredFieldValidator>            
+                 </div>
             <div class="col-md-3" runat="server" id="CompanyValue">
             </div>
         </div>

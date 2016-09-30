@@ -55,7 +55,7 @@ namespace WebShop_Group7.Admin
             string result = "";
             for (int i = 0; i < text.Length; i++)
             {
-                if(text[i] == '\'') { result += '/'; }
+                if(text[i] == '\'') { result += '\\'; }
                 result += text[i];
             }
             return result;
