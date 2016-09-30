@@ -93,6 +93,7 @@
                     <asp:TableHeaderRow>
                         <asp:TableHeaderCell></asp:TableHeaderCell>
                         <asp:TableHeaderCell>Namn</asp:TableHeaderCell>
+                        <asp:TableHeaderCell>Typ</asp:TableHeaderCell>
                         <asp:TableHeaderCell>Pris</asp:TableHeaderCell>
                     </asp:TableHeaderRow>
                 </asp:Table>
@@ -108,7 +109,7 @@
 
                     <asp:TableRow>
                         <asp:TableCell>
-                            <asp:Label ID="Betalning" runat="server" Text="Label"></asp:Label>
+                            <asp:Label ID="Betalning" runat="server" Text="Betalning"></asp:Label>
                         </asp:TableCell>
                         <asp:TableCell>
                             <asp:Label ID="Label_Total_PaymentPrice" runat="server" Text="0,00"></asp:Label>kr
@@ -116,7 +117,7 @@
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell>
-                            <asp:Label ID="Frakt" runat="server" Text="Label"></asp:Label>
+                            <asp:Label ID="Frakt" runat="server" Text="Frakt"></asp:Label>
                         </asp:TableCell>
                         <asp:TableCell>
                             <asp:Label ID="Label_Total_CarrierPrice" runat="server" Text="0,00"></asp:Label>kr
