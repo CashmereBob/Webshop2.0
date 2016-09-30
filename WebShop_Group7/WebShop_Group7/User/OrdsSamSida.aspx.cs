@@ -11,14 +11,13 @@ namespace WebShop_Group7.User
     public partial class OrdsSamSida : System.Web.UI.Page
     {
         OrderObject orderObject;
-        UserObject userObject;
+       
         protected void Page_Load(object sender, EventArgs e)
         {
             //orderObject = Session["Cart"] as OrderObject;
             //userObject = orderObject.usr;
 
-
-           
+      
         }
     }
 }
