@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebShop_Group7.User {
+namespace WebShop_Group7 {
     
     
-    public partial class Search_Result {
+    public partial class brand {
         
         /// <summary>
         /// filternav control.

@@ -180,8 +180,9 @@
     <Content Include="Admin\List_Products.aspx" />
     <Content Include="Admin\List_Users.aspx" />
     <Content Include="Admin\New_Product.aspx" />
-    <Content Include="brand.aspx" />
-    <Content Include="category.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="User\brand.aspx" />
+    <Content Include="User\category.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -197,10 +198,10 @@
     <Content Include="Admins.Master" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="login.aspx" />
-    <Content Include="page.aspx" />
+    <Content Include="User\page.aspx" />
     <Content Include="Pictures\KlädPlagg.jpg" />
     <Content Include="Pictures\REA.png" />
-    <Content Include="product.aspx" />
+    <Content Include="User\product.aspx" />
     <Content Include="Scripts\bootstrap-slider.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -393,7 +394,7 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Default.aspx" />
+    <Content Include="User\Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
@@ -590,18 +591,25 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="brand.aspx.cs">
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\brand.aspx.cs">
       <DependentUpon>brand.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="brand.aspx.designer.cs">
+    <Compile Include="User\brand.aspx.designer.cs">
       <DependentUpon>brand.aspx</DependentUpon>
     </Compile>
-    <Compile Include="category.aspx.cs">
+    <Compile Include="User\category.aspx.cs">
       <DependentUpon>category.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="category.aspx.designer.cs">
+    <Compile Include="User\category.aspx.designer.cs">
       <DependentUpon>category.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
@@ -611,11 +619,11 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.cs">
+    <Compile Include="User\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
+    <Compile Include="User\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Error Pages\Error.aspx.cs">
@@ -653,18 +661,18 @@
     <Compile Include="Models\UserObject.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Models\UserService.cs" />
-    <Compile Include="page.aspx.cs">
+    <Compile Include="User\page.aspx.cs">
       <DependentUpon>page.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="page.aspx.designer.cs">
+    <Compile Include="User\page.aspx.designer.cs">
       <DependentUpon>page.aspx</DependentUpon>
     </Compile>
-    <Compile Include="product.aspx.cs">
+    <Compile Include="User\product.aspx.cs">
       <DependentUpon>product.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="product.aspx.designer.cs">
+    <Compile Include="User\product.aspx.designer.cs">
       <DependentUpon>product.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
