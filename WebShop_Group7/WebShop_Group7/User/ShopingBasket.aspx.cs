@@ -63,20 +63,20 @@ namespace WebShop_Group7.User
             foreach (var item in paymentObjects)
             {
                 //Add TableRow
-
+                int nr = 0;
                 TableRow tr = new TableRow();
-                tr.ID = "tr_" + item.paymentId;
+                tr.ID = "tr_" + item.paymentId+ nr;
                 Table_Payment.Controls.Add(tr);
 
 
                 //1
                 //Add tablrCellRadio
                 TableCell tcR = new TableCell();
-                tcR.ID = "tcr_" + item.paymentId;
+                tcR.ID = "tcr_tablrCellRadio" + item.paymentId+ nr;
                 tr.Controls.Add(tcR);
                 //RadioButton
                 RadioButton radio = new RadioButton();
-                radio.ID = "radio_" + item.paymentId;
+                radio.ID = "radio_" + item.paymentId+ nr;
                 radio.GroupName = "Payment";
                 tcR.Controls.Add(radio);
                 radio.CheckedChanged += Radio_CheckedChanged;
@@ -85,11 +85,11 @@ namespace WebShop_Group7.User
                 //Add TableCells Payment
                 TableCell tc1 = new TableCell();
                 tc1.CssClass = "tc";
-                tc1.ID = "tc_" + item.paymentId + item;
+                tc1.ID = "tc_Payment" + item.paymentId+ nr;
                 tr.Controls.Add(tc1);
                 //Add Lable Payment
                 Label lb = new Label();
-                lb.ID = "lb_" + item.paymentId + item.payment;
+                lb.ID = "lb_Payment" + item.paymentId + item.payment+ nr;
                 lb.Text = item.payment;
                 tc1.Controls.Add(lb);
 
@@ -97,11 +97,11 @@ namespace WebShop_Group7.User
                 //Add TableCells PaymentType
                 TableCell tc2 = new TableCell();
                 tc2.CssClass = "tc";
-                tc2.ID = "tc2_" + item.paymentId + item;
+                tc2.ID = "tc2_PaymentType" + item.paymentId + item+ nr;
                 tr.Controls.Add(tc2);
                 //Add Lable PaymentServise
                 Label lbType = new Label();
-                lbType.ID = "lbType" + item.paymentId + item.service;
+                lbType.ID = "lbType" + item.paymentId + item.service+ nr;
                 lbType.Text = item.service;
                 tc2.Controls.Add(lbType);
 
@@ -109,14 +109,14 @@ namespace WebShop_Group7.User
                 //Add TableCells Price
                 TableCell tc_Price = new TableCell();
                 tc_Price.CssClass = "tc";
-                tc_Price.ID = "tc_" + item.paymentId + item.price;
+                tc_Price.ID = "tc_Price" + item.paymentId + item.price+ nr;
                 tr.Controls.Add(tc_Price);
                 //Add Lable Price
                 Label lb_Price = new Label();
-                lb_Price.ID = "lb_" + item.paymentId + item.price;
+                lb_Price.ID = "lb_Price" + item.paymentId + item.price+ nr;
                 lb_Price.Text = item.price.ToString("#.##") + "kr";
                 tc_Price.Controls.Add(lb_Price);
-
+                nr++;
                 if (!check)
                 {
                     radio.Checked = true;
@@ -132,22 +132,23 @@ namespace WebShop_Group7.User
             bool check = false;
             foreach (var item in carriers)
             {
+                int nr = 0;
                 //Add TableRow
 
                 TableRow tr = new TableRow();
-                tr.ID = "tr_" + item.carrierId;
+                tr.ID = "tr_2" + item.carrierId+ nr;
                 Table_Carriers.Controls.Add(tr);
 
 
 
                 //Add tablrCellRadio
                 TableCell tcR = new TableCell();
-                tcR.ID = "tcr_" + item.carrierId;
+                tcR.ID = "tcr_sdtablrCellRadio" + item.carrierId+ nr;
                 tr.Controls.Add(tcR);
 
                 //RadioButton
                 RadioButton radio = new RadioButton();
-                radio.ID = "radio_" + item.carrierId;
+                radio.ID = "radio_sdtablrCellRadio" + item.carrierId+ nr;
                 radio.GroupName = "Carrier";
                 tcR.Controls.Add(radio);
                 radio.CheckedChanged += Radio_CheckedChanged;
@@ -155,27 +156,27 @@ namespace WebShop_Group7.User
                 //Add TableCells CarrierName
                 TableCell tc1 = new TableCell();
                 tc1.CssClass = "tc";
-                tc1.ID = "tc_" + item.carrierId + item.carrier;
+                tc1.ID = "tc_" + item.carrierId + item.carrier+ nr;
                 tr.Controls.Add(tc1);
 
 
                 //Add Lable CarrierName
                 Label lb = new Label();
-                lb.ID = "lb_" + item.carrierId + item.carrier;
+                lb.ID = "lb_" + item.carrierId + nr;
                 lb.Text = item.carrier;
                 tc1.Controls.Add(lb);
 
                 //Add TableCells CarrierPrice
                 TableCell tc_Price = new TableCell();
                 tc_Price.CssClass = "tc";
-                tc_Price.ID = "tc_" + item.carrierId + item.price;
+                tc_Price.ID = "tc_" + item.carrierId + item.price+ nr;
                 tr.Controls.Add(tc_Price);
                 //Add Lable CarrierPrice
                 Label lb_Price = new Label();
-                lb_Price.ID = "lb_" + item.carrierId + item.price;
+                lb_Price.ID = "lb_" + item.carrierId + item.price + nr;
                 lb_Price.Text = item.price.ToString("#.##") + "kr";
                 tc_Price.Controls.Add(lb_Price);
-
+                nr++;
                 if (!check)
                 {
                     radio.Checked = true;
@@ -207,68 +208,69 @@ namespace WebShop_Group7.User
             var OrderInfoList = order.GetProductsToList(orderObject);
             foreach (var item in OrderInfoList)
             {
+                int nr = 0;
                 //Add TableRow
                 TableRow tr = new TableRow();
-                tr.ID = "tr_" + item.ID;
+                tr.ID = "tr_" + item.ID + nr;
                 Table_OrderInfo.Controls.Add(tr);
                 ////////////////////////////////////////////////////////////
                 //Add Cell Article
                 TableCell tc_Article = new TableCell();
-                tc_Article.ID = "tc_Article" + item.ID;
+                tc_Article.ID = "tc_Article" + item.ID + nr;
                 tr.Controls.Add(tc_Article);
 
                 //Add Lable Article
                 Label lb_Article = new Label();
-                lb_Article.ID = "lb_Article" + item.ID;
+                lb_Article.ID = "lb_Article" + item.ID + nr;
                 lb_Article.Text = item.name;
                 tc_Article.Controls.Add(lb_Article);
                 ////////////////////////////////////////////////////////////
                 //Add Cell Attribute
                 TableCell tc_Attribute = new TableCell();
-                tc_Attribute.ID = "tc_Attribute" + item.ID;
+                tc_Attribute.ID = "tc_Attribute" + item.ID + nr;
                 tr.Controls.Add(tc_Attribute);
 
                 //Add Attributes
                 Label lb_Attribute = new Label();
-                lb_Attribute.ID = "lb_Attribute" + item.ID;            
+                lb_Attribute.ID = "lb_Attribute" + item.ID + nr;            
                 lb_Attribute.Text = product.GetAttributes(item.ID) ;
                 tc_Attribute.Controls.Add(lb_Attribute);
                 ////////////////////////////////////////////////////////////
                 //Add Cell Price
                 TableCell tc_Price = new TableCell();
-                tc_Price.ID = "tc_Price" + item.ID;
+                tc_Price.ID = "tc_Price" + item.ID + nr;
                 tr.Controls.Add(tc_Price);
 
                 //Add Price
                 Label lb_Price = new Label();
-                lb_Price.ID = "lb_Price" + item.ID;
+                lb_Price.ID = "lb_Price" + item.ID + nr;
                 if (priceGroup == 1) { lb_Price.Text = item.priceB2C.ToString("#.##"); }
                 else { lb_Price.Text = item.priceB2B.ToString("#.##") + "kr"; }
                 tc_Price.Controls.Add(lb_Price);
                 ////////////////////////////////////////////////////////////
                 //Add Cell Quantity
                 TableCell tc_Quantity = new TableCell();
-                tc_Quantity.ID = "tc_Quantity" + item.ID;
+                tc_Quantity.ID = "tc_Quantity" + item.ID + nr;
                 tr.Controls.Add(tc_Quantity);
 
                 //Add Quantity
                 Label lb_Quantity = new Label();
-                lb_Quantity.ID = "lb_Quantity" + item.ID;
+                lb_Quantity.ID = "lb_Quantity" + item.ID + nr;
                 lb_Quantity.Text = item.quantity.ToString();
                 tc_Quantity.Controls.Add(lb_Quantity);
                 ////////////////////////////////////////////////////////////
                 //Add Cell Total
                 TableCell tc_Total = new TableCell();
-                tc_Total.ID = "tc_Total" + item.ID;
+                tc_Total.ID = "tc_Total" + item.ID + nr;
                 tr.Controls.Add(tc_Total);
 
                 //Add Total
                 Label lb_Total = new Label();
-                lb_Total.ID = "lb_Total" + item.ID;
+                lb_Total.ID = "lb_Total" + item.ID + nr;
                 if (priceGroup == 1) { lb_Total.Text = (item.quantity * item.priceB2C).ToString("##.#"); totalOrderPrice += (item.quantity * item.priceB2C); }
                 else { lb_Total.Text = (item.quantity * item.priceB2B).ToString("##.#"); totalOrderPrice += (item.quantity * item.priceB2B); }
                 tc_Total.Controls.Add(lb_Total);
-
+                nr++;
             }
             //Add row total
             TableRow tr2 = new TableRow();
@@ -365,6 +367,7 @@ namespace WebShop_Group7.User
             }
             else
             {
+                thisUser.email = TextBox_EmailValue.Text;
                 thisUser.firstName = TextBox_FirstNameValue.Text;
                 thisUser.lastName = TextBox_LastNameValue.Text;
                 thisUser.priceGroup = 1;

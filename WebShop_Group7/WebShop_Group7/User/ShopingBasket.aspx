@@ -20,12 +20,15 @@
         <div class="row" runat="server" id="UserValues">
             <div class="col-md-3" runat="server" id="FirstNameValue">
                 <asp:TextBox ID="TextBox_FirstNameValue" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Required" ControlToValidate="TextBox_FirstNameValue"></asp:RequiredFieldValidator>
             </div>
             <div class="col-md-3" runat="server" id="LastNameValue">
                 <asp:TextBox ID="TextBox_LastNameValue" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Required" ControlToValidate="TextBox_LastNameValue"></asp:RequiredFieldValidator>
             </div>
             <div class="col-md-3" runat="server" id="EmailValue">
-                <asp:TextBox ID="TextBox_EmailValue" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TextBox_EmailValue" CssClass="form-control" runat="server" TextMode="Email"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Required" ControlToValidate="TextBox_EmailValue"></asp:RequiredFieldValidator>
             </div>
             <div class="col-md-3" runat="server" id="CompanyValue">
             </div>
@@ -39,15 +42,19 @@
             <div class="row" runat="server" id="Div6">
             <div class="col-md-3" runat="server" id="Div_AdressValue">
                 <asp:TextBox ID="TextBox_Adress" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Required" ControlToValidate="TextBox_Adress"></asp:RequiredFieldValidator>
             </div>
             <div class="col-md-3" runat="server" id="Div_ZipValue">
                 <asp:TextBox ID="TextBox_Zip" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Required" ControlToValidate="TextBox_Zip"></asp:RequiredFieldValidator>
             </div>
             <div class="col-md-3" runat="server" id="Div_CityValue">
                 <asp:TextBox ID="TextBox_City" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Required" ControlToValidate="TextBox_City"></asp:RequiredFieldValidator>
             </div>
                <div class="col-md-3" runat="server" id="Div1_PhoneValue">
-                <asp:TextBox ID="TextBox_Phone" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TextBox_Phone" CssClass="form-control" runat="server" TextMode="Phone"></asp:TextBox>
+                   <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Required" ControlToValidate="TextBox_Phone"></asp:RequiredFieldValidator>
             </div>
         </div>
         <div class="row">
@@ -151,7 +158,8 @@
         <%-- ÉND --%>
         <div class="row">
             <div class="col-xs-12">
-                <asp:Label ID="Label1" runat="server" Text="Jag godkänner "></asp:Label><a>Köpvilkoren</a><asp:CheckBox ID="CheckBox1" runat="server" />
+                <asp:Label ID="Label1" runat="server" Text="Jag godkänner "></asp:Label><a>Köpvilkoren</a>
+                <asp:CheckBox ID="CheckBox1" runat="server" />
             </div>
         </div>
         <div class="row">

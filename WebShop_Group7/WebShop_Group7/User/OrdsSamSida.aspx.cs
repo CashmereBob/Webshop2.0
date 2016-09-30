@@ -118,18 +118,20 @@ namespace WebShop_Group7.User
         }
         protected void SendMail()
         {
-            try { 
-            MailMessage o = new MailMessage("lundgren84@hotmail.se", $"{oO.usr.email}", "Web-Shop Group7", $"{OrderMail}");
-            NetworkCredential netCred = new NetworkCredential("lundgren84@hotmail.se", "olleolle12");
-            SmtpClient smtpobj = new SmtpClient("smtp.live.com", 587);
-            smtpobj.EnableSsl = true;
-            smtpobj.Credentials = netCred;
-            smtpobj.Send(o);
+            try
+            {
+                MailMessage o = new MailMessage("lundgren84@hotmail.se", $"{oO.usr.email}", "Web-Shop Group7", $"{OrderMail}");
+                NetworkCredential netCred = new NetworkCredential("lundgren84@hotmail.se", "olleolle12");
+                SmtpClient smtpobj = new SmtpClient("smtp.live.com", 587);
+                smtpobj.EnableSsl = true;
+                smtpobj.Credentials = netCred;
+                smtpobj.Send(o);
             }
-            catch {
+            catch
+            {
                 Page.RegisterStartupScript("UserMsg", "<script>alert('Sending Failed...');if(alert){ window.location='SendMail.aspx';}</script>");
             }
-        
+
         }
     }
 }
