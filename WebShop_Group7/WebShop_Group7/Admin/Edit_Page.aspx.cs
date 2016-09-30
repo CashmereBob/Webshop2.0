@@ -65,9 +65,11 @@ namespace WebShop_Group7.Admin
         private void UpdatePage(int id)
         {
             PageObject page = new PageObject();
+            HelpMethods fnuttConverter = new HelpMethods();
 
+            
             page.name = TextBox_Name.Text;
-            page.content = TextArea_Content.Text;
+            page.content = fnuttConverter.StringToSql(TextArea_Content.Text);
            
 
             pageDal.UppdatePage(page, id);
