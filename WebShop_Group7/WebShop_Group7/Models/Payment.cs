@@ -80,7 +80,7 @@ namespace WebShop_Group7.Models
                         p.paymentId = int.Parse(myDataReader["ID"].ToString());
                         p.service = myDataReader["Service"].ToString();
                         p.price = decimal.Parse(myDataReader["Price"].ToString());
-                        p.service = myDataReader["Provider"].ToString();
+                        p.payment = myDataReader["Provider"].ToString();
                         result.Add(p);
 
                     }

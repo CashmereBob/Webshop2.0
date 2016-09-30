@@ -14,6 +14,7 @@ namespace WebShop_Group7.User
         Order order = new Order();
         Carrier carrier = new Carrier();
         Payment payment = new Payment();
+        Product product = new Product();
         OrderObject orderObject;
         UserObject user;
         List<CarrierObject> carriers;
@@ -68,12 +69,11 @@ namespace WebShop_Group7.User
                 Table_Payment.Controls.Add(tr);
 
 
-
+                //1
                 //Add tablrCellRadio
                 TableCell tcR = new TableCell();
                 tcR.ID = "tcr_" + item.paymentId;
                 tr.Controls.Add(tcR);
-
                 //RadioButton
                 RadioButton radio = new RadioButton();
                 radio.ID = "radio_" + item.paymentId;
@@ -81,30 +81,31 @@ namespace WebShop_Group7.User
                 tcR.Controls.Add(radio);
                 radio.CheckedChanged += Radio_CheckedChanged;
                 radioList.Add(radio);
-                //Add TableCells PaymentName
+                //2
+                //Add TableCells Payment
                 TableCell tc1 = new TableCell();
                 tc1.CssClass = "tc";
                 tc1.ID = "tc_" + item.paymentId + item;
                 tr.Controls.Add(tc1);
-
-                //Add Lable PaymentServise
+                //Add Lable Payment
                 Label lb = new Label();
-                lb.ID = "lb_" + item.paymentId + item.service;
-                lb.Text = item.service;
+                lb.ID = "lb_" + item.paymentId + item.payment;
+                lb.Text = item.payment;
                 tc1.Controls.Add(lb);
 
+                //3
                 //Add TableCells PaymentType
                 TableCell tc2 = new TableCell();
                 tc2.CssClass = "tc";
                 tc2.ID = "tc2_" + item.paymentId + item;
                 tr.Controls.Add(tc2);
-
                 //Add Lable PaymentServise
                 Label lbType = new Label();
                 lbType.ID = "lbType" + item.paymentId + item.service;
-                lbType.Text = item.payment;
+                lbType.Text = item.service;
                 tc2.Controls.Add(lbType);
 
+                //4
                 //Add TableCells Price
                 TableCell tc_Price = new TableCell();
                 tc_Price.CssClass = "tc";
@@ -200,11 +201,6 @@ namespace WebShop_Group7.User
             }
         }
 
-        private void UpdateTotalPrice()
-        {
-            throw new NotImplementedException();
-        }
-
         private void FillOrderInfo(Order order)
         {
 
@@ -234,8 +230,8 @@ namespace WebShop_Group7.User
 
                 //Add Attributes
                 Label lb_Attribute = new Label();
-                lb_Attribute.ID = "lb_Attribute" + item.ID;
-                lb_Attribute.Text = "Attributes!";
+                lb_Attribute.ID = "lb_Attribute" + item.ID;            
+                lb_Attribute.Text = product.GetAttributes(item.ID) ;
                 tc_Attribute.Controls.Add(lb_Attribute);
                 ////////////////////////////////////////////////////////////
                 //Add Cell Price
@@ -336,7 +332,6 @@ namespace WebShop_Group7.User
                 }
             }
         }
-
 
         private void FillResultInfo()
         {

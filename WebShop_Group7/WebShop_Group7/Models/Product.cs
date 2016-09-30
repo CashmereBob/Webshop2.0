@@ -708,10 +708,10 @@ namespace WebShop_Group7.Models
                     while (dataReader.Read())
                     {
                         string attributes = "";
-                        try { attributes += (dataReader["a1"].ToString() + '\t'); } catch { }
-                        try { attributes += (dataReader["a2"].ToString() + '\t'); } catch { }
-                        try { attributes += (dataReader["a3"].ToString() + '\t'); } catch { }
-                        try { attributes += (dataReader["a4"].ToString() + '\t'); } catch { }
+                        if (!string.IsNullOrWhiteSpace(dataReader["a1"].ToString())) { try { attributes += (dataReader["a1"].ToString() + ',' + '\t'); } catch { } }
+                        if (!string.IsNullOrWhiteSpace(dataReader["a2"].ToString())) { try { attributes += (dataReader["a2"].ToString() + ',' + '\t'); } catch { } }
+                        if (!string.IsNullOrWhiteSpace(dataReader["a3"].ToString())) { try { attributes += (dataReader["a3"].ToString() + ',' + '\t'); } catch { } }
+                        if (!string.IsNullOrWhiteSpace(dataReader["a4"].ToString())) { try { attributes += (dataReader["a4"].ToString() + ',' + '\t'); } catch { } }
                         result = attributes;
                     }
                 }
