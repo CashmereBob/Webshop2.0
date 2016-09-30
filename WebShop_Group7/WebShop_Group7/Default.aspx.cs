@@ -20,18 +20,22 @@ namespace WebShop_Group7
         {
             if (Session["User"] != null) { panel_left1.Visible = false; panel_left2.Visible = true; }
             PageObject page = pageDal.GetStartPage();
-            content.InnerHtml = page.content;
-
+            PageObject page2 = pageDal.GetWelcome();
             
-           
+            if (!IsPostBack)
+            {
+                content.InnerHtml = page.content;
+                welcome.InnerHtml = page2.content;
+                
                 CheckPricegroup();
-                productList = product.GetNewestProducts(9);
+                productList = product.GetNewestProducts(6);
                 FillTheNews(productList);
 
                 productList_Old = product.GetOldestProducts(3);
                 FillTheOlds(productList_Old);
-            
-       
+            }
+
+
         }
 
         private void CheckPricegroup()
@@ -69,30 +73,33 @@ namespace WebShop_Group7
         }
         protected void FillTheOlds(List<ProductObject> oldProduct)
         {
-            foreach (var item in oldProduct)
-            {
+            //foreach (var item in oldProduct)
+            //{
 
-                string price = string.Empty;
+            //    string price = string.Empty;
 
-                if (priceGroup == 1) { price = item.priceB2C.ToString("#,##"); }
-                if (priceGroup == 2) { price = item.priceB2B.ToString("#,##"); }
+            //    if (priceGroup == 1) { price = item.priceB2C.ToString("#,##"); }
+            //    if (priceGroup == 2) { price = item.priceB2B.ToString("#,##"); }
 
-                SpecialOffers.InnerHtml += 
-                                                     $"<div class=\"col-sm-12 col-md-12 col-lg-10\"> " +
-                                                        $"<div class=\"thumbnail\"> " +
-                                                          $"<img src = \"Pictures/REA.png\" alt=\"...\" > " +
-                                                          $"<img src = \"{item.imgURL}\" alt=\"...\" > " +
-                                                            $"<img src = \"Pictures/REA.png\" alt=\"...\" > " +
-                                                          $"<div class=\"caption\" > " +
-                                                            $"<h3>{item.name}</h3> " +
-                                                            $"<h4 class=\"green\" >{price} kr</h4>" +
-                                                            $"<p>{item.brandName}</p> " +
-                                                            $"<p><a href=\"/product.aspx?id={item.productID}\" class=\"btn btn-primary\" role=\"button\">Mer info</a></p> " +
-                                                          $"</div> " +
-                                                        $"</div> " +
-                                                     
-                                                    $"</div>";
-            }
+            //    SpecialOffers.InnerHtml += 
+            //                                         $"<div class=\"col-sm-12 col-md-12 col-lg-10\"> " +
+            //                                            $"<div class=\"thumbnail\"> " +
+            //                                              $"<img src = \"Pictures/REA.png\" alt=\"...\" > " +
+            //                                              $"<img src = \"{item.imgURL}\" alt=\"...\" > " +
+            //                                                $"<img src = \"Pictures/REA.png\" alt=\"...\" > " +
+            //                                              $"<div class=\"caption\" > " +
+            //                                                $"<h3>{item.name}</h3> " +
+            //                                                $"<h4 class=\"green\" >{price} kr</h4>" +
+            //                                                $"<p>{item.brandName}</p> " +
+            //                                                $"<p><a href=\"/product.aspx?id={item.productID}\" class=\"btn btn-primary\" role=\"button\">Mer info</a></p> " +
+            //                                              $"</div> " +
+            //                                            $"</div> " +
+
+            //                                        $"</div>";
+            //}
+
+            PageObject page = pageDal.GetOffers();
+            SpecialOffers.InnerHtml = page.content;
         }
     }
 }

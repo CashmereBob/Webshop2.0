@@ -105,7 +105,7 @@ namespace WebShop_Group7
 
                 foreach (PageObject page in pageDal.ListAllPagesList())
                 {
-                    if (page.name != "Startpage")
+                    if (page.name != "Startpage" && page.name != "Start" && page.name != "Erbjudande")
                     {
                         pageMeny.InnerHtml += $"<li><a href=\"page.aspx?id={page.pageId}\">{page.name}</a></li>";
                     }

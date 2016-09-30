@@ -239,6 +239,82 @@ namespace WebShop_Group7.Models
             }
         }
 
-        
+        internal PageObject GetOffers()
+        {
+            PageObject page = new PageObject();
+            try
+            {
+                db.OpenConnection();
+
+                string sql = $"Select * From tbl_Page WHERE Name = 'Erbjudande'";
+                SqlCommand myCommand = new SqlCommand(sql, db._connection);
+
+                using (SqlDataReader myDataReader = myCommand.ExecuteReader())
+                {
+
+                    while (myDataReader.Read())
+                    {
+                        page.pageId = int.Parse(myDataReader["ID"].ToString());
+                        page.name = myDataReader["Name"].ToString();
+                        page.content = myDataReader["HTMLContent"].ToString();
+
+                    }
+                }
+
+
+
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+
+
+
+            return page;
+        }
+
+        internal PageObject GetWelcome()
+        {
+            PageObject page = new PageObject();
+            try
+            {
+                db.OpenConnection();
+
+                string sql = $"Select * From tbl_Page WHERE Name = 'Start'";
+                SqlCommand myCommand = new SqlCommand(sql, db._connection);
+
+                using (SqlDataReader myDataReader = myCommand.ExecuteReader())
+                {
+
+                    while (myDataReader.Read())
+                    {
+                        page.pageId = int.Parse(myDataReader["ID"].ToString());
+                        page.name = myDataReader["Name"].ToString();
+                        page.content = myDataReader["HTMLContent"].ToString();
+
+                    }
+                }
+
+
+
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+
+
+
+            return page;
+        }
     }
 }
