@@ -68,7 +68,7 @@
             </div>
         </div>
         <%-- Frakt bolag --%>
-
+       
         <div class="row">
             <div runat="server" id="CarrierTable" class="col-xs-6">
  
@@ -76,17 +76,11 @@
         </div>
 
         <%-- Payment Info --%>
+            
         <div class="row">
-            <div class="col-xs-6">
-                <h3>Betalnings metod</h3>
-                  <asp:Table ID="Table_Payment" CssClass=" table" runat="server">
-                    <asp:TableHeaderRow>
-                        <asp:TableHeaderCell></asp:TableHeaderCell>
-                        <asp:TableHeaderCell>Namn</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>Typ</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>Pris</asp:TableHeaderCell>
-                    </asp:TableHeaderRow>
-                </asp:Table>
+            <div runat="server" id="PaymentTable" class="col-xs-6">
+               
+            
             </div>
         </div>
      

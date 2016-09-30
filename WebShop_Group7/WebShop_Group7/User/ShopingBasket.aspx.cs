@@ -66,7 +66,7 @@ namespace WebShop_Group7.User
             sb.Append("<table class=\"table table-striped\">");
             sb.Append(@"        
                <tr>
-                   <th></th>
+                   <th>Betalnings metod</th>
                    <th>Namn</th>
                    <th>Typ</th>
                    <th>Pris(kr)</th>               
@@ -85,7 +85,7 @@ namespace WebShop_Group7.User
                </tr> ");
             }
             sb.Append("</ table >");
-            CarrierTable.InnerHtml = sb.ToString();
+            PaymentTable.InnerHtml = sb.ToString();
         }
 
         private void FillCarrierInfo()
@@ -94,7 +94,7 @@ namespace WebShop_Group7.User
             sb.Append("<table class=\"table table-striped\">");
             sb.Append(@"        
                <tr>
-                   <th></th>
+                   <th>Frakt</th>
                    <th>Namn</th>
                    <th>Pris(kr)</th>               
                </tr>
