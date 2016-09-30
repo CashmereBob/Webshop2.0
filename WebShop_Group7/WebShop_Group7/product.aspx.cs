@@ -8,7 +8,7 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using WebShop_Group7.Models;
-
+using System.Web.Services;
 
 namespace WebShop_Group7
 {
@@ -203,6 +203,17 @@ namespace WebShop_Group7
             (this.Master as SiteMaster).BuildCart();
         }
 
+        [WebMethod]
+        public static void UpdateWebCart()
+        {
+
+            SiteMaster master = new SiteMaster();
+
+            master.UpdateFromStatic();
+
+        }
+
+        
 
     }
 }

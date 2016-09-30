@@ -12,6 +12,7 @@ using System.Data.SqlClient;
 using System.Data;
 using Newtonsoft.Json;
 using System.Text;
+using System.Web.Services;
 
 namespace WebShop_Group7
 {
@@ -321,6 +322,16 @@ namespace WebShop_Group7
         public void Checkout(object sender, EventArgs e)
         {
             Response.Redirect("~/User/ShopingBasket.aspx");
+        }
+
+        public void UpdateFromStatic()
+        {
+            BuildCart();
+
+
+            HiddenField hdnID = (HiddenField)Page.Master.FindControl("Cart");
+            var JsonObj = JsonConvert.SerializeObject(Session["Cart"]);
+            hdnID.Value = JsonObj;
         }
     }
 

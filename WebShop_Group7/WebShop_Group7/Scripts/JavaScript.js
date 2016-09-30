@@ -47,7 +47,6 @@ function UpdateCart() {
     var sum = "";
 
     if ($("#Cart").val() != "") {
-        console.log($("#Cart").val());
         var cart = JSON.parse($("#Cart").val());
         sum = (cart.sum + 1) + "kr";
 
@@ -76,6 +75,18 @@ function UpdateCart() {
         $("#numProducts").html(productsInCart);
         $("#priceSum").html(sum);
         $("#updKnapp").removeClass("hide");
+
+        $.ajax({
+            type: 'POST',
+            url: 'product.aspx/UpdateWebCart',
+            data: '{}',
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function (msg) {
+                
+            }
+        });
+
        
     }
     
