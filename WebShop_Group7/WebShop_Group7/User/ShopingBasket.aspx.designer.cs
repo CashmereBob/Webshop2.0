@@ -427,13 +427,22 @@ namespace WebShop_Group7.User {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// CheckBox1 control.
+        /// CheckBox_Accept control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox1;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_Accept;
+        
+        /// <summary>
+        /// Label_CheckboxReq control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_CheckboxReq;
         
         /// <summary>
         /// Button_Buy control.

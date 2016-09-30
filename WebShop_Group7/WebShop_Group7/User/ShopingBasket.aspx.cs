@@ -34,13 +34,14 @@ namespace WebShop_Group7.User
             SetUserTextboxVisible();
             orderObject = Session["Cart"] as OrderObject;
             // orderObject = order.GetOrder(1);
-          if(Session["User"] != null)
-            { 
-            user = users.GetUserById(Convert.ToInt32(Session["User"]));
+            if (Session["User"] != null)
+            {
+                user = users.GetUserById(Convert.ToInt32(Session["User"]));
                 userExists = true;
             }
-          try { 
-            priceGroup = user.priceGroup;
+            try
+            {
+                priceGroup = user.priceGroup;
             }
             catch { }
             if (priceGroup != 2) { priceGroup = 1; }
@@ -65,18 +66,18 @@ namespace WebShop_Group7.User
                 //Add TableRow
                 int nr = 0;
                 TableRow tr = new TableRow();
-                tr.ID = "tr_" + item.paymentId+ nr;
+                tr.ID = "tr_" + item.paymentId + nr;
                 Table_Payment.Controls.Add(tr);
 
 
                 //1
                 //Add tablrCellRadio
                 TableCell tcR = new TableCell();
-                tcR.ID = "tcr_tablrCellRadio" + item.paymentId+ nr;
+                tcR.ID = "tcr_tablrCellRadio" + item.paymentId + nr;
                 tr.Controls.Add(tcR);
                 //RadioButton
                 RadioButton radio = new RadioButton();
-                radio.ID = "radio_" + item.paymentId+ nr;
+                radio.ID = "radio_" + item.paymentId + nr;
                 radio.GroupName = "Payment";
                 tcR.Controls.Add(radio);
                 radio.CheckedChanged += Radio_CheckedChanged;
@@ -85,11 +86,11 @@ namespace WebShop_Group7.User
                 //Add TableCells Payment
                 TableCell tc1 = new TableCell();
                 tc1.CssClass = "tc";
-                tc1.ID = "tc_Payment" + item.paymentId+ nr;
+                tc1.ID = "tc_Payment" + item.paymentId + nr;
                 tr.Controls.Add(tc1);
                 //Add Lable Payment
                 Label lb = new Label();
-                lb.ID = "lb_Payment" + item.paymentId + item.payment+ nr;
+                lb.ID = "lb_Payment" + item.paymentId + item.payment + nr;
                 lb.Text = item.payment;
                 tc1.Controls.Add(lb);
 
@@ -97,11 +98,11 @@ namespace WebShop_Group7.User
                 //Add TableCells PaymentType
                 TableCell tc2 = new TableCell();
                 tc2.CssClass = "tc";
-                tc2.ID = "tc2_PaymentType" + item.paymentId + item+ nr;
+                tc2.ID = "tc2_PaymentType" + item.paymentId + item + nr;
                 tr.Controls.Add(tc2);
                 //Add Lable PaymentServise
                 Label lbType = new Label();
-                lbType.ID = "lbType" + item.paymentId + item.service+ nr;
+                lbType.ID = "lbType" + item.paymentId + item.service + nr;
                 lbType.Text = item.service;
                 tc2.Controls.Add(lbType);
 
@@ -109,11 +110,11 @@ namespace WebShop_Group7.User
                 //Add TableCells Price
                 TableCell tc_Price = new TableCell();
                 tc_Price.CssClass = "tc";
-                tc_Price.ID = "tc_Price" + item.paymentId + item.price+ nr;
+                tc_Price.ID = "tc_Price" + item.paymentId + item.price + nr;
                 tr.Controls.Add(tc_Price);
                 //Add Lable Price
                 Label lb_Price = new Label();
-                lb_Price.ID = "lb_Price" + item.paymentId + item.price+ nr;
+                lb_Price.ID = "lb_Price" + item.paymentId + item.price + nr;
                 lb_Price.Text = item.price.ToString("#.##") + "kr";
                 tc_Price.Controls.Add(lb_Price);
                 nr++;
@@ -136,19 +137,19 @@ namespace WebShop_Group7.User
                 //Add TableRow
 
                 TableRow tr = new TableRow();
-                tr.ID = "tr_2" + item.carrierId+ nr;
+                tr.ID = "tr_2" + item.carrierId + nr;
                 Table_Carriers.Controls.Add(tr);
 
 
 
                 //Add tablrCellRadio
                 TableCell tcR = new TableCell();
-                tcR.ID = "tcr_sdtablrCellRadio" + item.carrierId+ nr;
+                tcR.ID = "tcr_sdtablrCellRadio" + item.carrierId + nr;
                 tr.Controls.Add(tcR);
 
                 //RadioButton
                 RadioButton radio = new RadioButton();
-                radio.ID = "radio_sdtablrCellRadio" + item.carrierId+ nr;
+                radio.ID = "radio_sdtablrCellRadio" + item.carrierId + nr;
                 radio.GroupName = "Carrier";
                 tcR.Controls.Add(radio);
                 radio.CheckedChanged += Radio_CheckedChanged;
@@ -156,7 +157,7 @@ namespace WebShop_Group7.User
                 //Add TableCells CarrierName
                 TableCell tc1 = new TableCell();
                 tc1.CssClass = "tc";
-                tc1.ID = "tc_" + item.carrierId + item.carrier+ nr;
+                tc1.ID = "tc_" + item.carrierId + item.carrier + nr;
                 tr.Controls.Add(tc1);
 
 
@@ -169,7 +170,7 @@ namespace WebShop_Group7.User
                 //Add TableCells CarrierPrice
                 TableCell tc_Price = new TableCell();
                 tc_Price.CssClass = "tc";
-                tc_Price.ID = "tc_" + item.carrierId + item.price+ nr;
+                tc_Price.ID = "tc_" + item.carrierId + item.price + nr;
                 tr.Controls.Add(tc_Price);
                 //Add Lable CarrierPrice
                 Label lb_Price = new Label();
@@ -232,8 +233,8 @@ namespace WebShop_Group7.User
 
                 //Add Attributes
                 Label lb_Attribute = new Label();
-                lb_Attribute.ID = "lb_Attribute" + item.ID + nr;            
-                lb_Attribute.Text = product.GetAttributes(item.ID) ;
+                lb_Attribute.ID = "lb_Attribute" + item.ID + nr;
+                lb_Attribute.Text = product.GetAttributes(item.ID);
                 tc_Attribute.Controls.Add(lb_Attribute);
                 ////////////////////////////////////////////////////////////
                 //Add Cell Price
@@ -296,7 +297,7 @@ namespace WebShop_Group7.User
             UserHeadingEmail.InnerHtml = "<strong>Email</strong>";
 
 
- 
+
             if (!userExists)
             {
                 //User dont exists
@@ -315,7 +316,7 @@ namespace WebShop_Group7.User
                 EmailValue.InnerHtml = user.email;
                 Div_AdressValue.InnerText = user.adress;
                 Div_ZipValue.InnerText = user.postalCode;
-                Div_CityValue.InnerText = user.city;            
+                Div_CityValue.InnerText = user.city;
                 Div1_PhoneValue.InnerText = user.telephone;
 
                 //User exists!
@@ -337,11 +338,11 @@ namespace WebShop_Group7.User
 
         private void FillResultInfo()
         {
-           // Label_Total_PaymentMethod.Text = payName;
+            // Label_Total_PaymentMethod.Text = payName;
             Label_Total_PaymentPrice.Text = payPrice.ToString("#.##");
 
             totalPrice = totalOrderPrice + carrierPrice + payPrice;
-           // Label_Total_Carrier.Text = carrierName;
+            // Label_Total_Carrier.Text = carrierName;
             Label_Total_CarrierPrice.Text = carrierPrice.ToString("##.#");
             Label_ProductPrice.Text = totalOrderPrice.ToString("#.##");
             Label_TotalPrice.Text = totalPrice.ToString("#.##");
@@ -353,32 +354,39 @@ namespace WebShop_Group7.User
             TextBox_LastNameValue.Visible = false;
             TextBox_EmailValue.Visible = false;
             TextBox_Adress.Visible = false;
-              TextBox_Zip.Visible = false;
+            TextBox_Zip.Visible = false;
             TextBox_City.Visible = false;
             TextBox_Phone.Visible = false;
         }
 
         protected void Button_Buy_Click(object sender, EventArgs e)
         {
-            UserObject thisUser = new UserObject();
-            if (userExists)
+            if (CheckBox_Accept.Checked)
             {
-                thisUser = user;
+                UserObject thisUser = new UserObject();
+                if (userExists)
+                {
+                    thisUser = user;
+                }
+                else
+                {
+                    thisUser.email = TextBox_EmailValue.Text;
+                    thisUser.firstName = TextBox_FirstNameValue.Text;
+                    thisUser.lastName = TextBox_LastNameValue.Text;
+                    thisUser.priceGroup = 1;
+                    thisUser.adress = TextBox_Adress.Text;
+                    thisUser.city = TextBox_City.Text;
+                    thisUser.postalCode = TextBox_Zip.Text;
+                    thisUser.telephone = TextBox_Phone.Text;
+                }
+                orderObject.usr = thisUser;
+
+                Response.Redirect($"~/User/OrdsSamSida.aspx");
             }
             else
             {
-                thisUser.email = TextBox_EmailValue.Text;
-                thisUser.firstName = TextBox_FirstNameValue.Text;
-                thisUser.lastName = TextBox_LastNameValue.Text;
-                thisUser.priceGroup = 1;
-                thisUser.adress = TextBox_Adress.Text;
-                thisUser.city = TextBox_City.Text;
-                thisUser.postalCode = TextBox_Zip.Text;
-                thisUser.telephone = TextBox_Phone.Text;
+                Label_CheckboxReq.Visible = true;
             }
-            orderObject.usr = thisUser;
-
-            Response.Redirect($"~/User/OrdsSamSida.aspx");
         }
     }
 }

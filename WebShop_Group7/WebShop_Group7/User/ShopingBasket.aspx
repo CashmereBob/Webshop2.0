@@ -159,7 +159,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <asp:Label ID="Label1" runat="server" Text="Jag godkänner "></asp:Label><a>Köpvilkoren</a>
-                <asp:CheckBox ID="CheckBox1" runat="server" />
+                <asp:CheckBox ID="CheckBox_Accept" runat="server" /><asp:Label ID="Label_CheckboxReq" runat="server" ForeColor="Red" Font-Bold="true" Text="Required" Visible="False"></asp:Label>
             </div>
         </div>
         <div class="row">

@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using WebShop_Group7.Models;
 using System.Web.UI.WebControls;
 using System.Net;
+using Newtonsoft.Json;
 
 namespace WebShop_Group7.User
 {
@@ -27,8 +28,16 @@ namespace WebShop_Group7.User
           
             FillValues();
             SendMail();
-        }
+            ClearCart();
 
+        }
+        private void ClearCart()
+        {
+            HiddenField hdnID = (HiddenField)Page.Master.FindControl("Cart");
+            Session["Cart"] = new OrderObject();
+            var JsonObj = JsonConvert.SerializeObject(Session["Cart"]);
+            hdnID.Value = JsonObj;
+        }
         private void FillValues()
         {
             Label_Orderid.Text = oO.orderId.ToString();
@@ -58,7 +67,6 @@ namespace WebShop_Group7.User
             Label_totalPrice.Text = getFullPrice().ToString("#.##");
             Label_totalMoms.Text = decimal.Multiply(getFullPrice(), (decimal)0.2).ToString("#.##");
         }
-
         private void GetProductValues()
         {
 
