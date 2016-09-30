@@ -53,25 +53,9 @@
         <div class="row">
             <h4>Produkt upgifter</h4>
         </div>
-        <div class="row">
-            <table class="col-xs-12">
-                <tr>
-                    <th>Artikel</th>
-                    <th>Attribut</th>
-                    <th>Pris(kr)</th>
-                    <th>Antal</th>
-                    <th>Moms(kr)</th>
-                    <th>Summa(kr)</th>
-                </tr>
-                <tr>
-                    <td>Strumpa</td>
-                    <td>Vit</td>
-                    <td>20</td>
-                    <td>2</td>
-                    <td>5</td>
-                    <td>40</td>
-                </tr>
-            </table>
+
+        <div class="row" id="productTable" runat="server">
+
         </div>
 
         <%-- Carrier --%>
@@ -156,8 +140,10 @@
                 </tr>
                 <tr>
                     <th>Total</th>
-                    <th>0</th>
-                    <th>0</th>
+                    <th>
+                        <asp:Label ID="Label_totalMoms" runat="server" Text="Label"></asp:Label></th>
+                    <th>
+                        <asp:Label ID="Label_totalPrice" runat="server" Text="Label"></asp:Label></th>
                 </tr>
             </table>
         </div>
