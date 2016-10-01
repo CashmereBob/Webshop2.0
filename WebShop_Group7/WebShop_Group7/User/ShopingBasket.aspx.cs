@@ -34,80 +34,88 @@ namespace WebShop_Group7.User
         {
 
             SetUserTextboxVisible();
-            orderObject = Session["Cart"] as OrderObject;
-            // orderObject = order.GetOrder(1);
+            orderObject = Session["Cart"] as OrderObject;          
             if (Session["User"] != null)
             {
                 user = users.GetUserById(Convert.ToInt32(Session["User"]));
                 userExists = true;
-            }
+            }    
+            SetPriceGroup();
+            carriers = carrier.GetAllCarriers();
+            paymentObjects = payment.GetAllPayments();
+          
+               
+                FillUserInfo(user);
+                FillOrderInfo(order);
+                FillCarrierInfo();
+                FillPayment();
+                FillResultInfo();
+            
+        }
+
+        private void SetPriceGroup()
+        {
             try
             {
                 priceGroup = user.priceGroup;
             }
             catch { }
             if (priceGroup != 2) { priceGroup = 1; }
-            // user = users.GetUserById(3);
-            carriers = carrier.GetAllCarriers();
-            paymentObjects = payment.GetAllPayments();
-            if (!IsPostBack)
-            {
-                FillCarrierInfo();
-                FillUserInfo(user);
-                FillOrderInfo(order);
-                FillPayment();
-                FillResultInfo();
-            }
         }
 
         private void FillPayment()
         {
-            sb.Clear();
-            sb.Append("<table class=\"table table-striped\">");
+            PaymentsTable.InnerHtml = "";
+           sb.Clear();
+            sb.Append("<table class=\"table table-striped col-xs-6\">");
             sb.Append(@"        
                <tr>
-                   <th>Betalnings metod</th>
+                   <th></th>
                    <th>Namn</th>
                    <th>Typ</th>
-                   <th>Pris(kr)</th>               
-               </tr>
-          ");
+                   <th>Pris(kr)</th>  
+                   <th>Moms(kr)</th> 
+                   <th>Summa(kr)</th>   
+               </tr> ");
             foreach (var item in paymentObjects)
             {
+                sb.Append($" <tr>   <td>  <input type=\"radio\" />   </td>");
                 sb.Append($@"     
-               <tr>
-                   <td>  
-                    RadioButton
-                   </td>
                    <td>{item.payment}</td>
                    <td>{item.service}</td>
-                   <td>{item.price.ToString("#.##")}</td>          
+                   <td>{item.price.ToString("#.##")}</td>  
+                   <td>0,00</td>        
+                   <td>{item.price.ToString("#.##")}</td>      
                </tr> ");
             }
             sb.Append("</ table >");
-            PaymentTable.InnerHtml = sb.ToString();
+            PaymentsTable.InnerHtml = sb.ToString();
         }
 
         private void FillCarrierInfo()
         {
-            sb.Clear();
-            sb.Append("<table class=\"table table-striped\">");
+            CarrierTable.InnerHtml = "";
+            sb.Clear(); 
+            sb.Append("<table class=\"table table-striped col-xs-6\">");
             sb.Append(@"        
                <tr>
-                   <th>Frakt</th>
+                   <th></th>
                    <th>Namn</th>
-                   <th>Pris(kr)</th>               
+                   <th>Typ</th>
+                   <th>Pris(kr)</th>       
+                   <th>Moms(kr)</th>
+                   <th>Summa(kr)</th>        
                </tr>
           ");
             foreach (var item in carriers)
             {
-                sb.Append($@"     
-               <tr>
-                   <td>  
-                    RadioButton
-                   </td>
+                sb.Append($" <tr>   <td>  <input type=\"radio\" />   </td>");
+                sb.Append($@" 
                    <td>{item.carrier}</td>
-                   <td>{item.price.ToString("#.##")}</td>          
+                   <td>{item.service}</td>
+                   <td>{item.price.ToString("#.##")}</td>   
+                   <td>0,00</td>      
+                   <td>{item.price.ToString("#.##")}</td>             
                </tr> ");
             }
             sb.Append("</ table >");
@@ -118,7 +126,8 @@ namespace WebShop_Group7.User
 
         private void FillOrderInfo(Order order)
         {
-            sb.Clear();
+            ProductTable.InnerHtml = "";
+           sb.Clear();
             sb.Append("<table class=\"table table-striped\">");
             sb.Append(@"        
                <tr>
@@ -126,6 +135,7 @@ namespace WebShop_Group7.User
                    <th>Attribut</th>
                    <th>Pris(kr)</th>
                    <th>Antal</th>
+                   <th>Moms(kr)</th>
                    <th>Summa(kr)</th>
                </tr>
           ");
@@ -134,21 +144,17 @@ namespace WebShop_Group7.User
             decimal price = 0;
             var OrderInfoList = order.GetProductsToList(orderObject);
             foreach (var item in OrderInfoList)
-            {
-
-
-                try
-                {
-                    if (user.priceGroup == 2) { price = item.priceB2B; }
-                    else { price = item.priceB2C; }
-                }
-                catch { price = item.priceB2C; }
+            {            
+                    if (priceGroup == 2) { price = item.priceB2B; }
+                    else { price = item.priceB2C; }            
+         
                 sb.Append($@"     
                <tr>
                    <td>{item.name}</td>
                    <td>{product.GetAttributes(item.ID)}</td>
                    <td>{price.ToString("#.##")}</td>
                    <td>{item.quantity}</td>
+                   <td></td>
                    <td>{decimal.Multiply(price,(decimal)item.quantity).ToString("#.##")}</td>
                </tr> ");
             }

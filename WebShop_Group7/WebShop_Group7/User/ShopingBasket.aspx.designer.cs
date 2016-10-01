@@ -328,6 +328,15 @@ namespace WebShop_Group7.User {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl ProductTable;
         
         /// <summary>
+        /// PaymentsTable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PaymentsTable;
+        
+        /// <summary>
         /// CarrierTable control.
         /// </summary>
         /// <remarks>
@@ -335,15 +344,6 @@ namespace WebShop_Group7.User {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl CarrierTable;
-        
-        /// <summary>
-        /// PaymentTable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PaymentTable;
         
         /// <summary>
         /// Table1 control.
