@@ -81,7 +81,7 @@
      
 
         <%-- Result info --%>
-        <div class="container">
+  
             <div class="row">
                 <div class="col-xs-6">
               
@@ -147,7 +147,7 @@
                     <asp:Button ID="Button_Buy" runat="server" Text="Köp" OnClick="Button_Buy_Click" />
                 </div>
             </div>
-        </div>
+   
     </div>
 </asp:Content>
 

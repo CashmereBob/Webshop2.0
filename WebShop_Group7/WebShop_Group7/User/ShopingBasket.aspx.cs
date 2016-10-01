@@ -70,21 +70,23 @@ namespace WebShop_Group7.User
             sb.Append("<table class=\"table table-striped col-xs-6\">");
             sb.Append(@"        
                <tr>
-                   <th></th>
+                   <th>Payment</th>
                    <th>Namn</th>
                    <th>Typ</th>
                    <th>Pris(kr)</th>  
                    <th>Moms(kr)</th> 
                    <th>Summa(kr)</th>   
                </tr> ");
+            bool isChecked= false;
             foreach (var item in paymentObjects)
             {
-                sb.Append($" <tr>   <td>  <input type=\"radio\" />   </td>");
+                if (isChecked) { sb.Append($" <tr>   <td>  <input type=\"radio\" />   </td>"); }
+               else { sb.Append($" <tr>   <td>  <input type=\"radio\" name=\"Payment\" value=\"{item.paymentId}\" checked />   </td>"); isChecked = true; }
                 sb.Append($@"     
                    <td>{item.payment}</td>
                    <td>{item.service}</td>
                    <td>{item.price.ToString("#.##")}</td>  
-                   <td>0,00</td>        
+                   <td>{(decimal.Multiply(item.price, (decimal)0.2)).ToString("#.##")}</td>        
                    <td>{item.price.ToString("#.##")}</td>      
                </tr> ");
             }
@@ -99,7 +101,7 @@ namespace WebShop_Group7.User
             sb.Append("<table class=\"table table-striped col-xs-6\">");
             sb.Append(@"        
                <tr>
-                   <th></th>
+                   <th>Carrier</th>
                    <th>Namn</th>
                    <th>Typ</th>
                    <th>Pris(kr)</th>       
@@ -107,14 +109,17 @@ namespace WebShop_Group7.User
                    <th>Summa(kr)</th>        
                </tr>
           ");
+            bool isChecked = false;
             foreach (var item in carriers)
             {
-                sb.Append($" <tr>   <td>  <input type=\"radio\" />   </td>");
+                if (isChecked) { sb.Append($" <tr>   <td>  <input type=\"radio\" />   </td>"); }
+                else { sb.Append($" <tr>   <td>  <input type=\"radio\" name=\"Carrier\"  value=\"{item.carrierId}\" checked />   </td>"); isChecked = true; }
+               
                 sb.Append($@" 
                    <td>{item.carrier}</td>
                    <td>{item.service}</td>
                    <td>{item.price.ToString("#.##")}</td>   
-                   <td>0,00</td>      
+                   <td>{(decimal.Multiply(item.price, (decimal)0.2)).ToString("#.##")}</td>      
                    <td>{item.price.ToString("#.##")}</td>             
                </tr> ");
             }
@@ -154,10 +159,14 @@ namespace WebShop_Group7.User
                    <td>{product.GetAttributes(item.ID)}</td>
                    <td>{price.ToString("#.##")}</td>
                    <td>{item.quantity}</td>
-                   <td></td>
+                   <td> {(decimal.Multiply(price, (decimal)0.2)).ToString("#.##")}</td>
                    <td>{decimal.Multiply(price,(decimal)item.quantity).ToString("#.##")}</td>
                </tr> ");
+
+
+                totalOrderPrice += price;
             }
+
 
             sb.Append("</ table >");
             ProductTable.InnerHtml = sb.ToString();
