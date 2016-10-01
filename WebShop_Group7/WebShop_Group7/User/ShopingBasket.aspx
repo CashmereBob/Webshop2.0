@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ShopingBasket.aspx.cs" Inherits="WebShop_Group7.User.Varukorg" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+
     <h1>Varukorg</h1>
     <div class="container">
 
@@ -9,12 +10,13 @@
                 <h3>Person uppgifter</h3>
             </div>
         </div>
-        <%-- ÉND --%>
+
         <div class="row" runat="server" id="UserHeadings">
             <div class="col-md-3" runat="server" id="UserHeadingFirstName"></div>
             <div class="col-md-3" runat="server" id="UserHeadingLastName"></div>
             <div class="col-md-3" runat="server" id="UserHeadingEmail"></div>
             <div class="col-md-3" runat="server" id="UserHeadingComany"></div>
+
         </div>
         <%--User Values --%>
         <div class="row" runat="server" id="UserValues">
@@ -57,42 +59,43 @@
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Required" ControlToValidate="TextBox_Phone"></asp:RequiredFieldValidator>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <h3>Order info</h3>
+        <asp:Panel ID="Panel_setResult" runat="server">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3>Order info</h3>
+                </div>
             </div>
-        </div>
-        <%-- OrderInfo --%>
-        <div class="row">
-            <div id="ProductTable" runat="server" class=" col-xs-12">
+            <%-- OrderInfo --%>
+            <div class="row">
+                <div id="ProductTable" runat="server" class=" col-xs-12">
+                </div>
             </div>
-        </div>
-        <%-- Payment Info --%>
-        <div class="row">
-            <div runat="server" id="PaymentsTable">
+            <%-- Payment Info --%>
+            <div class="row">
+                <div runat="server" id="PaymentsTable">
+                </div>
             </div>
-        </div>
-        <%--  Carrier info --%>
-        <div class="row">
-            <div runat="server" id="CarrierTable">
-            </div>
+            <%--  Carrier info --%>
+            <div class="row">
+                <div runat="server" id="CarrierTable">
+                </div>
 
-        </div>
-     
-
+            </div>
+        </asp:Panel>
+        <asp:Button ID="Button_Next" runat="server" OnClick="Button_Next_Click" Text="Continue" />
         <%-- Result info --%>
-  
+        <asp:Panel ID="Panel_Result" runat="server">
             <div class="row">
                 <div class="col-xs-6">
-              
+
                     <asp:Table ID="Table1" CssClass="table-striped table" runat="server">
                         <asp:TableHeaderRow>
                             <asp:TableHeaderCell>Total summa</asp:TableHeaderCell>
                             <asp:TableHeaderCell>(kr)</asp:TableHeaderCell>
                             <asp:TableHeaderCell></asp:TableHeaderCell>
-                             <asp:TableHeaderCell></asp:TableHeaderCell>
-                             <asp:TableHeaderCell></asp:TableHeaderCell>
-                             <asp:TableHeaderCell></asp:TableHeaderCell>
+                            <asp:TableHeaderCell></asp:TableHeaderCell>
+                            <asp:TableHeaderCell></asp:TableHeaderCell>
+                            <asp:TableHeaderCell></asp:TableHeaderCell>
                         </asp:TableHeaderRow>
                         <asp:TableRow>
                             <asp:TableCell>
@@ -135,19 +138,20 @@
                     </asp:Table>
                 </div>
             </div>
-            <%-- ÉND --%>
-            <div class="row">
-                <div class="col-xs-12">
-                    <asp:Label ID="Label1" runat="server" Text="Jag godkänner "></asp:Label><a>Köpvilkoren</a>
-                    <asp:CheckBox ID="CheckBox_Accept" runat="server" /><asp:Label ID="Label_CheckboxReq" runat="server" ForeColor="Red" Font-Bold="true" Text="Required" Visible="False"></asp:Label>
-                </div>
+        </asp:Panel>
+        <%-- ÉND --%>
+        <div class="row">
+            <div class="col-xs-12">
+                <asp:Label ID="Label1" runat="server" Text="Jag godkänner "></asp:Label><a>Köpvilkoren</a>
+                <asp:CheckBox ID="CheckBox_Accept" runat="server" /><asp:Label ID="Label_CheckboxReq" runat="server" ForeColor="Red" Font-Bold="true" Text="Required" Visible="False"></asp:Label>
             </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <asp:Button ID="Button_Buy" runat="server" Text="Köp" OnClick="Button_Buy_Click" />
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <asp:Button ID="Button_Buy" runat="server" Text="Köp" OnClick="Button_Buy_Click" />
             </div>
-   
+        </div>
+
     </div>
 </asp:Content>
 

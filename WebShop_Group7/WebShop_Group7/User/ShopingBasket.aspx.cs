@@ -49,8 +49,9 @@ namespace WebShop_Group7.User
                 FillOrderInfo(order);
                 FillCarrierInfo();
                 FillPayment();
-                FillResultInfo();
-            
+            Table1.Visible = false;
+               // FillResultInfo();
+
         }
 
         private void SetPriceGroup()
@@ -80,7 +81,7 @@ namespace WebShop_Group7.User
             bool isChecked= false;
             foreach (var item in paymentObjects)
             {
-                if (isChecked) { sb.Append($" <tr>   <td>  <input type=\"radio\" />   </td>"); }
+                if (isChecked) { sb.Append($" <tr>   <td>  <input type=\"radio\" name=\"Payment\" value=\"{item.paymentId}\" />   </td>"); }
                else { sb.Append($" <tr>   <td>  <input type=\"radio\" name=\"Payment\" value=\"{item.paymentId}\" checked />   </td>"); isChecked = true; }
                 sb.Append($@"     
                    <td>{item.payment}</td>
@@ -112,7 +113,7 @@ namespace WebShop_Group7.User
             bool isChecked = false;
             foreach (var item in carriers)
             {
-                if (isChecked) { sb.Append($" <tr>   <td>  <input type=\"radio\" />   </td>"); }
+                if (isChecked) { sb.Append($" <tr>   <td>  <input type=\"radio\" name=\"Carrier\"  value=\"{item.carrierId}\"  />   </td>"); }
                 else { sb.Append($" <tr>   <td>  <input type=\"radio\" name=\"Carrier\"  value=\"{item.carrierId}\" checked />   </td>"); isChecked = true; }
                
                 sb.Append($@" 
@@ -271,6 +272,14 @@ namespace WebShop_Group7.User
             {
                 Label_CheckboxReq.Visible = true;
             }
+        }
+
+        protected void Button_Next_Click(object sender, EventArgs e)
+        {
+            FillResultInfo();
+            Panel_Result.Visible = true;
+            Panel_setResult.Visible = false;
+           
         }
     }
 }
