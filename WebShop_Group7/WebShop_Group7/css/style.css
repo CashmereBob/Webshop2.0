@@ -76,3 +76,7 @@
 #TextBox_Main_Search:focus {
     outline:none;
 }
+
+.sidebar-brand{
+    margin-bottom: -20px;
+}

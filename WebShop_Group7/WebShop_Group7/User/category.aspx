@@ -1,9 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="category.aspx.cs" Inherits="WebShop_Group7.category" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <script src="Scripts/bootstrap-slider.min.js"></script>
-    <script src="Scripts/JsCategory.js"></script>
-    <link href="css/bootstrap-slider.min.css" rel="stylesheet" />
+    <script src="../Scripts/bootstrap-slider.min.js"></script>
+    <script src="../Scripts/JsCategory.js"></script>
+    <link href="../css/bootstrap-slider.min.css" rel="stylesheet" />
 
     <div id="wrapper">
 
