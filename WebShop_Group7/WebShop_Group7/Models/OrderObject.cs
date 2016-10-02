@@ -8,7 +8,7 @@ namespace WebShop_Group7.Models
     public class OrderObject
     {
         public UserObject usr = new UserObject();
-        public int userID { get; set; }
+        public int userID = 0;
         public int orderId { get; set; }
         public int priceGroup { get; set; }
         public string company { get; set; }
@@ -25,7 +25,7 @@ namespace WebShop_Group7.Models
         public string date { get; set; }
         public List<ProductObject> products = new List<ProductObject>();
 
-        public int carriertID { get; set; }
+        public int carrierID { get; set; }
         public string carrier { get; set; }
         public string carrierService { get; set; }
         public decimal carrierPrice { get; set; }

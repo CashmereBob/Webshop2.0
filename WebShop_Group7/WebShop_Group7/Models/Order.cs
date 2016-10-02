@@ -309,6 +309,67 @@ namespace WebShop_Group7.Models
 
             return productList;
         }
+
+        public int AddOrder(OrderObject order)
+        {
+            int newID = -1;
+           
+            if (order.userID < 1)
+            {
+                //TODO
+            }
+
+
+
+            try
+            {
+                db.OpenConnection();
+
+                string sql = $"Insert Into tbl_Order (UserID, CarrierID, PaymentID) Values('{order.userID}', '{order.carrierID}', '{order.paymentID}' );SELECT CAST(scope_identity() AS int)";
+
+                SqlCommand insertCmd = new SqlCommand(sql, db._connection);
+                    
+                newID = (int)insertCmd.ExecuteScalar();
+
+
+                }
+            catch
+            {
+                //TODO exeption
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+
+            try
+            {
+                db.OpenConnection();
+
+                
+                foreach (ProductObject product in order.products)
+                {
+                    string sql = $"Insert Into [tbl_Order_Product-Attribute] (OrderID, ProductAttributeID, Quantity) Values('{newID}', '{product.ID}', '{product.quantity}' )";
+
+                    SqlCommand insertCmd = new SqlCommand(sql, db._connection);
+                    insertCmd.ExecuteNonQuery();
+                }
+
+
+            }
+            catch
+            {
+                //TODO exeption
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+
+
+
+            return newID;
+        }
     }
 }
 

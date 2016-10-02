@@ -183,6 +183,13 @@ namespace WebShop_Group7.User
 
             }
 
+            if (Session["User"] != null)
+            {
+                order.userID = (int)Session["User"];
+            }
+
+
+
             order.firstName = TextBox_firstname.Text;
             order.lastName = TextBox_lastname.Text;
             order.company = TextBox_company.Text;
