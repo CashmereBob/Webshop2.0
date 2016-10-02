@@ -25,10 +25,12 @@ namespace WebShop_Group7.Models
         public string date { get; set; }
         public List<ProductObject> products = new List<ProductObject>();
 
+        public int carriertID { get; set; }
         public string carrier { get; set; }
         public string carrierService { get; set; }
         public decimal carrierPrice { get; set; }
 
+        public int paymentID { get; set; }
         public string payment { get; set; }
         public string paymentService { get; set; }
         public decimal paymentPrice { get; set; }

@@ -34,6 +34,8 @@ $(document).ready(function () {
         return false;
     });
 
+   
+
 });
 
     
@@ -124,3 +126,18 @@ function changeProduct(id, quantity) {
     
 }
 
+function getPayCar() {
+    console.log($('input[name=carrier]:checked').val())
+    console.log($('input[name=payment]:checked').val())
+
+    if ($("#Cart").val() != "") {
+        var cart = JSON.parse($("#Cart").val());
+
+        cart.paymentID = $('input[name=payment]:checked').val();
+        cart.carrierID = $('input[name=carrier]:checked').val()
+
+        
+        $("#Cart").val(JSON.stringify(cart))
+        localStorage.setItem('Cart', $("#Cart").val());
+    }
+}

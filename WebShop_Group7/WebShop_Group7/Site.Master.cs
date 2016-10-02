@@ -321,7 +321,7 @@ namespace WebShop_Group7
 
         public void Checkout(object sender, EventArgs e)
         {
-            Response.Redirect("~/User/ShopingBasket.aspx");
+            Response.Redirect("~/User/checkout.aspx");
         }
 
         public void UpdateFromStatic()
