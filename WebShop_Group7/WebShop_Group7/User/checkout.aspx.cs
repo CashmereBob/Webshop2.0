@@ -205,6 +205,10 @@ namespace WebShop_Group7.User
 
             Session["Cart"] = order;
 
+
+            var JsonObj = JsonConvert.SerializeObject(new OrderObject());
+            hdnID.Value = JsonObj;
+
             Response.Redirect("~/User/confirm.aspx");
 
             

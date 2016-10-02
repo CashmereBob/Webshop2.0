@@ -77,7 +77,8 @@ function UpdateCart() {
         $("#numProducts").html(productsInCart);
         $("#priceSum").html(sum);
         $("#updKnapp").removeClass("hide");
-       
+        $("#total").html(sum);
+        $("#tax").html(sum * 0.25);
     }
     
     

@@ -16,7 +16,7 @@ namespace WebShop_Group7.User
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            HiddenField hdnID = (HiddenField)Page.Master.FindControl("Cart");
+            
             OrderObject order = (OrderObject)Session["Cart"];
 
             order = ordDal.GetOrder(ordDal.AddOrder(order));
@@ -50,8 +50,11 @@ namespace WebShop_Group7.User
             decimal tax = order.CalculatePrice() * 0.25M;
             Label_Tax.Text = tax.ToString("#.##");
 
-            hdnID.Value = "";
             Session["Cart"] = new OrderObject();
+
+            HiddenField hdnID = (HiddenField)Page.Master.FindControl("Cart");
+            var JsonObj = JsonConvert.SerializeObject(Session["Cart"]);
+            hdnID.Value = JsonObj;
 
 
         }

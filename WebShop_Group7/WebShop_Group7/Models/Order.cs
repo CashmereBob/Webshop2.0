@@ -313,10 +313,11 @@ namespace WebShop_Group7.Models
         public int AddOrder(OrderObject order)
         {
             int newID = -1;
-           
-            if (order.userID < 1)
+            int userID = order.userID;
+            bool newUser = false;
+            if (userID < 1)
             {
-                //TODO
+                newUser = true;
             }
 
 
@@ -325,34 +326,30 @@ namespace WebShop_Group7.Models
             {
                 db.OpenConnection();
 
-                string sql = $"Insert Into tbl_Order (UserID, CarrierID, PaymentID) Values('{order.userID}', '{order.carrierID}', '{order.paymentID}' );SELECT CAST(scope_identity() AS int)";
-
-                SqlCommand insertCmd = new SqlCommand(sql, db._connection);
-                    
-                newID = (int)insertCmd.ExecuteScalar();
-
-
-                }
-            catch
-            {
-                //TODO exeption
-            }
-            finally
-            {
-                db.CloseConnection();
-            }
-
-            try
-            {
-                db.OpenConnection();
-
-                
-                foreach (ProductObject product in order.products)
+                if (newUser)
                 {
-                    string sql = $"Insert Into [tbl_Order_Product-Attribute] (OrderID, ProductAttributeID, Quantity) Values('{newID}', '{product.ID}', '{product.quantity}' )";
+
+                    string sql = $"Insert Into tbl_User (Firstname, Lastname, Adress, Postalcode, City, Email, Telephone, Mobilephone, Pricegroup, Company, Admin) Values('{order.firstName}', '{order.lastName}', '{order.adress}', '{order.postalCode}', '{order.city}', '{order.email}', '{order.telephone}', '{order.mobile}', '1', '{order.company}', '0' );SELECT CAST(scope_identity() AS int)";
 
                     SqlCommand insertCmd = new SqlCommand(sql, db._connection);
-                    insertCmd.ExecuteNonQuery();
+
+                    userID = (int)insertCmd.ExecuteScalar();
+
+
+                }
+
+                string sql2 = $"Insert Into tbl_Order (UserID, CarrierID, PaymentID) Values('{userID}', '{order.carrierID}', '{order.paymentID}' );SELECT CAST(scope_identity() AS int)";
+
+                SqlCommand insertCmd2 = new SqlCommand(sql2, db._connection);
+                    
+                newID = (int)insertCmd2.ExecuteScalar();
+
+                foreach (ProductObject product in order.products)
+                {
+                    string sql3 = $"Insert Into [tbl_Order_Product-Attribute] (OrderID, ProductAttributeID, Quantity) Values('{newID}', '{product.ID}', '{product.quantity}' )";
+
+                    SqlCommand insertCmd3 = new SqlCommand(sql3, db._connection);
+                    insertCmd3.ExecuteNonQuery();
                 }
 
 
@@ -365,6 +362,8 @@ namespace WebShop_Group7.Models
             {
                 db.CloseConnection();
             }
+
+          
 
 
 
