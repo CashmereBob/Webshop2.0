@@ -198,6 +198,7 @@
     <Content Include="Admins.Master" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="login.aspx" />
+    <Content Include="User\checkout.aspx" />
     <Content Include="User\page.aspx" />
     <Content Include="Pictures\KlädPlagg.jpg" />
     <Content Include="Pictures\REA.png" />
@@ -618,6 +619,13 @@
     </Compile>
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\checkout.aspx.cs">
+      <DependentUpon>checkout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\checkout.aspx.designer.cs">
+      <DependentUpon>checkout.aspx</DependentUpon>
     </Compile>
     <Compile Include="User\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
