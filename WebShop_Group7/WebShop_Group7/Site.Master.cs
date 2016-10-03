@@ -304,6 +304,21 @@ namespace WebShop_Group7
                 cart.products.Remove(delete);
             }
 
+            if (cart.paymentID > 0)
+            {
+                Payment pay = new Payment();
+                PaymentObject payObject = pay.GetPaymentById(cart.paymentID);
+                cart.paymentPrice = payObject.price;
+            }
+
+            if (cart.carrierID > 0)
+            {
+                Carrier car = new Carrier();
+                CarrierObject carrierObject = car.GetCarrierById(cart.carrierID);
+                cart.carrierPrice = carrierObject.price;
+            }
+
+
             cart.priceGroup = pricegroup;
             cart.sum = cart.CalculatePrice();
 
