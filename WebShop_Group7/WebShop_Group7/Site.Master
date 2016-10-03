@@ -152,7 +152,7 @@
                                 </br>
                        
                                 <asp:Button ID="Button_login" CssClass="btn btn-default" runat="server" Text="Logga in" OnClick="Button_login_Click" />
-                                <asp:LinkButton ID="LinkButton_register" runat="server" Text="Skaffa konto"></asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton_register" runat="server" Text="Skaffa konto" OnClick="LinkButton_register_Click"></asp:LinkButton>
                             </div>
 
                         </div>

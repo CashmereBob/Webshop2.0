@@ -361,6 +361,11 @@ namespace WebShop_Group7
             Response.Redirect($"~/User/User_Orders.aspx");
 
         }
+
+        protected void LinkButton_register_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/User/User_RegPage.aspx");
+        }
     }
 
 }
