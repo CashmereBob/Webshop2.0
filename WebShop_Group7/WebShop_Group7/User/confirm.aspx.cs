@@ -19,10 +19,9 @@ namespace WebShop_Group7.User
         {
 
 
-            OrderObject order = (OrderObject)Session["Cart"];
-            SendMail(order);
+            OrderObject order = (OrderObject)Session["Cart"];       
             order = ordDal.GetOrder(ordDal.AddOrder(order));
-
+            SendMail(order);
             DataTable dt = ordDal.GetProducts(order);
             ViewState["dt"] = dt;
             this.BindGrid();
