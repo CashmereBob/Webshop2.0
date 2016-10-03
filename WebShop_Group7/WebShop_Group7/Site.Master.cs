@@ -79,6 +79,8 @@ namespace WebShop_Group7
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.ClientScript.RegisterClientScriptBlock(GetType(), "isPostBack", String.Format("var isPostback = {0};", IsPostBack.ToString().ToLower()), true);
+
             UserPages.Visible = false;
 
             if (Session["Cart"] == null)
@@ -132,7 +134,8 @@ namespace WebShop_Group7
                 categoryMenu.InnerHtml += $"<li role =\"separator\" class=\"divider\" ></li><li><a href = \"category.aspx\" >Alla</a></li>";
             }
 
-
+            HiddenField hdnID = (HiddenField)Page.Master.FindControl("Cart");
+            
 
             BuildCart();
 
@@ -283,9 +286,9 @@ namespace WebShop_Group7
                                 <td>{product.name}</td>
                                 <td>{atr}</td>
                                 <td>{price.ToString("#.##")}kr</td>
-                                <td><input id='{product.ID}' class='quantity' style='width: 70px;' type='number' value='{product.quantity}' min='0'/></td>
+                                <td><input id='{product.ID}' class='quantity btn-p' style='width: 70px;' type='number' value='{product.quantity}' min='0'/></td>
                                 <td>{(product.quantity * price).ToString("#.##")}kr</td>
-                                <td><button id='{product.ID}' class='delete'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></td>
+                                <td><button id='{product.ID}' class='delete btn-p'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></td>
                                 </tr>");
                     } else
                     {
