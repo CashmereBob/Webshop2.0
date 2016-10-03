@@ -73,8 +73,8 @@ namespace WebShop_Group7.User
                            “As we express our gratitude, we must never forget that the highest appreciation is not to utter words, but to live by them.”{Environment.NewLine}
                            –John F. Kennedy.{Environment.NewLine}{Environment.NewLine}
                            Order info{Environment.NewLine}
-                           Order nummer: {oO.orderId}{Environment.NewLine}
-                           Total Price: 
+                           Order nummer: {oO.orderId}
+                           Total Price: { oO.CalculatePrice().ToString("#.##")}
                            Best reguards from Group 7  
                            
                            
