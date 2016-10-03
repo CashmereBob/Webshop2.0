@@ -60,7 +60,7 @@ namespace WebShop_Group7
             {
                 foreach (KeyValuePair<string, List<string>> atr in attributes)
                 {
-                    
+
                     if (counter == 0) { atr1lable.InnerHtml = atr.Key; }
                     if (counter == 1) { atr2lable.InnerHtml = atr.Key; }
                     if (counter == 2) { atr3lable.InnerHtml = atr.Key; }
@@ -75,7 +75,7 @@ namespace WebShop_Group7
                         if (counter == 3) { atr4.Items.Insert(0, new ListItem(value, proDal.GetAttributeID(atr.Key, value).ToString())); }
 
                     }
-                    
+
                     counter++;
                 }
             }
@@ -92,7 +92,7 @@ namespace WebShop_Group7
 
             pris.InnerHtml = price.ToString("#.##");
             moms.InnerHtml = vat.ToString("#.##");
-            
+
         }
 
 
@@ -135,73 +135,78 @@ namespace WebShop_Group7
 
         protected void Button_addtocart_Click(object sender, EventArgs e)
         {
-            
+       
+                HiddenField hdnID = (HiddenField)Page.Master.FindControl("Cart");
 
-            HiddenField hdnID = (HiddenField)Page.Master.FindControl("Cart");
+                OrderObject cart = (OrderObject)Session["Cart"];
 
-            OrderObject cart = (OrderObject)Session["Cart"];
-
-            if (!string.IsNullOrWhiteSpace(hdnID.Value)) {
-                
-
-                cart = JsonConvert.DeserializeObject<OrderObject>(hdnID.Value);
-
-            }
+                if (!string.IsNullOrWhiteSpace(hdnID.Value))
+                {
 
 
-            var attribute1 = "IS NULL";
-            var attribute2 = "IS NULL";
-            var attribute3 = "IS NULL";
-            var attribute4 = "IS NULL";
+                    cart = JsonConvert.DeserializeObject<OrderObject>(hdnID.Value);
 
-            if (!string.IsNullOrWhiteSpace(atr1.SelectedValue)) { attribute1 = $"= '{atr1.SelectedValue}'"; }
-            if (!string.IsNullOrWhiteSpace(atr2.SelectedValue)) { attribute2 = $"= '{atr2.SelectedValue}'"; }
-            if (!string.IsNullOrWhiteSpace(atr3.SelectedValue)) { attribute3 = $"= '{atr3.SelectedValue}'"; }
-            if (!string.IsNullOrWhiteSpace(atr4.SelectedValue)) { attribute4 = $"= '{atr4.SelectedValue}'"; }
+                }
 
-            List<ProductObject> prod = proDal.GetProductByWhereList($@"WHERE tbl_Product.ID = '{int.Parse(Request.QueryString["id"])}' AND (AttributeID1 {attribute1} OR AttributeID2 {attribute1} OR AttributeID3 {attribute1} OR AttributeID4 {attribute1})
+
+                var attribute1 = "IS NULL";
+                var attribute2 = "IS NULL";
+                var attribute3 = "IS NULL";
+                var attribute4 = "IS NULL";
+
+                if (!string.IsNullOrWhiteSpace(atr1.SelectedValue)) { attribute1 = $"= '{atr1.SelectedValue}'"; }
+                if (!string.IsNullOrWhiteSpace(atr2.SelectedValue)) { attribute2 = $"= '{atr2.SelectedValue}'"; }
+                if (!string.IsNullOrWhiteSpace(atr3.SelectedValue)) { attribute3 = $"= '{atr3.SelectedValue}'"; }
+                if (!string.IsNullOrWhiteSpace(atr4.SelectedValue)) { attribute4 = $"= '{atr4.SelectedValue}'"; }
+
+                List<ProductObject> prod = proDal.GetProductByWhereList($@"WHERE tbl_Product.ID = '{int.Parse(Request.QueryString["id"])}' AND (AttributeID1 {attribute1} OR AttributeID2 {attribute1} OR AttributeID3 {attribute1} OR AttributeID4 {attribute1})
              AND (AttributeID1 {attribute2} OR AttributeID2 {attribute2} OR AttributeID3 {attribute2} OR AttributeID4 {attribute2})
              AND (AttributeID1 {attribute3} OR AttributeID2 {attribute3} OR AttributeID3 {attribute3} OR AttributeID4 {attribute3})
              AND (AttributeID1 {attribute4} OR AttributeID2 {attribute4} OR AttributeID3 {attribute4} OR AttributeID4 {attribute4})");
 
 
-            
 
-            foreach (ProductObject prud in prod)
-            {
-                bool inCart = false;
-                int quantity = 0;
-                if (cart.products != null) { 
-                foreach (ProductObject cartProduct in cart.products)
+
+                foreach (ProductObject prud in prod)
                 {
-                        
-                    if (cartProduct.ID == prud.ID) {
-                            quantity = cartProduct.quantity + int.Parse(ant.Text);
-                            inCart = true;
-                            cartProduct.quantity = quantity;
+                    bool inCart = false;
+                    int quantity = 0;
+                    if (cart.products != null)
+                    {
+                        foreach (ProductObject cartProduct in cart.products)
+                        {
+
+                            if (cartProduct.ID == prud.ID)
+                            {
+                                quantity = cartProduct.quantity + int.Parse(ant.Text);
+                                inCart = true;
+                                cartProduct.quantity = quantity;
+                            }
+
                         }
-                    
+                    }
+
+                    if (!inCart)
+                    {
+                        prud.quantity = int.Parse(ant.Text);
+                        cart.AddProduct(prud);
+                    }
                 }
-                }
 
-                if (!inCart) { 
-                prud.quantity = int.Parse(ant.Text);
-                cart.AddProduct(prud);
-                } 
-            }
+                cart.priceGroup = pricegroup;
+                cart.sum = cart.CalculatePrice();
 
-            cart.priceGroup = pricegroup;
-            cart.sum = cart.CalculatePrice();
+                Session["Cart"] = cart;
+                var JsonObj = JsonConvert.SerializeObject(cart);
 
-            Session["Cart"] = cart;
-            var JsonObj = JsonConvert.SerializeObject(cart);
-
-            hdnID.Value = JsonObj;
+                hdnID.Value = JsonObj;
 
 
 
-            (this.Master as SiteMaster).BuildCart();
+                (this.Master as SiteMaster).BuildCart();
+            
         }
+
 
         [WebMethod]
         public static void UpdateWebCart()
@@ -213,7 +218,7 @@ namespace WebShop_Group7
 
         }
 
-        
+
 
     }
 }

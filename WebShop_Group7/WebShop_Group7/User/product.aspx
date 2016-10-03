@@ -43,9 +43,11 @@
 
             <div class="input-group">
                 
-                <asp:TextBox ID="ant" TextMode="number" runat="server" CssClass="form-control" Text="1"></asp:TextBox>
+                <asp:TextBox ID="ant" TextMode="number" runat="server" CssClass="form-control" Text=1></asp:TextBox>
                 <span class="input-group-addon" id="antallable" runat="server">Antal</span>
             </div>
+            <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Minimum 1" ControlToValidate="ant" MinimumValue="1" MaximumValue="1000"></asp:RangeValidator>
+            
             </br>
             <p class="text-right">
                 <asp:Button ID="Button_addtocart" runat="server" Text="Lägg i varukorg" cssClass="btn btn-success" OnClick="Button_addtocart_Click" /></p>
