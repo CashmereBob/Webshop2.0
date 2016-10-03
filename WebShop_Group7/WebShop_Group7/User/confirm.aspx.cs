@@ -71,9 +71,9 @@ namespace WebShop_Group7.User
             string OrderMail = $@"Dear {oO.firstName} {oO.lastName}! {Environment.NewLine}
                            “As we express our gratitude, we must never forget that the highest appreciation is not to utter words, but to live by them.”{Environment.NewLine}
                            –John F. Kennedy.{Environment.NewLine}{Environment.NewLine}
-                           Order info{Environment.NewLine}
+                           Order info
                            Order nummer: {oO.orderId}
-                           Total Price: { oO.CalculatePrice().ToString("#.##")}
+                           Total Price: { oO.CalculatePrice().ToString("#.##")}{Environment.NewLine}
                            Best reguards from Group 7  
                            
                            
