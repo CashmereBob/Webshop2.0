@@ -74,7 +74,7 @@ namespace WebShop_Group7.User
                            –John F. Kennedy.{Environment.NewLine}{Environment.NewLine}
                            Order info{Environment.NewLine}
                            Order nummer: {oO.orderId}{Environment.NewLine}
-                           Total Price: { }{Environment.NewLine}{Environment.NewLine}
+                           Total Price: 
                            Best reguards from Group 7  
                            
                            
