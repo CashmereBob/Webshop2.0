@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -16,9 +18,9 @@ namespace WebShop_Group7.User
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            
-            OrderObject order = (OrderObject)Session["Cart"];
 
+            OrderObject order = (OrderObject)Session["Cart"];
+            SendMail(order);
             order = ordDal.GetOrder(ordDal.AddOrder(order));
 
             DataTable dt = ordDal.GetProducts(order);
@@ -55,7 +57,7 @@ namespace WebShop_Group7.User
             HiddenField hdnID = (HiddenField)Page.Master.FindControl("Cart");
             var JsonObj = JsonConvert.SerializeObject(Session["Cart"]);
             hdnID.Value = JsonObj;
-            
+
 
 
         }
@@ -63,6 +65,30 @@ namespace WebShop_Group7.User
         {
             GridViewOrder.DataSource = ViewState["dt"] as DataTable;
             GridViewOrder.DataBind();
+        }
+        protected void SendMail(OrderObject oO)
+        {
+
+            string OrderMail = $@"Dear {oO.firstName} {oO.lastName}! {Environment.NewLine}
+                           “As we express our gratitude, we must never forget that the highest appreciation is not to utter words, but to live by them.”{Environment.NewLine}
+                           –John F. Kennedy
+                           .{Environment.NewLine}
+                           Your order nummer is {oO.orderId}{Environment.NewLine}{Environment.NewLine}";
+
+            try
+            {
+                MailMessage o = new MailMessage("lundgren84@hotmail.se", $"{oO.email}", "Web-Shop Group7", $"{OrderMail}");
+                NetworkCredential netCred = new NetworkCredential("lundgren84@hotmail.se", "olleolle12");
+                SmtpClient smtpobj = new SmtpClient("smtp.live.com", 587);
+                smtpobj.EnableSsl = true;
+                smtpobj.Credentials = netCred;
+                smtpobj.Send(o);
+            }
+            catch
+            {
+                Page.RegisterStartupScript("UserMsg", "<script>alert('Sending Failed...');if(alert){ window.location='SendMail.aspx';}</script>");
+            }
+
         }
     }
 }
