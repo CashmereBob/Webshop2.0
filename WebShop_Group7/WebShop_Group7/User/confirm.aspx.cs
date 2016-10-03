@@ -55,6 +55,7 @@ namespace WebShop_Group7.User
             HiddenField hdnID = (HiddenField)Page.Master.FindControl("Cart");
             var JsonObj = JsonConvert.SerializeObject(Session["Cart"]);
             hdnID.Value = JsonObj;
+            
 
 
         }

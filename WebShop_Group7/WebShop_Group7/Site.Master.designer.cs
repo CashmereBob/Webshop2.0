@@ -58,15 +58,6 @@ namespace WebShop_Group7 {
         protected global::System.Web.UI.WebControls.TextBox TextBox_Main_Search;
         
         /// <summary>
-        /// cartDesign control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor cartDesign;
-        
-        /// <summary>
         /// cartDD control.
         /// </summary>
         /// <remarks>

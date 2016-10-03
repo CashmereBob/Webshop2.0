@@ -94,16 +94,14 @@
                         <%-- Droppdown --%>
                         <li class="dropdown" id="showDD">
 
-                            <a href="#" id="cartDesign" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" runat="server" onclick="UpdateCart">
+                            <a href="#" id="cartDesign" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                 <span id="numProducts" class=""></span>
                                 <span id="cartIcon" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                                 <span id="priceSum" class="priceSum"></span><span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" id="cartDD" runat="server">
-                                <li>
-                                    <button type="submit" id="close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                                </li>
+                               
                                 <li>
                                     <ul id="cartPP">
                                         <li>

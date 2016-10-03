@@ -146,7 +146,7 @@ namespace WebShop_Group7.User
             str.Append("<h4>Fraktalternativ</h4>");
             foreach (CarrierObject carrier in carriers)
             {
-                str.Append($@"<input class='carrm' type='radio' name='carrier' value='{carrier.carrierId}'>{carrier.service}: {carrier.price.ToString("#.##")}kr </br>");
+                str.Append($@"<input class='carrm' type='radio' name='carrier' value='{carrier.carrierId}' required>{carrier.service}: {carrier.price.ToString("#.##")}kr </br>");
             }
 
             carrierDiv.InnerHtml = str.ToString();
@@ -161,7 +161,7 @@ namespace WebShop_Group7.User
             str.Append("<h4>Betalningsalternativ</h4>");
             foreach (PaymentObject payer in payments)
             {
-                str.Append($@"<input class='paym' type='radio' name='payment' value='{payer.paymentId}'>{payer.service}: {payer.price.ToString("#.##")}kr </br>");
+                str.Append($@"<input class='paym' type='radio' name='payment' required value='{payer.paymentId}'>{payer.service}: {payer.price.ToString("#.##")}kr </br>");
             }
 
             paymentDiv.InnerHtml = str.ToString();

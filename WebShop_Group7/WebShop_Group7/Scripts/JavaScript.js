@@ -14,9 +14,10 @@ $(document).ready(function () {
 
         $(this).bind('keyup mouseup', function () {
             changeProduct($(this).attr('id'), $(this).val())
-            console.log('change');
-
+           
         });
+
+
     });
 
     $(".delete").each(function (index) {
@@ -28,10 +29,21 @@ $(document).ready(function () {
         });
     });
     
-    UpdateCart()
+    UpdateCart();
 
-    $('#showDD').on('hide.bs.dropdown', function () {
-        return false;
+    $('#showDD').on({
+        
+        "click": function (e) {
+            var target = $(e.target);
+            if (target.hasClass("btn-p")){
+                this.closable = false;
+                
+            } else {
+                this.closable = true;
+                
+            }
+        },
+        "hide.bs.dropdown": function () { return this.closable; }
     });
 
    
@@ -78,7 +90,17 @@ function UpdateCart() {
         $("#priceSum").html(sum);
         $("#updKnapp").removeClass("hide");
         $("#total").html(sum);
-        $("#tax").html(sum * 0.25);
+
+        if (isPostback) {
+            // Postback specific logic here
+        } else {
+            __doPostBack();
+        }
+
+
+        var taxen = (sum * 0.25);
+
+        $("#tax").html(taxen);
     }
     
     
@@ -86,6 +108,7 @@ function UpdateCart() {
 
 function deleteProduct(id) {
 
+   
     if ($("#Cart").val() != "") {
         var cart = JSON.parse($("#Cart").val());
        
@@ -96,8 +119,13 @@ function deleteProduct(id) {
             }
 
         }
+
+    
+
         $("#Cart").val(JSON.stringify(cart))
         localStorage.setItem('Cart', $("#Cart").val());
+
+        
     }
 
 
@@ -120,6 +148,12 @@ function changeProduct(id, quantity) {
         }
 
         $("#priceSum").html(sum);
+
+        $("#total").html(sum);
+
+        var taxen = (sum * 0.25);
+
+        $("#tax").html(taxen);
         $("#Cart").val(JSON.stringify(cart));
         localStorage.setItem('Cart', $("#Cart").val());
         
