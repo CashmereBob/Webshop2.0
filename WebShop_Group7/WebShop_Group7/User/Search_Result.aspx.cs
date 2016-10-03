@@ -86,7 +86,7 @@ namespace WebShop_Group7.User
 
 
                 List<ProductObject> products = prudDal.GetProductByWhereList(where);
-
+                titlen.InnerHtml = $"Sökresultat för: {searchString}";
                 AddCategorys(products);
 
             }

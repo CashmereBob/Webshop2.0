@@ -22,7 +22,7 @@
 
                 <div class="row">
                     <div class="col-xs-12">
-                        <h2>Kategori</h2>
+                        <h2><span id="titlen" runat="server">Kategori</span></h2>
                         <hr>
                         <h4 class="button-aside"><a href="#menu-toggle" id="menu-toggle"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span></a></h4>
                         <hr>

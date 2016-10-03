@@ -31,6 +31,7 @@ namespace WebShop_Group7
 
                 List<ProductObject> products = prudDal.GetProductByWhereList(where);
 
+                titlen.InnerHtml = products[0].brandName;
                 AddCategorys(products);
 
             }

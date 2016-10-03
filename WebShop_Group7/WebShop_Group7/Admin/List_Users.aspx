@@ -20,7 +20,7 @@
             <div class="col-xs-12">
 
                 <asp:GridView ID="GridView_User" runat="server" AutoGenerateColumns="false" OnRowEditing="OnRowEditing"
-                    AllowSorting="true" AllowPaging="true" PageSize="5" CssClass="table-striped table">
+                     CssClass="table-striped table">
 
                     <Columns>
 

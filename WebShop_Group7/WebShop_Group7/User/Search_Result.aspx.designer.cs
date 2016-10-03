@@ -22,6 +22,15 @@ namespace WebShop_Group7.User {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl filternav;
         
         /// <summary>
+        /// titlen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl titlen;
+        
+        /// <summary>
         /// productCont control.
         /// </summary>
         /// <remarks>
