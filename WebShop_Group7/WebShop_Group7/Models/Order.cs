@@ -245,11 +245,14 @@ namespace WebShop_Group7.Models
 
                     Dictionary<string, string> atribut = productDB.GetAttribute(product);
 
-                    foreach (KeyValuePair<string, string> atr in atribut)
+                    if (atribut != null)
                     {
+                        foreach (KeyValuePair<string, string> atr in atribut)
+                        {
 
-                        attribut += atr.Value + " ";
+                            attribut += atr.Value + " ";
 
+                        }
                     }
 
                     decimal sum = -1;
@@ -341,7 +344,7 @@ namespace WebShop_Group7.Models
                 string sql2 = $"Insert Into tbl_Order (UserID, CarrierID, PaymentID) Values('{userID}', '{order.carrierID}', '{order.paymentID}' );SELECT CAST(scope_identity() AS int)";
 
                 SqlCommand insertCmd2 = new SqlCommand(sql2, db._connection);
-                    
+
                 newID = (int)insertCmd2.ExecuteScalar();
 
                 foreach (ProductObject product in order.products)
@@ -363,7 +366,7 @@ namespace WebShop_Group7.Models
                 db.CloseConnection();
             }
 
-          
+
 
 
 
