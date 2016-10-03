@@ -46,7 +46,7 @@
                 <asp:TextBox ID="ant" TextMode="number" runat="server" CssClass="form-control" Text=1></asp:TextBox>
                 <span class="input-group-addon" id="antallable" runat="server">Antal</span>
             </div>
-            <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Minimum 1" ControlToValidate="ant" MinimumValue="1" MaximumValue="1000"></asp:RangeValidator>
+            <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Minimum 1" ControlToValidate="ant" MinimumValue="1" MaximumValue="99999"></asp:RangeValidator>
             
             </br>
             <p class="text-right">
