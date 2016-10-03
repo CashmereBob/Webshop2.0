@@ -71,9 +71,15 @@ namespace WebShop_Group7.User
 
             string OrderMail = $@"Dear {oO.firstName} {oO.lastName}! {Environment.NewLine}
                            “As we express our gratitude, we must never forget that the highest appreciation is not to utter words, but to live by them.”{Environment.NewLine}
-                           –John F. Kennedy
-                           .{Environment.NewLine}
-                           Your order nummer is {oO.orderId}{Environment.NewLine}{Environment.NewLine}";
+                           –John F. Kennedy.{Environment.NewLine}{Environment.NewLine}
+                           Order info{Environment.NewLine}
+                           Order nummer: {oO.orderId}{Environment.NewLine}
+                           Total Price: { }{Environment.NewLine}{Environment.NewLine}
+                           Best reguards from Group 7  
+                           
+                           
+                           ";
+
 
             try
             {
